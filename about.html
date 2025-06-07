@@ -26,12 +26,83 @@
     <link href="assets/css/global.css" rel="stylesheet">
     <link href="assets/css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <style>
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            pointer-events: none;
+        }
+        .content-wrapper {
+            position: relative;
+            z-index: 2;
+        }
+        .typing-animation {
+            overflow: hidden;
+            border-right: 2px solid #fe3e57;
+            white-space: nowrap;
+            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+        }
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #fe3e57 }
+        }
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .glow-effect {
+            transition: all 0.3s ease;
+        }
+        .glow-effect:hover {
+            box-shadow: 0 0 15px #fe3e57;
+            transform: scale(1.05);
+        }
+        .shine-effect {
+            position: relative;
+            overflow: hidden;
+        }
+        .shine-effect::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to right,
+                rgba(255,255,255,0) 0%,
+                rgba(255,255,255,0.3) 50%,
+                rgba(255,255,255,0) 100%
+            );
+            transform: rotate(30deg);
+            transition: all 0.3s ease;
+            opacity: 0;
+        }
+        .shine-effect:hover::after {
+            opacity: 1;
+            transform: rotate(30deg) translate(50%, 50%);
+        }
+    </style>
 
 
 </head>
 
 <body>
-
+    <div id="particles-js"></div>
+    <div class="content-wrapper">
     <!-- start page-wrapper -->
     <div class="page-wrapper">
         <!-- start preloader -->
@@ -48,7 +119,7 @@
         </div>
 
         <!-- start header-section -->
-        <section class="bg-transparent  z-50 md:py-[20px]">
+        <section class="bg-[#070640] absolute left-0 top-0 w-full z-50 md:py-[20px]">
             <h1 class="hidden">section heading hidden</h1>
             <div class="wraper">
                 <div class="flex items-center justify-between">
@@ -57,47 +128,16 @@
                         <button class="dl-trigger">Open Menu</button>
                         <ul class="dl-menu">
                             <li>
-                                <a href="#">Home</a>
-                                <ul class="dl-submenu">
-                                    <li><a href="index.html">Main Home</a></li>
-                                    
-                                </ul>
+                                <a href="index.html">Home</a>
                             </li>
                             <li>
                                 <a href="about.html">About</a>
                             </li>
                             <li>
-                                <a href="#">Portfolio</a>
-                                <ul class="dl-submenu">
-                                    <li><a href="portfolio-grid.html">Portfolio Grid</a></li>
-                                    <li><a href="portfolio-masonary.html">Portfolio Masonary</a></li>
-                                    <li><a href="portfolio.html">Portfolio </a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Pages</a>
-                                <ul class="dl-submenu">
-                                    <li><a href="service-single.html">Service Single</a></li>
-                                    <li><a href="project-single.html">Project Single</a></li>
-                                    <li><a href="404.html">404 Page</a></li>
-                                </ul>
+                                <a href="Portfolio.html">Portfolio</a>
                             </li>
                             <li>
-                                <a href="#">Blog</a>
-                                <ul class="dl-submenu">
-                                    <li><a href="blog.html">Blog</a></li>
-                                    <li><a href="blog-left-sidebar.html">Blog With Left Sidebar</a></li>
-                                    <li>
-                                        <a href="#">Blog details</a>
-                                        <ul class="dl-submenu">
-                                            <li>
-                                                <a href="blog-single.html">Blog details</a>
-                                            </li>
-                                            <li>
-                                                <a href="blog-single-left-sidebar.html">Blog Details Left Sidebar</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
+                                <a href="resume.html">Resume</a>
                             </li>
                             <li>
                                 <a href="contact.html">Contact</a>
@@ -106,131 +146,38 @@
                     </div>
                     <div class="w-[195px] md:w-[280px] sm:w-[200px] col:w-[150px]">
                         <a class="flex items-center md:justify-center text-white" href="index.html">
-                            <img class="mr-[10px] " src="assets/images/logo2.png" alt=""></a>
+                            <img class="mr-[10px]" src="assets/images/logo.png" alt=""></a>
                     </div>
                     <ul class="md:hidden">
                         <li class="relative inline-block group">
-                            <a href="#" class="relative text-[16px] lg:text-[14px] py-[35px]
-                             xl:py-[30px] px-[20px] xl:px-[6px]
-                                 text-[#666] block capitalize
-                                font-base-font font-medium transition-all
-                                 hover:text-[#fe3e57] ">Home</a>
-                            <ul class="absolute w-[240px]  left-0 top-[110%] p-[20px] z-[111]  bg-[#fff] shadow-[0px_2px_20px_0px_rgba(62,65,159,0.09)]  transition-all  opacity-0 invisible
-                                    group-hover:opacity-100  group-hover:top-full group-hover:visible">
-                                <li>
-                                    <a href="index.html" class="text-[16px] lg:text-[14px] inline-block py-[5px] capitalize text-[#202020] group relative overflow-hidden font-medium transition-all 
-                                    hover:text-[#fe3e57]
-                                        ">Main Home</a>
-                                </li>
-                                
-                            </ul>
+                            <a href="index.html" class="relative text-[16px] lg:text-[14px] py-[35px] xl:py-[30px] px-[20px] xl:px-[6px] text-white block capitalize font-base-font font-medium transition-all hover:text-[#fe3e57]">Home</a>
                         </li>
                         <li class="relative inline-block">
-                            <a href="about.html" class="relative group text-[16px] lg:text-[14px] py-[35px] xl:py-[30px] px-[20px] xl:px-[6px] text-[#fe3e57] block capitalize font-base-font font-medium
-                            transition-all
-                            hover:text-[#fe3e57]
-                            ">About</a>
+                            <a href="about.html" class="relative group text-[16px] lg:text-[14px] py-[35px] xl:py-[30px] px-[20px] xl:px-[6px] text-[#fe3e57] block capitalize font-base-font font-medium transition-all">About</a>
                         </li>
                         <li class="relative inline-block group">
-                            <a href="#" class="relative group text-[16px] lg:text-[14px] py-[35px] xl:py-[30px] px-[20px] xl:px-[6px] text-[#666] block capitalize font-base-font font-medium
-                            transition-all
-                            hover:text-[#fe3e57]">Pages</a>
-                            <ul
-                                class="absolute w-[240px]  left-0 top-[110%] p-[20px] z-[111]  bg-[#fff] shadow-[0px_2px_20px_0px_rgba(62,65,159,0.09)]  transition-all  opacity-0 invisible group-hover:opacity-100  group-hover:top-full group-hover:visible">
-                                <li>
-                                    <a href="service-single.html" class="text-[16px] lg:text-[14px] inline-block py-[5px] capitalize text-[#202020] group relative overflow-hidden font-medium transition-all 
-                                    hover:text-[#fe3e57]">Service Single</a>
-                                </li>
-
-                                <li>
-                                    <a href="project-single.html" class="text-[16px] lg:text-[14px] inline-block py-[5px] capitalize text-[#202020] group relative overflow-hidden font-medium transition-all 
-                                    hover:text-[#fe3e57]">Project Single</a>
-                                </li>
-                                <li>
-                                    <a href="404.html" class="text-[16px] lg:text-[14px] inline-block py-[5px] capitalize text-[#202020] group relative overflow-hidden font-medium transition-all 
-                                    hover:text-[#fe3e57]">404 Page</a>
-                                </li>
-                            </ul>
+                            <a href="Portfolio.html" class="relative group text-[16px] lg:text-[14px] py-[35px] xl:py-[30px] px-[20px] xl:px-[6px] text-white block capitalize font-base-font font-medium transition-all hover:text-[#fe3e57]">Portfolio</a>
                         </li>
                         <li class="relative inline-block group">
-                            <a href="#" class="relative group text-[16px] lg:text-[14px] py-[35px] xl:py-[30px] px-[20px] xl:px-[6px] text-[#666] block capitalize font-base-font font-medium  transition-all 
-                             hover:text-[#fe3e57]
-                            ">Portfolio</a>
-                            <ul
-                                class="absolute w-[240px]  left-0 top-[110%] p-[20px] z-[111]  bg-[#fff] shadow-[0px_2px_20px_0px_rgba(62,65,159,0.09)]  transition-all  opacity-0 invisible group-hover:opacity-100  group-hover:top-full group-hover:visible">
-                                <li>
-                                    <a href="portfolio-grid.html" class="text-[16px] lg:text-[14px] inline-block py-[5px] capitalize text-[#202020] group relative overflow-hidden font-medium transition-all 
-                                    hover:text-[#fe3e57]">Portfolio Grid</a>
-                                </li>
-
-                                <li>
-                                    <a href="portfolio-masonary.html" class="text-[16px] lg:text-[14px] inline-block py-[5px] capitalize text-[#202020] group relative overflow-hidden font-medium transition-all 
-                                    hover:text-[#fe3e57]">Portfolio Masonary</a>
-                                </li>
-
-                                <li>
-                                    <a href="portfolio.html" class="text-[16px] lg:text-[14px] inline-block py-[5px] capitalize text-[#202020] group relative overflow-hidden font-medium transition-all 
-                                            hover:text-[#fe3e57]">Portfolio</a>
-                                </li>
-                            </ul>
+                            <a href="resume.html" class="relative group text-[16px] lg:text-[14px] py-[35px] xl:py-[30px] px-[20px] xl:px-[6px] text-white block capitalize font-base-font font-medium transition-all hover:text-[#fe3e57]">Resume</a>
                         </li>
                         <li class="relative inline-block group">
-                            <a href="#" class="relative group text-[16px] lg:text-[14px] py-[35px] xl:py-[30px] px-[20px] xl:px-[6px] text-[#666] block capitalize font-base-font font-medium
-                            transition-all
-                            hover:text-[#fe3e57]
-                            ">Blog</a>
-                            <ul
-                                class="absolute w-[240px]  left-0 top-[110%] p-[20px] z-[111]  bg-[#fff] shadow-[0px_2px_20px_0px_rgba(62,65,159,0.09)]  transition-all  opacity-0 invisible group-hover:opacity-100  group-hover:top-full group-hover:visible">
-                                <li>
-                                    <a href="blog.html" class="text-[16px] lg:text-[14px] capitalize inline-block py-[5px] text-[#202020] group relative overflow-hidden font-medium transition-all 
-                                    hover:text-[#fe3e57]">Blog</a>
-                                </li>
-
-                                <li>
-                                    <a href="blog-left-sidebar.html" class="text-[16px] lg:text-[14px] inline-block py-[5px] capitalize text-[#202020] group relative overflow-hidden font-medium transition-all 
-                                    hover:text-[#fe3e57]">Blog With Left Sidebar</a>
-                                </li>
-
-                                <li class="relative group/group-2">
-                                    <a href="#" class="text-[16px] lg:text-[14px] inline-block py-[5px] capitalize text-[#202020] group relative overflow-hidden font-medium transition-all 
-                                    hover:text-[#fe3e57]">Blog details</a>
-                                    <ul
-                                        class="absolute w-[240px]  left-[120%] top-0 p-[20px] z-[111]  bg-[#fff] shadow-[0px_2px_20px_0px_rgba(62,65,159,0.09)] opacity-0 invisible  transition-all group-hover/group-2:opacity-100  group-hover/group-2:left-[110%] group-hover/group-2:visible">
-                                        <li>
-                                            <a href="blog-single.html" class="text-[16px] lg:text-[14px] inline-block py-[5px] capitalize text-[#202020] group relative overflow-hidden font-medium transition-all 
-                                    hover:text-[#fe3e57]">Blog Details</a>
-                                        </li>
-
-                                        <li>
-                                            <a href="blog-single-left-sidebar.html" class="text-[16px] lg:text-[14px] inline-block py-[5px] capitalize text-[#202020] group relative overflow-hidden font-medium transition-all 
-                                    hover:text-[#fe3e57]">Blog Details Left Sidebar</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="relative inline-block">
-                            <a href="contact.html" class="relative group text-[16px] lg:text-[14px] py-[35px] xl:py-[30px] px-[20px] xl:px-[6px] text-[#666] block capitalize font-base-font font-medium
-                            transition-all
-                            hover:text-[#fe3e57]
-                            ">Contact</a>
+                            <a href="contact.html" class="relative group text-[16px] lg:text-[14px] py-[35px] xl:py-[30px] px-[20px] xl:px-[6px] text-white block capitalize font-base-font font-medium transition-all hover:text-[#fe3e57]">Contact</a>
                         </li>
                     </ul>
-                    <a class="text-[#666] text-[25px] md:text-[20px] border-b-[1px] border-[#642138] col:hidden"
-                        href="tel:+4733378901">+(888) 01234567</a>
                 </div>
             </div>
         </section>
 
         <!-- start page-title -->
-        <section class="page-title bg-animate-shape">
+        <section class="page-title bg-[#070640]">
             <div class="wraper">
                 <div class="grid">
                     <div class="col-span-12">
-                        <h2>About Us</h2>
+                        <h2 class="text-white">About Us</h2>
                         <ol class="breadcrumb">
-                            <li><a href="index.html">Home</a></li>
-                            <li>About</li>
+                            <li><a href="index.html" class="text-white">Home</a></li>
+                            <li class="text-white">About</li>
                         </ol>
                     </div>
                 </div>
@@ -256,21 +203,21 @@
         </section>
 
         <!-- start about-4 -->
-        <section class="py-[100px] sm:py-[80px]">
+        <section class="py-[100px] sm:py-[80px] bg-[#070640]">
             <div class="wraper">
                 <div class="grid grid-cols-12 gap-8 lg:gap-3">
                     <div class="col-span-6 md:col-span-8 sm:col-span-12">
                         <div
-                            class="p-[70px] sm:p-[15px] text-center bg-[#fff]  shadow-[0px_2px_14.25px_0.75px_rgba(58,58,58,0.15)]">
+                            class="p-[70px] sm:p-[15px] text-center bg-[#070640] shadow-[0px_2px_14.25px_0.75px_rgba(58,58,58,0.15)]">
                             <img src="assets/images/about/Fedi.jpg" alt="">
                         </div>
                     </div>
                     <div class="col-span-6 md:col-span-12 sm:col-span-12">
                         <div class="pt-[100px] pl-[30px] lg:pt-[50px] md:pl-0">
-                            <h2 class="text-[#131058] text-[50px] sm:text-[40px] mb-[30px] font-bold">Great software doesn’t just work — it improves lives</h2>
-                            <p class="text-[#666] text-[16px] mb-[30px] leading-[30px]">I’m Fedi Hmida, a passionate Software Engineering student at ESPRIT, holding a
+                            <h2 class="text-white text-[50px] sm:text-[40px] mb-[30px] font-bold">Great software doesn't just work — it improves lives</h2>
+                            <p class="text-white text-[16px] mb-[30px] leading-[30px]">I'm Fedi Hmida, a passionate Software Engineering student at ESPRIT, holding a
                                 Bachelor's in Computer Engineering. I specialize in mobile app development using Flutter, as demonstrated
-                                in projects like the SolarFlow App. I’m also skilled in web development with Symfony and modern frontend technologies.
+                                in projects like the SolarFlow App. I'm also skilled in web development with Symfony and modern frontend technologies.
 
                                 Additionally, I work with Machine Learning techniques such as KNN, Linear Regression, Decision Trees, and K-Means
                                 for building basic data-driven prototypes. Recognized as a proactive learner, I focus on delivering
@@ -278,19 +225,19 @@
 
                             </p>
                             <ul class="mb-[20px]">
-                                <li class="relative pb-[15px] pl-[20px] text-[#666] text-[16px] before:absolute before:left-0 before:top-[6px]
+                                <li class="relative pb-[15px] pl-[20px] text-white text-[16px] before:absolute before:left-0 before:top-[6px]
                                     before:w-[8px] before:h-[8px] before:rounded-[50%] before:bg-[#fe3e57]">
                                     Mobile & Web Development Expertise (Flutter & Symfony)
                                 </li>
-                                <li class="relative pb-[15px] pl-[20px] text-[#666] text-[16px] before:absolute before:left-0 before:top-[6px]
+                                <li class="relative pb-[15px] pl-[20px] text-white text-[16px] before:absolute before:left-0 before:top-[6px]
                                     before:w-[8px] before:h-[8px] before:rounded-[50%] before:bg-[#fe3e57]">
                                     Machine Learning Prototyping with KNN, Regression & Trees
                                 </li>
-                                <li class="relative pb-[15px] pl-[20px] text-[#666] text-[16px] before:absolute before:left-0 before:top-[6px]
+                                <li class="relative pb-[15px] pl-[20px] text-white text-[16px] before:absolute before:left-0 before:top-[6px]
                                     before:w-[8px] before:h-[8px] before:rounded-[50%] before:bg-[#fe3e57]">
                                     Agile Project Collaboration (Scrum, Kanban, Scrumban)
                                 </li>
-                                <li class="relative pb-[15px] pl-[20px] text-[#666] text-[16px] before:absolute before:left-0 before:top-[6px]
+                                <li class="relative pb-[15px] pl-[20px] text-white text-[16px] before:absolute before:left-0 before:top-[6px]
                                     before:w-[8px] before:h-[8px] before:rounded-[50%] before:bg-[#fe3e57]">
                                     Proactive Learner & Solution-Oriented Mindset
                                 </li>
@@ -310,10 +257,10 @@
         
 
         <!-- start sevice -->
-        <section class="bg-[#fff] pt-[110px] pb-[40px]">
+        <section class="bg-[#070640] pt-[110px] pb-[40px]">
     <div class="wraper">
         <h2 class="text-[70px] md:text-[45px] sm:text-[30px] mb-[50px] 
-            text-[#121127] font-bold base-font text-center">Services</h2>
+            text-white font-bold base-font text-center">Services</h2>
         <div class="grid grid-cols-12 gap-8 lg:gap-3">
 
             <!-- Mobile App -->
@@ -322,13 +269,13 @@
                     <div class="flex items-center justify-centert sm:block">
                         <div class="mr-8 sm:mr-0 sm:mb-8 w-[200px] h-[184px] text-center leading-[184px]
                             bg-[url('../images/wpo-service/shape.html')] bg-no-repeat bg-center">
-                            <i class="text-[#181764] text-[60px] ml-[20px] fas fa-mobile-alt"></i>
+                            <i class="text-white text-[60px] ml-[20px] fas fa-mobile-alt"></i>
                         </div>
                         <div class="max-w-[300px] lg:max-w-[200px] md:max-w-[500px] sm:max-w-full">
-                            <h2 class="text-[#131058] text-[40px] mb-[20px] leading-[55px] font-bold">
+                            <h2 class="text-white text-[40px] mb-[20px] leading-[55px] font-bold">
                                 Mobile <br> App
                             </h2>
-                            <p class="text-[#666] text-[15px] leading-[30px]">
+                            <p class="text-white text-[15px] leading-[30px]">
                                 Cross-platform mobile apps built using Flutter for responsive and modern experiences.
                             </p>
                         </div>
@@ -342,13 +289,13 @@
                     <div class="flex items-center justify-centert sm:block">
                         <div class="mr-8 sm:mr-0 sm:mb-8 w-[200px] h-[184px] text-center leading-[184px]
                             bg-[url('../images/wpo-service/shape-2.html')] bg-no-repeat bg-center">
-                            <i class="text-[#181764] text-[60px] ml-[20px] fas fa-code"></i>
+                            <i class="text-white text-[60px] ml-[20px] fas fa-code"></i>
                         </div>
                         <div class="max-w-[300px] lg:max-w-[200px] md:max-w-[500px] sm:max-w-full">
-                            <h2 class="text-[#131058] text-[40px] mb-[20px] leading-[55px] font-bold">
+                            <h2 class="text-white text-[40px] mb-[20px] leading-[55px] font-bold">
                                 Web <br> Development
                             </h2>
-                            <p class="text-[#666] text-[15px] leading-[30px]">
+                            <p class="text-white text-[15px] leading-[30px]">
                                 Dynamic websites and full-stack apps using Symfony, HTML, CSS, and JavaScript.
                             </p>
                         </div>
@@ -362,13 +309,13 @@
                     <div class="flex items-center justify-centert sm:block">
                         <div class="mr-8 sm:mr-0 sm:mb-8 w-[200px] h-[184px] text-center leading-[184px]
                             bg-[url('../images/wpo-service/shape-3.html')] bg-no-repeat bg-center">
-                            <i class="text-[#181764] text-[60px] ml-[20px] fas fa-brain"></i>
+                            <i class="text-white text-[60px] ml-[20px] fas fa-brain"></i>
                         </div>
                         <div class="max-w-[300px] lg:max-w-[200px] md:max-w-[500px] sm:max-w-full">
-                            <h2 class="text-[#131058] text-[40px] mb-[20px] leading-[55px] font-bold">
+                            <h2 class="text-white text-[40px] mb-[20px] leading-[55px] font-bold">
                                 ML <br> Prototyping
                             </h2>
-                            <p class="text-[#666] text-[15px] leading-[30px]">
+                            <p class="text-white text-[15px] leading-[30px]">
                                 Applying KNN, Linear Regression, Decision Trees & K-Means for data analysis & predictions.
                             </p>
                         </div>
@@ -382,13 +329,13 @@
                     <div class="flex items-center justify-centert sm:block">
                         <div class="mr-8 sm:mr-0 sm:mb-8 w-[200px] h-[184px] text-center leading-[184px]
                             bg-[url('../images/wpo-service/shape-4.html')] bg-no-repeat bg-center">
-                            <i class="text-[#181764] text-[60px] ml-[20px] fas fa-network-wired"></i>
+                            <i class="text-white text-[60px] ml-[20px] fas fa-network-wired"></i>
                         </div>
                         <div class="max-w-[300px] lg:max-w-[200px] md:max-w-[500px] sm:max-w-full">
-                            <h2 class="text-[#131058] text-[40px] mb-[20px] leading-[55px] font-bold">
+                            <h2 class="text-white text-[40px] mb-[20px] leading-[55px] font-bold">
                                 Agile <br> Support
                             </h2>
-                            <p class="text-[#666] text-[15px] leading-[30px]">
+                            <p class="text-white text-[15px] leading-[30px]">
                                 Delivering projects through Scrum, Kanban, and Scrumban for structured collaboration.
                             </p>
                         </div>
@@ -402,29 +349,29 @@
 
 
         <!-- start footer-2 -->
-        <footer class="bg-[#f9f9f9]">
+        <footer class="bg-[#070640]">
             <div class="wraper">
                 <div class="py-[50px]">
                     <div class="grid grid-cols-12 gap-8 lg:gap-3">
                         <div class="col-span-2 md:col-span-4 sm:col-span-12 ">
                             <div class="mt-[20px] sm:mt-[0px]">
-                                <img class="sm:mx-auto" src="assets/images/logo2.png" alt="">
+                                <img class="sm:mx-auto" src="assets/images/logo.png" alt="">
                             </div>
                         </div>
                         <div class="col-span-6 md:col-span-8 sm:col-span-12 ">
                             <div class="mt-[35px] text-center">
                                 <ul class="mb-[10px]">
                                     <li class="inline-block"><a
-                                            class="text-[#131058] px-[30px] sm:px-[10px] py-[10px] text-[15px] font-normal"
+                                            class="text-white px-[30px] sm:px-[10px] py-[10px] text-[15px] font-normal"
                                             href="about.html">About</a></li>
                                     <li class="inline-block"><a
-                                            class="text-[#131058] px-[30px] sm:px-[10px] py-[10px] text-[15px] font-normal"
+                                            class="text-white px-[30px] sm:px-[10px] py-[10px] text-[15px] font-normal"
                                             href="protfolio.html">Portfolio</a></li>
                                     <li class="inline-block"><a
-                                            class="text-[#131058] px-[30px] sm:px-[10px] py-[10px] text-[15px] font-normal"
+                                            class="text-white px-[30px] sm:px-[10px] py-[10px] text-[15px] font-normal"
                                             href="blog.html">Blog</a></li>
                                     <li class="inline-block"><a
-                                            class="text-[#131058] pl-[30px] sm:px-[10px] py-[10px] pr-[0px] text-[15px] font-normal"
+                                            class="text-white pl-[30px] sm:px-[10px] py-[10px] pr-[0px] text-[15px] font-normal"
                                             href="contact.html">Contact</a></li>
                                 </ul>
                             </div>
@@ -464,8 +411,8 @@
                     </div>
                 </div>
             </div>
-            <div class="py-[30px] bg-[#eeecec] text-center">
-                <span class="text-[#131058]">
+            <div class="py-[30px] bg-[#070640] text-center">
+                <span class="text-white">
                     © 2025 Fedi Hmida .   All rights reserved
                 </span>
             </div>
@@ -486,6 +433,98 @@
     <script src="assets/js/moving-animation.js"></script>
     <!-- Custom script for this template -->
     <script src="assets/js/script.js"></script>
+    
+    <script>
+        // Initialize particles
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: '#fe3e57' },
+                shape: { type: 'circle' },
+                opacity: { value: 0.5, random: false },
+                size: { value: 3, random: true },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: '#fe3e57',
+                    opacity: 0.4,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: 'none',
+                    random: false,
+                    straight: false,
+                    out_mode: 'out',
+                    bounce: false
+                }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: { enable: true, mode: 'repulse' },
+                    onclick: { enable: true, mode: 'push' },
+                    resize: true
+                },
+                modes: {
+                    repulse: { distance: 100, duration: 0.4 },
+                    push: { particles_nb: 4 }
+                }
+            },
+            retina_detect: true
+        });
+
+        // Add typing animation to headings except the specific one
+        document.querySelectorAll('h2').forEach(heading => {
+            if (!heading.textContent.includes("Great software doesn't just work")) {
+                heading.classList.add('typing-animation');
+            }
+        });
+
+        // Add floating animation to icons
+        document.querySelectorAll('.fas').forEach(icon => {
+            icon.classList.add('floating');
+        });
+
+        // Add glow effect to download button
+        document.querySelector('.theme-btn-s2').classList.add('glow-effect');
+
+        // Add shine effect to skill items
+        document.querySelectorAll('li').forEach(item => {
+            item.classList.add('shine-effect');
+        });
+
+        // Smooth scroll behavior
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Intersection Observer for scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+            observer.observe(section);
+        });
+    </script>
 </body>
 
 

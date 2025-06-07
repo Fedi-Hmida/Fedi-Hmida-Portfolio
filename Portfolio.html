@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="wpOceans">
+    <link rel="shortcut icon" type="image/png" href="assets/images/favicon.png">
+    <title>Portfolio - Fedi Hmida</title>
+    <link href="assets/css/themify-icons.css" rel="stylesheet">
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/css/flaticon.css" rel="stylesheet">
+    <link href="assets/css/magnific-popup.css" rel="stylesheet">
+    <link href="assets/css/animate.css" rel="stylesheet">
+    <link href="assets/css/owl.carousel.css" rel="stylesheet">
+    <link href="assets/css/owl.theme.css" rel="stylesheet">
+    <link href="assets/css/slick.css" rel="stylesheet">
+    <link href="assets/css/slick-theme.css" rel="stylesheet">
+    <link href="assets/css/swiper.min.css" rel="stylesheet">
+    <link href="assets/css/owl.transitions.css" rel="stylesheet">
+    <link href="assets/css/jquery.fancybox.css" rel="stylesheet">
+    <link href="assets/css/odometer-theme-default.css" rel="stylesheet">
+    <link href="assets/css/global.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Custom Animations */
+        .project-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .project-image {
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .project-image {
+            transform: scale(1.1);
+        }
+
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(7, 6, 64, 0.9);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+
+        .project-tech {
+            display: flex;
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .tech-badge {
+            background: #fe3e57;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            transition: transform 0.2s ease;
+        }
+
+        .tech-badge:hover {
+            transform: scale(1.1);
+        }
+
+        .project-title {
+            position: relative;
+            display: inline-block;
+        }
+
+        .project-title::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #fe3e57;
+            transition: width 0.3s ease;
+        }
+
+        .project-card:hover .project-title::after {
+            width: 100%;
+        }
+
+        .view-details-btn {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .view-details-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+
+        .view-details-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        /* Page Load Animation */
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Filter Buttons */
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: 2px solid #fe3e57;
+            color: #fff;
+            padding: 8px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: #fe3e57;
+            transform: scale(1.05);
+        }
+
+        /* Scroll Animation */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- start page-wrapper -->
+    <div class="page-wrapper">
+        <!-- start header-section -->
+        <section class="bg-[#070640] absolute left-0 top-0 w-full z-50 md:py-[20px]">
+            <div class="wraper">
+                <div class="flex items-center justify-between">
+                    <div class="w-[195px] md:w-[280px] sm:w-[200px] col:w-[150px]">
+                        <a class="flex items-center md:justify-center text-white" href="index.html">
+                            <img class="mr-[10px]" src="assets/images/logo.png" alt="">
+                        </a>
+                    </div>
+                    <ul class="md:hidden">
+                        <li class="relative inline-block">
+                            <a href="index.html" class="relative text-[16px] lg:text-[14px] py-[35px] xl:py-[30px] px-[20px] xl:px-[6px] text-white block capitalize font-base-font font-medium transition-all hover:text-[#fe3e57]">Home</a>
+                        </li>
+                        <li class="relative inline-block">
+                            <a href="about.html" class="relative group text-[16px] lg:text-[14px] py-[35px] xl:py-[30px] px-[20px] xl:px-[6px] text-white block capitalize font-base-font font-medium transition-all hover:text-[#fe3e57]">About</a>
+                        </li>
+                        <li class="relative inline-block">
+                            <a href="Portfolio.html" class="relative group text-[16px] lg:text-[14px] py-[35px] xl:py-[30px] px-[20px] xl:px-[6px] text-[#fe3e57] block capitalize font-base-font font-medium transition-all">Portfolio</a>
+                        </li>
+                        <li class="relative inline-block">
+                            <a href="resume.html" class="relative group text-[16px] lg:text-[14px] py-[35px] xl:py-[30px] px-[20px] xl:px-[6px] text-white block capitalize font-base-font font-medium transition-all hover:text-[#fe3e57]">Resume</a>
+                        </li>
+                        <li class="relative inline-block">
+                            <a href="contact.html" class="relative group text-[16px] lg:text-[14px] py-[35px] xl:py-[30px] px-[20px] xl:px-[6px] text-white block capitalize font-base-font font-medium transition-all hover:text-[#fe3e57]">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section class="pt-[120px] md:pt-[90px] sm-[80px] bg-[#070640] pb-[60px]">
+            <div class="wraper">
+                <h2 class="text-[70px] md:text-[45px] sm:text-[30px] mb-[60px] text-[#fff] font-bold base-font text-center fade-in">
+                    My Projects
+                </h2>
+
+                <!-- Filter Buttons -->
+                <div class="filter-buttons fade-in">
+                    <button class="filter-btn active" data-filter="all">All Projects</button>
+                    <button class="filter-btn" data-filter="mobile">Mobile Apps</button>
+                    <button class="filter-btn" data-filter="web">Web Apps</button>
+                </div>
+                
+                <div class="grid grid-cols-12 gap-8 lg:gap-3">
+                    <!-- SolarFlow App -->
+                    <div class="col-span-4 md:col-span-6 sm:col-span-12 scroll-reveal" data-category="mobile">
+                        <div class="project-card bg-[#0c0b44] border-[1px] border-[#464646] rounded-[5px] overflow-hidden">
+                            <div class="relative overflow-hidden">
+                                <img src="assets/images/logo_1555.png" alt="SolarFlow App" class="project-image w-full">
+                                <div class="project-overlay">
+                                    <div class="project-tech">
+                                        <span class="tech-badge">Flutter</span>
+                                        <span class="tech-badge">IoT</span>
+                                        <span class="tech-badge">Energy</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-[30px]">
+                                <h3 class="project-title text-[24px] text-[#fff] font-bold mb-[15px]">SolarFlow App</h3>
+                                <p class="text-[#8c8b8b] mb-[20px]">A Flutter mobile application for solar energy management and monitoring.</p>
+                                <a href="project-single.html" class="view-details-btn theme-btn">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Onboardify -->
+                    <div class="col-span-4 md:col-span-6 sm:col-span-12 scroll-reveal" data-category="web">
+                        <div class="project-card bg-[#0c0b44] border-[1px] border-[#464646] rounded-[5px] overflow-hidden">
+                            <div class="relative overflow-hidden">
+                                <img src="assets/images/logo3.png" alt="Onboardify" class="project-image w-full">
+                                <div class="project-overlay">
+                                    <div class="project-tech">
+                                        <span class="tech-badge">JavaFX</span>
+                                        <span class="tech-badge">Symfony</span>
+                                        <span class="tech-badge">HR Tech</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-[30px]">
+                                <h3 class="project-title text-[24px] text-[#fff] font-bold mb-[15px]">Onboardify</h3>
+                                <p class="text-[#8c8b8b] mb-[20px]">A gamified onboarding platform built with JavaFX & Symfony.</p>
+                                <a href="Onboardify.html" class="view-details-btn theme-btn">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pro-Link -->
+                    <div class="col-span-4 md:col-span-6 sm:col-span-12 scroll-reveal" data-category="mobile">
+                        <div class="project-card bg-[#0c0b44] border-[1px] border-[#464646] rounded-[5px] overflow-hidden">
+                            <div class="relative overflow-hidden">
+                                <img src="assets/images/FlutterFlow.png" alt="Pro-Link" class="project-image w-full">
+                                <div class="project-overlay">
+                                    <div class="project-tech">
+                                        <span class="tech-badge">Flutter</span>
+                                        <span class="tech-badge">Networking</span>
+                                        <span class="tech-badge">Mobile</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-[30px]">
+                                <h3 class="project-title text-[24px] text-[#fff] font-bold mb-[15px]">Pro-Link</h3>
+                                <p class="text-[#8c8b8b] mb-[20px]">A Flutter mobile application for professional networking.</p>
+                                <a href="Pro-Link.html" class="view-details-btn theme-btn">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-[#121151]">
+            <div class="wraper">
+                <div class="py-[50px]">
+                    <div class="grid grid-cols-12 gap-8 lg:gap-3">
+                        <div class="col-span-2 md:col-span-4 sm:col-span-12">
+                            <div class="mt-[20px] sm:mt-[0px]">
+                                <img class="sm:mx-auto" src="assets/images/logo.png" alt="">
+                            </div>
+                        </div>
+                        <div class="col-span-6 md:col-span-8 sm:col-span-12">
+                            <div class="mt-[35px] text-center">
+                                <ul class="mb-[10px]">
+                                    <li class="inline-block"><a class="text-[#fff] px-[30px] sm:px-[10px] py-[10px] text-[15px] font-normal" href="about.html">About</a></li>
+                                    <li class="inline-block"><a class="text-[#fff] px-[30px] sm:px-[10px] py-[10px] text-[15px] font-normal" href="Portfolio.html">Portfolio</a></li>
+                                    <li class="inline-block"><a class="text-[#fff] pl-[30px] sm:px-[10px] py-[10px] pr-[0px] text-[15px] font-normal" href="contact.html">Contact</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-span-4 md:col-span-12 sm:col-span-12">
+                            <div class="text-right md:text-center md:mt-[30px]">
+                                <ul class="flex items-end md:items-center md:w-full md:justify-center">
+                                    <li class="mr-[30px]">
+                                        <a href="https://www.facebook.com/fadi.hmidahmida" target="_blank" rel="noopener" class="block w-[80px] h-[80px] leading-[85px] sm:w-[60px] sm:h-[60px] sm:leading-[65px] border border-[#3b5998] text-center rounded-[50%] transition-transform hover:scale-110">
+                                            <i class="fab fa-facebook-f text-[#3b5998] text-[30px] sm:text-[20px]"></i>
+                                        </a>
+                                    </li>
+                                    <li class="mr-[30px]">
+                                        <a href="https://www.linkedin.com/in/fedi-hmida" target="_blank" rel="noopener" class="block w-[80px] h-[80px] leading-[85px] sm:w-[60px] sm:h-[60px] sm:leading-[65px] border border-[#0077b5] text-center rounded-[50%] transition-transform hover:scale-110">
+                                            <i class="fab fa-linkedin-in text-[#0077b5] text-[30px] sm:text-[20px]"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.instagram.com/fedi.hmida/" target="_blank" rel="noopener" class="block w-[80px] h-[80px] leading-[85px] sm:w-[60px] sm:h-[60px] sm:leading-[65px] border border-[#e1306c] text-center rounded-[50%] transition-transform hover:scale-110">
+                                            <i class="fab fa-instagram text-[#e1306c] text-[30px] sm:text-[20px]"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="py-[30px] bg-[#0d0c4c] text-center">
+                <span class="text-[#fff]">© 2025 Fedi Hmida . All rights reserved</span>
+            </div>
+        </footer>
+    </div>
+
+    <!-- All JavaScript files -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/modernizr.custom.js"></script>
+    <script src="assets/js/jquery.dlmenu.js"></script>
+    <script src="assets/js/jquery-plugin-collection.js"></script>
+    <script src="assets/js/tw-elements.umd.min.js"></script>
+    <script src="assets/js/moving-animation.js"></script>
+    <script src="assets/js/script.js"></script>
+    
+    <!-- Custom Animation Scripts -->
+    <script>
+        // Scroll Reveal Animation
+        function reveal() {
+            const reveals = document.querySelectorAll('.scroll-reveal');
+            
+            reveals.forEach(element => {
+                const windowHeight = window.innerHeight;
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', reveal);
+        reveal(); // Initial check
+
+        // Filter Buttons
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.scroll-reveal');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+
+                const filter = button.getAttribute('data-filter');
+
+                projectCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'block';
+                        setTimeout(() => card.classList.add('active'), 100);
+                    } else {
+                        card.style.display = 'none';
+                        card.classList.remove('active');
+                    }
+                });
+            });
+        });
+
+        // Smooth hover effect for project cards
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-10px)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="wpOceans">
+    <link rel="shortcut icon" type="image/png" href="assets/images/favicon.png">
+    <title>Fedi Hmida - Resume</title>
+    <link href="assets/css/themify-icons.css" rel="stylesheet">
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/css/flaticon.css" rel="stylesheet">
+    <link href="assets/css/magnific-popup.css" rel="stylesheet">
+    <link href="assets/css/animate.css" rel="stylesheet">
+    <link href="assets/css/owl.carousel.css" rel="stylesheet">
+    <link href="assets/css/owl.theme.css" rel="stylesheet">
+    <link href="assets/css/slick.css" rel="stylesheet">
+    <link href="assets/css/slick-theme.css" rel="stylesheet">
+    <link href="assets/css/swiper.min.css" rel="stylesheet">
+    <link href="assets/css/owl.transitions.css" rel="stylesheet">
+    <link href="assets/css/jquery.fancybox.css" rel="stylesheet">
+    <link href="assets/css/odometer-theme-default.css" rel="stylesheet">
+    <link href="assets/css/global.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Enhanced Interactive Elements Styles */
+        .skill-item {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .skill-item:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(254, 62, 87, 0.3);
+        }
+
+        .skill-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.1),
+                transparent
+            );
+            transition: 0.5s;
+        }
+
+        .skill-item:hover::before {
+            left: 100%;
+        }
+
+        .experience-card, .education-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .experience-card:hover, .education-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .experience-card::after, .education-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: #fe3e57;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.4s ease;
+        }
+
+        .experience-card:hover::after, .education-card:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: linear-gradient(90deg, #fe3e57, #ff6b81);
+            width: 0;
+            transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 3px;
+        }
+
+        .skill-level {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .skill-level.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .download-btn {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(254, 62, 87, 0.3);
+        }
+
+        .download-btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+
+        .download-btn:hover::after {
+            width: 300px;
+            height: 300px;
+        }
+
+        /* Particle Background */
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Typing Animation */
+        .typing-text {
+            overflow: hidden;
+            border-right: 2px solid #fe3e57;
+            white-space: nowrap;
+            margin: 0 auto;
+            animation: typing 3.5s steps(40, end),
+                       blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #fe3e57 }
+        }
+
+        /* Floating Animation */
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Glowing Effect */
+        .glow {
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 5px #fff,
+                           0 0 10px #fff,
+                           0 0 15px #fe3e57,
+                           0 0 20px #fe3e57;
+            }
+            to {
+                box-shadow: 0 0 10px #fff,
+                           0 0 20px #fff,
+                           0 0 30px #fe3e57,
+                           0 0 40px #fe3e57;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Particle Background -->
+    <div id="particles-js"></div>
+
+    <!-- start page-wrapper -->
+    <div class="page-wrapper">
+        <!-- start preloader -->
+        <div class="preloader">
+            <div class="vertical-centered-box">
+                <div class="content">
+                    <div class="loader-circle"></div>
+                    <div class="loader-line-mask">
+                        <div class="loader-line"></div>
+                    </div>
+                    <img src="assets/images/preloader.png" alt="">
+                </div>
+            </div>
+        </div>
+
+        <!-- start header-section -->
+        <section class="bg-[#070640] absolute left-0 top-0 w-full z-50 md:py-[20px]">
+            <div class="wraper">
+                <div class="flex items-center justify-between">
+                    <!-- mobile-menu -->
+                    <div id="dl-menu" class="dl-menuwrapper">
+                        <button class="dl-trigger">Open Menu</button>
+                        <ul class="dl-menu">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="Portfolio.html">Portfolio</a></li>
+                            <li><a href="resume.html">Resume</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="w-[195px] md:w-[280px] sm:w-[200px] col:w-[150px]">
+                        <a class="flex items-center md:justify-center text-white" href="index.html">
+                            <img class="mr-[10px]" src="assets/images/logo.png" alt="">
+                        </a>
+                    </div>
+                    <ul class="md:hidden">
+                        <li class="relative inline-block group">
+                            <a href="index.html" class="relative text-[16px] lg:text-[14px] py-[35px] xl:py-[30px] px-[20px] xl:px-[6px] text-white block capitalize font-base-font font-medium transition-all hover:text-[#fe3e57]">Home</a>
+                        </li>
+                        <li class="relative inline-block">
+                            <a href="about.html" class="relative group text-[16px] lg:text-[14px] py-[35px] xl:py-[30px] px-[20px] xl:px-[6px] text-white block capitalize font-base-font font-medium transition-all hover:text-[#fe3e57]">About</a>
+                        </li>
+                        <li class="relative inline-block group">
+                            <a href="Portfolio.html" class="relative group text-[16px] lg:text-[14px] py-[35px] xl:py-[30px] px-[20px] xl:px-[6px] text-white block capitalize font-base-font font-medium transition-all hover:text-[#fe3e57]">Portfolio</a>
+                        </li>
+                        <li class="relative inline-block group">
+                            <a href="resume.html" class="relative group text-[16px] lg:text-[14px] py-[35px] xl:py-[30px] px-[20px] xl:px-[6px] text-white block capitalize font-base-font font-medium transition-all hover:text-[#fe3e57]">Resume</a>
+                        </li>
+                        <li class="relative inline-block">
+                            <a href="contact.html" class="relative group text-[16px] lg:text-[14px] py-[35px] xl:py-[30px] px-[20px] xl:px-[6px] text-white block capitalize font-base-font font-medium transition-all hover:text-[#fe3e57]">Contact</a>
+                        </li>
+                    </ul>
+                    <a class="theme-btn col:hidden" href="contact.html">Lets Talk</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resume Content -->
+        <section class="pt-[120px] md:pt-[90px] sm-[80px] bg-[#070640] pb-[60px]">
+            <div class="wraper">
+                <h2 class="text-[70px] md:text-[45px] sm:text-[30px] mb-[40px] text-[#fff] font-bold base-font text-center animate__animated animate__fadeIn typing-text">Resume</h2>
+                
+                <!-- Download PDF Button -->
+                <div class="text-center mb-[50px]">
+                    <a href="assets/cv/fedi-hmida-cv.pdf" class="theme-btn bg-[#fe3e57] hover:bg-[#ff1f3d] download-btn glow" download>
+                        <i class="fas fa-download mr-2 floating"></i> Download PDF Version
+                    </a>
+                </div>
+
+                <!-- Professional Experience -->
+                <div class="mb-[60px]">
+                    <h3 class="text-[40px] md:text-[30px] sm:text-[25px] text-[#fff] font-bold mb-[30px] animate__animated animate__fadeInLeft">Professional Experience</h3>
+                    <div class="bg-[#0c0b44] p-[30px] rounded-[5px] mb-[20px] experience-card">
+                        <h4 class="text-[24px] text-[#fe3e57] font-bold mb-[10px]">Msign</h4>
+                        <p class="text-[#fff] mb-[10px]"> Final Year Project Internship</p>
+                        <ul class="text-[#fff] list-disc pl-[20px]">
+                            <li>* Developed an energy monitoring and control system for solar-powered
+ devices to optimize solar energy use.</li>
+                            <li>* Built the SolarFlow App using Flutter, enabling users to track real-time
+ energy production, control connected devices, and efficiently manage
+ renewable energy resources.</li>
+                            
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Education Background -->
+                <div class="mb-[60px]">
+                    <h3 class="text-[40px] md:text-[30px] sm:text-[25px] text-[#fff] font-bold mb-[30px] animate__animated animate__fadeInLeft">Education Background</h3>
+                    <div class="bg-[#0c0b44] p-[30px] rounded-[5px] mb-[20px] education-card">
+                        <h4 class="text-[24px] text-[#fe3e57] font-bold mb-[10px]">Software Engineering</h4>
+                        <p class="text-[#fff] mb-[10px]">Private Higher School of Engineering & Technology (ESPRIT) • Currently Enrolled</p>
+                        
+                    </div>
+                    <div class="bg-[#0c0b44] p-[30px] rounded-[5px] mb-[20px]">
+                        <h4 class="text-[24px] text-[#fe3e57] font-bold mb-[10px]">Bachelor's Degree in Computer Engineering</h4>
+                        <p class="text-[#fff] mb-[10px]">Higher Institute of Computer Science of Mahdia, Tunisia • Graduated: 2024</p>
+                    </div>
+                </div>
+
+                <!-- Technical Skills -->
+                <div class="mb-[60px]">
+                    <h3 class="text-[40px] md:text-[30px] sm:text-[25px] text-[#fff] font-bold mb-[30px] animate__animated animate__fadeInLeft">Technical Skills</h3>
+                    <div class="grid grid-cols-12 gap-8 lg:gap-3">
+                        <!-- Programming Languages -->
+                        <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                            <div class="bg-[#0c0b44] p-[30px] rounded-[5px] skill-item">
+                                <h4 class="text-[24px] text-[#fe3e57] font-bold mb-[20px]">Programming Languages</h4>
+                                <ul class="text-[#fff]">
+                                    <li class="mb-[10px]">Dart/Flutter</li>
+                                    <li class="mb-[10px]">Java</li>
+                                    <li class="mb-[10px]">PHP</li>
+                                    <li class="mb-[10px]">JavaScript</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Frameworks & Tools -->
+                        <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                            <div class="bg-[#0c0b44] p-[30px] rounded-[5px] skill-item">
+                                <h4 class="text-[24px] text-[#fe3e57] font-bold mb-[20px]">Frameworks & Tools</h4>
+                                <ul class="text-[#fff]">
+                                    <li class="mb-[10px]">Symfony</li>
+                                    <li class="mb-[10px]">Android Studio</li>
+                                    <li class="mb-[10px]">Git</li>
+                                    <li class="mb-[10px]">MySQL</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Soft Skills -->
+                        <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                            <div class="bg-[#0c0b44] p-[30px] rounded-[5px] skill-item">
+                                <h4 class="text-[24px] text-[#fe3e57] font-bold mb-[20px]">Soft Skills</h4>
+                                <ul class="text-[#fff]">
+                                    <li class="mb-[10px]">Project Management</li>
+                                    <li class="mb-[10px]">Problem Solving</li>
+                                    <li class="mb-[10px]">Team Collaboration</li>
+                                    <li class="mb-[10px]">Communication</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-[#121151]">
+            <div class="wraper">
+                <div class="py-[50px]">
+                    <div class="grid grid-cols-12 gap-8 lg:gap-3">
+                        <div class="col-span-2 md:col-span-4 sm:col-span-12">
+                            <div class="mt-[20px] sm:mt-[0px]">
+                                <img class="sm:mx-auto" src="assets/images/logo.png" alt="">
+                            </div>
+                        </div>
+                        <div class="col-span-6 md:col-span-8 sm:col-span-12">
+                            <div class="mt-[35px] text-center">
+                                <ul class="mb-[10px]">
+                                    <li class="inline-block"><a class="text-[#fff] px-[30px] sm:px-[10px] py-[10px] text-[15px] font-normal" href="about.html">About</a></li>
+                                    <li class="inline-block"><a class="text-[#fff] px-[30px] sm:px-[10px] py-[10px] text-[15px] font-normal" href="Portfolio.html">Portfolio</a></li>
+                                    <li class="inline-block"><a class="text-[#fff] px-[30px] sm:px-[10px] py-[10px] text-[15px] font-normal" href="resume.html">Resume</a></li>
+                                    <li class="inline-block"><a class="text-[#fff] pl-[30px] sm:px-[10px] py-[10px] pr-[0px] text-[15px] font-normal" href="contact.html">Contact</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-span-4 md:col-span-12 sm:col-span-12">
+                            <div class="text-right md:text-center md:mt-[30px]">
+                                <ul class="flex items-end md:items-center md:w-full md:justify-center">
+                                    <li class="mr-[30px]">
+                                        <a href="https://www.facebook.com/fadi.hmidahmida" target="_blank" rel="noopener" class="block w-[80px] h-[80px] leading-[85px] sm:w-[60px] sm:h-[60px] sm:leading-[65px] border border-[#3b5998] text-center rounded-[50%]">
+                                            <i class="fab fa-facebook-f text-[#3b5998] text-[30px] sm:text-[20px]"></i>
+                                        </a>
+                                    </li>
+                                    <li class="mr-[30px]">
+                                        <a href="https://www.linkedin.com/in/fedi-hmida" target="_blank" rel="noopener" class="block w-[80px] h-[80px] leading-[85px] sm:w-[60px] sm:h-[60px] sm:leading-[65px] border border-[#0077b5] text-center rounded-[50%]">
+                                            <i class="fab fa-linkedin-in text-[#0077b5] text-[30px] sm:text-[20px]"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.instagram.com/fedi.hmida/" target="_blank" rel="noopener" class="block w-[80px] h-[80px] leading-[85px] sm:w-[60px] sm:h-[60px] sm:leading-[65px] border border-[#e1306c] text-center rounded-[50%]">
+                                            <i class="fab fa-instagram text-[#e1306c] text-[30px] sm:text-[20px]"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="py-[30px] bg-[#0d0c4c] text-center">
+                <span class="text-[#fff]">© 2025 Fedi Hmida . All rights reserved</span>
+            </div>
+        </footer>
+    </div>
+
+    <!-- All JavaScript files -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/modernizr.custom.js"></script>
+    <script src="assets/js/jquery.dlmenu.js"></script>
+    <script src="assets/js/jquery-plugin-collection.js"></script>
+    <script src="assets/js/tw-elements.umd.min.js"></script>
+    <script src="assets/js/moving-animation.js"></script>
+    <script src="assets/js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // Initialize particles.js
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: '#fe3e57' },
+                shape: { type: 'circle' },
+                opacity: { value: 0.5, random: false },
+                size: { value: 3, random: true },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: '#fe3e57',
+                    opacity: 0.4,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: 'none',
+                    random: false,
+                    straight: false,
+                    out_mode: 'out',
+                    bounce: false
+                }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: { enable: true, mode: 'repulse' },
+                    onclick: { enable: true, mode: 'push' },
+                    resize: true
+                }
+            },
+            retina_detect: true
+        });
+
+        // Enhanced Intersection Observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    if (entry.target.classList.contains('skill-item')) {
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                }
+            });
+        }, { 
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        // Observe all interactive elements
+        document.querySelectorAll('.skill-item, .experience-card, .education-card').forEach(item => {
+            observer.observe(item);
+        });
+
+        // Smooth scroll with easing
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                const headerOffset = 100;
+                const elementPosition = target.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Enhanced hover effects
+        document.querySelectorAll('.experience-card, .education-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.03) translateY(-5px)';
+            });
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1) translateY(0)';
+            });
+        });
+
+        // Add typing animation to headings
+        const headings = document.querySelectorAll('h3');
+        headings.forEach((heading, index) => {
+            heading.style.animationDelay = `${index * 0.2}s`;
+            heading.classList.add('typing-text');
+        });
+
+        // Add floating animation to icons
+        document.querySelectorAll('.fas').forEach(icon => {
+            icon.classList.add('floating');
+        });
+    </script>
+</body>
+</html>

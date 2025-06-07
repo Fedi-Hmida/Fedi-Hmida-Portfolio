@@ -27,6 +27,285 @@
     <link href="assets/css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Particle Background */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-color: #070640;
+            z-index: 0;
+        }
+
+        /* Typing Animation */
+        .typing-text {
+            border-right: 2px solid #fe3e57;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        /* Floating Animation */
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Glowing Effect */
+        .glow-effect {
+            transition: all 0.3s ease;
+        }
+        .glow-effect:hover {
+            box-shadow: 0 0 15px #fe3e57;
+            transform: scale(1.05);
+        }
+
+        /* Skill Item Shine */
+        .skill-item {
+            position: relative;
+            overflow: hidden;
+        }
+        .skill-item::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to right,
+                rgba(255,255,255,0) 0%,
+                rgba(255,255,255,0.3) 50%,
+                rgba(255,255,255,0) 100%
+            );
+            transform: rotate(30deg);
+            transition: all 0.3s ease;
+            opacity: 0;
+        }
+        .skill-item:hover::after {
+            opacity: 1;
+            transform: rotate(30deg) translate(50%, 50%);
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Card Hover Effects */
+        .portfolio-item {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Progress Bar Animation */
+        .progress-bar {
+            transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Button Hover Effect */
+        .theme-btn {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .theme-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255,255,255,0.2),
+                transparent
+            );
+            transition: 0.5s;
+        }
+        .theme-btn:hover::before {
+            left: 100%;
+        }
+
+        /* Gradient Backgrounds */
+        .gradient-bg {
+            background: linear-gradient(135deg, #070640 0%, #0c0b48 100%);
+            transition: all 0.5s ease;
+        }
+
+        /* Enhanced Card Hover Effects */
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .card-hover:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        .card-hover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: translateX(-100%);
+            transition: 0.6s;
+        }
+        .card-hover:hover::before {
+            transform: translateX(100%);
+        }
+
+        /* Underline Animation */
+        .underline-animation {
+            position: relative;
+            display: inline-block;
+        }
+        .underline-animation::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #fe3e57;
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .underline-animation:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        /* Enhanced Progress Bars */
+        .progress-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.1);
+        }
+        .progress-bar {
+            position: relative;
+            height: 100%;
+            background: linear-gradient(90deg, #fe3e57, #ff8c2f);
+            border-radius: 10px;
+            transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .progress-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255,255,255,0.2),
+                transparent
+            );
+            animation: progress-shine 2s infinite;
+        }
+
+        @keyframes progress-shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* Enhanced Button Effects */
+        .enhanced-btn {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: linear-gradient(45deg, #fe3e57, #ff8c2f);
+            border: none;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .enhanced-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(254, 62, 87, 0.3);
+        }
+        .enhanced-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255,255,255,0.2),
+                transparent
+            );
+            transition: 0.5s;
+        }
+        .enhanced-btn:hover::before {
+            left: 100%;
+        }
+
+        /* Sequential Animation Classes */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .fade-up.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Enhanced Particle System */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #070640 0%, #0c0b48 100%);
+            z-index: 0;
+        }
+
+        /* Glowing Text Effect */
+        .glow-text {
+            text-shadow: 0 0 10px rgba(254, 62, 87, 0.5);
+            transition: all 0.3s ease;
+        }
+        .glow-text:hover {
+            text-shadow: 0 0 20px rgba(254, 62, 87, 0.8);
+        }
+
+        /* Enhanced Icon Animations */
+        .icon-float {
+            animation: iconFloat 3s ease-in-out infinite;
+        }
+        @keyframes iconFloat {
+            0%, 100% { transform: translateY(0) rotate(0); }
+            50% { transform: translateY(-10px) rotate(5deg); }
+        }
+
+        /* Smooth Scroll Offset */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
 
 
@@ -34,6 +313,8 @@
 </head>
 
 <body>
+    <!-- Particles Background -->
+    <div id="particles-js" class="fixed top-0 left-0 w-full h-full z-0"></div>
 
     <!-- start page-wrapper -->
     <div class="page-wrapper">
@@ -60,46 +341,16 @@
                         <button class="dl-trigger">Open Menu</button>
                         <ul class="dl-menu">
                             <li>
-                                <a href="#">Home</a>
-                                <ul class="dl-submenu">
-                                    <li><a href="index.html">Main Home</a></li>
-                                </ul>
+                                <a href="index.html">Home</a>
                             </li>
                             <li>
                                 <a href="about.html">About</a>
                             </li>
                             <li>
-                                <a href="#">Portfolio</a>
-                                <ul class="dl-submenu">
-                                    <li><a href="portfolio-grid.html">Portfolio Grid</a></li>
-                                    <li><a href="portfolio-masonary.html">Portfolio Masonary</a></li>
-                                    <li><a href="portfolio.html">Portfolio </a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Pages</a>
-                                <ul class="dl-submenu">
-                                    <li><a href="service-single.html">Service Single</a></li>
-                                    <li><a href="project-single.html">Project Single</a></li>
-                                    <li><a href="404.html">404 Page</a></li>
-                                </ul>
+                                <a href="Portfolio.html">Portfolio</a>
                             </li>
                             <li>
-                                <a href="#">Blog</a>
-                                <ul class="dl-submenu">
-                                    <li><a href="blog.html">Blog</a></li>
-                                    <li><a href="blog-left-sidebar.html">Blog With Left Sidebar</a></li>
-                                    <li>
-                                        <a href="#">Blog details</a>
-                                        <ul class="dl-submenu">
-                                            <li>
-                                                <a href="blog-single.html">Blog details</a>
-                                            </li>
-                                            <li>
-                                                <a href="blog-single-left-sidebar.html">Blog Details Left Sidebar</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
+                                <a href="resume.html">Resume</a>
                             </li>
                             <li>
                                 <a href="contact.html">Contact</a>
@@ -112,110 +363,19 @@
                     </div>
                     <ul class="md:hidden">
                         <li class="relative inline-block group">
-                            <a href="#" class="relative text-[16px] lg:text-[14px] py-[35px]
-                             xl:py-[30px] px-[20px] xl:px-[6px]
-                                text-[#fe3e57] block capitalize 
-                                font-base-font font-medium transition-all
-                                 hover:text-[#fe3e57] ">Home</a>
-                            <ul class="absolute w-[240px]  left-0 top-[110%] p-[20px] z-[111]  bg-[#fff] 
-                            shadow-[0px_2px_20px_0px_rgba(62,65,159,0.09)]  transition-all  opacity-0 invisible
-                                    group-hover:opacity-100  group-hover:top-full group-hover:visible">
-                                <li>
-                                    <a href="index.html" class="text-[16px] lg:text-[14px] inline-block py-[5px] capitalize
-                                         text-[#fe3e57] group relative overflow-hidden font-medium transition-all
-                                        ">Main Home</a>
-                                </li>
-                                
-                            </ul>
+                            <a href="index.html" class="relative text-[16px] lg:text-[14px] py-[35px] xl:py-[30px] px-[20px] xl:px-[6px] text-white block capitalize font-base-font font-medium transition-all hover:text-[#fe3e57]">Home</a>
                         </li>
                         <li class="relative inline-block">
-                            <a href="about.html" class="relative group text-[16px] lg:text-[14px] py-[35px] xl:py-[30px] px-[20px] xl:px-[6px] text-white block capitalize font-base-font font-medium
-                            transition-all
-                            hover:text-[#fe3e57]
-                            ">About</a>
+                            <a href="about.html" class="relative group text-[16px] lg:text-[14px] py-[35px] xl:py-[30px] px-[20px] xl:px-[6px] text-white block capitalize font-base-font font-medium transition-all hover:text-[#fe3e57]">About</a>
                         </li>
                         <li class="relative inline-block group">
-                            <a href="#" class="relative group text-[16px] lg:text-[14px] py-[35px] xl:py-[30px] px-[20px] xl:px-[6px] text-white block capitalize font-base-font font-medium
-                            transition-all
-                            hover:text-[#fe3e57]">Pages</a>
-                            <ul
-                                class="absolute w-[240px]  left-0 top-[110%] p-[20px] z-[111]  bg-[#fff] shadow-[0px_2px_20px_0px_rgba(62,65,159,0.09)]  transition-all  opacity-0 invisible group-hover:opacity-100  group-hover:top-full group-hover:visible">
-                                <li>
-                                    <a href="service-single.html" class="text-[16px] lg:text-[14px] inline-block py-[5px] capitalize text-[#202020] group relative overflow-hidden font-medium transition-all 
-                                    hover:text-[#fe3e57]">Service Single</a>
-                                </li>
-
-                                <li>
-                                    <a href="project-single.html" class="text-[16px] lg:text-[14px] inline-block py-[5px] capitalize text-[#202020] group relative overflow-hidden font-medium transition-all 
-                                    hover:text-[#fe3e57]">Project Single</a>
-                                </li>
-                                <li>
-                                    <a href="404.html" class="text-[16px] lg:text-[14px] inline-block py-[5px] capitalize text-[#202020] group relative overflow-hidden font-medium transition-all 
-                                    hover:text-[#fe3e57]">404 Page</a>
-                                </li>
-                            </ul>
+                            <a href="Portfolio.html" class="relative group text-[16px] lg:text-[14px] py-[35px] xl:py-[30px] px-[20px] xl:px-[6px] text-white block capitalize font-base-font font-medium transition-all hover:text-[#fe3e57]">Portfolio</a>
                         </li>
                         <li class="relative inline-block group">
-                            <a href="#" class="relative group text-[16px] lg:text-[14px] py-[35px] xl:py-[30px] px-[20px] xl:px-[6px] text-white block capitalize font-base-font font-medium  transition-all 
-                             hover:text-[#fe3e57]
-                            ">Portfolio</a>
-                            <ul
-                                class="absolute w-[240px]  left-0 top-[110%] p-[20px] z-[111]  bg-[#fff] shadow-[0px_2px_20px_0px_rgba(62,65,159,0.09)]  transition-all  opacity-0 invisible group-hover:opacity-100  group-hover:top-full group-hover:visible">
-                                <li>
-                                    <a href="portfolio-grid.html" class="text-[16px] lg:text-[14px] inline-block py-[5px] capitalize text-[#202020] group relative overflow-hidden font-medium transition-all 
-                                    hover:text-[#fe3e57]">Portfolio Grid</a>
-                                </li>
-
-                                <li>
-                                    <a href="portfolio-masonary.html" class="text-[16px] lg:text-[14px] inline-block py-[5px] capitalize text-[#202020] group relative overflow-hidden font-medium transition-all 
-                                    hover:text-[#fe3e57]">Portfolio Masonary</a>
-                                </li>
-                                <li>
-                                    <a href="portfolio.html" class="text-[16px] lg:text-[14px] inline-block py-[5px] capitalize text-[#202020] group relative overflow-hidden font-medium transition-all 
-                                            hover:text-[#fe3e57]">Portfolio</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="relative inline-block group">
-                            <a href="#" class="relative group text-[16px] lg:text-[14px] py-[35px] xl:py-[30px] px-[20px] xl:px-[6px] text-white block capitalize font-base-font font-medium
-                            transition-all
-                            hover:text-[#fe3e57]
-                            ">Blog</a>
-                            <ul
-                                class="absolute w-[240px]  left-0 top-[110%] p-[20px] z-[111]  bg-[#fff] shadow-[0px_2px_20px_0px_rgba(62,65,159,0.09)]  transition-all  opacity-0 invisible group-hover:opacity-100  group-hover:top-full group-hover:visible">
-                                <li>
-                                    <a href="blog.html" class="text-[16px] lg:text-[14px] capitalize inline-block py-[5px] text-[#202020] group relative overflow-hidden font-medium transition-all 
-                                    hover:text-[#fe3e57]">Blog</a>
-                                </li>
-
-                                <li>
-                                    <a href="blog-left-sidebar.html" class="text-[16px] lg:text-[14px] inline-block py-[5px] capitalize text-[#202020] group relative overflow-hidden font-medium transition-all 
-                                    hover:text-[#fe3e57]">Blog With Left Sidebar</a>
-                                </li>
-
-                                <li class="relative group/group-2">
-                                    <a href="#" class="text-[16px] lg:text-[14px] inline-block py-[5px] capitalize text-[#202020] group relative overflow-hidden font-medium transition-all 
-                                    hover:text-[#fe3e57]">Blog details</a>
-                                    <ul
-                                        class="absolute w-[240px]  left-[120%] top-0 p-[20px] z-[111]  bg-[#fff] shadow-[0px_2px_20px_0px_rgba(62,65,159,0.09)] opacity-0 invisible  transition-all group-hover/group-2:opacity-100  group-hover/group-2:left-[110%] group-hover/group-2:visible">
-                                        <li>
-                                            <a href="blog-single.html" class="text-[16px] lg:text-[14px] inline-block py-[5px] capitalize text-[#202020] group relative overflow-hidden font-medium transition-all 
-                                    hover:text-[#fe3e57]">Blog Details</a>
-                                        </li>
-
-                                        <li>
-                                            <a href="blog-single-left-sidebar.html" class="text-[16px] lg:text-[14px] inline-block py-[5px] capitalize text-[#202020] group relative overflow-hidden font-medium transition-all 
-                                    hover:text-[#fe3e57]">Blog Details Left Sidebar</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
+                            <a href="resume.html" class="relative group text-[16px] lg:text-[14px] py-[35px] xl:py-[30px] px-[20px] xl:px-[6px] text-white block capitalize font-base-font font-medium transition-all hover:text-[#fe3e57]">Resume</a>
                         </li>
                         <li class="relative inline-block">
-                            <a href="contact.html" class="relative group text-[16px] lg:text-[14px] py-[35px] xl:py-[30px] px-[20px] xl:px-[6px] text-white block capitalize font-base-font font-medium
-                            transition-all
-                            hover:text-[#fe3e57]
-                            ">Contact</a>
+                            <a href="contact.html" class="relative group text-[16px] lg:text-[14px] py-[35px] xl:py-[30px] px-[20px] xl:px-[6px] text-white block capitalize font-base-font font-medium transition-all hover:text-[#fe3e57]">Contact</a>
                         </li>
                     </ul>
                     <a class="theme-btn col:hidden" href="contact.html">Lets Talk</a>
@@ -235,9 +395,9 @@
                             text-[85px] leading-[70px] xl:text-[60px] sm:text-[36px] text-[#fff] font-bold "
                                 data-wow-delay="0.5s">
                                 <span class="text-[#fe3e57]">Fedi Hmida</span> </h2>
-                            <p class="wow fadeInUp
+                            <p id="typing-text" class="wow fadeInUp
                             text-[30px] sm:text-[22px] sm:leading-[5px] text-[#fff] font-semibold mt-[40px] mb-[50px] sm:mt-[20px]"
-                                data-wow-delay="0.8s">Software Engineering Student </p>
+                                data-wow-delay="0.8s"></p>
                             <div class="wow fadeInUp" data-wow-delay="1.0s">
                                 <ul class="flex">
                                     <li><a href="https://www.facebook.com/fadi.hmidahmida" class="hero-social"><i class="ti-facebook"></i></a></li>
@@ -711,7 +871,7 @@ impactful, solution-oriented software.
                         <div class="p-[16px] absolute left-0 bottom-[10px]">
                             <h2 class="text-[25px] font-bold text-[#fff] sm:text-[16px]">Pro-Link</h2>
                             <span class="text-[18px] text-[#fff] block mb-[10px] font-light">Flutter Mobile App</span>
-                            <a class="protfolio-btn text-[15px] py-[4px] px-[10px]" href="project-single.html">View Work</a>
+                            <a class="protfolio-btn text-[15px] py-[4px] px-[10px]" href="Pro-Link.html">View Work</a>
                         </div>
                     </div>
                 </div>
@@ -724,7 +884,7 @@ impactful, solution-oriented software.
                         <div class="portfolio-item-content p-[16px] absolute left-0 bottom-[10px]">
                             <h2 class="text-[25px] font-bold text-[#fff] sm:text-[16px]">Onboardify</h2>
                             <span class="text-[18px] text-[#fff] block mb-[10px] font-light">JavaFX & Symfony · HR Tech · Gamified Onboarding</span>
-                            <a class="protfolio-btn text-[15px] py-[4px] px-[10px]" href="project-single.html">View Work</a>
+                            <a class="protfolio-btn text-[15px] py-[4px] px-[10px]" href="Onboardify.html">View Work</a>
                         </div>
                     </div>
                 </div>
@@ -1002,6 +1162,235 @@ impactful, solution-oriented software.
     <script src="assets/js/moving-animation.js"></script>
     <!-- Custom script for this template -->
     <script src="assets/js/script.js"></script>
+
+    <script>
+        // Enhanced Particles.js configuration
+        particlesJS('particles-js', {
+            particles: {
+                number: {
+                    value: 100,
+                    density: {
+                        enable: true,
+                        value_area: 800
+                    }
+                },
+                color: {
+                    value: ['#fe3e57', '#ff8c2f', '#54faae', '#39c4ff']
+                },
+                shape: {
+                    type: ['circle', 'triangle'],
+                    stroke: {
+                        width: 0,
+                        color: '#000000'
+                    }
+                },
+                opacity: {
+                    value: 0.6,
+                    random: true,
+                    animation: {
+                        enable: true,
+                        speed: 1,
+                        opacity_min: 0.1,
+                        sync: false
+                    }
+                },
+                size: {
+                    value: 4,
+                    random: true,
+                    animation: {
+                        enable: true,
+                        speed: 2,
+                        size_min: 0.1,
+                        sync: false
+                    }
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: '#ffffff',
+                    opacity: 0.4,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: 'none',
+                    random: true,
+                    straight: false,
+                    out_mode: 'out',
+                    bounce: false,
+                    attract: {
+                        enable: true,
+                        rotateX: 600,
+                        rotateY: 1200
+                    }
+                }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: 'repulse'
+                    },
+                    onclick: {
+                        enable: true,
+                        mode: 'push'
+                    },
+                    resize: true
+                },
+                modes: {
+                    repulse: {
+                        distance: 100,
+                        duration: 0.4
+                    },
+                    push: {
+                        particles_nb: 4
+                    }
+                }
+            },
+            retina_detect: true
+        });
+
+        // Enhanced Typed.js configuration
+        new Typed('#typing-text', {
+            strings: ['Software Engineering Student'],
+            typeSpeed: 50,
+            backSpeed: 30,
+            backDelay: 2000,
+            loop: true,
+            showCursor: true,
+            cursorChar: '|',
+            autoInsertCss: true
+        });
+
+        // Initialize GSAP with enhanced configurations
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Sequential heading animations
+        gsap.utils.toArray('h2').forEach((heading, i) => {
+            gsap.from(heading, {
+                scrollTrigger: {
+                    trigger: heading,
+                    start: 'top 80%',
+                    toggleActions: 'play none none reverse'
+                },
+                y: 50,
+                opacity: 0,
+                duration: 1,
+                delay: i * 0.2,
+                ease: 'power3.out'
+            });
+        });
+
+        // Enhanced skill item animations
+        gsap.utils.toArray('.skill-item').forEach((skill, i) => {
+            gsap.from(skill, {
+                scrollTrigger: {
+                    trigger: skill,
+                    start: 'top 80%'
+                },
+                x: -50,
+                opacity: 0,
+                duration: 0.8,
+                delay: i * 0.1,
+                ease: 'power2.out'
+            });
+        });
+
+        // Enhanced portfolio item animations
+        gsap.utils.toArray('.portfolio-item').forEach((item, i) => {
+            gsap.from(item, {
+                scrollTrigger: {
+                    trigger: item,
+                    start: 'top 80%'
+                },
+                y: 100,
+                opacity: 0,
+                duration: 1,
+                delay: i * 0.2,
+                ease: 'power3.out'
+            });
+        });
+
+        // Add enhanced animations to elements
+        document.querySelectorAll('.fas, .fab').forEach(icon => {
+            icon.classList.add('icon-float');
+        });
+
+        document.querySelectorAll('.theme-btn').forEach(btn => {
+            btn.classList.add('enhanced-btn');
+        });
+
+        document.querySelectorAll('.skill-item').forEach(item => {
+            item.classList.add('card-hover');
+        });
+
+        document.querySelectorAll('h2').forEach(heading => {
+            heading.classList.add('glow-text');
+        });
+
+        // Enhanced smooth scroll with offset
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                const headerOffset = 80;
+                const elementPosition = target.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Enhanced progress bar animation with intersection observer
+        const progressBars = document.querySelectorAll('.progress-bar');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const progress = entry.target.getAttribute('data-progress');
+                    gsap.to(entry.target, {
+                        width: progress + '%',
+                        duration: 1.5,
+                        ease: 'power2.out'
+                    });
+                }
+            });
+        }, { 
+            threshold: 0.5,
+            rootMargin: '0px'
+        });
+
+        progressBars.forEach(bar => observer.observe(bar));
+
+        // Add fade-up animation to elements
+        const fadeElements = document.querySelectorAll('.fade-up');
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px'
+        });
+
+        fadeElements.forEach(element => fadeObserver.observe(element));
+
+        // Add gradient background to sections
+        document.querySelectorAll('section').forEach(section => {
+            section.classList.add('gradient-bg');
+        });
+
+        // Add underline animation to navigation links
+        document.querySelectorAll('nav a').forEach(link => {
+            link.classList.add('underline-animation');
+        });
+    </script>
 </body>
 
 
