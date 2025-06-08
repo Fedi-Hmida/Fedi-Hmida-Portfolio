@@ -2,14 +2,14 @@
 <html lang="en">
 
 
-<!-- Mirrored from wpocean.com/html/tf/folio-tailwind/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 06 Mar 2025 04:12:21 GMT -->
+<!-- Mirrored from wpocean.com/html/tf/folio-tailwind/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 06 Mar 2025 04:13:18 GMT -->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="wpOceans">
     <link rel="shortcut icon" type="image/png" href="assets/images/favicon.png">
-    <title>Fedi Portfolio </title>
+    <title>Fedi Hmida Portfolio</title>
     <link href="assets/css/themify-icons.css" rel="stylesheet">
     <link href="assets/css/font-awesome.min.css" rel="stylesheet">
     <link href="assets/css/flaticon.css" rel="stylesheet">
@@ -25,51 +25,57 @@
     <link href="assets/css/odometer-theme-default.css" rel="stylesheet">
     <link href="assets/css/global.css" rel="stylesheet">
     <link href="assets/css/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
     <style>
-        /* Particle Background */
         #particles-js {
             position: fixed;
             width: 100%;
             height: 100%;
-            background-color: #070640;
-            z-index: 0;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            pointer-events: none;
         }
-
-        /* Typing Animation */
-        .typing-text {
+        .content-wrapper {
+            position: relative;
+            z-index: 2;
+        }
+        .typing-animation {
+            overflow: hidden;
             border-right: 2px solid #fe3e57;
             white-space: nowrap;
-            overflow: hidden;
+            animation: typing 2s steps(40, end), blink-caret .5s step-end infinite;
         }
-
-        /* Floating Animation */
-        .float-animation {
-            animation: float 3s ease-in-out infinite;
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
         }
-
-        @keyframes float {
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #fe3e57 }
+        }
+        .floating {
+            animation: floating 2s ease-in-out infinite;
+        }
+        @keyframes floating {
             0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+            50% { transform: translateY(-8px); }
             100% { transform: translateY(0px); }
         }
-
-        /* Glowing Effect */
         .glow-effect {
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
         }
         .glow-effect:hover {
             box-shadow: 0 0 15px #fe3e57;
             transform: scale(1.05);
         }
-
-        /* Skill Item Shine */
-        .skill-item {
+        .shine-effect {
             position: relative;
             overflow: hidden;
         }
-        .skill-item::after {
+        .shine-effect::after {
             content: '';
             position: absolute;
             top: -50%;
@@ -83,239 +89,60 @@
                 rgba(255,255,255,0) 100%
             );
             transform: rotate(30deg);
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             opacity: 0;
         }
-        .skill-item:hover::after {
+        .shine-effect:hover::after {
             opacity: 1;
             transform: rotate(30deg) translate(50%, 50%);
         }
-
-        /* Smooth Scroll */
-        html {
-            scroll-behavior: smooth;
+        .fade-in-fast {
+            animation: fadeInFast 0.4s ease-out forwards;
         }
-
-        /* Card Hover Effects */
-        .portfolio-item {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        @keyframes fadeInFast {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        .portfolio-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        .slide-in-fast {
+            animation: slideInFast 0.3s ease-out forwards;
         }
-
-        /* Progress Bar Animation */
-        .progress-bar {
-            transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+        @keyframes slideInFast {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
-
-        /* Button Hover Effect */
-        .theme-btn {
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
+        .scale-in-fast {
+            animation: scaleInFast 0.25s ease-out forwards;
         }
-        .theme-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                90deg,
-                transparent,
-                rgba(255,255,255,0.2),
-                transparent
-            );
-            transition: 0.5s;
-        }
-        .theme-btn:hover::before {
-            left: 100%;
-        }
-
-        /* Gradient Backgrounds */
-        .gradient-bg {
-            background: linear-gradient(135deg, #070640 0%, #0c0b48 100%);
-            transition: all 0.5s ease;
-        }
-
-        /* Enhanced Card Hover Effects */
-        .card-hover {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-        .card-hover:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-        }
-        .card-hover::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
-            transform: translateX(-100%);
-            transition: 0.6s;
-        }
-        .card-hover:hover::before {
-            transform: translateX(100%);
-        }
-
-        /* Underline Animation */
-        .underline-animation {
-            position: relative;
-            display: inline-block;
-        }
-        .underline-animation::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            bottom: -4px;
-            left: 0;
-            background-color: #fe3e57;
-            transform: scaleX(0);
-            transform-origin: bottom right;
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .underline-animation:hover::after {
-            transform: scaleX(1);
-            transform-origin: bottom left;
-        }
-
-        /* Enhanced Progress Bars */
-        .progress-container {
-            position: relative;
-            overflow: hidden;
-            border-radius: 10px;
-            background: rgba(255,255,255,0.1);
-        }
-        .progress-bar {
-            position: relative;
-            height: 100%;
-            background: linear-gradient(90deg, #fe3e57, #ff8c2f);
-            border-radius: 10px;
-            transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .progress-bar::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                90deg,
-                transparent,
-                rgba(255,255,255,0.2),
-                transparent
-            );
-            animation: progress-shine 2s infinite;
-        }
-
-        @keyframes progress-shine {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-
-        /* Enhanced Button Effects */
-        .enhanced-btn {
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            background: linear-gradient(45deg, #fe3e57, #ff8c2f);
-            border: none;
-            color: white;
-            padding: 12px 30px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .enhanced-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(254, 62, 87, 0.3);
-        }
-        .enhanced-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                90deg,
-                transparent,
-                rgba(255,255,255,0.2),
-                transparent
-            );
-            transition: 0.5s;
-        }
-        .enhanced-btn:hover::before {
-            left: 100%;
-        }
-
-        /* Sequential Animation Classes */
-        .fade-up {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .fade-up.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Enhanced Particle System */
-        #particles-js {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #070640 0%, #0c0b48 100%);
-            z-index: 0;
-        }
-
-        /* Glowing Text Effect */
-        .glow-text {
-            text-shadow: 0 0 10px rgba(254, 62, 87, 0.5);
-            transition: all 0.3s ease;
-        }
-        .glow-text:hover {
-            text-shadow: 0 0 20px rgba(254, 62, 87, 0.8);
-        }
-
-        /* Enhanced Icon Animations */
-        .icon-float {
-            animation: iconFloat 3s ease-in-out infinite;
-        }
-        @keyframes iconFloat {
-            0%, 100% { transform: translateY(0) rotate(0); }
-            50% { transform: translateY(-10px) rotate(5deg); }
-        }
-
-        /* Smooth Scroll Offset */
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 80px;
+        @keyframes scaleInFast {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
     </style>
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-
-
 
 
 </head>
 
 <body>
-    <!-- Particles Background -->
-    <div id="particles-js" class="fixed top-0 left-0 w-full h-full z-0"></div>
-
+    <div id="particles-js"></div>
+    <div class="content-wrapper">
     <!-- start page-wrapper -->
     <div class="page-wrapper">
         <!-- start preloader -->
@@ -332,7 +159,7 @@
         </div>
 
         <!-- start header-section -->
-        <section class="bg-[#070640]  absolute left-0 top-0 w-full z-50 md:py-[20px]">
+        <section class="bg-[#070640] absolute left-0 top-0 w-full z-50 md:py-[20px]">
             <h1 class="hidden">section heading hidden</h1>
             <div class="wraper">
                 <div class="flex items-center justify-between">
@@ -363,19 +190,33 @@
                     </div>
                     <ul class="md:hidden">
                         <li class="relative inline-block group">
-                            <a href="index.html" class="relative text-[16px] lg:text-[14px] py-[35px] xl:py-[30px] px-[20px] xl:px-[6px] text-white block capitalize font-base-font font-medium transition-all hover:text-[#fe3e57]">Home</a>
+                            <a href="index.html" class="relative text-[16px] lg:text-[14px] py-[35px]
+                        xl:py-[30px] px-[20px] xl:px-[6px]
+                            text-[#fe3e57] block capitalize
+                        font-base-font font-medium transition-all
+                            hover:text-[#fe3e57] ">Home</a>
                         </li>
                         <li class="relative inline-block">
-                            <a href="about.html" class="relative group text-[16px] lg:text-[14px] py-[35px] xl:py-[30px] px-[20px] xl:px-[6px] text-white block capitalize font-base-font font-medium transition-all hover:text-[#fe3e57]">About</a>
+                            <a href="about.html" class="relative group text-[16px] lg:text-[14px] py-[35px] xl:py-[30px] px-[20px] xl:px-[6px] text-white block capitalize font-base-font font-medium
+                    transition-all
+                    hover:text-[#fe3e57]
+                    ">About</a>
                         </li>
                         <li class="relative inline-block group">
-                            <a href="Portfolio.html" class="relative group text-[16px] lg:text-[14px] py-[35px] xl:py-[30px] px-[20px] xl:px-[6px] text-white block capitalize font-base-font font-medium transition-all hover:text-[#fe3e57]">Portfolio</a>
+                            <a href="Portfolio.html" class="relative group text-[16px] lg:text-[14px] py-[35px] xl:py-[30px] px-[20px] xl:px-[6px] text-white block capitalize font-base-font font-medium
+                            transition-all
+                            hover:text-[#fe3e57]">Portfolio</a>
                         </li>
                         <li class="relative inline-block group">
-                            <a href="resume.html" class="relative group text-[16px] lg:text-[14px] py-[35px] xl:py-[30px] px-[20px] xl:px-[6px] text-white block capitalize font-base-font font-medium transition-all hover:text-[#fe3e57]">Resume</a>
+                            <a href="resume.html" class="relative group text-[16px] lg:text-[14px] py-[35px] xl:py-[30px] px-[20px] xl:px-[6px] text-white block capitalize font-base-font font-medium  transition-all 
+                        hover:text-[#fe3e57]
+                    ">Resume</a>
                         </li>
                         <li class="relative inline-block">
-                            <a href="contact.html" class="relative group text-[16px] lg:text-[14px] py-[35px] xl:py-[30px] px-[20px] xl:px-[6px] text-white block capitalize font-base-font font-medium transition-all hover:text-[#fe3e57]">Contact</a>
+                            <a href="contact.html" class="relative group text-[16px] lg:text-[14px] py-[35px] xl:py-[30px] px-[20px] xl:px-[6px] text-white block capitalize font-base-font font-medium
+                    transition-all
+                    hover:text-[#fe3e57]
+                    ">Contact</a>
                         </li>
                     </ul>
                     <a class="theme-btn col:hidden" href="contact.html">Lets Talk</a>
@@ -383,700 +224,330 @@
             </div>
         </section>
 
-
-        <!-- start hero-1 -->
-        <section class="bg-[#070640] relative h-[900px] md:h-[640px] sm:h-[450px] 
-                flex justify-center flex-col bg-[url('../images/slider/slide-1.html')] bg-no-repeat bg-right">
-            <div>
-                <div class="wraper">
-                    <div class="grid grid-cols-12 gap-8 lg:gap-3">
-                        <div class="col-span-8 md:col-span-12 mt-[40px]">
-                            <h2 class="wow fadeInLeftSlow 
-                            text-[85px] leading-[70px] xl:text-[60px] sm:text-[36px] text-[#fff] font-bold "
-                                data-wow-delay="0.5s">
-                                <span class="text-[#fe3e57]">Fedi Hmida</span> </h2>
-                            <p id="typing-text" class="wow fadeInUp
-                            text-[30px] sm:text-[22px] sm:leading-[5px] text-[#fff] font-semibold mt-[40px] mb-[50px] sm:mt-[20px]"
-                                data-wow-delay="0.8s"></p>
-                            <div class="wow fadeInUp" data-wow-delay="1.0s">
-                                <ul class="flex">
-                                    <li><a href="https://www.facebook.com/fadi.hmidahmida" class="hero-social"><i class="ti-facebook"></i></a></li>
-                                    <li><a href="https://www.linkedin.com/in/fedi-hmida" class="hero-social s2"><i class="ti-linkedin"></i></a></li>
-                                    <li><a href="https://www.instagram.com/fedi.hmida/" class="hero-social s3"><i class="ti-instagram"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="wow fadeInRightSlow
-                   absolute bottom-0 z-10 right-[250px] lg:right-[10px] md:hidden" data-wow-duration="2000ms">
-                    <img src="assets/images/slider/Fedi2.0.png" alt="image">
-                </div>
-            </div>
-        </section>
-        <!-- start exprience -->
-        <div class="w-full z-10 h-full relative bg-[#070640] py-[50px] sm:hidden">
-            <div class="wow fadeInUp
-                    absolute w-[275px] h-[190px] right-[20%] bottom-0" data-wow-delay="2.0s">
-                <div class="flex items-center justify-center relative bg-[linear-gradient(to_right,rgba(231,24,96,.9),rgba(231,160,50,.9))]
-                           before:absolute before:content before:left-[21px] before:top-[15px] before:w-[85%] before:h-[80%] before:border-[1px] 
-                           before:border-dashed before:border-[#fff]">
-                    <h2 class="text-[146px] mt-[10px] text-[#fff] font-bold base-font">2</h2>
-                    <div class="">
-                        <span class="block text-[#fff]">Internship </span>
-                        <span class="block text-[#fff]">Experiences</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- start about -->
-        <section class="bg-[#070640] py-[100px] md:py-[90px] sm:py-[80px]">
+        <!-- start hero-section -->
+        <section class="hero-slider bg-[#070640] relative overflow-hidden">
             <div class="wraper">
-                <h2
-                    class="text-[70px] md:text-[45px] sm:text-[30px] mb-[40px] text-[#fff] font-bold base-font text-left">
-                    About Me</h2>
-                <!--Tabs navigation-->
-                <ul class="border-b-[1px] border-[#211f90] flex list-none flex-row flex-wrap mb-[60px] md:mb-[40px]  pl-0"
-                    role="tablist" data-te-nav-ref>
-                    <li role="presentation">
-                        <a href="#tabs-about" class="active block w-[210px] lg:w-[180px] md:w-[120px] h-[55px]  md:h-[40px] sm:mb-[15px] leading-[24px] text-center text-[#fff] 
-                        transition duration-150 ease-linear font-semibold mr-[10px] bg-transparent border-b-[3px] border-b-transparent
-                        data-[te-nav-active]:border-b-[#fff] hover:border-b-[#fff] hover:border-b-[2px]"
-                            data-te-toggle="pill" data-te-target="#tabs-about" data-te-nav-active role="tab"
-                            aria-controls="tabs-about" aria-selected="true">About</a>
-                    </li>
-                    <li role="presentation">
-                        <a href="#tabs-skill"
-                            class="block w-[210px] lg:w-[180px] md:w-[120px] h-[55px]  md:h-[40px] sm:mb-[15px] leading-[24px] text-center text-[#fff] 
-                        transition duration-150 ease-linear font-semibold mr-[10px]  bg-transparent border-b-[3px]
-                         border-b-transparent data-[te-nav-active]:border-b-[#fff] hover:border-b-[#fff] hover:border-b-[2px]"
-                            data-te-toggle="pill" data-te-target="#tabs-skill" role="tab" aria-controls="tabs-skill"
-                            aria-selected="false">Soft  Skills</a>
-                    </li>
-                    <li role="presentation">
-                        <a href="#tabs-hard-skill"
-                            class="block w-[210px] lg:w-[180px] md:w-[120px] h-[55px]  md:h-[40px] sm:mb-[15px] leading-[24px] text-center text-[#fff] 
-                        transition duration-150 ease-linear font-semibold mr-[10px]  bg-transparent border-b-[3px]
-                        border-b-transparent data-[te-nav-active]:border-b-[#fff] hover:border-b-[#fff] hover:border-b-[2px]"
-                            data-te-toggle="pill" data-te-target="#tabs-hard-skill" role="tab" aria-controls="tabs-hard-skill"
-                            aria-selected="false">Hard Skills</a>
-                    </li>
-                    <li role="presentation">
-                        <a href="#tabs-services"
-                            class="block w-[210px] lg:w-[180px] md:w-[120px] h-[55px]  md:h-[40px] sm:mb-[15px] leading-[24px] text-center text-[#fff] 
-                        transition duration-150 ease-linear font-semibold mr-[10px]  bg-transparent border-b-[3px]
-                         border-b-transparent data-[te-nav-active]:border-b-[#fff] hover:border-b-[#fff] hover:border-b-[2px]"
-                            data-te-toggle="pill" data-te-target="#tabs-services" role="tab"
-                            aria-controls="tabs-services" aria-selected="false">Services</a>
-                    </li>
-                    <li role="presentation">
-                        <a href="#tabs-social"
-                            class="block w-[210px] lg:w-[180px] md:w-[120px] h-[55px]  md:h-[40px] sm:mb-[15px] leading-[24px] text-center text-[#fff] 
-                        transition duration-150 ease-linear font-semibold mr-[10px]  bg-transparent border-b-[3px]
-                         border-b-transparent data-[te-nav-active]:border-b-[#fff] hover:border-b-[#fff] hover:border-b-[2px]"
-                            data-te-toggle="pill" data-te-target="#tabs-social" role="tab" aria-controls="tabs-social"
-                            aria-selected="false">Project Methodologies</a>
-                    </li>
-                    
-                </ul>
-                <!--Tabs content-->
-                <div class="content">
-                    <div class="hidden opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
-                        id="tabs-about" role="tabpanel" data-te-tab-active>
-                        <div class="grid grid-cols-12 gap-8 lg:gap-3">
-                            <div class="col-span-6 md:col-span-12">
-                                <div class="w-[120%] md:w-full left-[-101px] md:left-0 relative">
-                                    <img class="w-full" src="assets/images/about/about.png" alt="">
-                                </div>
-                            </div>
-                            <div class="col-span-6 md:col-span-12">
-                                <div class="pl-[30px] md:pl-0">
-                                    <h2
-                                        class="text-[50px] sm:text-[35px] text-[#fff] mb-[50px] md:mb-[30px] font-semibold">
-                                        Great software doesn't just work — it improves lives</h2>
-                                    <p class="text-[#fff] mb-[50px] text-[16px] leading-[30px]"> I'm Fedi Hmida, a passionate Software Engineering student at ESPRIT, holding a
-Bachelor's in Computer Engineering. I specialize in mobile app development using Flutter, as demonstrated
-in projects like the SolarFlow App. I'm also skilled in web development with Symfony and modern frontend technologies.
-
-Additionally, I work with Machine Learning techniques such as KNN, Linear Regression, Decision Trees, and K-Means
-for building basic data-driven prototypes. Recognized as a proactive learner, I focus on delivering
-impactful, solution-oriented software.
-.</p>
-                                    <a href="contact.html" class="theme-btn">Lets Talk</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
-                        id="tabs-skill" role="tabpanel">
-                        <div class="grid grid-cols-12 gap-8 lg:gap-3">
-                            <div class="col-span-4 md:col-span-6 sm:col-span-6">
-                                <div class="mb-[70px] md:mb-[40px] sm:mb-[30px] relative">
-                                    <div>
-                                        <h2
-                                            class="text-[100px] lg:text-[75px] lg:leading-[50px] sm:text-[35px] sm:leading-[55px] leading-[80px] font-semibold mt-[8px] pb-[20px] text-[#fe3e57] 
-                                            before:absolute before:content before:bottom-[70px] md:before:bottom-[50px] sm:before:bottom-[30px] before:left-0 before:h-[3px] before:w-[300px] sm:before:w-[150px] before:bg-[#292863]
-                                            after:absolute after:content after:bottom-[70px] md:after:bottom-[50px] sm:after:bottom-[30px] after:left-0 after:h-[3px] after:w-[231px] sm:after:w-[100px] after:bg-[#fe3e57]">
-                                            <span class="odometer" data-count="75">00</span>%</h2>
-                                    </div>
-                                    <p
-                                        class="text-[25px] xl:text-[18px] md:text-[13px] sm:text-[12px] text-[#fff] pt-[5px] mt-[30px] sm:mt-[0px] font-semibold">
-                                        Communication Skills</p>
-                                </div>
-                            </div>
-                            <div class="col-span-4 md:col-span-6 sm:col-span-6">
-                                <div class="mb-[70px] md:mb-[40px] sm:mb-[30px] relative">
-                                    <div>
-                                        <h2
-                                            class="text-[100px] lg:text-[75px] lg:leading-[50px] sm:text-[35px] sm:leading-[55px] leading-[80px] font-semibold mt-[8px] pb-[20px] text-[#54faae] 
-                                            before:absolute before:content before:bottom-[70px] md:before:bottom-[50px] sm:before:bottom-[30px] before:left-0 before:h-[3px] before:w-[300px] sm:before:w-[150px] before:bg-[#292863]
-                                            after:absolute after:content after:bottom-[70px] md:after:bottom-[50px] sm:after:bottom-[30px] after:left-0 after:h-[3px] after:w-[231px] sm:after:w-[100px] after:bg-[#54faae]">
-                                            <span class="odometer" data-count="90">00</span>%</h2>
-                                    </div>
-                                    <p
-                                        class="text-[25px] xl:text-[18px] md:text-[13px] sm:text-[12px] text-[#fff] pt-[5px] mt-[30px] sm:mt-[0px] font-semibold">
-                                        Project Management</p>
-                                </div>
-                            </div>
-                            <div class="col-span-4 md:col-span-6 sm:col-span-6">
-                                <div class="mb-[70px] md:mb-[40px] sm:mb-[30px] relative">
-                                    <div>
-                                        <h2
-                                            class="text-[100px] lg:text-[75px] lg:leading-[50px] sm:text-[35px] sm:leading-[55px] leading-[80px] font-semibold mt-[8px] pb-[20px] text-[#ff8c2f] 
-                                            before:absolute before:content before:bottom-[70px] md:before:bottom-[50px] sm:before:bottom-[30px] before:left-0 before:h-[3px] before:w-[300px] sm:before:w-[150px] before:bg-[#292863]
-                                            after:absolute after:content after:bottom-[70px] md:after:bottom-[50px] sm:after:bottom-[30px] after:left-0 after:h-[3px] after:w-[231px] sm:after:w-[100px] after:bg-[#ff8c2f]">
-                                            <span class="odometer" data-count="65">00</span>%</h2>
-                                    </div>
-                                    <p
-                                        class="text-[25px] xl:text-[18px] md:text-[13px] sm:text-[12px] text-[#fff] pt-[5px] mt-[30px] sm:mt-[0px] font-semibold">
-                                        Problem Solving</p>
-                                </div>
-                            </div>
-                            <div class="col-span-4 md:col-span-6 sm:col-span-6">
-                                <div class="mb-[70px] md:mb-[40px] sm:mb-[30px] relative">
-                                    <div>
-                                        <h2
-                                            class="text-[100px] lg:text-[75px] lg:leading-[50px] sm:text-[35px] sm:leading-[55px] leading-[80px] font-semibold mt-[8px] pb-[20px] text-[#f1f965] 
-                                            before:absolute before:content before:bottom-[70px] md:before:bottom-[50px] sm:before:bottom-[30px] before:left-0 before:h-[3px] before:w-[300px] sm:before:w-[150px] before:bg-[#292863]
-                                            after:absolute after:content after:bottom-[70px] md:after:bottom-[50px] sm:after:bottom-[30px] after:left-0 after:h-[3px] after:w-[231px] sm:after:w-[100px] after:bg-[#f1f965]">
-                                            <span class="odometer" data-count="55">00</span>%</h2>
-                                    </div>
-                                    <p
-                                        class="text-[25px] xl:text-[18px] md:text-[13px] sm:text-[12px] text-[#fff] pt-[5px] mt-[30px] sm:mt-[0px] font-semibold">
-                                        Analitical Abilities</p>
-                                </div>
-                            </div>
-                            <div class="col-span-4 md:col-span-6 sm:col-span-6">
-                                <div class="mb-[70px] md:mb-[40px] sm:mb-[30px] relative">
-                                    <div>
-                                        <h2
-                                            class="text-[100px] lg:text-[75px] lg:leading-[50px] sm:text-[35px] sm:leading-[55px] leading-[80px] font-semibold mt-[8px] pb-[20px] text-[#ff0173] 
-                                            before:absolute before:content before:bottom-[70px] md:before:bottom-[50px] sm:before:bottom-[30px] before:left-0 before:h-[3px] before:w-[300px] sm:before:w-[150px] before:bg-[#292863]
-                                            after:absolute after:content after:bottom-[70px] md:after:bottom-[50px] sm:after:bottom-[30px] after:left-0 after:h-[3px] after:w-[231px] sm:after:w-[100px] after:bg-[#ff0173]">
-                                            <span class="odometer" data-count="40">00</span>%</h2>
-                                    </div>
-                                    <p
-                                        class="text-[25px] xl:text-[18px] md:text-[13px] sm:text-[12px] text-[#fff] pt-[5px] mt-[30px] sm:mt-[0px] font-semibold">
-                                        Organization</p>
-                                </div>
-                            </div>
-                            <div class="col-span-4 md:col-span-6 sm:col-span-6">
-                                <div class="mb-[70px] md:mb-[40px] sm:mb-[30px] relative">
-                                    <div>
-                                        <h2
-                                            class="text-[100px] lg:text-[75px] lg:leading-[50px] sm:text-[35px] sm:leading-[55px] leading-[80px] font-semibold mt-[8px] pb-[20px] text-[#39c4ff] 
-                                            before:absolute before:content before:bottom-[70px] md:before:bottom-[50px] sm:before:bottom-[30px] before:left-0 before:h-[3px] before:w-[300px] sm:before:w-[150px] before:bg-[#292863]
-                                            after:absolute after:content after:bottom-[70px] md:after:bottom-[50px] sm:after:bottom-[30px] after:left-0 after:h-[3px] after:w-[231px] sm:after:w-[100px] after:bg-[#39c4ff]">
-                                            <span class="odometer" data-count="85">00</span>%</h2>
-                                    </div>
-                                    <p
-                                        class="text-[25px] xl:text-[18px] md:text-[13px] sm:text-[12px] text-[#fff] pt-[5px] mt-[30px] sm:mt-[0px] font-semibold">
-                                        Creativity</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
-    id="tabs-hard-skill" role="tabpanel">
-    <div class="grid grid-cols-12 gap-8 lg:gap-3">
-        <div class="col-span-4 md:col-span-6 sm:col-span-6">
-            <div class="mb-[70px] md:mb-[40px] sm:mb-[30px] relative">
-                <div>
-                    <h2 class="text-[100px] lg:text-[75px] lg:leading-[50px] sm:text-[35px] sm:leading-[55px] leading-[80px] font-semibold mt-[8px] pb-[20px] text-[#39c4ff] 
-            before:absolute before:content before:bottom-[70px] md:before:bottom-[50px] sm:before:bottom-[30px] before:left-0 before:h-[3px] before:w-[300px] sm:before:w-[150px] before:bg-[#292863]
-            after:absolute after:content after:bottom-[70px] md:after:bottom-[50px] sm:after:bottom-[30px] after:left-0 after:h-[3px] after:w-[231px] sm:after:w-[100px] after:bg-[#39c4ff]">
-            <span class="odometer" data-count="90">00</span>%</h2>
-                </div>
-                <p class="text-[25px] xl:text-[18px] md:text-[13px] sm:text-[12px] text-[#fff] pt-[5px] mt-[30px] sm:mt-[0px] font-semibold">
-        Flutter</p>
-            </div>
-        </div>
-        <div class="col-span-4 md:col-span-6 sm:col-span-6">
-            <div class="mb-[70px] md:mb-[40px] sm:mb-[30px] relative">
-                <div>
-                    <h2 class="text-[100px] lg:text-[75px] lg:leading-[50px] sm:text-[35px] sm:leading-[55px] leading-[80px] font-semibold mt-[8px] pb-[20px] text-[#fe3e57] 
-            before:absolute before:content before:bottom-[70px] md:before:bottom-[50px] sm:before:bottom-[30px] before:left-0 before:h-[3px] before:w-[300px] sm:before:w-[150px] before:bg-[#292863]
-            after:absolute after:content after:bottom-[70px] md:after:bottom-[50px] sm:after:bottom-[30px] after:left-0 after:h-[3px] after:w-[231px] sm:after:w-[100px] after:bg-[#fe3e57]">
-            <span class="odometer" data-count="85">00</span>%</h2>
-                </div>
-                <p class="text-[25px] xl:text-[18px] md:text-[13px] sm:text-[12px] text-[#fff] pt-[5px] mt-[30px] sm:mt-[0px] font-semibold">
-        Symfony</p>
-            </div>
-        </div>
-        <div class="col-span-4 md:col-span-6 sm:col-span-6">
-            <div class="mb-[70px] md:mb-[40px] sm:mb-[30px] relative">
-                <div>
-                    <h2 class="text-[100px] lg:text-[75px] lg:leading-[50px] sm:text-[35px] sm:leading-[55px] leading-[80px] font-semibold mt-[8px] pb-[20px] text-[#ff8c2f] 
-            before:absolute before:content before:bottom-[70px] md:before:bottom-[50px] sm:before:bottom-[30px] before:left-0 before:h-[3px] before:w-[300px] sm:before:w-[150px] before:bg-[#292863]
-            after:absolute after:content after:bottom-[70px] md:after:bottom-[50px] sm:after:bottom-[30px] after:left-0 after:h-[3px] after:w-[231px] sm:after:w-[100px] after:bg-[#ff8c2f]">
-            <span class="odometer" data-count="80">00</span>%</h2>
-                </div>
-                <p class="text-[25px] xl:text-[18px] md:text-[13px] sm:text-[12px] text-[#fff] pt-[5px] mt-[30px] sm:mt-[0px] font-semibold">
-        JavaFX</p>
-            </div>
-        </div>
-        <div class="col-span-4 md:col-span-6 sm:col-span-6">
-            <div class="mb-[70px] md:mb-[40px] sm:mb-[30px] relative">
-                <div>
-                    <h2 class="text-[100px] lg:text-[75px] lg:leading-[50px] sm:text-[35px] sm:leading-[55px] leading-[80px] font-semibold mt-[8px] pb-[20px] text-[#54faae] 
-            before:absolute before:content before:bottom-[70px] md:before:bottom-[50px] sm:before:bottom-[30px] before:left-0 before:h-[3px] before:w-[300px] sm:before:w-[150px] before:bg-[#292863]
-            after:absolute after:content after:bottom-[70px] md:after:bottom-[50px] sm:after:bottom-[30px] after:left-0 after:h-[3px] after:w-[231px] sm:after:w-[100px] after:bg-[#54faae]">
-            <span class="odometer" data-count="88">00</span>%</h2>
-                </div>
-                <p class="text-[25px] xl:text-[18px] md:text-[13px] sm:text-[12px] text-[#fff] pt-[5px] mt-[30px] sm:mt-[0px] font-semibold">
-        Android Studio</p>
-            </div>
-        </div>
-        <div class="col-span-4 md:col-span-6 sm:col-span-6">
-            <div class="mb-[70px] md:mb-[40px] sm:mb-[30px] relative">
-                <div>
-                    <h2 class="text-[100px] lg:text-[75px] lg:leading-[50px] sm:text-[35px] sm:leading-[55px] leading-[80px] font-semibold mt-[8px] pb-[20px] text-[#ff0173] 
-            before:absolute before:content before:bottom-[70px] md:before:bottom-[50px] sm:before:bottom-[30px] before:left-0 before:h-[3px] before:w-[300px] sm:before:w-[150px] before:bg-[#292863]
-            after:absolute after:content after:bottom-[70px] md:after:bottom-[50px] sm:after:bottom-[30px] after:left-0 after:h-[3px] after:w-[231px] sm:after:w-[100px] after:bg-[#ff0173]">
-            <span class="odometer" data-count="75">00</span>%</h2>
-                </div>
-                <p class="text-[25px] xl:text-[18px] md:text-[13px] sm:text-[12px] text-[#fff] pt-[5px] mt-[30px] sm:mt-[0px] font-semibold">
-        Git</p>
-            </div>
-        </div>
-        <div class="col-span-4 md:col-span-6 sm:col-span-6">
-            <div class="mb-[70px] md:mb-[40px] sm:mb-[30px] relative">
-                <div>
-                    <h2 class="text-[100px] lg:text-[75px] lg:leading-[50px] sm:text-[35px] sm:leading-[55px] leading-[80px] font-semibold mt-[8px] pb-[20px] text-[#f1f965] 
-            before:absolute before:content before:bottom-[70px] md:before:bottom-[50px] sm:before:bottom-[30px] before:left-0 before:h-[3px] before:w-[300px] sm:before:w-[150px] before:bg-[#292863]
-            after:absolute after:content after:bottom-[70px] md:after:bottom-[50px] sm:after:bottom-[30px] after:left-0 after:h-[3px] after:w-[231px] sm:after:w-[100px] after:bg-[#f1f965]">
-            <span class="odometer" data-count="82">00</span>%</h2>
-                </div>
-                <p class="text-[25px] xl:text-[18px] md:text-[13px] sm:text-[12px] text-[#fff] pt-[5px] mt-[30px] sm:mt-[0px] font-semibold">
-        MySQL</p>
-            </div>
-        </div>
-        <div class="col-span-4 md:col-span-6 sm:col-span-6">
-            <div class="mb-[70px] md:mb-[40px] sm:mb-[30px] relative">
-                <div>
-                    <h2 class="text-[100px] lg:text-[75px] lg:leading-[50px] sm:text-[35px] sm:leading-[55px] leading-[80px] font-semibold mt-[8px] pb-[20px] text-[#f1f965] 
-            before:absolute before:content before:bottom-[70px] md:before:bottom-[50px] sm:before:bottom-[30px] before:left-0 before:h-[3px] before:w-[300px] sm:before:w-[150px] before:bg-[#292863]
-            after:absolute after:content after:bottom-[70px] md:after:bottom-[50px] sm:after:bottom-[30px] after:left-0 after:h-[3px] after:w-[231px] sm:after:w-[100px] after:bg-[#f1f965]">
-            <span class="odometer" data-count="85">00</span>%</h2>
-                </div>
-                <p class="text-[25px] xl:text-[18px] md:text-[13px] sm:text-[12px] text-[#fff] pt-[5px] mt-[30px] sm:mt-[0px] font-semibold">
-        HTML/CSS/JS</p>
-            </div>
-        </div>
-    </div>
-</div>
-                    <!-- Services -->
-                    <div class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
-     id="tabs-services" role="tabpanel">
-    <div class="grid grid-cols-12 gap-8 lg:gap-3">
-
-        <!-- Mobile App -->
-        <div class="col-span-6 md:col-span-12 sm:col-span-12">
-            <div class="mb-[60px]">
-                <div class="flex items-center justify-centert sm:block">
-                    <div class="mr-8 sm:mr-0 sm:mb-8 w-[200px] h-[184px] text-center leading-[184px]
-                            bg-[url('../images/wpo-service/shape.html')] bg-no-repeat bg-center">
-                        <i class="text-[#181764] text-[60px] ml-[20px] fas fa-mobile-alt"></i>
-                    </div>
-                    <div class="max-w-[300px] lg:max-w-[200px] md:max-w-[500px] sm:max-w-full">
-                        <h2 class="text-[#fff] text-[40px] mb-[20px] leading-[55px] font-bold">
-                            Mobile <br> App
-                        </h2>
-                        <p class="text-[#fff] text-[15px] leading-[30px]">
-                            Cross-platform mobile apps using Flutter.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Web Development -->
-        <div class="col-span-6 md:col-span-12 sm:col-span-12">
-            <div class="mb-[60px]">
-                <div class="flex items-center justify-centert sm:block">
-                    <div class="mr-8 sm:mr-0 sm:mb-8 w-[200px] h-[184px] text-center leading-[184px]
-                            bg-[url('../images/wpo-service/shape-2.html')] bg-no-repeat bg-center">
-                        <i class="text-[#181764] text-[60px] ml-[20px] fas fa-code"></i>
-                    </div>
-                    <div class="max-w-[300px] lg:max-w-[200px] md:max-w-[500px] sm:max-w-full">
-                        <h2 class="text-[#fff] text-[40px] mb-[20px] leading-[55px] font-bold">
-                            Web <br> Development
-                        </h2>
-                        <p class="text-[#fff] text-[15px] leading-[30px]">
-                            Dynamic websites using Symfony, HTML, CSS, and JavaScript.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Machine Learning -->
-        <div class="col-span-6 md:col-span-12 sm:col-span-12">
-            <div class="mb-[60px]">
-                <div class="flex items-center justify-centert sm:block">
-                    <div class="mr-8 sm:mr-0 sm:mb-8 w-[200px] h-[184px] text-center leading-[184px]
-                            bg-[url('../images/wpo-service/shape-3.html')] bg-no-repeat bg-center">
-                        <i class="text-[#181764] text-[60px] ml-[20px] fas fa-brain"></i>
-                    </div>
-                    <div class="max-w-[300px] lg:max-w-[200px] md:max-w-[500px] sm:max-w-full">
-                        <h2 class="text-[#fff] text-[40px] mb-[20px] leading-[55px] font-bold">
-                            ML <br> Prototyping
-                        </h2>
-                        <p class="text-[#fff] text-[15px] leading-[30px]">
-                            Using KNN, Linear Regression, Decision Trees, and K-Means.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Agile Project Support -->
-        <div class="col-span-6 md:col-span-12 sm:col-span-12">
-            <div class="mb-[60px]">
-                <div class="flex items-center justify-centert sm:block">
-                    <div class="mr-8 sm:mr-0 sm:mb-8 w-[200px] h-[184px] text-center leading-[184px]
-                            bg-[url('../images/wpo-service/shape-4.html')] bg-no-repeat bg-center">
-                        <i class="text-[#181764] text-[60px] ml-[20px] fas fa-network-wired"></i>
-                    </div>
-                    <div class="max-w-[300px] lg:max-w-[200px] md:max-w-[500px] sm:max-w-full">
-                        <h2 class="text-[#fff] text-[40px] mb-[20px] leading-[55px] font-bold">
-                            Agile <br> Frameworks
-                        </h2>
-                        <p class="text-[#fff] text-[15px] leading-[30px]">
-                            Working within Scrum, Kanban, and Scrumban frameworks.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</div>
-
-
-
-                    <div class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
-     id="tabs-social" role="tabpanel">
-    <div class="grid grid-cols-12 gap-8 lg:gap-3">
-        
-        
-
-        <!-- Scrum -->
-<div class="col-span-4 md:col-span-6 sm:col-span-12">
-    <div class="flex items-center mb-[60px]">
-        <div class="w-[130px] h-[120px] sm:w-[100px] sm:h-[90px] border border-[#ff6f00] text-center
-                    rounded-[10px] text-[#ff6f00] flex items-center justify-center">
-            <i class="fas fa-people-arrows text-[70px] sm:text-[45px]" aria-hidden="true" title="Scrum collaboration icon"></i>
-        </div>
-        <div class="ml-[30px]">
-            <h2 class="text-[30px] sm:text-[25px] text-[#fff] font-bold">
-                <a href="https://www.scrum.org/resources/what-is-scrum" target="_blank" rel="noopener"
-                   class="hover:underline text-[#fff]">
-                    Scrum
-                </a>
-            </h2>
-        </div>
-    </div>
-</div>
-
-
-        <!-- Kanban -->
-<div class="col-span-4 md:col-span-6 sm:col-span-12">
-    <div class="flex items-center mb-[60px]">
-        <div class="w-[130px] h-[120px] sm:w-[100px] sm:h-[90px] border border-[#00b894] text-center
-                    rounded-[10px] text-[#00b894] flex items-center justify-center">
-            <i class="fas fa-grip-horizontal text-[70px] sm:text-[45px]" aria-hidden="true" title="Kanban board icon"></i>
-        </div>
-        <div class="ml-[30px]">
-            <h2 class="text-[30px] sm:text-[25px] text-[#fff] font-bold">
-                <a href="https://kanbanize.com/kanban-resources/getting-started/what-is-kanban" target="_blank" rel="noopener" class="hover:underline text-[#fff]">
-                    Kanban
-                </a>
-            </h2>
-        </div>
-    </div>
-</div>
-
-<!-- Scrumban -->
-<div class="col-span-4 md:col-span-6 sm:col-span-12">
-    <div class="flex items-center mb-[60px]">
-        <div class="w-[130px] h-[120px] sm:w-[100px] sm:h-[90px] border border-[#a29bfe] text-center
-                    rounded-[10px] text-[#a29bfe] flex items-center justify-center">
-            <i class="fas fa-project-diagram text-[70px] sm:text-[45px]" aria-hidden="true" title="Scrumban flow icon"></i>
-        </div>
-        <div class="ml-[30px]">
-            <h2 class="text-[30px] sm:text-[25px] text-[#fff] font-bold">
-                <a href="https://www.atlassian.com/agile/scrumban" target="_blank" rel="noopener" class="hover:underline text-[#fff]">
-                    Scrumban
-                </a>
-            </h2>
-        </div>
-    </div>
-</div>
-
-
-    </div>
-</div>
-
-                    
-                </div>
-            </div>
-        </section>
-
-        <!-- start portfolio -->
-<section class="bg-[#0c0b48] py-[50px] md:py-[40px] sm:py-[30px]">
-    <div class="wraper">
-        <h2 class="text-[70px] inline-block md:text-[45px] sm:text-[30px] mb-[40px] sm:mb-[20px] text-[#fff] font-bold base-font text-left">
-            Portfolio
-        </h2>
-        <div>
-            <div class="grid grid-cols-12">
-                <!-- Left column -->
-                <div class="col-span-6 md:col-span-6 sm:col-span-12 p-[1px]">
-                    <!-- SolarFlow App  -->
-                    
-                    <div class="relative mb-[1px] portfolio-item-align">
-                        <img class="portfolio-img-fixed" src="assets/images/logo_1555.png" alt="SolarFlow App">
-                        <div class="portfolio-item-content p-[16px] absolute left-0 bottom-[10px]">
-                            <h2 class="text-[25px] font-bold text-[#fff] sm:text-[16px]">SolarFlow App</h2>
-                            <span class="text-[18px] text-[#fff] block mb-[10px] font-light">Flutter Mobile App . IoT . Energy </span>
-                            <a class="protfolio-btn text-[15px] py-[4px] px-[10px]" href="project-single.html">View Work</a>
-                        </div>
-                    </div>
-
-                    <!-- 3D Project -->
-                    <div class="relative mb-[1px]">
-                        <img class="portfolio-img-fixed" src="assets/images/FlutterFlow.png" alt="3D Project">
-                        <div class="p-[16px] absolute left-0 bottom-[10px]">
-                            <h2 class="text-[25px] font-bold text-[#fff] sm:text-[16px]">Pro-Link</h2>
-                            <span class="text-[18px] text-[#fff] block mb-[10px] font-light">Flutter Mobile App</span>
-                            <a class="protfolio-btn text-[15px] py-[4px] px-[10px]" href="Pro-Link.html">View Work</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right column -->
-                <div class="col-span-6 md:col-span-6 sm:col-span-12 p-[1px] mt-[-100px] sm:mt-[0px]">
-                    <!-- Abstract Art -->
-                    <div class="relative mb-[1px] portfolio-item-align">
-                        <img class="portfolio-img-fixed" src="assets/images/logo3.png" alt="Abstract Art">
-                        <div class="portfolio-item-content p-[16px] absolute left-0 bottom-[10px]">
-                            <h2 class="text-[25px] font-bold text-[#fff] sm:text-[16px]">Onboardify</h2>
-                            <span class="text-[18px] text-[#fff] block mb-[10px] font-light">JavaFX & Symfony · HR Tech · Gamified Onboarding</span>
-                            <a class="protfolio-btn text-[15px] py-[4px] px-[10px]" href="Onboardify.html">View Work</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- See More -->
-            <div class="text-right mt-[-20px] sm:text-center sm:mt-[10px]">
-                <a class="text-[25px] text-[#fff] font-bold sm:text-[14px]" href="portfolio-grid.html">See More Work...</a>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-       
-
-        <section class="pt-[120px] md:pt-[90px] sm-[80px] bg-[#070640] pb-[60px]">
-    <div class="wraper">
-        <h2 class="text-[70px] md:text-[45px] sm:text-[30px] mb-[60px] text-[#fff] font-bold base-font text-center">
-            Let's Talk
-        </h2>
-        <div class="grid grid-cols-12 gap-8 lg:gap-3">
-            <div class="col-span-1 md:col-span-12"></div>
-
-            <!-- Contact Form -->
-            <div class="col-span-5 md:col-span-12 sm:col-span-12">
-                <div class="bg-[#0c0b44] border-[1px] border-[#464646] mb-[60px] pl-[60px] pr-[60px] pt-[60px] pb-[30px] sm:p-[25px] rounded-[5px] shadow-[0_5px_15px_0_rgba(68,68,68,0.1)]">
-                    <h2 class="text-center text-[30px] xl:text-[18px] md:text-[13px] sm:text-[12px] text-[#fff] font-bold mb-[15px] sm:pt-[20px]">
-                        Get In Touch
-                    </h2>
-                    <form method="post" class="contact-validation-active" id="wpo-contact-form">
-                        <div class="w-[calc(50%-15px)] float-left sm:w-full sm:float-none mb-[15px]">
-                            <input type="text" name="name" id="name" placeholder="First Name"
-                                class="form-control transition-all placeholder-[#fff] focus:outline-0 focus:shadow-none focus:border-b-[#fe3e57] focus:bg-transparent base-font text-[#FFF] text-[14px] pr-[12px] py-[6px] bg-transparent w-full h-[50px] border-[0px] border-b-[1px] border-[#464646]" />
-                        </div>
-                        <div class="w-[calc(50%-15px)] float-left sm:w-full sm:float-none sm:ml-0 ml-[30px] mb-[15px]">
-                            <input type="text" name="name2" id="name2" placeholder="Last Name"
-                                class="form-control transition-all placeholder-[#fff] focus:outline-0 focus:shadow-none focus:border-b-[#fe3e57] focus:bg-transparent base-font text-[#FFF] text-[14px] pr-[12px] py-[6px] bg-transparent w-full h-[50px] border-[0px] border-b-[1px] border-[#464646]" />
-                        </div>
-                        <div class="clearfix mb-[15px]">
-                            <input type="email" name="email" id="email" placeholder="Email"
-                                class="form-control transition-all placeholder-[#fff] focus:outline-0 focus:shadow-none focus:border-b-[#fe3e57] focus:bg-transparent base-font text-[#FFF] text-[14px] pr-[12px] py-[6px] bg-transparent w-full h-[50px] border-[0px] border-b-[1px] border-[#464646]" />
-                        </div>
-                        <div class="mb-[15px]">
-                            <input type="text" name="subject" id="subject" placeholder="Subject"
-                                class="form-control transition-all placeholder-[#fff] focus:outline-0 focus:shadow-none focus:border-b-[#fe3e57] focus:bg-transparent base-font text-[#FFF] text-[14px] pr-[12px] py-[6px] bg-transparent w-full h-[50px] border-[0px] border-b-[1px] border-[#464646]" />
-                        </div>
-                        <div class="mb-[15px]">
-                            <textarea name="note" id="note" placeholder="Case Description..."
-                                class="form-control transition-all placeholder-[#fff] focus:outline-0 focus:shadow-none focus:border-b-[#fe3e57] focus:bg-transparent base-font text-[#FFF] text-[14px] pr-[12px] py-[6px] bg-transparent w-full h-[175px] sm:h-[90px] border-[0px] border-b-[1px] border-[#464646]"></textarea>
-                        </div>
-                        <div class="submit-area w-full text-center mt-[33px] mb-[30px]">
-                            <button type="submit" class="theme-btn submit-btn bg-[#fe3e57]">Send Message</button>
-                            <div id="loader">
-                                <i class="ti-reload"></i>
-                            </div>
-                        </div>
-                        <div class="clearfix error-handling-services">
-                            <div id="success">Thank you</div>
-                            <div id="error">Error occurred while sending email. Please try again later.</div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-            <!-- Contact Info Cards -->
-            <div class="col-span-5 md:col-span-8 sm:col-span-12">
-                <!-- Address -->
-<div class="pl-[20px] pr-[50px] sm:p-0">
-    <div class="py-[30px] px-[40px] sm:py-[20px] sm:px-[20px] mb-[30px] bg-[#0c0b44] border-[1px] border-[#464646] rounded-[5px] shadow-[0_10px_40px_0_rgba(50,50,50,0.1)]">
-        <h2 class="text-[24px] sm:text-[20px] text-[#fff] font-bold mb-[15px] heading-font">
-            Tunis, Tunisia
-        </h2>
-        <div class="flex items-center">
-            <div class="w-[90px] h-[90px] bg-[#fff] flex items-center justify-center rounded-full text-center mr-[20px] shadow-[0_10px_40px_0_rgba(50,50,50,0.1)]">
-                <i class="fas fa-map-marker-alt text-[40px] text-[#fe3e57]"></i>
-            </div>
-            <div>
-                <span class="text-[#8c8b8b] text-[18px] font-light">Office Address</span>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Email -->
-<div class="pl-[20px] pr-[50px] sm:p-0">
-    <div class="py-[30px] px-[40px] sm:py-[20px] sm:px-[20px] mb-[30px] bg-[#0c0b44] border-[1px] border-[#464646] rounded-[5px] shadow-[0_10px_40px_0_rgba(50,50,50,0.1)]">
-        <h2 class="text-[24px] sm:text-[20px] text-[#fff] font-bold mb-[15px] heading-font">
-            fedi.hmida@ieee.org
-        </h2>
-        <div class="flex items-center">
-            <div class="w-[90px] h-[90px] bg-[#fff] flex items-center justify-center rounded-full text-center mr-[20px] shadow-[0_10px_40px_0_rgba(50,50,50,0.1)]">
-                <i class="fas fa-envelope text-[40px] text-[#fe3e57]"></i>
-            </div>
-            <div>
-                <span class="text-[#8c8b8b] text-[18px] font-light">Official Mail</span>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Phone -->
-<div class="pl-[20px] pr-[50px] sm:p-0">
-    <div class="py-[30px] px-[40px] sm:py-[20px] sm:px-[20px] mb-[30px] md:mb-0 bg-[#0c0b44] border-[1px] border-[#464646] rounded-[5px] shadow-[0_10px_40px_0_rgba(50,50,50,0.1)]">
-        <h2 class="text-[24px] sm:text-[20px] text-[#fff] font-bold mb-[15px] heading-font">
-            +216 93 722 130
-        </h2>
-        <div class="flex items-center">
-            <div class="w-[90px] h-[90px] bg-[#fff] flex items-center justify-center rounded-full text-center mr-[20px] shadow-[0_10px_40px_0_rgba(50,50,50,0.1)]">
-                <i class="fas fa-phone-alt text-[40px] text-[#fe3e57]"></i>
-            </div>
-            <div>
-                <span class="text-[#8c8b8b] text-[18px] font-light">Official Phone</span>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-            <div class="col-span-1 md:col-span-12"></div>
-        </div>
-    </div>
-</section>
-
-
-        <!-- start blog -->
-        <section class="bg-[#0c0b48] section-wrap">
-            <div class="wraper">
-                <h2
-                    class="text-[70px] md:text-[45px] sm:text-[30px] mb-[60px] text-[#fff] font-bold base-font text-center">
-                    Latest News</h2>
                 <div class="grid grid-cols-12 gap-8 lg:gap-3">
-                    <div class="col-span-4 md:col-span-6 sm:col-span-12 md:mb-8">
-                        <div class="relative overflow-hidden">
-                            <img class="rounded-[5px] w-full" src="assets/images/blog/1.jpg" alt="">
-                        </div>
-                        <div class="pt-[30px]">
-                            <ul class="flex">
-                                <li class="text-[#c7c6c6]"><span class="text-[#3c7dd9] block pr-[5px]">By Admin</span>
-                                </li>
-                                <li class="text-[#c7c6c6]">. Nov 24, 2020</li>
-                            </ul>
-                            <h2 class="font-bold text-[24px] text-[#fff] leading-[40px] group mt-[20px] mb-[10px]">
-                                <a href="blog.html"
-                                    class="text-[#fff] group-hover:text-[#fa5d72] transition ease-in-out duration-300">Helpful
-                                    tips for become a successful designer</a>
-                            </h2>
-                            <a href="blog.html" class="text-[#fa5d72] font-normal text-[15px]">Read More...</a>
+                    <div class="col-span-6 md:col-span-12 sm:col-span-12">
+                        <div class="pt-[200px] pb-[100px] md:pt-[150px] md:pb-[80px] sm:pt-[120px] sm:pb-[60px]">
+                            <h1 class="text-[70px] md:text-[45px] sm:text-[30px] mb-[30px] 
+                                text-white font-bold base-font typing-animation">
+                                Hi, I'm Fedi Hmida
+                            </h1>
+                            <p class="text-white text-[16px] mb-[30px] leading-[30px] slide-in-fast">
+                                I'm a passionate Software Engineering student at ESPRIT, holding a
+                                Bachelor's in Computer Engineering. I specialize in mobile app development using Flutter, as demonstrated
+                                in projects like the SolarFlow App. I'm also skilled in web development with Symfony and modern frontend technologies.
+                            </p>
+                            <div class="scale-in-fast">
+                                <a class="theme-btn glow-effect" href="contact.html">Let's Talk</a>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-span-4 md:col-span-6 sm:col-span-12 md:mb-8">
-                        <div class="relative overflow-hidden">
-                            <img class="rounded-[5px] w-full" src="assets/images/blog/2.jpg" alt="">
+                    <div class="col-span-6 md:col-span-12 sm:col-span-12">
+                        <div class="pt-[200px] pb-[100px] md:pt-[150px] md:pb-[80px] sm:pt-[120px] sm:pb-[60px] text-center">
+                            <img class="max-w-full mx-auto floating shine-effect" src="assets/images/slider/Fedi2.0.png" alt="">
                         </div>
-                        <div class="pt-[30px]">
-                            <ul class="flex">
-                                <li class="text-[#c7c6c6]"><span class="text-[#3c7dd9] block pr-[5px]">By Admin</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- start about-4 -->
+        <section class="py-[100px] sm:py-[80px] bg-[#070640]">
+            <div class="wraper">
+                <div class="grid grid-cols-12 gap-8 lg:gap-3">
+                    <div class="col-span-6 md:col-span-8 sm:col-span-12">
+                        <div
+                            class="p-[70px] sm:p-[15px] text-center bg-[#070640] shadow-[0px_2px_14.25px_0.75px_rgba(58,58,58,0.15)]">
+                            <img src="assets/images/about/Fedi.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="col-span-6 md:col-span-12 sm:col-span-12">
+                        <div class="pt-[100px] pl-[30px] lg:pt-[50px] md:pl-0">
+                            <h2 class="text-white text-[50px] sm:text-[40px] mb-[30px] font-bold">Great software doesn't just work — it improves lives</h2>
+                            <p class="text-white text-[16px] mb-[30px] leading-[30px]">I'm Fedi Hmida, a passionate Software Engineering student at ESPRIT, holding a
+                                Bachelor's in Computer Engineering. I specialize in mobile app development using Flutter, as demonstrated
+                                in projects like the SolarFlow App. I'm also skilled in web development with Symfony and modern frontend technologies.
+
+                                Additionally, I work with Machine Learning techniques such as KNN, Linear Regression, Decision Trees, and K-Means
+                                for building basic data-driven prototypes. Recognized as a proactive learner, I focus on delivering
+                                impactful, solution-oriented software.
+
+                            </p>
+                            <ul class="mb-[20px]">
+                                <li class="relative pb-[15px] pl-[20px] text-white text-[16px] before:absolute before:left-0 before:top-[6px]
+                                    before:w-[8px] before:h-[8px] before:rounded-[50%] before:bg-[#fe3e57]">
+                                    Mobile & Web Development Expertise (Flutter & Symfony)
                                 </li>
-                                <li class="text-[#c7c6c6]">. Nov 24, 2020</li>
+                                <li class="relative pb-[15px] pl-[20px] text-white text-[16px] before:absolute before:left-0 before:top-[6px]
+                                    before:w-[8px] before:h-[8px] before:rounded-[50%] before:bg-[#fe3e57]">
+                                    Machine Learning Prototyping with KNN, Regression & Trees
+                                </li>
+                                <li class="relative pb-[15px] pl-[20px] text-white text-[16px] before:absolute before:left-0 before:top-[6px]
+                                    before:w-[8px] before:h-[8px] before:rounded-[50%] before:bg-[#fe3e57]">
+                                    Agile Project Collaboration (Scrum, Kanban, Scrumban)
+                                </li>
+                                <li class="relative pb-[15px] pl-[20px] text-white text-[16px] before:absolute before:left-0 before:top-[6px]
+                                    before:w-[8px] before:h-[8px] before:rounded-[50%] before:bg-[#fe3e57]">
+                                    Proactive Learner & Solution-Oriented Mindset
+                                </li>
                             </ul>
-                            <h2 class="font-bold text-[24px] text-[#fff] leading-[40px] group mt-[20px] mb-[10px]">
-                                <a href="blog.html"
-                                    class="text-[#fff] group-hover:text-[#fa5d72] transition ease-in-out duration-300">Helpful
-                                    tips for become a successful designer</a>
+
+                            <a class="theme-btn-s2" href="assets/cv/fedi-hmida-cv.pdf" download="Fedi-Hmida-CV.pdf">
+                                    Download CV
+                                </a>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+
+        <!-- start sevice -->
+        <section class="bg-[#070640] pt-[110px] pb-[40px]">
+    <div class="wraper">
+        <h2 class="text-[70px] md:text-[45px] sm:text-[30px] mb-[50px] 
+            text-white font-bold base-font text-center">Services</h2>
+        <div class="grid grid-cols-12 gap-8 lg:gap-3">
+
+            <!-- Mobile App -->
+            <div class="col-span-6 md:col-span-12 sm:col-span-12">
+                <div class="mb-[60px]">
+                    <div class="flex items-center justify-centert sm:block">
+                        <div class="mr-8 sm:mr-0 sm:mb-8 w-[200px] h-[184px] text-center leading-[184px]
+                            bg-[url('../images/wpo-service/shape.html')] bg-no-repeat bg-center">
+                            <i class="text-white text-[60px] ml-[20px] fas fa-mobile-alt"></i>
+                        </div>
+                        <div class="max-w-[300px] lg:max-w-[200px] md:max-w-[500px] sm:max-w-full">
+                            <h2 class="text-white text-[40px] mb-[20px] leading-[55px] font-bold">
+                                Mobile <br> App
                             </h2>
-                            <a href="blog.html" class="text-[#fa5d72] font-normal text-[15px]">Read More...</a>
+                            <p class="text-white text-[15px] leading-[30px]">
+                                Cross-platform mobile apps built using Flutter for responsive and modern experiences.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Web Development -->
+            <div class="col-span-6 md:col-span-12 sm:col-span-12">
+                <div class="mb-[60px]">
+                    <div class="flex items-center justify-centert sm:block">
+                        <div class="mr-8 sm:mr-0 sm:mb-8 w-[200px] h-[184px] text-center leading-[184px]
+                            bg-[url('../images/wpo-service/shape-2.html')] bg-no-repeat bg-center">
+                            <i class="text-white text-[60px] ml-[20px] fas fa-code"></i>
+                        </div>
+                        <div class="max-w-[300px] lg:max-w-[200px] md:max-w-[500px] sm:max-w-full">
+                            <h2 class="text-white text-[40px] mb-[20px] leading-[55px] font-bold">
+                                Web <br> Development
+                            </h2>
+                            <p class="text-white text-[15px] leading-[30px]">
+                                Dynamic websites and full-stack apps using Symfony, HTML, CSS, and JavaScript.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Machine Learning -->
+            <div class="col-span-6 md:col-span-12 sm:col-span-12">
+                <div class="mb-[60px]">
+                    <div class="flex items-center justify-centert sm:block">
+                        <div class="mr-8 sm:mr-0 sm:mb-8 w-[200px] h-[184px] text-center leading-[184px]
+                            bg-[url('../images/wpo-service/shape-3.html')] bg-no-repeat bg-center">
+                            <i class="text-white text-[60px] ml-[20px] fas fa-brain"></i>
+                        </div>
+                        <div class="max-w-[300px] lg:max-w-[200px] md:max-w-[500px] sm:max-w-full">
+                            <h2 class="text-white text-[40px] mb-[20px] leading-[55px] font-bold">
+                                ML <br> Prototyping
+                            </h2>
+                            <p class="text-white text-[15px] leading-[30px]">
+                                Applying KNN, Linear Regression, Decision Trees & K-Means for data analysis & predictions.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Agile Project Support -->
+            <div class="col-span-6 md:col-span-12 sm:col-span-12">
+                <div class="mb-[60px]">
+                    <div class="flex items-center justify-centert sm:block">
+                        <div class="mr-8 sm:mr-0 sm:mb-8 w-[200px] h-[184px] text-center leading-[184px]
+                            bg-[url('../images/wpo-service/shape-4.html')] bg-no-repeat bg-center">
+                            <i class="text-white text-[60px] ml-[20px] fas fa-network-wired"></i>
+                        </div>
+                        <div class="max-w-[300px] lg:max-w-[200px] md:max-w-[500px] sm:max-w-full">
+                            <h2 class="text-white text-[40px] mb-[20px] leading-[55px] font-bold">
+                                Agile <br> Support
+                            </h2>
+                            <p class="text-white text-[15px] leading-[30px]">
+                                Delivering projects through Scrum, Kanban, and Scrumban for structured collaboration.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+        <!-- start project-section -->
+        <section class="bg-[#070640] pt-[110px] pb-[40px]">
+            <div class="wraper">
+                <h2 class="text-[70px] md:text-[45px] sm:text-[30px] mb-[50px] 
+                    text-white font-bold base-font text-center">Recent Projects</h2>
+                <div class="grid grid-cols-12 gap-8 lg:gap-3">
+                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                        <div class="bg-[#0c0b44] border-[1px] border-[#464646] rounded-[5px] mb-[60px] overflow-hidden">
+                            <img src="assets/images/logo_1555.png" alt="">
+                            <div class="p-[30px]">
+                                <h3 class="text-[24px] text-[#fff] font-bold mb-[15px]">SolarFlow App</h3>
+                                <p class="text-[#8c8b8b] mb-[20px]">A Flutter mobile application for solar energy management and monitoring.</p>
+                                <a href="project-single.html" class="theme-btn">View Details</a>
+                            </div>
                         </div>
                     </div>
                     <div class="col-span-4 md:col-span-6 sm:col-span-12">
-                        <div class="relative overflow-hidden">
-                            <img class="rounded-[5px] w-full" src="assets/images/blog/3.jpg" alt="">
+                        <div class="bg-[#0c0b44] border-[1px] border-[#464646] rounded-[5px] mb-[60px] overflow-hidden">
+                            <img src="assets/images/logo3.png" alt="">
+                            <div class="p-[30px]">
+                                <h3 class="text-[24px] text-[#fff] font-bold mb-[15px]">Onboardify</h3>
+                                <p class="text-[#8c8b8b] mb-[20px]">A gamified onboarding platform built with JavaFX & Symfony.</p>
+                                <a href="Onboardify.html" class="theme-btn">View Details</a>
+                            </div>
                         </div>
-                        <div class="pt-[30px]">
-                            <ul class="flex">
-                                <li class="text-[#c7c6c6]"><span class="text-[#3c7dd9] block pr-[5px]">By Admin</span>
-                                </li>
-                                <li class="text-[#c7c6c6]">. Nov 24, 2020</li>
-                            </ul>
-                            <h2 class="font-bold text-[24px] text-[#fff] leading-[40px] group mt-[20px] mb-[10px]">
-                                <a href="blog.html"
-                                    class="text-[#fff] group-hover:text-[#fa5d72] transition ease-in-out duration-300">Helpful
-                                    tips for become a successful designer</a>
-                            </h2>
-                            <a href="blog.html" class="text-[#fa5d72] font-normal text-[15px]">Read More...</a>
+                    </div>
+                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                        <div class="bg-[#0c0b44] border-[1px] border-[#464646] rounded-[5px] mb-[60px] overflow-hidden">
+                            <img src="assets/images/FlutterFlow.png" alt="">
+                            <div class="p-[30px]">
+                                <h3 class="text-[24px] text-[#fff] font-bold mb-[15px]">Pro-Link</h3>
+                                <p class="text-[#8c8b8b] mb-[20px]">A Flutter mobile application for professional networking.</p>
+                                <a href="Pro-Link.html" class="theme-btn">View Details</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- start footer -->
-        <footer class="bg-[#121151]">
+        <!-- start contact-section -->
+        <section class="bg-[#070640] pt-[110px] pb-[40px]">
+            <div class="wraper">
+                <h2 class="text-[70px] md:text-[45px] sm:text-[30px] mb-[50px] 
+                    text-white font-bold base-font text-center fade-in-fast">Let's Talk</h2>
+                <div class="grid grid-cols-12 gap-8 lg:gap-3">
+                    <div class="col-span-1 md:col-span-12"></div>
+                    <div class="col-span-5 md:col-span-12 sm:col-span-12">
+                        <div class="bg-[#0c0b44] border-[1px] border-[#464646] rounded-[5px] mb-[60px] pl-[60px] pr-[60px] pt-[60px] pb-[30px] sm:p-[25px] shadow-[0_5px_15px_0_rgba(68,68,68,0.1)] slide-in-fast">
+                            <h2 class="text-center text-[30px] xl:text-[18px] md:text-[13px] sm:text-[12px] text-white font-bold mb-[15px] sm:pt-[20px]">
+                                Get In Touch
+                            </h2>
+                            <form method="post" class="contact-validation-active" id="wpo-contact-form">
+                                <div class="w-[calc(50%-15px)] float-left sm:w-full sm:float-none mb-[15px]">
+                                    <input type="text"
+                                        class="form-control transition-all placeholder-[#8c8b8b] focus:outline-0 focus:shadow-none focus:bg-transparent base-font text-white text-[14px] pr-[12px] py-[6px] bg-transparent w-full h-[50px] border-[0px] border-b-[1px] border-[#464646] hover:border-[#fe3e57]"
+                                        name="name" id="name" placeholder="First Name">
+                                </div>
+                                <div class="w-[calc(50%-15px)] float-left sm:w-full sm:float-none sm:ml-0 ml-[30px] mb-[15px]">
+                                    <input type="text"
+                                        class="form-control transition-all placeholder-[#8c8b8b] focus:outline-0 focus:shadow-none focus:bg-transparent base-font text-white text-[14px] pr-[12px] py-[6px] bg-transparent w-full h-[50px] border-[0px] border-b-[1px] border-[#464646] hover:border-[#fe3e57]"
+                                        name="name2" id="name2" placeholder="Last Name">
+                                </div>
+                                <div class="clearfix mb-[15px]">
+                                    <input type="email"
+                                        class="form-control transition-all placeholder-[#8c8b8b] focus:outline-0 focus:shadow-none focus:bg-transparent base-font text-white text-[14px] pr-[12px] py-[6px] bg-transparent w-full h-[50px] border-[0px] border-b-[1px] border-[#464646] hover:border-[#fe3e57]"
+                                        name="email" id="email" placeholder="Email">
+                                </div>
+                                <div class="mb-[15px]">
+                                    <input type="text"
+                                        class="form-control transition-all placeholder-[#8c8b8b] focus:outline-0 focus:shadow-none focus:bg-transparent base-font text-white text-[14px] pr-[12px] py-[6px] bg-transparent w-full h-[50px] border-[0px] border-b-[1px] border-[#464646] hover:border-[#fe3e57]"
+                                        name="subject" id="subject" placeholder="Subject">
+                                </div>
+                                <div class="mb-[15px]">
+                                    <textarea
+                                        class="form-control transition-all placeholder-[#8c8b8b] focus:outline-0 focus:shadow-none focus:bg-transparent base-font text-white text-[14px] pr-[12px] py-[6px] bg-transparent w-full h-[175px] sm:h-[90px] border-[0px] border-b-[1px] border-[#464646] hover:border-[#fe3e57]"
+                                        name="note" id="note" placeholder="Case Description..."></textarea>
+                                </div>
+                                <div class="submit-area w-full text-center mt-[33px] mb-[30px]">
+                                    <button type="submit" class="theme-btn submit-btn glow-effect">Send Message</button>
+                                    <div id="loader">
+                                        <i class="ti-reload"></i>
+                                    </div>
+                                </div>
+                                <div class="clearfix error-handling-services">
+                                    <div id="success">Thank you</div>
+                                    <div id="error"> Error occurred while sending email. Please try again later.</div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-span-5 md:col-span-8 sm:col-span-12">
+                        <!-- Address -->
+                        <div class="pl-[20px] pr-[50px] sm:p-0">
+                            <div class="py-[30px] px-[40px] sm:py-[20px] sm:px-[20px] mb-[30px] bg-[#0c0b44] border-[1px] border-[#464646] rounded-[5px] shadow-[0_10px_40px_0_rgba(50,50,50,0.1)] scale-in-fast">
+                                <h2 class="text-[24px] sm:text-[20px] text-white font-bold mb-[15px] heading-font">
+                                    Tunis, Tunisia
+                                </h2>
+                                <div class="flex items-center">
+                                    <div class="w-[90px] h-[90px] bg-[#070640] flex items-center justify-center rounded-full text-center mr-[20px] shadow-[0_10px_40px_0_rgba(50,50,50,0.1)] floating">
+                                        <i class="fas fa-map-marker-alt text-[40px] text-[#fe3e57]"></i>
+                                    </div>
+                                    <div>
+                                        <span class="text-[#8c8b8b] text-[18px] font-light">Office Address</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="pl-[20px] pr-[50px] sm:p-0">
+                            <div class="py-[30px] px-[40px] sm:py-[20px] sm:px-[20px] mb-[30px] bg-[#0c0b44] border-[1px] border-[#464646] rounded-[5px] shadow-[0_10px_40px_0_rgba(50,50,50,0.1)] scale-in-fast" style="animation-delay: 0.1s;">
+                                <h2 class="text-[24px] sm:text-[20px] text-white font-bold mb-[15px] heading-font">
+                                    fedi.hmida@ieee.org
+                                </h2>
+                                <div class="flex items-center">
+                                    <div class="w-[90px] h-[90px] bg-[#070640] flex items-center justify-center rounded-full text-center mr-[20px] shadow-[0_10px_40px_0_rgba(50,50,50,0.1)] floating">
+                                        <i class="fas fa-envelope text-[40px] text-[#fe3e57]"></i>
+                                    </div>
+                                    <div>
+                                        <span class="text-[#8c8b8b] text-[18px] font-light">Official Mail</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Phone -->
+                        <div class="pl-[20px] pr-[50px] sm:p-0">
+                            <div class="py-[30px] px-[40px] sm:py-[20px] sm:px-[20px] mb-[30px] md:mb-0 bg-[#0c0b44] border-[1px] border-[#464646] rounded-[5px] shadow-[0_10px_40px_0_rgba(50,50,50,0.1)] scale-in-fast" style="animation-delay: 0.2s;">
+                                <h2 class="text-[24px] sm:text-[20px] text-white font-bold mb-[15px] heading-font">
+                                    +216 93 722 130
+                                </h2>
+                                <div class="flex items-center">
+                                    <div class="w-[90px] h-[90px] bg-[#070640] flex items-center justify-center rounded-full text-center mr-[20px] shadow-[0_10px_40px_0_rgba(50,50,50,0.1)] floating">
+                                        <i class="fas fa-phone-alt text-[40px] text-[#fe3e57]"></i>
+                                    </div>
+                                    <div>
+                                        <span class="text-[#8c8b8b] text-[18px] font-light">Official Phone</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-1 md:col-span-12"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- start footer-2 -->
+        <footer class="bg-[#070640]">
             <div class="wraper">
                 <div class="py-[50px]">
                     <div class="grid grid-cols-12 gap-8 lg:gap-3">
@@ -1089,16 +560,16 @@ impactful, solution-oriented software.
                             <div class="mt-[35px] text-center">
                                 <ul class="mb-[10px]">
                                     <li class="inline-block"><a
-                                            class="text-[#fff] px-[30px] sm:px-[10px] py-[10px] text-[15px] font-normal"
+                                            class="text-white px-[30px] sm:px-[10px] py-[10px] text-[15px] font-normal"
                                             href="about.html">About</a></li>
                                     <li class="inline-block"><a
-                                            class="text-[#fff] px-[30px] sm:px-[10px] py-[10px] text-[15px] font-normal"
+                                            class="text-white px-[30px] sm:px-[10px] py-[10px] text-[15px] font-normal"
                                             href="protfolio.html">Portfolio</a></li>
                                     <li class="inline-block"><a
-                                            class="text-[#fff] px-[30px] sm:px-[10px] py-[10px] text-[15px] font-normal"
+                                            class="text-white px-[30px] sm:px-[10px] py-[10px] text-[15px] font-normal"
                                             href="blog.html">Blog</a></li>
                                     <li class="inline-block"><a
-                                            class="text-[#fff] pl-[30px] sm:px-[10px] py-[10px] pr-[0px] text-[15px] font-normal"
+                                            class="text-white pl-[30px] sm:px-[10px] py-[10px] pr-[0px] text-[15px] font-normal"
                                             href="contact.html">Contact</a></li>
                                 </ul>
                             </div>
@@ -1134,18 +605,16 @@ impactful, solution-oriented software.
         </ul>
     </div>
 </div>
+
                     </div>
                 </div>
             </div>
-            <div class="py-[30px] bg-[#0d0c4c] text-center">
-                <span class="text-[#fff]">
-                     © 2025 Fedi Hmida . All rights reserved
+            <div class="py-[30px] bg-[#070640] text-center">
+                <span class="text-white">
+                    © 2025 Fedi Hmida .   All rights reserved
                 </span>
             </div>
         </footer>
-
-
-
 
 
     </div>
@@ -1162,52 +631,20 @@ impactful, solution-oriented software.
     <script src="assets/js/moving-animation.js"></script>
     <!-- Custom script for this template -->
     <script src="assets/js/script.js"></script>
-
+    
     <script>
-        // Enhanced Particles.js configuration
+        // Initialize particles
         particlesJS('particles-js', {
             particles: {
-                number: {
-                    value: 100,
-                    density: {
-                        enable: true,
-                        value_area: 800
-                    }
-                },
-                color: {
-                    value: ['#fe3e57', '#ff8c2f', '#54faae', '#39c4ff']
-                },
-                shape: {
-                    type: ['circle', 'triangle'],
-                    stroke: {
-                        width: 0,
-                        color: '#000000'
-                    }
-                },
-                opacity: {
-                    value: 0.6,
-                    random: true,
-                    animation: {
-                        enable: true,
-                        speed: 1,
-                        opacity_min: 0.1,
-                        sync: false
-                    }
-                },
-                size: {
-                    value: 4,
-                    random: true,
-                    animation: {
-                        enable: true,
-                        speed: 2,
-                        size_min: 0.1,
-                        sync: false
-                    }
-                },
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: '#fe3e57' },
+                shape: { type: 'circle' },
+                opacity: { value: 0.5, random: false },
+                size: { value: 3, random: true },
                 line_linked: {
                     enable: true,
                     distance: 150,
-                    color: '#ffffff',
+                    color: '#fe3e57',
                     opacity: 0.4,
                     width: 1
                 },
@@ -1215,54 +652,32 @@ impactful, solution-oriented software.
                     enable: true,
                     speed: 2,
                     direction: 'none',
-                    random: true,
+                    random: false,
                     straight: false,
                     out_mode: 'out',
-                    bounce: false,
-                    attract: {
-                        enable: true,
-                        rotateX: 600,
-                        rotateY: 1200
-                    }
+                    bounce: false
                 }
             },
             interactivity: {
                 detect_on: 'canvas',
                 events: {
-                    onhover: {
-                        enable: true,
-                        mode: 'repulse'
-                    },
-                    onclick: {
-                        enable: true,
-                        mode: 'push'
-                    },
+                    onhover: { enable: true, mode: 'repulse' },
+                    onclick: { enable: true, mode: 'push' },
                     resize: true
                 },
                 modes: {
-                    repulse: {
-                        distance: 100,
-                        duration: 0.4
-                    },
-                    push: {
-                        particles_nb: 4
-                    }
+                    repulse: { distance: 100, duration: 0.4 },
+                    push: { particles_nb: 4 }
                 }
             },
             retina_detect: true
         });
 
-        // Enhanced Typed.js configuration
-        new Typed('#typing-text', {
-            strings: ['Software Engineering Student'],
-            typeSpeed: 50,
-            backSpeed: 30,
-            backDelay: 2000,
-            loop: true,
-            showCursor: true,
-            cursorChar: '|',
-            autoInsertCss: true
-        });
+        // Fast scroll-triggered animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -20px 0px'
+        };
 
         // Initialize GSAP with enhanced configurations
         gsap.registerPlugin(ScrollTrigger);
@@ -1281,118 +696,37 @@ impactful, solution-oriented software.
                 delay: i * 0.02,
                 ease: 'power3.out'
             });
+        }, observerOptions);
+
+        // Observe elements with fast animation classes
+        document.querySelectorAll('.fade-in-fast, .slide-in-fast, .scale-in-fast').forEach(el => {
+            // Set initial state
+            el.style.opacity = '0';
+            if (el.classList.contains('fade-in-fast')) {
+                el.style.transform = 'translateY(20px)';
+            }
+            if (el.classList.contains('slide-in-fast')) {
+                el.style.transform = 'translateX(-30px)';
+            }
+            if (el.classList.contains('scale-in-fast')) {
+                el.style.transform = 'scale(0.8)';
+            }
+            observer.observe(el);
         });
 
-        // Enhanced skill item animations
-        gsap.utils.toArray('.skill-item').forEach((skill, i) => {
-            gsap.from(skill, {
-                scrollTrigger: {
-                    trigger: skill,
-                    start: 'top 80%'
-                },
-                x: -50,
-                opacity: 0,
-                duration: 0.8,
-                delay: i * 0.1,
-                ease: 'power2.out'
-            });
-        });
-
-        // Enhanced portfolio item animations
-        gsap.utils.toArray('.portfolio-item').forEach((item, i) => {
-            gsap.from(item, {
-                scrollTrigger: {
-                    trigger: item,
-                    start: 'top 80%'
-                },
-                y: 100,
-                opacity: 0,
-                duration: 1,
-                delay: i * 0.2,
-                ease: 'power3.out'
-            });
-        });
-
-        // Add enhanced animations to elements
-        document.querySelectorAll('.fas, .fab').forEach(icon => {
-            icon.classList.add('icon-float');
-        });
-
-        document.querySelectorAll('.theme-btn').forEach(btn => {
-            btn.classList.add('enhanced-btn');
-        });
-
-        document.querySelectorAll('.skill-item').forEach(item => {
-            item.classList.add('card-hover');
-        });
-
-        document.querySelectorAll('h2').forEach(heading => {
-            heading.classList.add('glow-text');
-        });
-
-        // Enhanced smooth scroll with offset
+        // Smooth scroll behavior
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                const headerOffset = 80;
-                const elementPosition = target.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                window.scrollTo({
-                    top: offsetPosition,
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
             });
         });
-
-        // Enhanced progress bar animation with intersection observer
-        const progressBars = document.querySelectorAll('.progress-bar');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const progress = entry.target.getAttribute('data-progress');
-                    gsap.to(entry.target, {
-                        width: progress + '%',
-                        duration: 1.5,
-                        ease: 'power2.out'
-                    });
-                }
-            });
-        }, { 
-            threshold: 0.5,
-            rootMargin: '0px'
-        });
-
-        progressBars.forEach(bar => observer.observe(bar));
-
-        // Add fade-up animation to elements
-        const fadeElements = document.querySelectorAll('.fade-up');
-        const fadeObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
-            });
-        }, {
-            threshold: 0.1,
-            rootMargin: '0px'
-        });
-
-        fadeElements.forEach(element => fadeObserver.observe(element));
-
-        // Add gradient background to sections
-        document.querySelectorAll('section').forEach(section => {
-            section.classList.add('gradient-bg');
-        });
-
-        // Add underline animation to navigation links
-        document.querySelectorAll('nav a').forEach(link => {
-            link.classList.add('underline-animation');
-        });
     </script>
+</div>
 </body>
 
 
-<!-- Mirrored from wpocean.com/html/tf/folio-tailwind/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 06 Mar 2025 04:12:46 GMT -->
+<!-- Mirrored from wpocean.com/html/tf/folio-tailwind/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 06 Mar 2025 04:13:18 GMT -->
 </html>
