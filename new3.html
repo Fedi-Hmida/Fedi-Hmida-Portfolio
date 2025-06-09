@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="wpOceans">
+    <link rel="shortcut icon" type="image/png" href="assets/images/favicon.png">
+    <title>IEEE TSYP Congress Experience</title>
+    <link href="assets/css/themify-icons.css" rel="stylesheet">
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/css/flaticon.css" rel="stylesheet">
+    <link href="assets/css/magnific-popup.css" rel="stylesheet">
+    <link href="assets/css/animate.css" rel="stylesheet">
+    <link href="assets/css/owl.carousel.css" rel="stylesheet">
+    <link href="assets/css/owl.theme.css" rel="stylesheet">
+    <link href="assets/css/slick.css" rel="stylesheet">
+    <link href="assets/css/slick-theme.css" rel="stylesheet">
+    <link href="assets/css/swiper.min.css" rel="stylesheet">
+    <link href="assets/css/owl.transitions.css" rel="stylesheet">
+    <link href="assets/css/jquery.fancybox.css" rel="stylesheet">
+    <link href="assets/css/odometer-theme-default.css" rel="stylesheet">
+    <link href="assets/css/global.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1a237e;
+            --secondary-color: #283593;
+            --accent-color: #05608a;
+            --accent-hover: #81d4fa;
+            --text-primary: #ffffff;
+            --text-secondary: #e3f2fd;
+            --glass-bg: rgba(26, 35, 126, 0.85);
+            --glass-border: rgba(79, 195, 247, 0.25);
+            --glass-shadow: 0 8px 32px 0 rgba(26, 35, 126, 0.4);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            box-shadow: var(--glass-shadow);
+            transition: var(--transition);
+            overflow: hidden;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 45px 0 rgba(26, 35, 126, 0.6);
+            border-color: var(--accent-color);
+        }
+
+        .btn-3d {
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
+            border: none;
+            border-radius: 16px;
+            padding: 14px 28px;
+            color: var(--text-primary);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transform-style: preserve-3d;
+            transform: perspective(1000px);
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(5, 96, 138, 0.3);
+        }
+
+        .btn-3d:hover {
+            transform: perspective(1000px) translateZ(20px);
+            box-shadow: 0 8px 25px rgba(5, 96, 138, 0.4);
+            background: linear-gradient(135deg, var(--accent-hover), var(--accent-color));
+        }
+
+        .gradient-border {
+            position: relative;
+            border-radius: 30px;
+            padding: 2px;
+            background: linear-gradient(45deg, var(--accent-color), var(--accent-hover), var(--accent-color));
+            background-size: 200% 200%;
+            animation: borderRotate 6s linear infinite;
+        }
+
+        @keyframes borderRotate {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .float-element {
+            animation: float 8s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-25px) rotate(1deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        .interactive-card {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            border-radius: 30px;
+            transition: var(--transition);
+        }
+
+        .interactive-card img {
+            transition: var(--transition);
+        }
+
+        .interactive-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .interactive-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
+                                      rgba(255, 255, 255, 0.15) 0%,
+                                      transparent 60%);
+            opacity: 0;
+            transition: opacity 0.4s;
+            z-index: 1;
+        }
+
+        .interactive-card:hover::before {
+            opacity: 1;
+        }
+
+        .icon-wrapper {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            background: rgba(79, 195, 247, 0.15);
+            border: 1px solid var(--glass-border);
+            transition: var(--transition);
+            overflow: hidden;
+        }
+
+        .icon-wrapper::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--accent-color), var(--accent-hover));
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .icon-wrapper:hover {
+            transform: rotate(360deg) scale(1.1);
+            border-color: var(--accent-color);
+        }
+
+        .icon-wrapper:hover::before {
+            opacity: 0.2;
+        }
+
+        .icon-wrapper i {
+            font-size: 28px;
+            color: var(--accent-color);
+            transition: var(--transition);
+            position: relative;
+            z-index: 1;
+        }
+
+        .icon-wrapper:hover i {
+            color: var(--accent-hover);
+            transform: scale(1.1);
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 20px;
+            background: rgba(26, 35, 126, 0.7);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-list li::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--accent-color);
+            transform: scaleY(0);
+            transition: var(--transition);
+        }
+
+        .feature-list li:hover {
+            transform: translateX(15px);
+            background: rgba(79, 195, 247, 0.2);
+            border-color: var(--accent-color);
+        }
+
+        .feature-list li:hover::before {
+            transform: scaleY(1);
+        }
+
+        .feature-list li i {
+            margin-right: 16px;
+            color: var(--accent-color);
+            transition: var(--transition);
+            font-size: 24px;
+        }
+
+        .feature-list li:hover i {
+            transform: scale(1.2);
+            color: var(--accent-hover);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--text-primary);
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            line-height: 1.3;
+        }
+
+        .gradient-text {
+            background: linear-gradient(45deg, var(--accent-color), var(--accent-hover));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            font-weight: 800;
+        }
+
+        .section-heading {
+            background: linear-gradient(45deg, var(--accent-color), var(--accent-hover));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            font-weight: 700;
+        }
+
+        .section-transition {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .section-transition.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            padding: 30px;
+        }
+
+        p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .header-section {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 20px 0;
+        }
+
+        footer {
+            background: rgba(13, 12, 76, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .social-icon {
+            transition: var(--transition);
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .social-icon:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- start page-wrapper -->
+    <div class="page-wrapper">
+        <!-- start header-section -->
+        <section class="glass-card" style="position: fixed; top: 0; left: 0; right: 0; z-index: 1000; margin: 20px; padding: 20px;">
+            <div class="wraper">
+                <div class="flex items-center justify-between">
+                    <div class="w-[150px] md:w-[200px] sm:w-[150px] col:w-[120px]">
+                        <a class="flex items-center md:justify-center text-white" href="index.html">
+                            <img class="mr-[10px]" src="assets/images/logo.png" alt="">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Details Section -->
+        <section style="padding-top: 180px; padding-bottom: 100px;">
+            <div class="wraper">
+                <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 32px; align-items: start;">
+                    <!-- Project Main Content -->
+                    <div class="section-transition">
+                        <div class="glass-card gradient-border" style="padding: 32px; margin-bottom: 32px;">
+                            <div class="float-element">
+                                <h2 style="font-size: 3.5rem; font-weight: 800; margin-bottom: 24px; line-height: 1.2; letter-spacing: -0.5px;" class="gradient-text">IEEE TSYP Congress Experience</h2>
+                                <p style="color: var(--text-secondary); font-size: 1.2rem; margin-bottom: 32px; max-width: 800px;">I am excited to share my experience participating in the 12th edition of the IEEE Tunisian Student and Young Professional TSYP Congress (TSYP12).</p>
+                            </div>
+
+                            <!-- Event Overview -->
+                            <div class="glass-card" style="margin-bottom: 32px; padding: 24px;">
+                                <div class="flex items-center margin-bottom: 16px;">
+                                    <div class="icon-wrapper">
+                                        <i class="fa-solid fa-calendar-check"></i>
+                                    </div>
+                                    <h3 style="font-size: 1.3rem; font-weight: 600; margin-left: 16px;" class="section-heading">Event Overview</h3>
+                                </div>
+                                <p style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 18px;">Being part of this incredible event allowed me to engage with passionate IEEE members, exchange valuable ideas, and delve into inspiring discussions about advancing innovation, diversity, and inclusion in engineering.</p>
+                                
+                                <!-- Event Images -->
+                                <div class="project-grid" style="margin-top: 24px;">
+                                    <div class="glass-card interactive-card" style="padding: 0; overflow: hidden;">
+                                        <img src="assets/images/Fedi.jpg" alt="IEEE TSYP Congress" style="width: 100%; height: auto; object-fit: cover;">
+                                    </div>
+                                    <div class="glass-card interactive-card" style="padding: 0; overflow: hidden;">
+                                        <img src="assets/images/ts.png" alt="IEEE TSYP Congress" style="width: 100%; height: auto; object-fit: cover;">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Key Highlights -->
+                            <div class="glass-card" style="margin-bottom: 32px; padding: 24px;">
+                                <div class="flex items-center margin-bottom: 16px;">
+                                    <div class="icon-wrapper">
+                                        <i class="fa-solid fa-star"></i>
+                                    </div>
+                                    <h3 style="font-size: 1.3rem; font-weight: 600; margin-left: 16px;" class="section-heading">Key Highlights</h3>
+                                </div>
+                                <ul class="feature-list">
+                                    <li>
+                                        <i class="fa-solid fa-users"></i>
+                                        <span>Networking with IEEE Members</span>
+                                    </li>
+                                    <li>
+                                        <i class="fa-solid fa-lightbulb"></i>
+                                        <span>Innovation Discussions</span>
+                                    </li>
+                                    <li>
+                                        <i class="fa-solid fa-handshake"></i>
+                                        <span>Diversity & Inclusion Focus</span>
+                                    </li>
+                                    <li>
+                                        <i class="fa-solid fa-graduation-cap"></i>
+                                        <span>Professional Development</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sidebar -->
+                    <div class="section-transition">
+                        <div class="glass-card" style="padding: 32px; position: sticky; top: 32px;">
+                            <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 32px;" class="section-heading">
+                                <i class="fa-solid fa-info-circle" style="margin-right: 12px;"></i>Event Details
+                            </h3>
+                            <div class="feature-list">
+                                <li>
+                                    <i class="fa-solid fa-calendar"></i>
+                                    <span>Event: IEEE TSYP Congress</span>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-hashtag"></i>
+                                    <span>Edition: 12th (TSYP12)</span>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-map-marker-alt"></i>
+                                    <span>Location: Tunisia</span>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-users"></i>
+                                    <span>Category: Professional Development</span>
+                                </li>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-[#121151]">
+            <div class="wraper">
+                <div class="py-[50px]">
+                    <div class="grid grid-cols-12 gap-8 lg:gap-3">
+                        <div class="col-span-2 md:col-span-4 sm:col-span-12">
+                            <div class="mt-[20px] sm:mt-[0px]">
+                                <img class="sm:mx-auto" src="assets/images/logo.png" alt="">
+                            </div>
+                        </div>
+                        <div class="col-span-6 md:col-span-8 sm:col-span-12">
+                            <div class="mt-[35px] text-center">
+                                <ul class="mb-[10px]">
+                                    <li class="inline-block">
+                                        <a class="text-[#fff] px-[30px] sm:px-[10px] py-[10px] text-[15px] font-normal" href="about.html">About</a>
+                                    </li>
+                                    <li class="inline-block">
+                                        <a class="text-[#fff] px-[30px] sm:px-[10px] py-[10px] text-[15px] font-normal" href="protfolio.html">Portfolio</a>
+                                    </li>
+                                    <li class="inline-block">
+                                        <a class="text-[#fff] px-[30px] sm:px-[10px] py-[10px] text-[15px] font-normal" href="blog.html">Blog</a>
+                                    </li>
+                                    <li class="inline-block">
+                                        <a class="text-[#fff] pl-[30px] sm:px-[10px] py-[10px] pr-[0px] text-[15px] font-normal" href="contact.html">Contact</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-span-4 md:col-span-12 sm:col-span-12">
+                            <div class="text-right md:text-center md:mt-[30px]">
+                                <ul class="flex items-end md:items-center md:w-full md:justify-center">
+                                    <li class="mr-[30px]">
+                                        <a href="https://www.facebook.com/fadi.hmidahmida" target="_blank" rel="noopener" class="block w-[80px] h-[80px] leading-[85px] sm:w-[60px] sm:h-[60px] sm:leading-[65px] border border-[#3b5998] text-center rounded-[50%] social-icon">
+                                            <i class="fab fa-facebook-f text-[#3b5998] text-[30px] sm:text-[20px]"></i>
+                                        </a>
+                                    </li>
+                                    <li class="mr-[30px]">
+                                        <a href="https://www.linkedin.com/in/fedi-hmida" target="_blank" rel="noopener" class="block w-[80px] h-[80px] leading-[85px] sm:w-[60px] sm:h-[60px] sm:leading-[65px] border border-[#0077b5] text-center rounded-[50%] social-icon">
+                                            <i class="fab fa-linkedin-in text-[#0077b5] text-[30px] sm:text-[20px]"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.instagram.com/fedi.hmida/" target="_blank" rel="noopener" class="block w-[80px] h-[80px] leading-[85px] sm:w-[60px] sm:h-[60px] sm:leading-[65px] border border-[#e1306c] text-center rounded-[50%] social-icon">
+                                            <i class="fab fa-instagram text-[#e1306c] text-[30px] sm:text-[20px]"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="py-[30px] bg-[#0d0c4c] text-center">
+                <span class="text-[#fff]">© 2025 Fedi Hmida . All rights reserved</span>
+            </div>
+        </footer>
+    </div>
+
+    <!-- All JavaScript files -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/modernizr.custom.js"></script>
+    <script src="assets/js/jquery.dlmenu.js"></script>
+    <script src="assets/js/jquery-plugin-collection.js"></script>
+    <script src="assets/js/tw-elements.umd.min.js"></script>
+    <script src="assets/js/moving-animation.js"></script>
+    <script src="assets/js/script.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            mirror: true
+        });
+
+        // Interactive card effect
+        document.querySelectorAll('.interactive-card').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = ((e.clientX - rect.left) / rect.width) * 100;
+                const y = ((e.clientY - rect.top) / rect.height) * 100;
+                card.style.setProperty('--mouse-x', `${x}%`);
+                card.style.setProperty('--mouse-y', `${y}%`);
+            });
+        });
+
+        // Section transitions
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section-transition').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

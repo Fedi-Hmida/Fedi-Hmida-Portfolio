@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="wpOceans">
+    <link rel="shortcut icon" type="image/png" href="assets/images/favicon.png">
+    <title>SolarFlow App - Project Details</title>
+    <link href="assets/css/themify-icons.css" rel="stylesheet">
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/css/flaticon.css" rel="stylesheet">
+    <link href="assets/css/magnific-popup.css" rel="stylesheet">
+    <link href="assets/css/animate.css" rel="stylesheet">
+    <link href="assets/css/owl.carousel.css" rel="stylesheet">
+    <link href="assets/css/owl.theme.css" rel="stylesheet">
+    <link href="assets/css/slick.css" rel="stylesheet">
+    <link href="assets/css/slick-theme.css" rel="stylesheet">
+    <link href="assets/css/swiper.min.css" rel="stylesheet">
+    <link href="assets/css/owl.transitions.css" rel="stylesheet">
+    <link href="assets/css/jquery.fancybox.css" rel="stylesheet">
+    <link href="assets/css/odometer-theme-default.css" rel="stylesheet">
+    <link href="assets/css/global.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1a237e;
+            --secondary-color: #283593;
+            --accent-color: #05608a;
+            --accent-hover: #81d4fa;
+            --text-primary: #ffffff;
+            --text-secondary: #e3f2fd;
+            --glass-bg: rgba(26, 35, 126, 0.9);
+            --glass-border: rgba(79, 195, 247, 0.2);
+            --glass-shadow: 0 8px 32px 0 rgba(26, 35, 126, 0.4);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism Card */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            box-shadow: var(--glass-shadow);
+            transition: var(--transition);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 12px 40px 0 rgba(26, 35, 126, 0.5);
+            border-color: var(--accent-color);
+        }
+
+        /* 3D Button */
+        .btn-3d {
+            background: var(--accent-color);
+            border: none;
+            border-radius: 12px;
+            padding: 12px 24px;
+            color: var(--primary-color);
+            font-weight: 600;
+            transform-style: preserve-3d;
+            transform: perspective(1000px);
+            transition: var(--transition);
+        }
+
+        .btn-3d:hover {
+            transform: perspective(1000px) translateZ(20px);
+            background: var(--accent-hover);
+            box-shadow: 0 10px 20px rgba(79, 195, 247, 0.4);
+        }
+
+        /* Animated Gradient Border */
+        .gradient-border {
+            position: relative;
+            border-radius: 24px;
+            padding: 1px;
+            background: linear-gradient(45deg, var(--accent-color), var(--accent-hover));
+            animation: borderRotate 4s linear infinite;
+        }
+
+        @keyframes borderRotate {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Floating Elements */
+        .float-element {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Interactive Cards */
+        .interactive-card {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .interactive-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
+                                      rgba(255, 255, 255, 0.1) 0%,
+                                      transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .interactive-card:hover::before {
+            opacity: 1;
+        }
+
+        /* Animated Icons */
+        .icon-wrapper {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: rgba(79, 195, 247, 0.1);
+            border: 1px solid var(--glass-border);
+            transition: var(--transition);
+        }
+
+        .icon-wrapper:hover {
+            transform: rotate(360deg) scale(1.1);
+            background: rgba(79, 195, 247, 0.2);
+            border-color: var(--accent-color);
+        }
+
+        .icon-wrapper i {
+            font-size: 24px;
+            color: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        .icon-wrapper:hover i {
+            color: var(--accent-hover);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--primary-color);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-color);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-hover);
+        }
+
+        /* Text Gradient */
+        .gradient-text {
+            background: linear-gradient(45deg, #2c3e50, #3498db);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        /* Section Headings Gradient */
+        .section-heading {
+            background: linear-gradient(45deg, #e74c3c, #c0392b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        /* Section Transitions */
+        .section-transition {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .section-transition.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Project Grid */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            padding: 24px;
+        }
+
+        /* Feature List */
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+            padding: 16px;
+            background: rgba(26, 35, 126, 0.7);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            transition: var(--transition);
+        }
+
+        .feature-list li:hover {
+            transform: translateX(10px);
+            background: rgba(79, 195, 247, 0.2);
+            border-color: var(--accent-color);
+        }
+
+        .feature-list li i {
+            margin-right: 12px;
+            color: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        .feature-list li:hover i {
+            transform: scale(1.1);
+            color: var(--accent-hover);
+        }
+
+        /* Text Colors */
+        p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- start page-wrapper -->
+    <div class="page-wrapper">
+        <!-- start header-section -->
+        <section class="glass-card" style="position: fixed; top: 0; left: 0; right: 0; z-index: 1000; margin: 20px; padding: 20px;">
+            <div class="wraper">
+                <div class="flex items-center justify-between">
+                    <div class="w-[150px] md:w-[200px] sm:w-[150px] col:w-[120px]">
+                        <a class="flex items-center md:justify-center text-white" href="index.html">
+                            <img class="mr-[10px]" src="assets/images/logo.png" alt="">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Details Section -->
+        <section style="padding-top: 180px; padding-bottom: 100px;">
+            <div class="wraper">
+                <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 32px; align-items: start;">
+                    <!-- Project Main Content -->
+                    <div class="section-transition">
+                        <div class="glass-card gradient-border" style="padding: 32px; margin-bottom: 32px;">
+                            <div class="float-element">
+                                <h2 style="font-size: 3.5rem; font-weight: 800; margin-bottom: 24px; line-height: 1.2; letter-spacing: -0.5px;" class="gradient-text">IEEEXtreme 18.0 Journey</h2>
+                                <p style="color: var(--text-secondary); font-size: 1.2rem; margin-bottom: 32px; max-width: 800px;">An exhilarating 24-hour coding competition that brought together 19,000+ participants worldwide, where I competed as part of Team SwampSquad.</p>
+                            </div>
+
+                            <!-- What is IEEEXtreme -->
+                            <div class="glass-card" style="margin-bottom: 32px; padding: 24px;">
+                                <div class="flex items-center margin-bottom: 16px;">
+                                    <div class="icon-wrapper">
+                                        <i class="fa-solid fa-trophy"></i>
+                                    </div>
+                                    <h3 style="font-size: 1.3rem; font-weight: 600; margin-left: 16px;" class="section-heading">The Challenge</h3>
+                                </div>
+                                <p style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 18px;">IEEEXtreme is one of the world's largest competitive programming competitions, testing participants' coding skills, teamwork, and problem-solving abilities in an intense 24-hour marathon.</p>
+                                
+                                <div class="project-grid">
+                                    <div class="glass-card interactive-card" style="padding: 24px;">
+                                        <div class="icon-wrapper">
+                                            <i class="fa-solid fa-users"></i>
+                                        </div>
+                                        <h5 style="font-size: 1.1rem; font-weight: 600; margin: 16px 0 8px 0;">Team SwampSquad</h5>
+                                        <p style="color: var(--text-secondary); font-size: 0.98rem;">Collaborating with talented teammates to solve complex programming challenges</p>
+                                    </div>
+                                    <div class="glass-card interactive-card" style="padding: 24px;">
+                                        <div class="icon-wrapper">
+                                            <i class="fa-solid fa-globe"></i>
+                                        </div>
+                                        <h5 style="font-size: 1.1rem; font-weight: 600; margin: 16px 0 8px 0;">Global Competition</h5>
+                                        <p style="color: var(--text-secondary); font-size: 0.98rem;">Competing against 19,000+ participants worldwide</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Core Features -->
+                            <div class="glass-card" style="margin-bottom: 32px; padding: 24px;">
+                                <div class="flex items-center margin-bottom: 16px;">
+                                    <div class="icon-wrapper">
+                                        <i class="fa-solid fa-star"></i>
+                                    </div>
+                                    <h3 style="font-size: 1.3rem; font-weight: 600; margin-left: 16px;" class="section-heading">Key Takeaways</h3>
+                                </div>
+                                <ul class="feature-list">
+                                    <li>
+                                        <i class="fa-solid fa-code"></i>
+                                        <span>Enhanced Coding Skills</span>
+                                    </li>
+                                    <li>
+                                        <i class="fa-solid fa-people-group"></i>
+                                        <span>Team Collaboration</span>
+                                    </li>
+                                    <li>
+                                        <i class="fa-solid fa-brain"></i>
+                                        <span>Problem-Solving Abilities</span>
+                                    </li>
+                                    <li>
+                                        <i class="fa-solid fa-rocket"></i>
+                                        <span>Future Growth</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sidebar -->
+                    <div class="section-transition">
+                        <div class="glass-card" style="padding: 32px; position: sticky; top: 32px;">
+                            <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 32px;" class="section-heading">
+                                <i class="fa-solid fa-info-circle" style="margin-right: 12px;"></i>Competition Details
+                            </h3>
+                            <div class="feature-list">
+                                <li>
+                                    <i class="fa-solid fa-calendar"></i>
+                                    <span>Event: IEEEXtreme 18.0</span>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-users"></i>
+                                    <span>Team: SwampSquad</span>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-clock"></i>
+                                    <span>Duration: 24 Hours</span>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-globe"></i>
+                                    <span>Participants: 19,000+</span>
+                                </li>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certificate Display -->
+        <section style="padding: 0 32px 100px 32px;">
+            <div class="glass-card" style="padding: 32px; max-width: 800px; margin: 0 auto;">
+                <div class="flex items-center justify-center margin-bottom: 24px;">
+                    <div class="icon-wrapper">
+                        <i class="fa-solid fa-award"></i>
+                    </div>
+                    <h3 style="font-size: 1.5rem; font-weight: 600; margin-left: 16px;" class="section-heading">Achievement Certificate</h3>
+                </div>
+                <div class="certificate-container" style="position: relative; width: 100%; padding-top: 56.25%; overflow: hidden; border-radius: 16px;">
+                    <img src="assets/images/certif.png" alt="IEEEXtreme 18.0 Certificate" 
+                         style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; transition: transform 0.3s ease;">
+                </div>
+                <p style="color: var(--text-secondary); font-size: 1rem; margin-top: 16px; text-align: center;">
+                    Official certificate of participation in IEEEXtreme 18.0
+                </p>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-[#121151]">
+            <div class="wraper">
+                <div class="py-[50px]">
+                    <div class="grid grid-cols-12 gap-8 lg:gap-3">
+                        <div class="col-span-2 md:col-span-4 sm:col-span-12">
+                            <div class="mt-[20px] sm:mt-[0px]">
+                                <img class="sm:mx-auto" src="assets/images/logo.png" alt="">
+                            </div>
+                        </div>
+                        <div class="col-span-6 md:col-span-8 sm:col-span-12">
+                            <div class="mt-[35px] text-center">
+                                <ul class="mb-[10px]">
+                                    <li class="inline-block">
+                                        <a class="text-[#fff] px-[30px] sm:px-[10px] py-[10px] text-[15px] font-normal" href="about.html">About</a>
+                                    </li>
+                                    <li class="inline-block">
+                                        <a class="text-[#fff] px-[30px] sm:px-[10px] py-[10px] text-[15px] font-normal" href="protfolio.html">Portfolio</a>
+                                    </li>
+                                    <li class="inline-block">
+                                        <a class="text-[#fff] px-[30px] sm:px-[10px] py-[10px] text-[15px] font-normal" href="blog.html">Blog</a>
+                                    </li>
+                                    <li class="inline-block">
+                                        <a class="text-[#fff] pl-[30px] sm:px-[10px] py-[10px] pr-[0px] text-[15px] font-normal" href="contact.html">Contact</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-span-4 md:col-span-12 sm:col-span-12">
+                            <div class="text-right md:text-center md:mt-[30px]">
+                                <ul class="flex items-end md:items-center md:w-full md:justify-center">
+                                    <li class="mr-[30px]">
+                                        <a href="https://www.facebook.com/fadi.hmidahmida" target="_blank" rel="noopener" class="block w-[80px] h-[80px] leading-[85px] sm:w-[60px] sm:h-[60px] sm:leading-[65px] border border-[#3b5998] text-center rounded-[50%] social-icon">
+                                            <i class="fab fa-facebook-f text-[#3b5998] text-[30px] sm:text-[20px]"></i>
+                                        </a>
+                                    </li>
+                                    <li class="mr-[30px]">
+                                        <a href="https://www.linkedin.com/in/fedi-hmida" target="_blank" rel="noopener" class="block w-[80px] h-[80px] leading-[85px] sm:w-[60px] sm:h-[60px] sm:leading-[65px] border border-[#0077b5] text-center rounded-[50%] social-icon">
+                                            <i class="fab fa-linkedin-in text-[#0077b5] text-[30px] sm:text-[20px]"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.instagram.com/fedi.hmida/" target="_blank" rel="noopener" class="block w-[80px] h-[80px] leading-[85px] sm:w-[60px] sm:h-[60px] sm:leading-[65px] border border-[#e1306c] text-center rounded-[50%] social-icon">
+                                            <i class="fab fa-instagram text-[#e1306c] text-[30px] sm:text-[20px]"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="py-[30px] bg-[#0d0c4c] text-center">
+                <span class="text-[#fff]">© 2025 Fedi Hmida . All rights reserved</span>
+            </div>
+        </footer>
+    </div>
+
+    <!-- All JavaScript files -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/modernizr.custom.js"></script>
+    <script src="assets/js/jquery.dlmenu.js"></script>
+    <script src="assets/js/jquery-plugin-collection.js"></script>
+    <script src="assets/js/tw-elements.umd.min.js"></script>
+    <script src="assets/js/moving-animation.js"></script>
+    <script src="assets/js/script.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            mirror: true
+        });
+
+        // Interactive card effect
+        document.querySelectorAll('.interactive-card').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = ((e.clientX - rect.left) / rect.width) * 100;
+                const y = ((e.clientY - rect.top) / rect.height) * 100;
+                card.style.setProperty('--mouse-x', `${x}%`);
+                card.style.setProperty('--mouse-y', `${y}%`);
+            });
+        });
+
+        // Section transitions
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section-transition').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

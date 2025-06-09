@@ -246,6 +246,42 @@
         ::-webkit-scrollbar-thumb:hover {
             background: var(--accent-hover);
         }
+
+        /* Add these styles to your existing style section */
+        .mobile-video-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px; /* Increased from 375px to 500px */
+            margin: 0 auto;
+            background: #000;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            transform: scale(1.05); /* Slightly larger scale */
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-video-container:hover {
+            transform: scale(1.08); /* Slightly larger on hover */
+        }
+
+        .mobile-video-container video {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 9/16;
+            object-fit: cover;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-video-container {
+                max-width: 100%;
+                transform: none; /* Remove scale effect on mobile */
+            }
+            .mobile-video-container:hover {
+                transform: none;
+            }
+        }
     </style>
 </head>
 
@@ -343,37 +379,34 @@
                         <!-- Feature 1 -->
                         <div class="bg-[#0c0b44] p-[30px] rounded-[10px] project-card" data-aos="fade-up" data-aos-delay="100">
                             <h3 class="text-[24px] text-[#fff] font-semibold mb-[20px]">Users Features</h3>
-                            <div class="aspect-w-16 aspect-h-9 mb-[20px]">
+                            <div class="mobile-video-container mb-[20px]">
                                 <video class="w-full rounded-[10px] feature-video" controls>
                                     <source src="assets/videos/user2.0.mp4" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
                             </div>
-                            
                         </div>
 
                         <!-- Feature 2 -->
                         <div class="bg-[#0c0b44] p-[30px] rounded-[10px] project-card" data-aos="fade-up" data-aos-delay="200">
                             <h3 class="text-[24px] text-[#fff] font-semibold mb-[20px]">Maintennace Features</h3>
-                            <div class="aspect-w-16 aspect-h-9 mb-[20px]">
+                            <div class="mobile-video-container mb-[20px]">
                                 <video class="w-full rounded-[10px] feature-video" controls>
                                     <source src="assets/videos/Maintennace2.0.mp4" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
                             </div>
-                            
                         </div>
 
                         <!-- Feature 3 -->
                         <div class="bg-[#0c0b44] p-[30px] rounded-[10px] project-card" data-aos="fade-up" data-aos-delay="300">
                             <h3 class="text-[24px] text-[#fff] font-semibold mb-[20px]">Admin Features</h3>
-                            <div class="aspect-w-16 aspect-h-9 mb-[20px]">
+                            <div class="mobile-video-container mb-[20px]">
                                 <video class="w-full rounded-[10px] feature-video" controls>
                                     <source src="assets/videos/admin2.0.mp4" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
                             </div>
-                            
                         </div>
 
                         

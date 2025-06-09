@@ -49,6 +49,34 @@
             box-shadow: 0 0 20px rgba(254, 62, 87, 0.5);
             transform: translateY(-5px);
         }
+        .submit-btn {
+            position: relative;
+            z-index: 10;
+            pointer-events: auto;
+            min-width: 200px;
+            border: none;
+            outline: none;
+        }
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(254, 62, 87, 0.4);
+        }
+        .submit-btn:active {
+            transform: translateY(-1px);
+        }
+        #loader {
+            display: none;
+            margin-top: 10px;
+        }
+        #loader i {
+            color: #fe3e57;
+            font-size: 24px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
         .typing-text {
             min-height: 70px;
         }
@@ -171,6 +199,20 @@
                     <h2 class="text-[70px] md:text-[45px] sm:text-[30px] mb-[60px] text-white font-bold base-font text-center fade-in typing-text">
                         Let's Talk
                     </h2>
+                    
+                    <!-- Map Section -->
+                    <div class="mb-[60px] rounded-[10px] overflow-hidden shadow-[0_10px_40px_0_rgba(50,50,50,0.1)]">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12764.825188!2d10.181532!3d36.8064948!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12fd359f6fde3a2f%3A0x1a3d2c6e0b5c8f9a!2sTunis%2C%20Tunisia!5e0!3m2!1sen!2sus!4v1646123456789!5m2!1sen!2sus" 
+                            width="100%" 
+                            height="450" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy"
+                            class="rounded-[10px]">
+                        </iframe>
+                    </div>
+
                     <div class="grid grid-cols-12 gap-8 lg:gap-3">
                         <div class="col-span-1 md:col-span-12"></div>
                         <div class="col-span-5 md:col-span-12 sm:col-span-12">
@@ -178,49 +220,69 @@
                                 <h2 class="text-center text-[30px] xl:text-[18px] md:text-[13px] sm:text-[12px] text-white font-bold mb-[15px] sm:pt-[20px] gradient-text">
                                     Get In Touch
                                 </h2>
-                                <form method="post" class="contact-validation-active" id="wpo-contact-form">
+                                <form action="https://formsubmit.co/fedi.hmida@ieee.org" method="POST" class="contact-validation-active" id="wpo-contact-form">
+                                    <!-- Honeypot -->
+                                    <input type="text" name="_honey" style="display:none">
+                                    <!-- Disable Captcha -->
+                                    <input type="hidden" name="_captcha" value="false">
+                                    <!-- Success Page -->
+                                    <input type="hidden" name="_next" value="https://fedi-hmida.github.io/thanks.html">
+                                    <!-- Template -->
+                                    <input type="hidden" name="_template" value="table">
+                                    <!-- Subject -->
+                                    <input type="hidden" name="_subject" value="New Contact Form Submission">
+                                    <!-- Auto Reply -->
+                                    <input type="hidden" name="_autoresponse" value="Thank you for contacting me. I will get back to you as soon as possible.">
+                                    
                                     <div class="w-[calc(50%-15px)] float-left sm:w-full sm:float-none mb-[15px]">
                                         <input type="text"
                                             class="form-control transition-all placeholder-[#8c8b8b] focus:outline-0 focus:shadow-none focus:bg-transparent base-font text-white text-[14px] pr-[12px] py-[6px] bg-transparent w-full h-[50px] border-[0px] border-b-[1px] border-[#464646] hover:border-[#fe3e57]"
-                                            name="name" id="name" placeholder="First Name">
+                                            name="name" id="name" placeholder="First Name" required>
                                     </div>
                                     <div class="w-[calc(50%-15px)] float-left sm:w-full sm:float-none sm:ml-0 ml-[30px] mb-[15px]">
                                         <input type="text"
                                             class="form-control transition-all placeholder-[#8c8b8b] focus:outline-0 focus:shadow-none focus:bg-transparent base-font text-white text-[14px] pr-[12px] py-[6px] bg-transparent w-full h-[50px] border-[0px] border-b-[1px] border-[#464646] hover:border-[#fe3e57]"
-                                            name="name2" id="name2" placeholder="Last Name">
+                                            name="lastname" id="name2" placeholder="Last Name" required>
                                     </div>
                                     <div class="clearfix mb-[15px]">
                                         <input type="email"
                                             class="form-control transition-all placeholder-[#8c8b8b] focus:outline-0 focus:shadow-none focus:bg-transparent base-font text-white text-[14px] pr-[12px] py-[6px] bg-transparent w-full h-[50px] border-[0px] border-b-[1px] border-[#464646] hover:border-[#fe3e57]"
-                                            name="email" id="email" placeholder="Email">
+                                            name="email" id="email" placeholder="Email" required>
                                     </div>
                                     <div class="mb-[15px]">
                                         <input type="text"
                                             class="form-control transition-all placeholder-[#8c8b8b] focus:outline-0 focus:shadow-none focus:bg-transparent base-font text-white text-[14px] pr-[12px] py-[6px] bg-transparent w-full h-[50px] border-[0px] border-b-[1px] border-[#464646] hover:border-[#fe3e57]"
-                                            name="subject" id="subject" placeholder="Subject">
+                                            name="subject" id="subject" placeholder="Subject" required>
                                     </div>
                                     <div class="mb-[15px]">
                                         <textarea
                                             class="form-control transition-all placeholder-[#8c8b8b] focus:outline-0 focus:shadow-none focus:bg-transparent base-font text-white text-[14px] pr-[12px] py-[6px] bg-transparent w-full h-[175px] sm:h-[90px] border-[0px] border-b-[1px] border-[#464646] hover:border-[#fe3e57]"
-                                            name="note" id="note" placeholder="Case Description..."></textarea>
+                                            name="message" id="note" placeholder="Case Description..." required></textarea>
                                     </div>
                                     <div class="submit-area w-full text-center mt-[33px] mb-[30px]">
-                                        <button type="submit" class="theme-btn submit-btn bg-[#fe3e57] hover:bg-[#e62e4d] transition-all glow-effect">Send Message</button>
-                                        <div id="loader">
+                                        <button type="submit" class="theme-btn submit-btn bg-[#fe3e57] hover:bg-[#e62e4d] transition-all glow-effect px-[30px] py-[15px] text-white font-medium rounded-[5px] cursor-pointer relative z-10">Send Message</button>
+                                        <div id="loader" style="display: none;">
                                             <i class="ti-reload"></i>
                                         </div>
                                     </div>
                                     <div class="clearfix error-handling-services">
-                                        <div id="success">Thank you</div>
-                                        <div id="error"> Error occurred while sending email. Please try again later.</div>
+                                        <div id="success" class="hidden bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
+                                            <strong class="font-bold">Success!</strong>
+                                            <span class="block sm:inline"> Thank you for your message. I will get back to you soon.</span>
+                                        </div>
+                                        <div id="error" class="hidden bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+                                            <strong class="font-bold">Error!</strong>
+                                            <span class="block sm:inline"> Error occurred while sending email. Please try again later.</span>
+                                        </div>
                                     </div>
                                 </form>
                             </div>
                         </div>
                         <div class="col-span-5 md:col-span-8 sm:col-span-12">
-                            <!-- Address -->
+                            <!-- Contact Info Cards -->
                             <div class="pl-[20px] pr-[50px] sm:p-0">
-                                <div class="py-[30px] px-[40px] sm:py-[20px] sm:px-[20px] mb-[30px] bg-[#0c0b44] border-[1px] border-[#464646] rounded-[5px] shadow-[0_10px_40px_0_rgba(50,50,50,0.1)] shine-effect">
+                                <!-- Address -->
+                                <div class="py-[30px] px-[40px] sm:py-[20px] sm:px-[20px] mb-[30px] bg-[#0c0b44] border-[1px] border-[#464646] rounded-[5px] shadow-[0_10px_40px_0_rgba(50,50,50,0.1)] shine-effect hover:transform hover:scale-105 transition-all duration-300">
                                     <h2 class="text-[24px] sm:text-[20px] text-white font-bold mb-[15px] heading-font gradient-text">
                                         Tunis, Tunisia
                                     </h2>
@@ -230,14 +292,13 @@
                                         </div>
                                         <div>
                                             <span class="text-[#8c8b8b] text-[18px] font-light">Office Address</span>
+                                            <p class="text-white mt-2">123 Business Street, Tunis, Tunisia</p>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <!-- Email -->
-                            <div class="pl-[20px] pr-[50px] sm:p-0">
-                                <div class="py-[30px] px-[40px] sm:py-[20px] sm:px-[20px] mb-[30px] bg-[#0c0b44] border-[1px] border-[#464646] rounded-[5px] shadow-[0_10px_40px_0_rgba(50,50,50,0.1)] shine-effect">
+                                <!-- Email -->
+                                <div class="py-[30px] px-[40px] sm:py-[20px] sm:px-[20px] mb-[30px] bg-[#0c0b44] border-[1px] border-[#464646] rounded-[5px] shadow-[0_10px_40px_0_rgba(50,50,50,0.1)] shine-effect hover:transform hover:scale-105 transition-all duration-300">
                                     <h2 class="text-[24px] sm:text-[20px] text-white font-bold mb-[15px] heading-font gradient-text">
                                         fedi.hmida@ieee.org
                                     </h2>
@@ -247,14 +308,13 @@
                                         </div>
                                         <div>
                                             <span class="text-[#8c8b8b] text-[18px] font-light">Official Mail</span>
+                                            <p class="text-white mt-2">Available 24/7 for your inquiries</p>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <!-- Phone -->
-                            <div class="pl-[20px] pr-[50px] sm:p-0">
-                                <div class="py-[30px] px-[40px] sm:py-[20px] sm:px-[20px] mb-[30px] md:mb-0 bg-[#0c0b44] border-[1px] border-[#464646] rounded-[5px] shadow-[0_10px_40px_0_rgba(50,50,50,0.1)] shine-effect">
+                                <!-- Phone -->
+                                <div class="py-[30px] px-[40px] sm:py-[20px] sm:px-[20px] mb-[30px] md:mb-0 bg-[#0c0b44] border-[1px] border-[#464646] rounded-[5px] shadow-[0_10px_40px_0_rgba(50,50,50,0.1)] shine-effect hover:transform hover:scale-105 transition-all duration-300">
                                     <h2 class="text-[24px] sm:text-[20px] text-white font-bold mb-[15px] heading-font gradient-text">
                                         +216 93 722 130
                                     </h2>
@@ -264,7 +324,32 @@
                                         </div>
                                         <div>
                                             <span class="text-[#8c8b8b] text-[18px] font-light">Official Phone</span>
+                                            <p class="text-white mt-2">Mon-Fri: 9:00 AM - 6:00 PM</p>
                                         </div>
+                                    </div>
+                                </div>
+
+                                <!-- Social Media -->
+                                <div class="py-[30px] px-[40px] sm:py-[20px] sm:px-[20px] mb-[30px] md:mb-0 bg-[#0c0b44] border-[1px] border-[#464646] rounded-[5px] shadow-[0_10px_40px_0_rgba(50,50,50,0.1)] shine-effect">
+                                    <h2 class="text-[24px] sm:text-[20px] text-white font-bold mb-[15px] heading-font gradient-text">
+                                        Connect With Me
+                                    </h2>
+                                    <div class="flex justify-center space-x-4">
+                                        <a href="https://www.facebook.com/fadi.hmidahmida" target="_blank" rel="noopener" class="w-[60px] h-[60px] flex items-center justify-center rounded-full bg-[#070640] text-[#3b5998] hover:bg-[#3b5998] hover:text-white transition-all duration-300">
+                                            <i class="fab fa-facebook-f text-[24px]"></i>
+                                        </a>
+                                        <a href="https://www.linkedin.com/in/fedi-hmida" target="_blank" rel="noopener" class="w-[60px] h-[60px] flex items-center justify-center rounded-full bg-[#070640] text-[#0077b5] hover:bg-[#0077b5] hover:text-white transition-all duration-300">
+                                            <i class="fab fa-linkedin-in text-[24px]"></i>
+                                        </a>
+                                        <a href="https://www.instagram.com/fedi.hmida/" target="_blank" rel="noopener" class="w-[60px] h-[60px] flex items-center justify-center rounded-full bg-[#070640] text-[#e1306c] hover:bg-[#e1306c] hover:text-white transition-all duration-300">
+                                            <i class="fab fa-instagram text-[24px]"></i>
+                                        </a>
+                                        <a href="https://github.com/fedi-hmida" target="_blank" rel="noopener" class="w-[60px] h-[60px] flex items-center justify-center rounded-full bg-[#070640] text-[#333] hover:bg-[#333] hover:text-white transition-all duration-300">
+                                            <i class="fab fa-github text-[24px]"></i>
+                                        </a>
+                                        <a href="mailto:your.email@gmail.com" target="_blank" rel="noopener" class="w-[60px] h-[60px] flex items-center justify-center rounded-full bg-[#070640] text-[#ea4335] hover:bg-[#ea4335] hover:text-white transition-all duration-300">
+                                            <i class="fas fa-envelope text-[24px]"></i>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -273,26 +358,6 @@
                     </div>
                 </div>
             </section>
-
-            <section class="bg-[#070640] py-[50px] md:py-[40px] sm:py-[30px]">
-                <h2 class="hidden">Ariana Location</h2>
-                <div class="wraper">
-                    <div class="grid grid-cols-12 gap-8 lg:gap-3">
-                        <div class="col-span-1 md:col-span-12"></div>
-                        <div class="col-span-10 md:col-span-12 sm:col-span-12">
-                            <div class="max-w-[948px] h-[610px] bg-[#0c0b44] border-[1px] border-[#464646] rounded-[5px] shadow-[0px_5px_15px_0px_rgba(68,68,68,0.1)] overflow-hidden">
-                                <iframe class="w-full h-full grayscale"
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3190.041530228664!2d10.190708215486564!3d36.86612227993515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1302cb9fa76639f1%3A0x45d4e6786c306dc5!2sAriana%2C%20Tunisia!5e0!3m2!1sen!2stn!4v1717415482680"
-                                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-                                </iframe>
-                            </div>
-                        </div>
-                        <div class="col-span-1 md:col-span-12"></div>
-                    </div>
-                </div>
-            </section>
-
-
 
             <!-- start footer-2 -->
             <footer class="bg-[#121151]">
@@ -425,6 +490,46 @@
                 }
             },
             retina_detect: true
+        });
+
+        // Form handling
+        document.getElementById('wpo-contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show loading state
+            const submitBtn = this.querySelector('.submit-btn');
+            const loader = document.getElementById('loader');
+            submitBtn.style.display = 'none';
+            loader.style.display = 'block';
+            
+            // Hide any previous messages
+            document.getElementById('error').classList.add('hidden');
+            document.getElementById('success').classList.add('hidden');
+            
+            // Submit the form
+            fetch(this.action, {
+                method: 'POST',
+                body: new FormData(this)
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Show success message
+                    document.getElementById('success').classList.remove('hidden');
+                    // Reset form
+                    this.reset();
+                } else {
+                    throw new Error('Network response was not ok');
+                }
+            })
+            .catch(error => {
+                // Show error message
+                document.getElementById('error').classList.remove('hidden');
+            })
+            .finally(() => {
+                // Reset button state
+                submitBtn.style.display = 'block';
+                loader.style.display = 'none';
+            });
         });
 
         // Initialize typing animation

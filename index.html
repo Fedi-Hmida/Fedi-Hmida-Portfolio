@@ -27,281 +27,7 @@
     <link href="assets/css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <style>
-        /* Particle Background */
-        #particles-js {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            background-color: #070640;
-            z-index: 0;
-        }
-
-        /* Typing Animation */
-        .typing-text {
-            border-right: 2px solid #fe3e57;
-            white-space: nowrap;
-            overflow: hidden;
-        }
-
-        /* Floating Animation */
-        .float-animation {
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-
-        /* Glowing Effect */
-        .glow-effect {
-            transition: all 0.3s ease;
-        }
-        .glow-effect:hover {
-            box-shadow: 0 0 15px #fe3e57;
-            transform: scale(1.05);
-        }
-
-        /* Skill Item Shine */
-        .skill-item {
-            position: relative;
-            overflow: hidden;
-        }
-        .skill-item::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(
-                to right,
-                rgba(255,255,255,0) 0%,
-                rgba(255,255,255,0.3) 50%,
-                rgba(255,255,255,0) 100%
-            );
-            transform: rotate(30deg);
-            transition: all 0.3s ease;
-            opacity: 0;
-        }
-        .skill-item:hover::after {
-            opacity: 1;
-            transform: rotate(30deg) translate(50%, 50%);
-        }
-
-        /* Smooth Scroll */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Card Hover Effects */
-        .portfolio-item {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .portfolio-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-
-        /* Progress Bar Animation */
-        .progress-bar {
-            transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        /* Button Hover Effect */
-        .theme-btn {
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-        .theme-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                90deg,
-                transparent,
-                rgba(255,255,255,0.2),
-                transparent
-            );
-            transition: 0.5s;
-        }
-        .theme-btn:hover::before {
-            left: 100%;
-        }
-
-        /* Gradient Backgrounds */
-        .gradient-bg {
-            background: linear-gradient(135deg, #070640 0%, #0c0b48 100%);
-            transition: all 0.5s ease;
-        }
-
-        /* Enhanced Card Hover Effects */
-        .card-hover {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-        .card-hover:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-        }
-        .card-hover::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
-            transform: translateX(-100%);
-            transition: 0.6s;
-        }
-        .card-hover:hover::before {
-            transform: translateX(100%);
-        }
-
-        /* Underline Animation */
-        .underline-animation {
-            position: relative;
-            display: inline-block;
-        }
-        .underline-animation::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 2px;
-            bottom: -4px;
-            left: 0;
-            background-color: #fe3e57;
-            transform: scaleX(0);
-            transform-origin: bottom right;
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .underline-animation:hover::after {
-            transform: scaleX(1);
-            transform-origin: bottom left;
-        }
-
-        /* Enhanced Progress Bars */
-        .progress-container {
-            position: relative;
-            overflow: hidden;
-            border-radius: 10px;
-            background: rgba(255,255,255,0.1);
-        }
-        .progress-bar {
-            position: relative;
-            height: 100%;
-            background: linear-gradient(90deg, #fe3e57, #ff8c2f);
-            border-radius: 10px;
-            transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .progress-bar::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                90deg,
-                transparent,
-                rgba(255,255,255,0.2),
-                transparent
-            );
-            animation: progress-shine 2s infinite;
-        }
-
-        @keyframes progress-shine {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-
-        /* Enhanced Button Effects */
-        .enhanced-btn {
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            background: linear-gradient(45deg, #fe3e57, #ff8c2f);
-            border: none;
-            color: white;
-            padding: 12px 30px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .enhanced-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(254, 62, 87, 0.3);
-        }
-        .enhanced-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                90deg,
-                transparent,
-                rgba(255,255,255,0.2),
-                transparent
-            );
-            transition: 0.5s;
-        }
-        .enhanced-btn:hover::before {
-            left: 100%;
-        }
-
-        /* Sequential Animation Classes */
-        .fade-up {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .fade-up.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Enhanced Particle System */
-        #particles-js {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #070640 0%, #0c0b48 100%);
-            z-index: 0;
-        }
-
-        /* Glowing Text Effect */
-        .glow-text {
-            text-shadow: 0 0 10px rgba(254, 62, 87, 0.5);
-            transition: all 0.3s ease;
-        }
-        .glow-text:hover {
-            text-shadow: 0 0 20px rgba(254, 62, 87, 0.8);
-        }
-
-        /* Enhanced Icon Animations */
-        .icon-float {
-            animation: iconFloat 3s ease-in-out infinite;
-        }
-        @keyframes iconFloat {
-            0%, 100% { transform: translateY(0) rotate(0); }
-            50% { transform: translateY(-10px) rotate(5deg); }
-        }
-
-        /* Smooth Scroll Offset */
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 80px;
-        }
-    </style>
+    <link href="assets/css/custom.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
@@ -1019,25 +745,24 @@ impactful, solution-oriented software.
                 <div class="grid grid-cols-12 gap-8 lg:gap-3">
                     <div class="col-span-4 md:col-span-6 sm:col-span-12 md:mb-8">
                         <div class="relative overflow-hidden">
-                            <img class="rounded-[5px] w-full" src="assets/images/blog/1.jpg" alt="">
+                            <img class="rounded-[5px] w-full" src="assets/images/logo3.png" alt="">
                         </div>
                         <div class="pt-[30px]">
                             <ul class="flex">
                                 <li class="text-[#c7c6c6]"><span class="text-[#3c7dd9] block pr-[5px]">By Admin</span>
                                 </li>
-                                <li class="text-[#c7c6c6]">. Nov 24, 2020</li>
+                                <li class="text-[#c7c6c6]">. Mai 26, 2025</li>
                             </ul>
                             <h2 class="font-bold text-[24px] text-[#fff] leading-[40px] group mt-[20px] mb-[10px]">
-                                <a href="blog.html"
-                                    class="text-[#fff] group-hover:text-[#fa5d72] transition ease-in-out duration-300">Helpful
-                                    tips for become a successful designer</a>
+                                <a href="new1.html"
+                                    class="text-[#fff] group-hover:text-[#fa5d72] transition ease-in-out duration-300">We're proud to unveil Onboardify, a hybrid onboarding solution </a>
                             </h2>
-                            <a href="blog.html" class="text-[#fa5d72] font-normal text-[15px]">Read More...</a>
+                            <a href="new1.html" class="text-[#fa5d72] font-normal text-[15px]">Read More...</a>
                         </div>
                     </div>
                     <div class="col-span-4 md:col-span-6 sm:col-span-12 md:mb-8">
                         <div class="relative overflow-hidden">
-                            <img class="rounded-[5px] w-full" src="assets/images/blog/2.jpg" alt="">
+                            <img class="rounded-[5px] w-full" src="assets/images/certif.png" alt="">
                         </div>
                         <div class="pt-[30px]">
                             <ul class="flex">
@@ -1046,16 +771,15 @@ impactful, solution-oriented software.
                                 <li class="text-[#c7c6c6]">. Nov 24, 2020</li>
                             </ul>
                             <h2 class="font-bold text-[24px] text-[#fff] leading-[40px] group mt-[20px] mb-[10px]">
-                                <a href="blog.html"
-                                    class="text-[#fff] group-hover:text-[#fa5d72] transition ease-in-out duration-300">Helpful
-                                    tips for become a successful designer</a>
+                                <a href="new2.html"
+                                    class="text-[#fff] group-hover:text-[#fa5d72] transition ease-in-out duration-300">🎉 Proud to have participated in IEEEXtreme 18.0!</a>
                             </h2>
-                            <a href="blog.html" class="text-[#fa5d72] font-normal text-[15px]">Read More...</a>
+                            <a href="new2.html" class="text-[#fa5d72] font-normal text-[15px]">Read More...</a>
                         </div>
                     </div>
                     <div class="col-span-4 md:col-span-6 sm:col-span-12">
                         <div class="relative overflow-hidden">
-                            <img class="rounded-[5px] w-full" src="assets/images/blog/3.jpg" alt="">
+                            <img class="rounded-[5px] w-full" src="assets/images/Fedi.jpg" alt="">
                         </div>
                         <div class="pt-[30px]">
                             <ul class="flex">
@@ -1064,11 +788,11 @@ impactful, solution-oriented software.
                                 <li class="text-[#c7c6c6]">. Nov 24, 2020</li>
                             </ul>
                             <h2 class="font-bold text-[24px] text-[#fff] leading-[40px] group mt-[20px] mb-[10px]">
-                                <a href="blog.html"
+                                <a href="new3.html"
                                     class="text-[#fff] group-hover:text-[#fa5d72] transition ease-in-out duration-300">Helpful
                                     tips for become a successful designer</a>
                             </h2>
-                            <a href="blog.html" class="text-[#fa5d72] font-normal text-[15px]">Read More...</a>
+                            <a href="new3.html" class="text-[#fa5d72] font-normal text-[15px]">Read More...</a>
                         </div>
                     </div>
                 </div>
@@ -1096,7 +820,7 @@ impactful, solution-oriented software.
                                             href="protfolio.html">Portfolio</a></li>
                                     <li class="inline-block"><a
                                             class="text-[#fff] px-[30px] sm:px-[10px] py-[10px] text-[15px] font-normal"
-                                            href="blog.html">Blog</a></li>
+                                            href="news/new1.html">Blog</a></li>
                                     <li class="inline-block"><a
                                             class="text-[#fff] pl-[30px] sm:px-[10px] py-[10px] pr-[0px] text-[15px] font-normal"
                                             href="contact.html">Contact</a></li>
@@ -1131,6 +855,14 @@ impactful, solution-oriented software.
                 </a>
             </li>
 
+            <!-- Gmail -->
+            <li class="ml-[30px]">
+                <a href="mailto:your.email@gmail.com" target="_blank" rel="noopener"
+                   class="block w-[80px] h-[80px] leading-[85px] sm:w-[60px] sm:h-[60px] sm:leading-[65px] border border-[#ea4335] text-center rounded-[50%]">
+                    <i class="fas fa-envelope text-[#ea4335] text-[30px] sm:text-[20px]"></i>
+                </a>
+            </li>
+
         </ul>
     </div>
 </div>
@@ -1162,235 +894,8 @@ impactful, solution-oriented software.
     <script src="assets/js/moving-animation.js"></script>
     <!-- Custom script for this template -->
     <script src="assets/js/script.js"></script>
-
-    <script>
-        // Enhanced Particles.js configuration
-        particlesJS('particles-js', {
-            particles: {
-                number: {
-                    value: 100,
-                    density: {
-                        enable: true,
-                        value_area: 800
-                    }
-                },
-                color: {
-                    value: ['#fe3e57', '#ff8c2f', '#54faae', '#39c4ff']
-                },
-                shape: {
-                    type: ['circle', 'triangle'],
-                    stroke: {
-                        width: 0,
-                        color: '#000000'
-                    }
-                },
-                opacity: {
-                    value: 0.6,
-                    random: true,
-                    animation: {
-                        enable: true,
-                        speed: 1,
-                        opacity_min: 0.1,
-                        sync: false
-                    }
-                },
-                size: {
-                    value: 4,
-                    random: true,
-                    animation: {
-                        enable: true,
-                        speed: 2,
-                        size_min: 0.1,
-                        sync: false
-                    }
-                },
-                line_linked: {
-                    enable: true,
-                    distance: 150,
-                    color: '#ffffff',
-                    opacity: 0.4,
-                    width: 1
-                },
-                move: {
-                    enable: true,
-                    speed: 2,
-                    direction: 'none',
-                    random: true,
-                    straight: false,
-                    out_mode: 'out',
-                    bounce: false,
-                    attract: {
-                        enable: true,
-                        rotateX: 600,
-                        rotateY: 1200
-                    }
-                }
-            },
-            interactivity: {
-                detect_on: 'canvas',
-                events: {
-                    onhover: {
-                        enable: true,
-                        mode: 'repulse'
-                    },
-                    onclick: {
-                        enable: true,
-                        mode: 'push'
-                    },
-                    resize: true
-                },
-                modes: {
-                    repulse: {
-                        distance: 100,
-                        duration: 0.4
-                    },
-                    push: {
-                        particles_nb: 4
-                    }
-                }
-            },
-            retina_detect: true
-        });
-
-        // Enhanced Typed.js configuration
-        new Typed('#typing-text', {
-            strings: ['Software Engineering Student'],
-            typeSpeed: 50,
-            backSpeed: 30,
-            backDelay: 2000,
-            loop: true,
-            showCursor: true,
-            cursorChar: '|',
-            autoInsertCss: true
-        });
-
-        // Initialize GSAP with enhanced configurations
-        gsap.registerPlugin(ScrollTrigger);
-
-        // Sequential heading animations
-        gsap.utils.toArray('h2').forEach((heading, i) => {
-            gsap.from(heading, {
-                scrollTrigger: {
-                    trigger: heading,
-                    start: 'top 80%',
-                    toggleActions: 'play none none reverse'
-                },
-                y: 50,
-                opacity: 0,
-                duration: 0.45,
-                delay: i * 0.02,
-                ease: 'power3.out'
-            });
-        });
-
-        // Enhanced skill item animations
-        gsap.utils.toArray('.skill-item').forEach((skill, i) => {
-            gsap.from(skill, {
-                scrollTrigger: {
-                    trigger: skill,
-                    start: 'top 80%'
-                },
-                x: -50,
-                opacity: 0,
-                duration: 0.8,
-                delay: i * 0.1,
-                ease: 'power2.out'
-            });
-        });
-
-        // Enhanced portfolio item animations
-        gsap.utils.toArray('.portfolio-item').forEach((item, i) => {
-            gsap.from(item, {
-                scrollTrigger: {
-                    trigger: item,
-                    start: 'top 80%'
-                },
-                y: 100,
-                opacity: 0,
-                duration: 1,
-                delay: i * 0.2,
-                ease: 'power3.out'
-            });
-        });
-
-        // Add enhanced animations to elements
-        document.querySelectorAll('.fas, .fab').forEach(icon => {
-            icon.classList.add('icon-float');
-        });
-
-        document.querySelectorAll('.theme-btn').forEach(btn => {
-            btn.classList.add('enhanced-btn');
-        });
-
-        document.querySelectorAll('.skill-item').forEach(item => {
-            item.classList.add('card-hover');
-        });
-
-        document.querySelectorAll('h2').forEach(heading => {
-            heading.classList.add('glow-text');
-        });
-
-        // Enhanced smooth scroll with offset
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                const headerOffset = 80;
-                const elementPosition = target.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Enhanced progress bar animation with intersection observer
-        const progressBars = document.querySelectorAll('.progress-bar');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const progress = entry.target.getAttribute('data-progress');
-                    gsap.to(entry.target, {
-                        width: progress + '%',
-                        duration: 1.5,
-                        ease: 'power2.out'
-                    });
-                }
-            });
-        }, { 
-            threshold: 0.5,
-            rootMargin: '0px'
-        });
-
-        progressBars.forEach(bar => observer.observe(bar));
-
-        // Add fade-up animation to elements
-        const fadeElements = document.querySelectorAll('.fade-up');
-        const fadeObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
-            });
-        }, {
-            threshold: 0.1,
-            rootMargin: '0px'
-        });
-
-        fadeElements.forEach(element => fadeObserver.observe(element));
-
-        // Add gradient background to sections
-        document.querySelectorAll('section').forEach(section => {
-            section.classList.add('gradient-bg');
-        });
-
-        // Add underline animation to navigation links
-        document.querySelectorAll('nav a').forEach(link => {
-            link.classList.add('underline-animation');
-        });
-    </script>
+    <!-- Animations script -->
+    <script src="assets/js/animations.js"></script>
 </body>
 
 
