@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="wpOceans">
     <link rel="shortcut icon" type="image/png" href="assets/images/preloader.png">
-    <title>Fedi Hmida - Resume</title>
+    <title>News List - Fedi Portfolio</title>
     <link href="assets/css/themify-icons.css" rel="stylesheet">
     <link href="assets/css/font-awesome.min.css" rel="stylesheet">
     <link href="assets/css/flaticon.css" rel="stylesheet">
@@ -24,21 +24,33 @@
     <link href="assets/css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="assets/css/custom.css" rel="stylesheet">
     <style>
-        /* Enhanced Interactive Elements Styles */
-        .skill-item {
+        /* Particle Background */
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* News Card Animations */
+        .news-card {
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
             position: relative;
             overflow: hidden;
         }
-        
-        .skill-item:hover {
+
+        .news-card:hover {
             transform: translateY(-8px) scale(1.02);
             box-shadow: 0 15px 30px rgba(254, 62, 87, 0.3);
         }
 
-        .skill-item::before {
+        .news-card::before {
             content: '';
             position: absolute;
             top: 0;
@@ -54,96 +66,8 @@
             transition: 0.5s;
         }
 
-        .skill-item:hover::before {
+        .news-card:hover::before {
             left: 100%;
-        }
-
-        .experience-card, .education-card {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-            position: relative;
-        }
-
-        .experience-card:hover, .education-card:hover {
-            transform: scale(1.03);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .experience-card::after, .education-card::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: #fe3e57;
-            transform: scaleX(0);
-            transform-origin: right;
-            transition: transform 0.4s ease;
-        }
-
-        .experience-card:hover::after, .education-card:hover::after {
-            transform: scaleX(1);
-            transform-origin: left;
-        }
-
-        .progress-bar {
-            height: 6px;
-            background: linear-gradient(90deg, #fe3e57, #ff6b81);
-            width: 0;
-            transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
-            border-radius: 3px;
-        }
-
-        .skill-level {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .skill-level.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .download-btn {
-            position: relative;
-            overflow: hidden;
-            transition: all 0.4s ease;
-        }
-
-        .download-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(254, 62, 87, 0.3);
-        }
-
-        .download-btn::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: width 0.6s ease, height 0.6s ease;
-        }
-
-        .download-btn:hover::after {
-            width: 300px;
-            height: 300px;
-        }
-
-        /* Particle Background */
-        #particles-js {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            pointer-events: none;
         }
 
         /* Typing Animation */
@@ -196,6 +120,15 @@
                            0 0 40px #fe3e57;
             }
         }
+
+        /* Image Hover Effect */
+        .news-image {
+            transition: transform 0.5s ease;
+        }
+
+        .news-card:hover .news-image {
+            transform: scale(1.1);
+        }
     </style>
 </head>
 
@@ -205,19 +138,6 @@
 
     <!-- start page-wrapper -->
     <div class="page-wrapper">
-        <!-- start preloader -->
-        <div class="preloader">
-            <div class="vertical-centered-box">
-                <div class="content">
-                    <div class="loader-circle"></div>
-                    <div class="loader-line-mask">
-                        <div class="loader-line"></div>
-                    </div>
-                    <img src="assets/images/preloader.png" alt="">
-                </div>
-            </div>
-        </div>
-
         <!-- start header-section -->
         <section class="bg-[#070640] absolute left-0 top-0 w-full z-50 md:py-[20px]">
             <div class="wraper">
@@ -264,97 +184,115 @@
             </div>
         </section>
 
-        <!-- Resume Content -->
-        <section class="pt-[120px] md:pt-[90px] sm-[80px] bg-[#070640] pb-[60px]">
+        <!-- News List Section -->
+        <section class="bg-[#0c0b48] section-wrap pt-[150px]">
             <div class="wraper">
-                <h2 class="text-[70px] md:text-[45px] sm:text-[30px] mb-[40px] text-[#fff] font-bold base-font text-center animate__animated animate__fadeIn typing-text">Resume</h2>
+                <h2 class="text-[70px] md:text-[45px] sm:text-[30px] mb-[60px] text-[#fff] font-bold base-font text-center typing-text">
+                    Latest News
+                </h2>
                 
-                <!-- Download PDF Button -->
-                <div class="text-center mb-[50px]">
-                    <a href="assets/cv/fedi-hmida-cv.pdf" class="theme-btn bg-[#fe3e57] hover:bg-[#ff1f3d] download-btn glow" download>
-                        <i class="fas fa-download mr-2 floating"></i> Download PDF Version
-                    </a>
-                </div>
-
-                <!-- Professional Experience -->
-                <div class="mb-[60px]">
-                    <h3 class="text-[40px] md:text-[30px] sm:text-[25px] text-[#fff] font-bold mb-[30px] animate__animated animate__fadeInLeft">Professional Experience</h3>
-                    <div class="bg-[#0c0b44] p-[30px] rounded-[5px] mb-[20px] experience-card">
-                        <h4 class="text-[24px] text-[#fe3e57] font-bold mb-[10px]">Msign</h4>
-                        <p class="text-[#fff] mb-[10px]"> Final Year Project Internship</p>
-                        <ul class="text-[#fff] list-disc pl-[20px]">
-                            <li>* Developed an energy monitoring and control system for solar-powered
- devices to optimize solar energy use.</li>
-                            <li>* Built the SolarFlow App using Flutter, enabling users to track real-time
- energy production, control connected devices, and efficiently manage
- renewable energy resources.</li>
-                            
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Education Background -->
-                <div class="mb-[60px]">
-                    <h3 class="text-[40px] md:text-[30px] sm:text-[25px] text-[#fff] font-bold mb-[30px] animate__animated animate__fadeInLeft">Education Background</h3>
-                    <div class="bg-[#0c0b44] p-[30px] rounded-[5px] mb-[20px] education-card">
-                        <h4 class="text-[24px] text-[#fe3e57] font-bold mb-[10px]">Software Engineering</h4>
-                        <p class="text-[#fff] mb-[10px]">Private Higher School of Engineering & Technology (ESPRIT) • Currently Enrolled</p>
-                        
-                    </div>
-                    <div class="bg-[#0c0b44] p-[30px] rounded-[5px] mb-[20px]">
-                        <h4 class="text-[24px] text-[#fe3e57] font-bold mb-[10px]">Bachelor's Degree in Computer Engineering</h4>
-                        <p class="text-[#fff] mb-[10px]">Higher Institute of Computer Science of Mahdia, Tunisia • Graduated: 2024</p>
-                    </div>
-                </div>
-
-                <!-- Technical Skills -->
-                <div class="mb-[60px]">
-                    <h3 class="text-[40px] md:text-[30px] sm:text-[25px] text-[#fff] font-bold mb-[30px] animate__animated animate__fadeInLeft">Technical Skills</h3>
-                    <div class="grid grid-cols-12 gap-8 lg:gap-3">
-                        <!-- Programming Languages -->
-                        <div class="col-span-4 md:col-span-6 sm:col-span-12">
-                            <div class="bg-[#0c0b44] p-[30px] rounded-[5px] skill-item">
-                                <h4 class="text-[24px] text-[#fe3e57] font-bold mb-[20px]">Programming Languages</h4>
-                                <ul class="text-[#fff]">
-                                    <li class="mb-[10px]">Dart/Flutter</li>
-                                    <li class="mb-[10px]">Java</li>
-                                    <li class="mb-[10px]">PHP</li>
-                                    <li class="mb-[10px]">JavaScript</li>
-                                </ul>
+                <!-- News Grid -->
+                <div class="grid grid-cols-12 gap-8 lg:gap-3">
+                    <!-- News Item 1 -->
+                    <div class="col-span-6 md:col-span-12 mb-8">
+                        <div class="bg-[#070640] rounded-[10px] overflow-hidden shadow-lg news-card">
+                            <div class="overflow-hidden">
+                                <img class="w-full h-[300px] object-cover news-image" src="assets/images/logo3.png" alt="Onboardify News">
                             </div>
-                        </div>
-                        <!-- Frameworks & Tools -->
-                        <div class="col-span-4 md:col-span-6 sm:col-span-12">
-                            <div class="bg-[#0c0b44] p-[30px] rounded-[5px] skill-item">
-                                <h4 class="text-[24px] text-[#fe3e57] font-bold mb-[20px]">Frameworks & Tools</h4>
-                                <ul class="text-[#fff]">
-                                    <li class="mb-[10px]">Symfony</li>
-                                    <li class="mb-[10px]">Android Studio</li>
-                                    <li class="mb-[10px]">Git</li>
-                                    <li class="mb-[10px]">MySQL</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- Soft Skills -->
-                        <div class="col-span-4 md:col-span-6 sm:col-span-12">
-                            <div class="bg-[#0c0b44] p-[30px] rounded-[5px] skill-item">
-                                <h4 class="text-[24px] text-[#fe3e57] font-bold mb-[20px]">Soft Skills</h4>
-                                <ul class="text-[#fff]">
-                                    <li class="mb-[10px]">Project Management</li>
-                                    <li class="mb-[10px]">Problem Solving</li>
-                                    <li class="mb-[10px]">Team Collaboration</li>
-                                    <li class="mb-[10px]">Communication</li>
-                                </ul>
+                            <div class="p-6">
+                                <div class="flex items-center mb-4">
+                                    <span class="text-[#3c7dd9] mr-2 floating"><i class="fas fa-user"></i> By Admin</span>
+                                    <span class="text-[#c7c6c6]"><i class="far fa-calendar-alt"></i> Mai 26, 2025</span>
+                                </div>
+                                <h2 class="text-[24px] text-[#fff] font-bold mb-4">
+                                    <a href="new1.html" class="hover:text-[#fa5d72] transition duration-300">
+                                        We're proud to unveil Onboardify, a hybrid onboarding solution
+                                    </a>
+                                </h2>
+                                <p class="text-[#c7c6c6] mb-4">
+                                    A revolutionary approach to employee onboarding combining traditional methods with modern technology.
+                                </p>
+                                <a href="new1.html" class="text-[#fa5d72] font-normal text-[15px] hover:underline glow">Read More...</a>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                
+                    <!-- News Item 2 -->
+                    <div class="col-span-6 md:col-span-12 mb-8">
+                        <div class="bg-[#070640] rounded-[10px] overflow-hidden shadow-lg news-card">
+                            <div class="overflow-hidden">
+                                <img class="w-full h-[300px] object-cover news-image" src="assets/images/certif.png" alt="IEEEXtreme News">
+                            </div>
+                            <div class="p-6">
+                                <div class="flex items-center mb-4">
+                                    <span class="text-[#3c7dd9] mr-2 floating"><i class="fas fa-user"></i> By Admin</span>
+                                    <span class="text-[#c7c6c6]"><i class="far fa-calendar-alt"></i> Mars 15, 2025</span>
+                                </div>
+                                <h2 class="text-[24px] text-[#fff] font-bold mb-4">
+                                    <a href="new2.html" class="hover:text-[#fa5d72] transition duration-300">
+                                        🎉 Proud to have participated in IEEEXtreme 18.0!
+                                    </a>
+                                </h2>
+                                <p class="text-[#c7c6c6] mb-4">
+                                    An incredible experience competing in one of the world's most prestigious programming competitions.
+                                </p>
+                                <a href="new2.html" class="text-[#fa5d72] font-normal text-[15px] hover:underline glow">Read More...</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- News Item 3 -->
+                    <div class="col-span-6 md:col-span-12 mb-8">
+                        <div class="bg-[#070640] rounded-[10px] overflow-hidden shadow-lg news-card">
+                            <div class="overflow-hidden">
+                                <img class="w-full h-[300px] object-cover news-image" src="assets/images/Fedi.jpg" alt="Design Tips News">
+                            </div>
+                            <div class="p-6">
+                                <div class="flex items-center mb-4">
+                                    <span class="text-[#3c7dd9] mr-2 floating"><i class="fas fa-user"></i> By Admin</span>
+                                    <span class="text-[#c7c6c6]"><i class="far fa-calendar-alt"></i> Dec 24, 2024</span>
+                                </div>
+                                <h2 class="text-[24px] text-[#fff] font-bold mb-4">
+                                    <a href="new3.html" class="hover:text-[#fa5d72] transition duration-300">
+                                        🌟 Exciting Experience at IEEE TSYP12 Congress
+                                    </a>
+                                </h2>
+                                <p class="text-[#c7c6c6] mb-4">
+                                    Proud to participate in IEEE TSYP12 Congress, connecting with fellow engineers and discussing innovation in engineering.
+                                </p>
+                                <a href="new3.html" class="text-[#fa5d72] font-normal text-[15px] hover:underline glow">Read More...</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- News Item 4 -->
+                    <div class="col-span-6 md:col-span-12 mb-8">
+                        <div class="bg-[#070640] rounded-[10px] overflow-hidden shadow-lg news-card">
+                            <div class="overflow-hidden">
+                                <img class="w-full h-[300px] object-cover news-image" src="assets/images/pf1.png" alt="Graduation News">
+                            </div>
+                            <div class="p-6">
+                                <div class="flex items-center mb-4">
+                                    <span class="text-[#3c7dd9] mr-2 floating"><i class="fas fa-user"></i> By Admin</span>
+                                    <span class="text-[#c7c6c6]"><i class="far fa-calendar-alt"></i> Juin 13, 2024</span>
+                                </div>
+                                <h2 class="text-[24px] text-[#fff] font-bold mb-4">
+                                    <a href="new4.html" class="hover:text-[#fa5d72] transition duration-300">
+                                        🎓 Graduated in Computer Engineering (IoT)
+                                    </a>
+                                </h2>
+                                <p class="text-[#c7c6c6] mb-4">
+                                    Successfully completed my Bachelor's degree with special thanks to Professor Hamdi Aloulou and Khalil Ben Khemis.
+                                </p>
+                                <a href="new4.html" class="text-[#fa5d72] font-normal text-[15px] hover:underline glow">Read More...</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- Footer -->
+        <!-- start footer -->
         <footer class="bg-[#121151]">
             <div class="wraper">
                 <div class="py-[50px]">
@@ -367,10 +305,21 @@
                         <div class="col-span-6 md:col-span-8 sm:col-span-12">
                             <div class="mt-[35px] text-center">
                                 <ul class="mb-[10px]">
-                                    <li class="inline-block"><a class="text-[#fff] px-[30px] sm:px-[10px] py-[10px] text-[15px] font-normal" href="about.html">About</a></li>
-                                    <li class="inline-block"><a class="text-[#fff] px-[30px] sm:px-[10px] py-[10px] text-[15px] font-normal" href="Portfolio.html">Portfolio</a></li>
-                                    <li class="inline-block"><a class="text-[#fff] px-[30px] sm:px-[10px] py-[10px] text-[15px] font-normal" href="newsList.html">News</a></li>
-                                    <li class="inline-block"><a class="text-[#fff] px-[30px] sm:px-[10px] py-[10px] text-[15px] font-normal" href="contact.html">Contact</a></li>
+                                    <li class="inline-block">
+                                        <a class="text-[#fff] px-[30px] sm:px-[10px] py-[10px] text-[15px] font-normal" href="about.html">About</a>
+                                    </li>
+                                    <li class="inline-block">
+                                        <a class="text-[#fff] px-[30px] sm:px-[10px] py-[10px] text-[15px] font-normal" href="Portfolio.html">Portfolio</a>
+                                    </li>
+                                    <li class="inline-block">
+                                        <a class="text-[#fff] px-[30px] sm:px-[10px] py-[10px] text-[15px] font-normal" href="resume.html">Resume</a>
+                                    </li>
+                                    <li class="inline-block">
+                                        <a class="text-[#fff] px-[30px] sm:px-[10px] py-[10px] text-[15px] font-normal" href="newsList.html">News</a>
+                                    </li>
+                                    <li class="inline-block">
+                                        <a class="text-[#fff] px-[30px] sm:px-[10px] py-[10px] text-[15px] font-normal" href="contact.html">Contact</a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -412,6 +361,7 @@
     <script src="assets/js/tw-elements.umd.min.js"></script>
     <script src="assets/js/moving-animation.js"></script>
     <script src="assets/js/script.js"></script>
+    <script src="assets/js/animations.js"></script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
         // Initialize particles.js
@@ -455,7 +405,7 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                    if (entry.target.classList.contains('skill-item')) {
+                    if (entry.target.classList.contains('news-card')) {
                         entry.target.style.transform = 'translateY(0)';
                     }
                 }
@@ -465,46 +415,23 @@
             rootMargin: '0px 0px -50px 0px'
         });
 
-        // Observe all interactive elements
-        document.querySelectorAll('.skill-item, .experience-card, .education-card').forEach(item => {
-            observer.observe(item);
+        // Observe all news cards
+        document.querySelectorAll('.news-card').forEach(card => {
+            observer.observe(card);
         });
 
-        // Smooth scroll with easing
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                const headerOffset = 100;
-                const elementPosition = target.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Enhanced hover effects
-        document.querySelectorAll('.experience-card, .education-card').forEach(card => {
+        // Add hover effect to news cards
+        document.querySelectorAll('.news-card').forEach(card => {
             card.addEventListener('mouseenter', function() {
-                this.style.transform = 'scale(1.03) translateY(-5px)';
+                this.style.transform = 'translateY(-8px) scale(1.02)';
             });
             card.addEventListener('mouseleave', function() {
-                this.style.transform = 'scale(1) translateY(0)';
+                this.style.transform = 'translateY(0) scale(1)';
             });
-        });
-
-        // Add typing animation to headings
-        const headings = document.querySelectorAll('h3');
-        headings.forEach((heading, index) => {
-            heading.style.animationDelay = `${index * 0.2}s`;
-            heading.classList.add('typing-text');
         });
 
         // Add floating animation to icons
-        document.querySelectorAll('.fas').forEach(icon => {
+        document.querySelectorAll('.fas, .far').forEach(icon => {
             icon.classList.add('floating');
         });
     </script>

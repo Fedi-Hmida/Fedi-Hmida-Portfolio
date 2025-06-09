@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="wpOceans">
-    <link rel="shortcut icon" type="image/png" href="assets/images/favicon.png">
+    <link rel="shortcut icon" type="image/png" href="assets/images/preloader.png">
     <title>Fedi  Portfolio </title>
     <link href="assets/css/themify-icons.css" rel="stylesheet">
     <link href="assets/css/font-awesome.min.css" rel="stylesheet">
@@ -151,12 +151,13 @@
                                 <li><a href="about.html">About</a></li>
                                 <li><a href="Portfolio.html">Portfolio</a></li>
                                 <li><a href="resume.html">Resume</a></li>
+                                <li><a href="newsList.html">News</a></li>
                                 <li><a href="contact.html">Contact</a></li>
                             </ul>
                         </div>
                         <div class="w-[195px] md:w-[280px] sm:w-[200px] col:w-[150px]">
                             <a class="flex items-center md:justify-center text-white" href="index.html">
-                                <img class="mr-[10px]" src="assets/images/logo.png" alt=""></a>
+                                <img class="mr-[10px] " src="assets/images/preloader.png" alt=""></a>
                         </div>
                         <ul class="md:hidden">
                             <li class="relative inline-block">
@@ -170,6 +171,9 @@
                             </li>
                             <li class="relative inline-block">
                                 <a href="resume.html" class="relative group text-[16px] lg:text-[14px] py-[35px] xl:py-[30px] px-[20px] xl:px-[6px] text-white block capitalize font-base-font font-medium transition-all hover:text-[#fe3e57]">Resume</a>
+                            </li>
+                            <li class="relative inline-block">
+                                <a href="newsList.html" class="relative group text-[16px] lg:text-[14px] py-[35px] xl:py-[30px] px-[20px] xl:px-[6px] text-white block capitalize font-base-font font-medium transition-all hover:text-[#fe3e57]">News</a>
                             </li>
                             <li class="relative inline-block">
                                 <a href="contact.html" class="relative group text-[16px] lg:text-[14px] py-[35px] xl:py-[30px] px-[20px] xl:px-[6px] text-[#fe3e57] block capitalize font-base-font font-medium transition-all">Contact</a>
@@ -218,64 +222,50 @@
                         <div class="col-span-5 md:col-span-12 sm:col-span-12">
                             <div class="bg-[#0c0b44] border-[1px] border-[#464646] rounded-[5px] mb-[60px] pl-[60px] pr-[60px] pt-[60px] pb-[30px] sm:p-[25px] shadow-[0_5px_15px_0_rgba(68,68,68,0.1)] shine-effect">
                                 <h2 class="text-center text-[30px] xl:text-[18px] md:text-[13px] sm:text-[12px] text-white font-bold mb-[15px] sm:pt-[20px] gradient-text">
-                                    Get In Touch
+                                    Let's Connect
                                 </h2>
-                                <form action="https://formsubmit.co/fedi.hmida@ieee.org" method="POST" class="contact-validation-active" id="wpo-contact-form">
-                                    <!-- Honeypot -->
-                                    <input type="text" name="_honey" style="display:none">
-                                    <!-- Disable Captcha -->
-                                    <input type="hidden" name="_captcha" value="false">
-                                    <!-- Success Page -->
-                                    <input type="hidden" name="_next" value="https://fedi-hmida.github.io/thanks.html">
-                                    <!-- Template -->
-                                    <input type="hidden" name="_template" value="table">
-                                    <!-- Subject -->
-                                    <input type="hidden" name="_subject" value="New Contact Form Submission">
-                                    <!-- Auto Reply -->
-                                    <input type="hidden" name="_autoresponse" value="Thank you for contacting me. I will get back to you as soon as possible.">
-                                    
-                                    <div class="w-[calc(50%-15px)] float-left sm:w-full sm:float-none mb-[15px]">
-                                        <input type="text"
-                                            class="form-control transition-all placeholder-[#8c8b8b] focus:outline-0 focus:shadow-none focus:bg-transparent base-font text-white text-[14px] pr-[12px] py-[6px] bg-transparent w-full h-[50px] border-[0px] border-b-[1px] border-[#464646] hover:border-[#fe3e57]"
-                                            name="name" id="name" placeholder="First Name" required>
-                                    </div>
-                                    <div class="w-[calc(50%-15px)] float-left sm:w-full sm:float-none sm:ml-0 ml-[30px] mb-[15px]">
-                                        <input type="text"
-                                            class="form-control transition-all placeholder-[#8c8b8b] focus:outline-0 focus:shadow-none focus:bg-transparent base-font text-white text-[14px] pr-[12px] py-[6px] bg-transparent w-full h-[50px] border-[0px] border-b-[1px] border-[#464646] hover:border-[#fe3e57]"
-                                            name="lastname" id="name2" placeholder="Last Name" required>
-                                    </div>
-                                    <div class="clearfix mb-[15px]">
-                                        <input type="email"
-                                            class="form-control transition-all placeholder-[#8c8b8b] focus:outline-0 focus:shadow-none focus:bg-transparent base-font text-white text-[14px] pr-[12px] py-[6px] bg-transparent w-full h-[50px] border-[0px] border-b-[1px] border-[#464646] hover:border-[#fe3e57]"
-                                            name="email" id="email" placeholder="Email" required>
-                                    </div>
-                                    <div class="mb-[15px]">
-                                        <input type="text"
-                                            class="form-control transition-all placeholder-[#8c8b8b] focus:outline-0 focus:shadow-none focus:bg-transparent base-font text-white text-[14px] pr-[12px] py-[6px] bg-transparent w-full h-[50px] border-[0px] border-b-[1px] border-[#464646] hover:border-[#fe3e57]"
-                                            name="subject" id="subject" placeholder="Subject" required>
-                                    </div>
-                                    <div class="mb-[15px]">
-                                        <textarea
-                                            class="form-control transition-all placeholder-[#8c8b8b] focus:outline-0 focus:shadow-none focus:bg-transparent base-font text-white text-[14px] pr-[12px] py-[6px] bg-transparent w-full h-[175px] sm:h-[90px] border-[0px] border-b-[1px] border-[#464646] hover:border-[#fe3e57]"
-                                            name="message" id="note" placeholder="Case Description..." required></textarea>
-                                    </div>
-                                    <div class="submit-area w-full text-center mt-[33px] mb-[30px]">
-                                        <button type="submit" class="theme-btn submit-btn bg-[#fe3e57] hover:bg-[#e62e4d] transition-all glow-effect px-[30px] py-[15px] text-white font-medium rounded-[5px] cursor-pointer relative z-10">Send Message</button>
-                                        <div id="loader" style="display: none;">
-                                            <i class="ti-reload"></i>
+                                <div class="bg-[#0c0b44] border-[1px] border-[#464646] rounded-[5px] p-[40px] sm:p-[25px] shadow-[0_5px_15px_0_rgba(68,68,68,0.1)]">
+                                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                        <!-- WhatsApp Card -->
+                                        <div class="contact-card bg-[#070640] p-6 rounded-lg transform hover:scale-105 transition-all duration-300 cursor-pointer" onclick="window.open('https://wa.me/21693722130', '_blank')">
+                                            <div class="flex items-center space-x-4">
+                                                <div class="w-16 h-16 bg-[#25D366] rounded-full flex items-center justify-center">
+                                                    <i class="fab fa-whatsapp text-3xl text-white"></i>
+                                                </div>
+                                                <div>
+                                                    <h3 class="text-white text-xl font-semibold mb-1">WhatsApp</h3>
+                                                    <p class="text-gray-400">Chat directly with me</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- LinkedIn Card -->
+                                        <div class="contact-card bg-[#070640] p-6 rounded-lg transform hover:scale-105 transition-all duration-300 cursor-pointer" onclick="window.open('https://www.linkedin.com/in/fedi-hmida', '_blank')">
+                                            <div class="flex items-center space-x-4">
+                                                <div class="w-16 h-16 bg-[#0077b5] rounded-full flex items-center justify-center">
+                                                    <i class="fab fa-linkedin-in text-3xl text-white"></i>
+                                                </div>
+                                                <div>
+                                                    <h3 class="text-white text-xl font-semibold mb-1">LinkedIn</h3>
+                                                    <p class="text-gray-400">Connect professionally</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Email Card -->
+                                        <div class="contact-card bg-[#070640] p-6 rounded-lg transform hover:scale-105 transition-all duration-300 cursor-pointer" onclick="window.open('https://mail.google.com/mail/?view=cm&fs=1&to=fedi.hmida@ieee.org', '_blank')">
+                                            <div class="flex items-center space-x-4">
+                                                <div class="w-16 h-16 bg-[#fe3e57] rounded-full flex items-center justify-center">
+                                                    <i class="fas fa-envelope text-3xl text-white"></i>
+                                                </div>
+                                                <div>
+                                                    <h3 class="text-white text-xl font-semibold mb-1">Email</h3>
+                                                    <p class="text-gray-400">Send me an email</p>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="clearfix error-handling-services">
-                                        <div id="success" class="hidden bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
-                                            <strong class="font-bold">Success!</strong>
-                                            <span class="block sm:inline"> Thank you for your message. I will get back to you soon.</span>
-                                        </div>
-                                        <div id="error" class="hidden bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
-                                            <strong class="font-bold">Error!</strong>
-                                            <span class="block sm:inline"> Error occurred while sending email. Please try again later.</span>
-                                        </div>
-                                    </div>
-                                </form>
+                                </div>
                             </div>
                         </div>
                         <div class="col-span-5 md:col-span-8 sm:col-span-12">
@@ -366,7 +356,7 @@
                         <div class="grid grid-cols-12 gap-8 lg:gap-3">
                             <div class="col-span-2 md:col-span-4 sm:col-span-12">
                                 <div class="mt-[20px] sm:mt-[0px]">
-                                    <img class="sm:mx-auto" src="assets/images/logo.png" alt="">
+                                    <img class="sm:mx-auto" src="assets/images/preloader.png" alt="">
                                 </div>
                             </div>
                             <div class="col-span-6 md:col-span-8 sm:col-span-12">
@@ -375,7 +365,7 @@
                                         <li class="inline-block"><a class="text-[#fff] px-[30px] sm:px-[10px] py-[10px] text-[15px] font-normal hover:text-[#fe3e57] transition-all" href="about.html">About</a></li>
                                         <li class="inline-block"><a class="text-[#fff] px-[30px] sm:px-[10px] py-[10px] text-[15px] font-normal hover:text-[#fe3e57] transition-all" href="Portfolio.html">Portfolio</a></li>
                                         <li class="inline-block"><a class="text-[#fff] px-[30px] sm:px-[10px] py-[10px] text-[15px] font-normal hover:text-[#fe3e57] transition-all" href="resume.html">Resume</a></li>
-                                        <li class="inline-block"><a class="text-[#fff] pl-[30px] sm:px-[10px] py-[10px] pr-[0px] text-[15px] font-normal hover:text-[#fe3e57] transition-all" href="contact.html">Contact</a></li>
+                                        <li class="inline-block"><a class="text-[#fff] px-[30px] sm:px-[10px] py-[10px] text-[15px] font-normal hover:text-[#fe3e57] transition-all" href="newsList.html">News</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -424,6 +414,7 @@
     <script src="assets/js/moving-animation.js"></script>
     <!-- Custom script for this template -->
     <script src="assets/js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script>
         // Initialize particles
         particlesJS('particles-js', {
@@ -492,8 +483,13 @@
             retina_detect: true
         });
 
+        // Initialize EmailJS with your public key
+        (function() {
+            emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS public key
+        })();
+
         // Form handling
-        document.getElementById('wpo-contact-form').addEventListener('submit', function(e) {
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
             e.preventDefault();
             
             // Show loading state
@@ -506,30 +502,32 @@
             document.getElementById('error').classList.add('hidden');
             document.getElementById('success').classList.add('hidden');
             
-            // Submit the form
-            fetch(this.action, {
-                method: 'POST',
-                body: new FormData(this)
-            })
-            .then(response => {
-                if (response.ok) {
+            // Get form data
+            const formData = {
+                user_name: document.getElementById('name').value,
+                user_lastname: document.getElementById('name2').value,
+                user_email: document.getElementById('email').value,
+                subject: document.getElementById('subject').value,
+                message: document.getElementById('message').value
+            };
+
+            // Send email using EmailJS
+            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', formData)
+                .then(function() {
                     // Show success message
                     document.getElementById('success').classList.remove('hidden');
                     // Reset form
-                    this.reset();
-                } else {
-                    throw new Error('Network response was not ok');
-                }
-            })
-            .catch(error => {
-                // Show error message
-                document.getElementById('error').classList.remove('hidden');
-            })
-            .finally(() => {
-                // Reset button state
-                submitBtn.style.display = 'block';
-                loader.style.display = 'none';
-            });
+                    document.getElementById('contact-form').reset();
+                }, function(error) {
+                    // Show error message
+                    document.getElementById('error').classList.remove('hidden');
+                    console.error('EmailJS error:', error);
+                })
+                .finally(() => {
+                    // Reset button state
+                    submitBtn.style.display = 'block';
+                    loader.style.display = 'none';
+                });
         });
 
         // Initialize typing animation
