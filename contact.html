@@ -26,7 +26,7 @@
     <link href="assets/css/global.css" rel="stylesheet">
     <link href="assets/css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.3/particles.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
     <style>
         /* Enhanced Interactive Elements Styles */
@@ -273,6 +273,15 @@
         .contact-card:hover::before {
             left: 100%;
         }
+
+        /* Add fade-in-up animation for toast */
+        @keyframes fade-in-up {
+            0% { opacity: 0; transform: translateY(30px) scale(0.95); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .animate-fade-in-up {
+            animation: fade-in-up 0.6s cubic-bezier(0.4,0,0.2,1);
+        }
     </style>
 </head>
 
@@ -349,6 +358,43 @@
                     </div>
                 </div>
             </section>
+
+            <!-- Contact Form Section (Classic Upgraded) -->
+            <section class="pt-[60px] pb-[30px] bg-[#070640]">
+                <div class="wraper">
+                    <div class="max-w-2xl mx-auto bg-[#0c0b44] border-[1.5px] border-[#464646] rounded-[18px] p-[48px] shadow-[0_12px_36px_0_rgba(50,50,50,0.16)] contact-form-container fade-in">
+                        <h2 class="text-center text-[32px] md:text-[24px] text-white font-bold mb-[10px] gradient-text flex items-center justify-center gap-2">
+                            <i class="fas fa-paper-plane text-[#fe3e57]"></i> Send Me a Message
+                        </h2>
+                        <p class="text-center text-[#bdbdbd] mb-[28px]">I'd love to hear from you! Fill out the form below and I'll get back to you soon.</p>
+                        <form id="contact-form" class="contact-form grid grid-cols-1 gap-6">
+                            <div class="grid grid-cols-2 gap-4">
+                                <input type="text" id="name" name="user_name" placeholder="First Name" required class="p-3 rounded-xl bg-[#070640] border border-[#464646] text-white focus:outline-none focus:border-[#fe3e57] shadow" />
+                                <input type="text" id="name2" name="user_lastname" placeholder="Last Name" required class="p-3 rounded-xl bg-[#070640] border border-[#464646] text-white focus:outline-none focus:border-[#fe3e57] shadow" />
+                            </div>
+                            <input type="email" id="email" name="user_email" placeholder="Your Email" required class="p-3 rounded-xl bg-[#070640] border border-[#464646] text-white focus:outline-none focus:border-[#fe3e57] shadow" />
+                            <input type="text" id="subject" name="subject" placeholder="Subject" required class="p-3 rounded-xl bg-[#070640] border border-[#464646] text-white focus:outline-none focus:border-[#fe3e57] shadow" />
+                            <textarea id="message" name="message" rows="5" placeholder="Your Message" required class="p-3 rounded-xl bg-[#070640] border border-[#464646] text-white focus:outline-none focus:border-[#fe3e57] resize-none shadow"></textarea>
+                            <div class="flex items-center space-x-4 mt-2">
+                                <button type="submit" class="submit-btn bg-[#fe3e57] text-white px-10 py-3 rounded-xl font-bold shadow-lg hover:bg-[#ff6b81] transition-all duration-300 relative flex items-center gap-2">
+                                    <span>Send Message</span>
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
+                                <div id="loader" class="hidden">
+                                    <svg class="animate-spin h-7 w-7 text-[#fe3e57]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path></svg>
+                                </div>
+                            </div>
+                            <div id="contact-success" class="hidden bg-green-500/20 text-green-400 text-center font-semibold mt-2 py-2 rounded-lg fade-in-up">
+                                <i class="fas fa-check-circle mr-2"></i>Your message has been sent successfully!
+                            </div>
+                            <div id="contact-error" class="hidden bg-red-500/20 text-red-400 text-center font-semibold mt-2 py-2 rounded-lg fade-in-up">
+                                <i class="fas fa-times-circle mr-2"></i>Oops! Something went wrong. Please try again.
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+            <!-- End Contact Form Section -->
 
             <section class="pt-[120px] md:pt-[90px] sm-[80px] bg-[#070640] pb-[60px]">
                 <div class="wraper">
@@ -569,111 +615,123 @@
     <script src="assets/js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script>
-        // Initialize particles
-        particlesJS('particles-js', {
-            particles: {
-                number: {
-                    value: 80,
-                    density: {
+        // Initialize particles with error handling
+        if (typeof particlesJS !== 'undefined') {
+            particlesJS('particles-js', {
+                particles: {
+                    number: {
+                        value: 80,
+                        density: {
+                            enable: true,
+                            value_area: 800
+                        }
+                    },
+                    color: {
+                        value: '#fe3e57'
+                    },
+                    shape: {
+                        type: 'circle'
+                    },
+                    opacity: {
+                        value: 0.5,
+                        random: false
+                    },
+                    size: {
+                        value: 3,
+                        random: true
+                    },
+                    line_linked: {
                         enable: true,
-                        value_area: 800
+                        distance: 150,
+                        color: '#fe3e57',
+                        opacity: 0.4,
+                        width: 1
+                    },
+                    move: {
+                        enable: true,
+                        speed: 2,
+                        direction: 'none',
+                        random: false,
+                        straight: false,
+                        out_mode: 'out',
+                        bounce: false
                     }
                 },
-                color: {
-                    value: '#fe3e57'
-                },
-                shape: {
-                    type: 'circle'
-                },
-                opacity: {
-                    value: 0.5,
-                    random: false
-                },
-                size: {
-                    value: 3,
-                    random: true
-                },
-                line_linked: {
-                    enable: true,
-                    distance: 150,
-                    color: '#fe3e57',
-                    opacity: 0.4,
-                    width: 1
-                },
-                move: {
-                    enable: true,
-                    speed: 2,
-                    direction: 'none',
-                    random: false,
-                    straight: false,
-                    out_mode: 'out',
-                    bounce: false
-                }
-            },
-            interactivity: {
-                detect_on: 'canvas',
-                events: {
-                    onhover: {
-                        enable: true,
-                        mode: 'repulse'
+                interactivity: {
+                    detect_on: 'canvas',
+                    events: {
+                        onhover: {
+                            enable: true,
+                            mode: 'repulse'
+                        },
+                        onclick: {
+                            enable: true,
+                            mode: 'push'
+                        },
+                        resize: true
                     },
-                    onclick: {
-                        enable: true,
-                        mode: 'push'
-                    },
-                    resize: true
-                },
-                modes: {
-                    repulse: {
-                        distance: 100,
-                        duration: 0.4
-                    },
-                    push: {
-                        particles_nb: 4
+                    modes: {
+                        repulse: {
+                            distance: 100,
+                            duration: 0.4
+                        },
+                        push: {
+                            particles_nb: 4
+                        }
                     }
-                }
-            },
-            retina_detect: true
-        });
+                },
+                retina_detect: true
+            });
+        } else {
+            console.warn('Particles.js library not loaded. Particle effects will be disabled.');
+        }
 
         // Initialize EmailJS with your public key
         (function() {
-            emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS public key
+            emailjs.init("ESWgVD0kwkkAhjOri"); // Using your EmailJS public key
         })();
 
         // Form handling
         document.getElementById('contact-form').addEventListener('submit', function(e) {
             e.preventDefault();
-            
             // Show loading state
             const submitBtn = this.querySelector('.submit-btn');
             const loader = document.getElementById('loader');
             submitBtn.style.display = 'none';
             loader.style.display = 'block';
-            
             // Hide any previous messages
-            document.getElementById('error').classList.add('hidden');
-            document.getElementById('success').classList.add('hidden');
-            
+            document.getElementById('contact-error').classList.add('hidden');
+            document.getElementById('contact-success').classList.add('hidden');
             // Get form data
             const formData = {
                 user_name: document.getElementById('name').value,
                 user_lastname: document.getElementById('name2').value,
                 user_email: document.getElementById('email').value,
                 subject: document.getElementById('subject').value,
-                message: document.getElementById('message').value
+                message: document.getElementById('message').value,
+                to_email: 'fedihmida370@gmail.com' // Ensure the email is sent to you
             };
-
             // Send email using EmailJS
-            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', formData)
+            emailjs.send('service_xmrsvzj', 'fedifedi1230', formData)
                 .then(function() {
                     // Show success message
-                    document.getElementById('success').classList.remove('hidden');
-                    // Reset form
-                    document.getElementById('contact-form').reset();
+                    const msg = document.getElementById('contact-success');
+                    msg.classList.remove('hidden');
+                    msg.classList.add('fade-in-up');
+                    setTimeout(() => {
+                        msg.classList.remove('fade-in-up');
+                        msg.classList.add('hidden');
+                        document.getElementById('contact-form').reset();
+                    }, 3500);
                 }, function(error) {
                     // Show error message
-                    document.getElementById('error').classList.remove('hidden');
+                    const msg = document.getElementById('contact-error');
+                    msg.classList.remove('hidden');
+                    msg.classList.add('fade-in-up');
+                    setTimeout(() => {
+                        msg.classList.remove('fade-in-up');
+                        msg.classList.add('hidden');
+                    }, 3500);
                     console.error('EmailJS error:', error);
                 })
                 .finally(() => {
@@ -723,3 +781,4 @@
 
 <!-- Mirrored from wpocean.com/html/tf/folio-tailwind/contact.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 06 Mar 2025 04:13:29 GMT -->
 </html>
+
