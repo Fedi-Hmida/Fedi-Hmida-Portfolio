@@ -376,6 +376,31 @@
         .center-placeholder:focus-within::before {
             opacity: 0;
         }
+
+        /* ===  INTERACTIVE UPGRADE  =================================== */
+        :root {
+            --accent-1:#fe3e57;
+            --accent-2:#ff6b81;
+        }
+        /* Glass-morphism card */
+        .glass-card{
+            background:rgba(12,11,68,0.65);
+            -webkit-backdrop-filter:blur(16px) saturate(135%);
+            backdrop-filter:blur(16px) saturate(135%);
+            border:1.5px solid rgba(255,255,255,0.08);
+            box-shadow:0 12px 36px rgba(50,50,70,0.35);
+        }
+        /* Button ripple */
+        .submit-btn{position:relative;overflow:hidden;}
+        .submit-btn:focus-visible{outline:2px solid var(--accent-1);outline-offset:2px;}
+        .submit-btn .ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,0.35);transform:scale(0);animation:ripple 600ms linear;pointer-events:none;}
+        @keyframes ripple{to{transform:scale(4);opacity:0;}}
+        /* Shake animation */
+        @keyframes shake{10%,90%{transform:translateX(-1px);}20%,80%{transform:translateX(2px);}30%,50%,70%{transform:translateX(-4px);}40%,60%{transform:translateX(4px);} }
+        .shake{animation:shake 0.4s linear;}
+        /* Valid & invalid */
+        .is-valid{border-color:#10B981 !important;}
+        .is-invalid{border-color:#ef4444 !important;}
     </style>
 </head>
 
@@ -456,7 +481,7 @@
             <!-- Contact Form Section (Classic Upgraded) -->
             <section class="pt-[60px] pb-[30px] bg-[#070640]">
                 <div class="wraper">
-                    <div class="max-w-2xl mx-auto bg-[#0c0b44] border-[1.5px] border-[#464646] rounded-[18px] p-[48px] shadow-[0_12px_36px_0_rgba(50,50,50,0.16)] contact-form-container fade-in">
+                    <div class="max-w-2xl mx-auto bg-[#0c0b44] border-[1.5px] border-[#464646] rounded-[18px] p-[48px] shadow-[0_12px_36px_0_rgba(50,50,50,0.16)] contact-form-container fade-in glass-card">
                         <h2 class="text-center text-[48px] md:text-[36px] sm:text-[28px] text-white font-bold mb-[10px] gradient-text flex items-center justify-center gap-2">
                             <i class="fas fa-paper-plane text-[#fe3e57]"></i> Send Me a Message
                         </h2>
@@ -468,27 +493,28 @@
                             <!-- First Name -->
                             <div class="icon-input center-placeholder col-span-1" data-placeholder="First Name">
                                 <i class="fas fa-user input-icon"></i>
-                                <input type="text" id="name" name="user_name" placeholder=" " required class="p-3 rounded-xl w-full bg-[#070640] border border-[#464646] text-white focus:outline-none focus:border-[#fe3e57] shadow" />
+                                <input type="text" id="name" name="user_name" placeholder=" " required aria-label="First Name" class="p-3 rounded-xl w-full bg-[#070640] border border-[#464646] text-white focus:outline-none focus:border-[#fe3e57] shadow" />
                             </div>
                             <!-- Last Name -->
                             <div class="icon-input center-placeholder col-span-1" data-placeholder="Last Name">
                                 <i class="fas fa-user input-icon"></i>
-                                <input type="text" id="name2" name="user_lastname" placeholder=" " required class="p-3 rounded-xl w-full bg-[#070640] border border-[#464646] text-white focus:outline-none focus:border-[#fe3e57] shadow" />
+                                <input type="text" id="name2" name="user_lastname" placeholder=" " required aria-label="Last Name" class="p-3 rounded-xl w-full bg-[#070640] border border-[#464646] text-white focus:outline-none focus:border-[#fe3e57] shadow" />
                             </div>
                             <!-- Email -->
                             <div class="icon-input center-placeholder col-span-2" data-placeholder="Your Email">
                                 <i class="fas fa-envelope input-icon"></i>
-                                <input type="email" id="email" name="user_email" placeholder=" " required class="p-3 rounded-xl w-full bg-[#070640] border border-[#464646] text-white focus:outline-none focus:border-[#fe3e57] shadow" />
+                                <input type="email" id="email" name="user_email" placeholder=" " required aria-label="Email" class="p-3 rounded-xl w-full bg-[#070640] border border-[#464646] text-white focus:outline-none focus:border-[#fe3e57] shadow" />
                             </div>
                             <!-- Subject -->
                             <div class="icon-input center-placeholder col-span-2" data-placeholder="Subject">
                                 <i class="fas fa-pen input-icon"></i>
-                                <input type="text" id="subject" name="subject" placeholder=" " required class="p-3 rounded-xl w-full bg-[#070640] border border-[#464646] text-white focus:outline-none focus:border-[#fe3e57] shadow" />
+                                <input type="text" id="subject" name="subject" placeholder=" " required aria-label="Subject" class="p-3 rounded-xl w-full bg-[#070640] border border-[#464646] text-white focus:outline-none focus:border-[#fe3e57] shadow" />
                             </div>
                             <!-- Message -->
                             <div class="icon-input message-box col-span-2" data-placeholder="Your Message">
                                 <i class="fas fa-comment input-icon"></i>
-                                <textarea id="message" name="message" rows="5" placeholder=" " required class="p-3 rounded-xl w-full bg-[#070640] border border-[#464646] text-white focus:outline-none focus:border-[#fe3e57] resize-none shadow"></textarea>
+                                <textarea id="message" name="message" rows="5" placeholder=" " required aria-label="Message" class="p-3 rounded-xl w-full bg-[#070640] border border-[#464646] text-white focus:outline-none focus:border-[#fe3e57] resize-none shadow" maxlength="500"></textarea>
+                                <div class="flex justify-end text-xs text-gray-400 mt-1"><span id="char-count">0</span>/500</div>
                             </div>
                             <!-- Submit Button & Loader -->
                             <div class="flex items-center justify-center space-x-4 mt-2 col-span-2">
@@ -535,7 +561,7 @@
                     <div class="grid grid-cols-12 gap-8 lg:gap-3">
                         <div class="col-span-1 md:col-span-12"></div>
                         <div class="col-span-5 md:col-span-12 sm:col-span-12">
-                            <div class="bg-[#0c0b44] border-[1px] border-[#464646] rounded-[5px] mb-[60px] pl-[60px] pr-[60px] pt-[60px] pb-[30px] sm:p-[25px] shadow-[0_5px_15px_0_rgba(68,68,68,0.1)] shine-effect">
+                            <div class="bg-[#0c0b44] border-[1px] border-[#464646] rounded-[5px] mb-[60px] pl-[60px] pr-[60px] pt-[60px] pb-[30px] sm:p-[25px] shadow-[0_5px_15px_0_rgba(68,68,68,0.1)] shine-effect glass-card">
                                 <h2 class="text-center text-[30px] xl:text-[18px] md:text-[13px] sm:text-[12px] text-white font-bold mb-[15px] sm:pt-[20px] gradient-text">
                                     Let's Connect
                                 </h2>
@@ -587,7 +613,7 @@
                             <!-- Contact Info Cards -->
                             <div class="pl-[20px] pr-[50px] sm:p-0">
                                 <!-- Address -->
-                                <div class="py-[30px] px-[40px] sm:py-[20px] sm:px-[20px] mb-[30px] bg-[#0c0b44] border-[1px] border-[#464646] rounded-[5px] shadow-[0_10px_40px_0_rgba(50,50,50,0.1)] shine-effect hover:transform hover:scale-105 transition-all duration-300">
+                                <div class="py-[30px] px-[40px] sm:py-[20px] sm:px-[20px] mb-[30px] bg-[#0c0b44] border-[1px] border-[#464646] rounded-[5px] p-[40px] sm:p-[25px] shadow-[0_5px_15px_0_rgba(68,68,68,0.1)] shine-effect hover:transform hover:scale-105 transition-all duration-300 glass-card">
                                     <h2 class="text-[24px] sm:text-[20px] text-white font-bold mb-[15px] heading-font gradient-text">
                                         Tunis, Tunisia
                                     </h2>
@@ -603,7 +629,7 @@
                                 </div>
 
                                 <!-- Email -->
-                                <div class="py-[30px] px-[40px] sm:py-[20px] sm:px-[20px] mb-[30px] bg-[#0c0b44] border-[1px] border-[#464646] rounded-[5px] shadow-[0_10px_40px_0_rgba(50,50,50,0.1)] shine-effect hover:transform hover:scale-105 transition-all duration-300">
+                                <div class="py-[30px] px-[40px] sm:py-[20px] sm:px-[20px] mb-[30px] bg-[#0c0b44] border-[1px] border-[#464646] rounded-[5px] p-[40px] sm:p-[25px] shadow-[0_5px_15px_0_rgba(68,68,68,0.1)] shine-effect hover:transform hover:scale-105 transition-all duration-300 glass-card">
                                     <h2 class="text-[24px] sm:text-[20px] text-white font-bold mb-[15px] heading-font gradient-text">
                                         fedi.hmida@ieee.org
                                     </h2>
@@ -619,7 +645,7 @@
                                 </div>
 
                                 <!-- Phone -->
-                                <div class="py-[30px] px-[40px] sm:py-[20px] sm:px-[20px] mb-[30px] md:mb-0 bg-[#0c0b44] border-[1px] border-[#464646] rounded-[5px] shadow-[0_10px_40px_0_rgba(50,50,50,0.1)] shine-effect hover:transform hover:scale-105 transition-all duration-300">
+                                <div class="py-[30px] px-[40px] sm:py-[20px] sm:px-[20px] mb-[30px] md:mb-0 bg-[#0c0b44] border-[1px] border-[#464646] rounded-[5px] p-[40px] sm:p-[25px] shadow-[0_5px_15px_0_rgba(68,68,68,0.1)] shine-effect hover:transform hover:scale-105 transition-all duration-300 glass-card">
                                     <h2 class="text-[24px] sm:text-[20px] text-white font-bold mb-[15px] heading-font gradient-text">
                                         +216 93 722 130
                                     </h2>
@@ -635,7 +661,7 @@
                                 </div>
 
                                 <!-- Social Media -->
-                                <div class="py-[30px] px-[40px] sm:py-[20px] sm:px-[20px] mb-[30px] md:mb-0 bg-[#0c0b44] border-[1px] border-[#464646] rounded-[5px] shadow-[0_10px_40px_0_rgba(50,50,50,0.1)] shine-effect">
+                                <div class="py-[30px] px-[40px] sm:py-[20px] sm:px-[20px] mb-[30px] md:mb-0 bg-[#0c0b44] border-[1px] border-[#464646] rounded-[5px] p-[40px] sm:p-[25px] shadow-[0_5px_15px_0_rgba(68,68,68,0.1)] shine-effect">
                                     <h2 class="text-[24px] sm:text-[20px] text-white font-bold mb-[15px] heading-font gradient-text">
                                         Connect With Me
                                     </h2>
@@ -803,6 +829,44 @@
             console.warn('Particles.js library not loaded. Particle effects will be disabled.');
         }
 
+        // === CUSTOM INTERACTIVITY ===
+        // Ripple effect on button
+        document.querySelectorAll('.submit-btn').forEach(btn=>{
+            btn.addEventListener('click',e=>{
+                const circle=document.createElement('span');
+                const diameter=Math.max(btn.clientWidth,btn.clientHeight);
+                const rect=btn.getBoundingClientRect();
+                circle.style.width=circle.style.height=`${diameter}px`;
+                circle.style.left=`${e.clientX-rect.left-diameter/2}px`;
+                circle.style.top=`${e.clientY-rect.top-diameter/2}px`;
+                circle.classList.add('ripple');
+                btn.appendChild(circle);
+                setTimeout(()=>circle.remove(),600);
+            });
+        });
+
+        // Real-time validation
+        const fields=[
+            {el:document.getElementById('name')},
+            {el:document.getElementById('name2')},
+            {el:document.getElementById('email'),email:true},
+            {el:document.getElementById('subject')}
+        ];
+        const emailRegex=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        fields.forEach(f=>{
+            f.el.addEventListener('input',()=>{
+                const valid=f.email?emailRegex.test(f.el.value.trim()):f.el.value.trim().length>0;
+                f.el.classList.toggle('is-valid',valid);
+                f.el.classList.toggle('is-invalid',!valid);
+            });
+        });
+
+        // Character counter for message
+        const msgEl=document.getElementById('message');
+        const countEl=document.getElementById('char-count');
+        msgEl.addEventListener('input',()=>{countEl.textContent=msgEl.value.length;});
+        msgEl.dispatchEvent(new Event('input'));
+
         // Initialize EmailJS with your public key
         (function() {
             emailjs.init("ESWgVD0kwkkAhjOri"); // Using your EmailJS public key
@@ -828,7 +892,15 @@
                 message: document.getElementById('message').value,
                 to_email: 'fedihmida370@gmail.com' // Ensure the email is sent to you
             };
-            // Send email using EmailJS
+            // quick validation check before send
+            if(fields.some(f=>f.el.classList.contains('is-invalid')||f.el.value.trim()==='')|| msgEl.value.trim()===''){
+                const contactForm = document.getElementById('contact-form');
+                contactForm.classList.add('shake');
+                setTimeout(()=>contactForm.classList.remove('shake'),400);
+                submitBtn.style.display='block';loader.style.display='none';
+                return;
+            }
+
             emailjs.send('service_xmrsvzj', 'fedifedi1230', formData)
                 .then(function() {
                     // Show success message
