@@ -282,6 +282,100 @@
         .animate-fade-in-up {
             animation: fade-in-up 0.6s cubic-bezier(0.4,0,0.2,1);
         }
+
+        /* Two-column form & icon-input styles */
+        .icon-input {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        .icon-input .input-icon {
+            position: relative;
+            left: 0;
+            top: 0;
+            transform: none;
+            color: #fe3e57;
+            font-size: 1.2rem;
+            pointer-events: none;
+            margin-right: 0.75rem;
+            margin-left: 0.5rem;
+            min-width: 1.5rem;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+        .icon-input input,
+        .icon-input textarea {
+            padding-left: 0.5rem;
+            flex: 1 1 0%;
+        }
+        .icon-input textarea {
+            min-height: 48px;
+            padding-top: 2.2rem;
+            padding-bottom: 0.7rem;
+        }
+
+        /* Success toast upgrade */
+        .success-toast {
+            background: linear-gradient(135deg, #0e9f6e 0%, #31c48d 100%); /* emerald gradient */
+            color: #e7fff3;
+            box-shadow: 0 10px 25px rgba(0, 255, 180, 0.25);
+            border-left: 4px solid #10B981;
+        }
+        .success-toast i {
+            color: #fff;
+        }
+
+        /* Helper text style */
+        .helper-text {
+            color: #cfd2d6;
+            font-style: italic;
+            transition: color 0.3s ease;
+        }
+        .helper-text:hover {
+            color: #ffffff;
+        }
+
+        /* Centered placeholder for message box */
+        .message-box {
+            position: relative;
+        }
+        .message-box textarea {
+            text-align:left; /* keep user text normal */
+        }
+        .message-box::before {
+            content: attr(data-placeholder);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #8f9bb3; /* subtle gray */
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+        }
+        .message-box textarea:focus + .placeholder-overlay,
+        .message-box textarea:not(:placeholder-shown) + .placeholder-overlay {
+            opacity: 0;
+        }
+
+        /* Generic centered overlay for inputs */
+        .center-placeholder {
+            position: relative;
+        }
+        .center-placeholder::before {
+            content: attr(data-placeholder);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #8f9bb3;
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+        }
+        .center-placeholder:focus-within::before {
+            opacity: 0;
+        }
     </style>
 </head>
 
@@ -363,19 +457,41 @@
             <section class="pt-[60px] pb-[30px] bg-[#070640]">
                 <div class="wraper">
                     <div class="max-w-2xl mx-auto bg-[#0c0b44] border-[1.5px] border-[#464646] rounded-[18px] p-[48px] shadow-[0_12px_36px_0_rgba(50,50,50,0.16)] contact-form-container fade-in">
-                        <h2 class="text-center text-[32px] md:text-[24px] text-white font-bold mb-[10px] gradient-text flex items-center justify-center gap-2">
+                        <h2 class="text-center text-[48px] md:text-[36px] sm:text-[28px] text-white font-bold mb-[10px] gradient-text flex items-center justify-center gap-2">
                             <i class="fas fa-paper-plane text-[#fe3e57]"></i> Send Me a Message
                         </h2>
-                        <p class="text-center text-[#bdbdbd] mb-[28px]">I'd love to hear from you! Fill out the form below and I'll get back to you soon.</p>
-                        <form id="contact-form" class="contact-form grid grid-cols-1 gap-6">
-                            <div class="grid grid-cols-2 gap-4">
-                                <input type="text" id="name" name="user_name" placeholder="First Name" required class="p-3 rounded-xl bg-[#070640] border border-[#464646] text-white focus:outline-none focus:border-[#fe3e57] shadow" />
-                                <input type="text" id="name2" name="user_lastname" placeholder="Last Name" required class="p-3 rounded-xl bg-[#070640] border border-[#464646] text-white focus:outline-none focus:border-[#fe3e57] shadow" />
+                        <p class="helper-text text-center mb-[28px] flex items-center justify-center gap-2">
+                            <i class="fas fa-comment-dots text-[#fe3e57]"></i>
+                             Drop me a message and I'll respond within 24 hours.
+                        </p>
+                        <form id="contact-form" class="contact-form grid grid-cols-2 gap-6 md:grid-cols-1">
+                            <!-- First Name -->
+                            <div class="icon-input center-placeholder col-span-1" data-placeholder="First Name">
+                                <i class="fas fa-user input-icon"></i>
+                                <input type="text" id="name" name="user_name" placeholder=" " required class="p-3 rounded-xl w-full bg-[#070640] border border-[#464646] text-white focus:outline-none focus:border-[#fe3e57] shadow" />
                             </div>
-                            <input type="email" id="email" name="user_email" placeholder="Your Email" required class="p-3 rounded-xl bg-[#070640] border border-[#464646] text-white focus:outline-none focus:border-[#fe3e57] shadow" />
-                            <input type="text" id="subject" name="subject" placeholder="Subject" required class="p-3 rounded-xl bg-[#070640] border border-[#464646] text-white focus:outline-none focus:border-[#fe3e57] shadow" />
-                            <textarea id="message" name="message" rows="5" placeholder="Your Message" required class="p-3 rounded-xl bg-[#070640] border border-[#464646] text-white focus:outline-none focus:border-[#fe3e57] resize-none shadow"></textarea>
-                            <div class="flex items-center space-x-4 mt-2">
+                            <!-- Last Name -->
+                            <div class="icon-input center-placeholder col-span-1" data-placeholder="Last Name">
+                                <i class="fas fa-user input-icon"></i>
+                                <input type="text" id="name2" name="user_lastname" placeholder=" " required class="p-3 rounded-xl w-full bg-[#070640] border border-[#464646] text-white focus:outline-none focus:border-[#fe3e57] shadow" />
+                            </div>
+                            <!-- Email -->
+                            <div class="icon-input center-placeholder col-span-2" data-placeholder="Your Email">
+                                <i class="fas fa-envelope input-icon"></i>
+                                <input type="email" id="email" name="user_email" placeholder=" " required class="p-3 rounded-xl w-full bg-[#070640] border border-[#464646] text-white focus:outline-none focus:border-[#fe3e57] shadow" />
+                            </div>
+                            <!-- Subject -->
+                            <div class="icon-input center-placeholder col-span-2" data-placeholder="Subject">
+                                <i class="fas fa-pen input-icon"></i>
+                                <input type="text" id="subject" name="subject" placeholder=" " required class="p-3 rounded-xl w-full bg-[#070640] border border-[#464646] text-white focus:outline-none focus:border-[#fe3e57] shadow" />
+                            </div>
+                            <!-- Message -->
+                            <div class="icon-input message-box col-span-2" data-placeholder="Your Message">
+                                <i class="fas fa-comment input-icon"></i>
+                                <textarea id="message" name="message" rows="5" placeholder=" " required class="p-3 rounded-xl w-full bg-[#070640] border border-[#464646] text-white focus:outline-none focus:border-[#fe3e57] resize-none shadow"></textarea>
+                            </div>
+                            <!-- Submit Button & Loader -->
+                            <div class="flex items-center justify-center space-x-4 mt-2 col-span-2">
                                 <button type="submit" class="submit-btn bg-[#fe3e57] text-white px-10 py-3 rounded-xl font-bold shadow-lg hover:bg-[#ff6b81] transition-all duration-300 relative flex items-center gap-2">
                                     <span>Send Message</span>
                                     <i class="fas fa-arrow-right"></i>
@@ -384,10 +500,11 @@
                                     <svg class="animate-spin h-7 w-7 text-[#fe3e57]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path></svg>
                                 </div>
                             </div>
-                            <div id="contact-success" class="hidden bg-green-500/20 text-green-400 text-center font-semibold mt-2 py-2 rounded-lg fade-in-up">
+                            <!-- Success / Error Messages -->
+                            <div id="contact-success" class="success-toast hidden col-span-2 text-center font-semibold mt-2 py-3 px-4 rounded-lg fade-in-up flex items-center justify-center gap-2">
                                 <i class="fas fa-check-circle mr-2"></i>Your message has been sent successfully!
                             </div>
-                            <div id="contact-error" class="hidden bg-red-500/20 text-red-400 text-center font-semibold mt-2 py-2 rounded-lg fade-in-up">
+                            <div id="contact-error" class="hidden col-span-2 bg-red-500/20 text-red-400 text-center font-semibold mt-2 py-2 rounded-lg fade-in-up">
                                 <i class="fas fa-times-circle mr-2"></i>Oops! Something went wrong. Please try again.
                             </div>
                         </form>
@@ -593,7 +710,7 @@
                     </div>
                 </div>
                 <div class="py-[30px] bg-[#0d0c4c] text-center">
-                    <span class="text-[#fff]">© 2025 Fedi Hmida . All rights reserved</span>
+                    <span class="text-[#fff]"> 2025 Fedi Hmida . All rights reserved</span>
                 </div>
             </footer>
 
@@ -781,4 +898,3 @@
 
 <!-- Mirrored from wpocean.com/html/tf/folio-tailwind/contact.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 06 Mar 2025 04:13:29 GMT -->
 </html>
-
