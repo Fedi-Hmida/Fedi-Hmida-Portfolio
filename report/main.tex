@@ -1,0 +1,1423 @@
+\documentclass[12pt,a4paper]{report}
+
+% Essential Packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{geometry}
+\geometry{margin=2.5cm}
+
+% Graphics and Tables
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{array}
+
+% Diagrams and Drawing
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,positioning}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+% PDF Integration and Text Overlay
+\usepackage{pdfpages}
+\usepackage{eso-pic}
+
+% References and Links
+\usepackage[backend=biber,style=ieee]{biblatex}
+\addbibresource{references.bib}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+
+% Code Listings
+\usepackage{listings}
+\usepackage{xcolor}
+
+% Formatting
+\usepackage{fancyhdr}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{tocloft}
+
+% Code styling
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+\lstset{style=mystyle}
+
+% Header and Footer
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\leftmark}
+\fancyhead[R]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% Title formatting
+\titleformat{\chapter}[display]
+{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+\titlespacing*{\chapter}{0pt}{-30pt}{40pt}
+
+\begin{document}
+
+% University Cover Page with Personal Details
+\begin{titlepage}
+    \includepdf[pages=1,fitpaper=true]{garde1.pdf}
+
+  
+    \thispagestyle{empty}
+\end{titlepage}
+
+% Set page numbering to start with Arabic numerals from page 1
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+% Table of Contents
+\tableofcontents
+\newpage
+\listoffigures
+\newpage
+
+% Acknowledgments
+\begin{center}
+\section*{Acknowledgments}
+\end{center}
+
+I would like to begin by expressing my deep gratitude to all those who contributed to the success of this internship. This enriching experience has not only strengthened my technical and professional skills but also offered me valuable insights into the workplace environment.
+
+My sincere thanks go to \textbf{ADDINN GROUP} for granting me the opportunity to complete this internship within their organization and for providing a dynamic and supportive setting conducive to both learning and growth.
+
+I am particularly indebted to my mobile supervisor, \textbf{Mr. Houssem Eddine FADHLI}, whose outstanding support, guidance, and availability greatly contributed to the progress of my work. His expertise and constant encouragement were instrumental in shaping both my technical development and professional mindset.
+
+I would also like to extend my gratitude to my data supervisors—\textbf{Ms. Nivine Attoue}, \textbf{Mr. Baha Rahmouni}, and \textbf{Mr. Mohamed Hedi KEFI}—for their invaluable guidance, constructive feedback, and continuous support throughout this journey. Their contributions significantly enriched my learning experience and fostered my growth in the field of data science.
+
+Finally, I wish to convey my heartfelt thanks to \textbf{Mrs. Baya Mouaddeb}, whose trust, support, and dedication were essential in making this internship possible and truly meaningful.
+
+\newpage
+
+% Abstract
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+
+This report presents a comprehensive overview of my engineering internship experience at ADDINN Tunisia, which spanned 2 months focusing on the development of SmartClaim, an intelligent multichannel platform for automotive insurance claim management. The internship was structured around two primary domains: Mobile Development and Data Engineering, providing a unique opportunity to gain hands-on experience in both front-end user interface development and back-end artificial intelligence systems.
+
+In the Mobile Development component, I contributed to the development of the SmartClaim mobile application using cross-platform development frameworks. This application serves as the primary interface for policyholders to interact with the insurance claim system, offering features such as secure authentication, comprehensive claim declaration with multimedia attachments, real-time tracking, and integrated camera functionality for document capture. The project involved implementing user-friendly interfaces, integrating with AI services for damage detection, and ensuring responsive design across multiple mobile platforms.
+
+The Data Engineering component focused on developing an automated Damage Location Detection Model using advanced computer vision algorithms. This AI-powered system enables real-time analysis of vehicle damage images submitted through the mobile application, providing accurate and objective damage assessment. The work involved dataset preparation, model training using machine learning frameworks, and API integration to connect the mobile application with the AI services.
+
+Throughout the internship, I acquired valuable technical skills in mobile application development, artificial intelligence and computer vision, as well as modern development methodologies including agile frameworks. The project utilized industry-standard tools for version control, project management, and containerization for deployment.
+
+This report details the SmartClaim project architecture, the development methodologies employed, challenges faced during development, and solutions implemented. It also reflects on the skills acquired and provides insights into the professional development achieved through contributing to an innovative insurance technology solution.
+
+\textbf{Keywords:} Mobile Development, Data Engineering, Cross-Platform Applications, Computer Vision, Insurance Technology, Artificial Intelligence, SmartClaim, ADDINN Tunisia
+
+.
+
+% Chapter 1: Internship Overview
+\chapter{Internship Overview}
+
+\section{Introduction}
+
+This chapter provides an overview of the internship experience, including the presentation of the host organization, the context of the internship, and the primary objectives that guided the work undertaken during this period.
+
+\section{Host Organization Presentation}
+
+\subsection{ADDINN Group Overview}
+
+The ADDINN Group was established in 2012 by two entrepreneurs with a vision to participate in the global digital transformation revolution. The company specializes in IT consulting and digital transformation services, assisting enterprises in defining their strategic direction and implementing technological projects.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{upload/ADDINN.png}
+    \caption{ADDINN Group Logo}
+    \label{fig:addinn_logo}
+\end{figure}
+
+Founded initially in France in 2015, the group has evolved from pure consulting services to a comprehensive approach combining advisory services with technical implementation capabilities. In 2020, the company implemented a strategic reorganization through three specialized business units: ADS Foundry (software development), BeeWay Advisory (strategic consulting), and Qualifactory (quality assurance and testing services).
+
+\subsection{International Presence}
+
+ADDINN has established a strong international presence across multiple countries:
+
+\textbf{Direct Subsidiaries:}
+\begin{itemize}
+    \item \textbf{France:} Headquarters and primary operations center
+    \item \textbf{Tunisia:} Established in 2012, serving as a key development center
+    \item \textbf{Congo-Brazzaville:} Strategic expansion into Central Africa
+\end{itemize}
+
+\textbf{Strategic Partnerships:}
+The group maintains active commercial relationships in Gabon, Democratic Republic of Congo (DRC), and Belgium for client services and market expansion.
+
+\subsection{ADDINN Tunisia: Mission and Objectives}
+
+Since its establishment in Tunisia in 2012, ADDINN Tunisia has been dedicated to supporting innovative organizations worldwide in the evolution of their business processes and information systems. The company's mission encompasses the entire project lifecycle, from strategic planning to implementation and deployment of IT solutions.
+
+ADDINN Tunisia operates with three primary strategic objectives:
+\begin{enumerate}
+    \item \textbf{Process Optimization:} Streamline business processes and workflows to enhance operational efficiency
+    \item \textbf{Custom Solution Development:} Design tailored solutions addressing specific client requirements and business challenges
+    \item \textbf{Competitive Advantage Enhancement:} Improve client experience through innovative technological solutions
+\end{enumerate}
+
+\subsection{Key Operational Sectors}
+
+ADDINN operates across several critical economic sectors:
+
+\textbf{Financial Services:} The company provides comprehensive solutions for insurance and banking sectors, including risk management system enhancement, claims processing automation, digital banking platform development, and regulatory compliance solutions.
+
+\textbf{Transportation and Logistics:} ADDINN specializes in logistics optimization, cost reduction solutions, and innovative developments such as Freightsure for freight and logistics management.
+
+The company's approach is characterized by integration of emerging technologies such as artificial intelligence and machine learning, development of mobile-first solutions, implementation of cloud-based architectures, and emphasis on user experience and data analytics capabilities.
+
+\section{Internship Objectives}
+
+The primary objectives of this internship at ADDINN Tunisia were carefully defined to ensure a comprehensive learning experience that would bridge academic knowledge with industry practices:
+
+\begin{itemize}
+    \item \textbf{Mobile Application Development:} To gain hands-on experience in mobile application development using modern frameworks, particularly Flutter, and understand the complete development lifecycle from conception to deployment.
+    
+    \item \textbf{Digital Innovation:} To contribute to innovative digital solutions within the insurance technology sector, specifically through the development of the SmartClaim mobile application.
+    
+    \item \textbf{Industry Best Practices:} To develop proficiency in industry-standard tools, methodologies, and development practices used in professional software development environments.
+    
+    \item \textbf{Professional Integration:} To contribute meaningfully to ongoing projects while learning from experienced professionals and understanding the dynamics of working in multidisciplinary teams.
+    
+    \item \textbf{Technical Skills Enhancement:} To strengthen technical competencies in areas such as user interface design, state management, API integration, and mobile application architecture.
+    
+    \item \textbf{Project Management:} To understand project management principles and agile development methodologies as applied in real-world software development contexts.
+\end{itemize}
+
+\section*{Conclusion}
+In summary, this chapter provided an overview of the internship context, the host organization, and the objectives that guided the experience. Understanding the environment and goals sets the stage for exploring the specific project undertaken. The next chapter will delve into the details of the SmartClaim project, its components, and its innovative approach to insurance claim management.
+
+% Chapter 2: Project Presentation
+\chapter{Project Presentation}
+
+This chapter provides a comprehensive overview of the SmartClaim project undertaken during the internship. SmartClaim is an intelligent multichannel platform for automotive insurance claim management and prediction, developed as part of ADDINN Tunisia's digital transformation initiatives in the insurance sector. The project involves collaborative work between Mobile Development and Data Engineering teams, with integrated artificial intelligence components for damage analysis and fraud detection.
+
+\section{SmartClaim Project Overview}
+
+\subsection{Project Context}
+
+In the context of digital transformation of insurance services, SmartClaim aims to develop an innovative multichannel solution for automotive insurance claim management. This platform enables policyholders to easily report claims through a mobile application, attach visual evidence (photos, videos, documents), and track their case progress in real-time. The project integrates artificial intelligence components to automate damage analysis and optimize interactions between stakeholders.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{upload/Logo_App.png}
+    \caption{SmartClaim Logo}
+    \label{fig:SmartClaim}
+\end{figure}
+\subsection{Main Objectives}
+
+The SmartClaim project is designed to achieve the following strategic objectives:
+
+\begin{itemize}
+    \item \textbf{Process Automation:} Automate the claim declaration and management process to reduce processing time and human error
+    \item \textbf{AI Integration:} Integrate an artificial intelligence engine for automatic damage analysis and fraud detection
+    \item \textbf{Mobile Experience:} Provide a fluid experience through an intuitive mobile application
+    \item \textbf{Communication Optimization:} Optimize communication between policyholders and claim managers through a web portal
+    \item \textbf{Scalable Architecture:} Implement a modular, scalable, and testable software architecture
+\end{itemize}
+
+\subsection{Target Users}
+
+The SmartClaim platform serves four main user categories:
+
+\begin{itemize}
+    \item \textbf{Policyholders:} Primary users who declare and track their insurance claims
+    \item \textbf{Insurance Agents:} Professionals who assist clients and manage initial claim processing
+    \item \textbf{Claims Experts:} Specialists who evaluate damage and determine compensation
+    \item \textbf{Administrators:} System administrators who manage platform configuration and user access
+\end{itemize}
+
+\section{Mobile Application Component}
+
+\subsection{Project Overview}
+
+The mobile component of SmartClaim is developed using Flutter, providing cross-platform compatibility for both iOS and Android devices. The application serves as the primary interface for policyholders to interact with the insurance claim system, offering an intuitive and streamlined experience for claim declaration, document submission, and real-time tracking.
+
+\subsection{Core Functionalities}
+
+The SmartClaim mobile application incorporates the following main functional modules:
+
+\begin{itemize}
+    \item \textbf{Secure Authentication:} Account creation and secure authentication system using JWT and OAuth2 protocols with multi-factor authentication options
+    
+    \item \textbf{Claim Declaration:} Comprehensive claim submission process with text input and multimedia attachments (photos, videos, documents) for evidence collection
+    
+    \item \textbf{Automatic Damage Analysis:} Integration with AI engine for automatic damage classification and fraud detection using computer vision technologies
+    
+    \item \textbf{Real-time Tracking:} Dynamic claim status monitoring with visual timeline showing progression from submission to compensation
+    
+    \item \textbf{Document Management:} Integrated camera functionality for capturing insurance documents, vehicle photos, and incident evidence with automatic categorization
+    
+    \item \textbf{Interactive Dashboard:} Personalized home screen with quick actions, claim overview, and vehicle information management
+    
+    \item \textbf{Notification System:} Push notifications and email alerts for claim status updates, document requests, and important communications
+    
+    \item \textbf{Communication Hub:} Integrated messaging system for direct communication with claims managers and support staff
+    
+    \item \textbf{Offline Functionality:} Local data storage allowing users to start claims and access information without internet connectivity, with automatic synchronization when online
+    
+    \item \textbf{Profile Management:} Comprehensive user profile management including personal information, vehicle details, and insurance policy information
+\end{itemize}
+
+
+
+\section{Data Engineering Component}
+
+\subsection{Project Overview}
+
+The data engineering component focuses on developing an automated Damage Location Detection Model for the SmartClaim platform. In the domain of vehicle maintenance and insurance claims processing, accurate and efficient detection of damage locations on vehicles holds significant importance. Traditional methods of visually inspecting vehicles for damages are time-consuming and subjective, often leading to discrepancies in assessment and processing. This project leverages machine learning algorithms, specifically YOLO (You Only Look Once), to analyze images of vehicles and identify specific locations of damages with high accuracy and speed.
+
+\subsection{Damage Location Detection Model Objectives}
+
+The primary objective of this data engineering project is to develop a model for automated detection of damage locations on vehicles using a custom YOLO model. This system aims to:
+
+\begin{itemize}
+    \item \textbf{Streamline Insurance Claims:} Provide a fast, reliable, and objective method for assessing vehicle damages through the SmartClaim mobile application
+    \item \textbf{Automate Damage Assessment:} Enable users to upload images of damaged vehicles through the mobile app, with automated analysis to determine damage locations
+    \item \textbf{Improve Accuracy:} Eliminate subjective human assessment variations by providing consistent, AI-powered damage detection
+    \item \textbf{Real-time Processing:} Deliver immediate results to support the mobile application's real-time claim processing capabilities
+\end{itemize}
+
+
+\subsection{Core Development Tasks}
+
+The data engineering work encompasses three main phases of development:
+
+\subsubsection{Data Collection and Preprocessing}
+
+\begin{itemize}
+    \item \textbf{Dataset Acquisition:} Utilize the comprehensive car damage detection dataset from Roboflow Universe containing diverse vehicle damage scenarios
+    \item \textbf{Image Preprocessing:} Implement image preprocessing pipelines using OpenCV for resizing, normalization, and data augmentation
+    \item \textbf{Data Quality Assurance:} Ensure dataset diversity covering various damage locations, vehicle types, and lighting conditions
+    \item \textbf{Data Pipeline Integration:} Develop automated data processing workflows that integrate with the SmartClaim platform
+\end{itemize}
+
+\subsubsection{Model Development and Training}
+
+\begin{itemize}
+    \item \textbf{YOLO Model Architecture:} Design and implement custom YOLO model specifically optimized for vehicle damage detection
+    \item \textbf{Training Pipeline:} Develop comprehensive training workflows using Python, TensorFlow/PyTorch frameworks
+    \item \textbf{Model Fine-tuning:} Implement validation set optimization to enhance model performance for specific damage types
+    \item \textbf{Real-time Optimization:} Ensure model architecture supports fast inference times suitable for mobile application integration
+\end{itemize}
+
+\subsubsection{Evaluation and Optimization}
+
+\begin{itemize}
+    \item \textbf{Performance Evaluation:} Comprehensive testing using dedicated test sets to measure accuracy, precision, and recall
+    \item \textbf{Hyperparameter Tuning:} Implementation of optimization techniques to improve both accuracy and processing speed
+    \item \textbf{Mobile Integration Testing:} Ensure seamless integration with the Flutter mobile application for real-time damage detection
+    \item \textbf{API Development:} Create efficient API endpoints that allow the mobile application to submit images and receive damage location results
+\end{itemize}
+
+\subsection{Integration with SmartClaim Platform}
+
+The damage location detection model integrates seamlessly with the SmartClaim ecosystem:
+
+\begin{itemize}
+    \item \textbf{Mobile App Integration:} Direct integration with the Flutter mobile application allowing users to capture and submit vehicle damage photos for immediate analysis
+    \item \textbf{Real-time Processing:} Fast inference capabilities ensure users receive damage assessment results within seconds of image submission
+    \item \textbf{API Connectivity:} FAST API design enables smooth communication between the mobile application and AI processing services
+   
+\end{itemize}
+
+\section{Functional Modules}
+
+Based on the technical specifications, SmartClaim is organized into seven core functional modules that work together to provide a comprehensive insurance claim management solution:
+
+\begin{enumerate}
+    \item \textbf{Authentication and Role Management:} Secure user authentication system with JWT and OAuth2 integration, supporting role-based access control for different user types (policyholders, agents, experts, administrators)
+    
+    \item \textbf{Claim Declaration:} Comprehensive claim submission module allowing users to report incidents with text descriptions and multimedia attachments (photos, videos, documents)
+    
+    \item \textbf{AI Damage Analysis:} Artificial intelligence module using computer vision technologies (OpenCV, TensorFlow, YOLO, CNN) for automatic damage classification and fraud detection
+    
+    \item \textbf{Case Processing and Tracking:} Workflow management system that handles claim processing stages with real-time status updates and automated business rule enforcement
+    
+    \item \textbf{Agent Dashboard:} Administrative interface for insurance agents and experts to manage claims, view analytics, and communicate with policyholders
+    
+    \item \textbf{Notification and History Management:} Multi-channel notification system supporting push notifications and email alerts, with comprehensive history tracking for all claim activities
+    
+    \item \textbf{Reporting and Analytics:} Business intelligence module providing graphical dashboards, analytics, and export capabilities (PDF/Excel) for claims management insights
+\end{enumerate}
+
+\section{Development Methodology}
+
+\subsection{Adopted Methodology: Agile Methodology}
+
+The SmartClaim project adopts Agile methodology as the primary approach for software development, ensuring flexibility, collaboration, and continuous improvement throughout the project lifecycle. This methodology enables the team to respond effectively to changing requirements and deliver high-quality software incrementally.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{upload/agile_methodology.png}
+    \caption{Agile Methodology Framework}
+    \label{fig:agile}
+\end{figure}
+
+\subsection{Development Methodology: Scrum Framework}
+
+The development process follows the Scrum framework, which provides a structured yet flexible approach to project management and development:
+
+\begin{itemize}
+    \item \textbf{Sprint Duration:} 1-2 week sprints ensuring rapid delivery and frequent feedback
+    \item \textbf{Scrum Events:} Regular sprint planning, daily stand-ups, sprint reviews, and retrospectives
+    
+    \item \textbf{Iterative Development:} Continuous integration and delivery of working software increments
+    \item \textbf{Continuous Improvement:} Regular retrospectives to identify and implement process improvements
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{upload/scrum_framework.png}
+    \caption{Scrum Framework Process}
+    \label{fig:scrum}
+\end{figure}
+
+\subsection{Design Language: UML (Unified Modeling Language)}
+
+UML is utilized as the primary design and modeling language for the SmartClaim project, providing standardized visual representations of the system architecture and design:
+
+\begin{itemize}
+    \item \textbf{System Architecture Modeling:} Use of UML diagrams to represent system components and their interactions
+    \item \textbf{Use Case Diagrams:} Definition of user interactions and system functionality
+    \item \textbf{Class Diagrams:} Detailed representation of system classes, attributes, and relationships
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{upload/uml_diagrams.png}
+    \caption{UML System Design Diagrams}
+    \label{fig:uml}
+\end{figure}
+
+
+
+\section{Technologies Used}
+
+\subsection{Mobile Development Technologies}
+
+\subsubsection{Flutter Framework}
+Used to develop the cross-platform mobile application for both iOS and Android. Enabled single codebase development for the SmartClaim claim submission and tracking interface.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{upload/flutter.png}
+    \caption{Flutter Cross-Platform Framework}
+    \label{fig:flutter}
+\end{figure}
+
+\subsubsection{Dart Programming Language}
+Primary programming language for implementing the mobile application logic and user interface components. Used for developing all mobile app features including claim forms, image capture, and real-time tracking.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{upload/dart.png}
+    \caption{Dart Programming Language}
+    \label{fig:dart}
+\end{figure}
+
+\subsubsection{BLoC Pattern for State Management}
+Implemented to manage application state and handle user interactions. Used for managing claim data, authentication states, and real-time updates throughout the mobile application.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{upload/bloc.png}
+    \caption{BLoC State Management Pattern}
+    \label{fig:bloc}
+\end{figure}
+
+\subsubsection{Figma}
+Used for designing user interface mockups and creating interactive prototypes for the mobile application. Implemented to collaborate on UI/UX designs and establish design systems before development implementation.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{upload/figma.png}
+    \caption{Figma UI/UX Design Tool}
+    \label{fig:figma}
+\end{figure}
+
+\subsubsection{Android Studio}
+Utilized as the primary integrated development environment for Flutter mobile development. Used for code editing, debugging, device testing, and managing project dependencies throughout the development process.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{upload/android_studio.png}
+    \caption{Android Studio IDE}
+    \label{fig:android_studio}
+\end{figure}
+
+\subsubsection{GitHub}
+Implemented for version control and source code management of the mobile application. Used for collaborative development, code reviews, and maintaining project history with branching strategies.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{upload/github.png}
+    \caption{GitHub Version Control}
+    \label{fig:github}
+\end{figure}
+
+\subsubsection{Jira}
+Used for project management and task tracking throughout the mobile development lifecycle. Implemented to manage user stories, sprint planning, and bug tracking in coordination with the development team.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{upload/jira.png}
+    \caption{Jira Project Management}
+    \label{fig:jira}
+\end{figure}
+
+\subsubsection{Draw.io}
+Utilized for creating technical diagrams and system architecture documentation. Used to design mobile application flow charts, database schemas, and integration diagrams for project documentation.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{upload/drawio.png}
+    \caption{Draw.io Diagramming Tool}
+    \label{fig:drawio}
+\end{figure}
+
+\subsubsection{Overleaf}
+Used for collaborative document preparation and technical report writing. Implemented for creating and maintaining project documentation, technical specifications, and this internship report.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{upload/overleaf.png}
+    \caption{Overleaf LaTeX Editor}
+    \label{fig:overleaf}
+\end{figure}
+
+
+
+\subsection{Data Engineering Technologies}
+
+\subsubsection{Python Programming Language}
+Used for developing the damage detection AI model and data processing scripts. Implemented for training YOLO models and creating image preprocessing pipelines.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{upload/python.png}
+    \caption{Python Programming Language}
+    \label{fig:python}
+\end{figure}
+
+\subsubsection{YOLO (You Only Look Once)}
+Implemented as the core algorithm for detecting vehicle damage locations in submitted images. Used to analyze photos uploaded through the mobile app and identify damage areas automatically.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{upload/yolo.png}
+    \caption{YOLO Object Detection Algorithm}
+    \label{fig:yolo}
+\end{figure}
+
+\subsubsection{OpenCV}
+Used for image preprocessing including resizing, normalization, and data augmentation. Applied to prepare mobile app images for AI analysis and improve model accuracy.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{upload/opencv.png}
+    \caption{OpenCV Computer Vision Library}
+    \label{fig:opencv}
+\end{figure}
+
+\subsubsection{TensorFlow}
+Used for training the custom damage detection machine learning models. Implemented for model development, optimization, and deployment of the vehicle damage classification system.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{upload/tensorflow.png}
+    \caption{TensorFlow Machine Learning Framework}
+    \label{fig:tensorflow}
+\end{figure}
+
+\subsubsection{Kaggle}
+Utilized for accessing datasets and machine learning resources for vehicle damage detection research. Used to explore existing damage detection datasets and benchmark model performance against industry standards.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{upload/kaggle.png}
+    \caption{Kaggle Data Science Platform}
+    \label{fig:kaggle}
+\end{figure}
+
+\subsubsection{Google Colab}
+Used as the primary development environment for training and testing the YOLO damage detection models. Implemented for model experimentation, training workflows, and collaborative development with GPU acceleration support.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{upload/google_colab.png}
+    \caption{Google Colab Development Environment}
+    \label{fig:google_colab}
+\end{figure}
+
+\subsubsection{Roboflow}
+Used for dataset management and preparation of the car damage detection training data. Implemented for data annotation, augmentation, and preprocessing to create high-quality training datasets for the YOLO model.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{upload/roboflow.png}
+    \caption{Roboflow Dataset Management Platform}
+    \label{fig:roboflow}
+\end{figure}
+
+\subsubsection{FastAPI}
+Implemented to create API endpoints connecting the mobile app with AI services. Used for receiving image uploads from mobile app and returning damage detection results.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{upload/fastapi.png}
+    \caption{FastAPI Web Framework}
+    \label{fig:fastapi}
+\end{figure}
+
+
+
+\subsubsection{Docker}
+Used for containerizing and deploying the AI damage detection services. Implemented to ensure consistent deployment of the machine learning models across different environments.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{upload/docker.png}
+    \caption{Docker Containerization Platform}
+    \label{fig:docker}
+\end{figure}
+
+\section*{Conclusion}
+This chapter presented the SmartClaim project at a high level: its goals, users, and the two main pillars—mobile application and data engineering—along with the core functional modules, agile methodology, and enabling technologies. Together, these elements define the scope and foundations of the solution. In the next chapter, we turn this description into visuals by introducing the key system diagrams, offering an immediate and intuitive understanding of how components interact and how the system behaves end-to-end.
+
+% Chapter 3: System Analysis and Design
+\chapter{System Diagrams}
+
+This chapter presents the key diagrams that describe the SmartClaim system from different perspectives, including use case, structural, and behavioral views. These visual models provide a concise understanding of system functionality and interactions.
+
+\section{UML Diagrams}
+
+\subsection{Use Case Diagram}
+
+The use case diagram illustrates the interactions between different actors and the SmartClaim system, showing the main functionalities available to each user type.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{Conception/cas d'utilisation.drawio.png}
+    \caption{SmartClaim Use Case Diagram}
+    \label{fig:use_case}
+\end{figure}
+
+\subsection{Class Diagram}
+
+The class diagram presents the main entities and their relationships within the SmartClaim system, providing a structural view of the application domain.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1.1\textwidth]{Conception/SC_conception.png}
+    \caption{SmartClaim Class Diagram}
+    \label{fig:class_diagram}
+\end{figure}
+
+\subsection{Sequence Diagrams}
+
+\subsubsection{Claim Creation Sequence}
+
+This sequence diagram illustrates the process of creating a new insurance claim through the SmartClaim mobile application.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{Conception/Diagramme de séquence.drawio.png}
+    \caption{Claim Creation Sequence Diagram}
+    \label{fig:sequence_claim_creation}
+\end{figure}
+
+
+
+\section*{Conclusion}
+This chapter provided a visual overview of the SmartClaim system through key diagrams, including use case, class, and sequence diagrams. These models clarify the system's structure and interactions, preparing the reader for the following chapters, which will explore the technical implementation and practical aspects of the project in greater detail.
+
+% Chapter 4: Data Engineering Implementation
+\chapter{Data Engineering Implementation}
+
+\section{Introduction}
+
+
+
+This chapter presents the implementation of an automated Damage Location Detection Model for SmartClaim's data engineering platform. Using computer vision and YOLO architecture, the system replaces time-consuming manual vehicle inspections with fast, accurate automated damage analysis. The chapter covers methodology, implementation, and results.
+
+\section{Project Overview and Context}
+
+
+The Damage Location Detection Model represents a critical component of the SmartClaim ecosystem, designed to streamline the insurance claims process by providing automated, objective assessment of vehicle damages. Traditional visual inspection methods suffer from inherent limitations including time consumption, subjective assessment variations, and potential human error. The development of this automated system addresses these challenges by leveraging state-of-the-art computer vision technologies to deliver consistent, accurate, and rapid damage detection capabilities.
+
+The system integrates seamlessly with the SmartClaim mobile application, enabling users to capture and submit vehicle damage photographs for immediate analysis. This integration supports the platform's objective of providing real-time claim processing capabilities while maintaining high standards of accuracy and reliability.
+
+
+
+\section{Dataset Analysis and Preparation}
+
+\subsection{Dataset Selection and Acquisition}
+
+For this project, the dataset was provided by my supervisor from Roboflow Universe, containing approximately 10,000 high-quality images with exceptional diversity across damage types, vehicle models, and environmental conditions. The dataset features professional annotation with precise bounding box coordinates and accurate damage classification labels, making it ideal for vehicle damage detection in insurance claim processing scenarios.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{roboflow_dataset_overview.png}
+    \caption{Roboflow Dataset Overview and Statistics}
+    \label{fig:roboflow_dataset}
+\end{figure}
+
+
+
+
+
+\subsection{Data Preprocessing Pipeline}
+
+The preprocessing pipeline was designed to optimize image data for YOLO model training while maintaining the integrity of damage location information. The comprehensive pipeline incorporated several essential preprocessing steps to ensure optimal model performance:
+
+\subsubsection{Dataset Split Configuration}
+
+The dataset was systematically divided into three distinct sets following machine learning best practices:
+
+\begin{itemize}
+    \item \textbf{Training Set:} 70\% of total images (7,009 images) - Used for model training and parameter optimization
+    \item \textbf{Validation Set:} 20\% of total images (1,998 images) - Used for hyperparameter tuning and model selection
+    \item \textbf{Test Set:} 10\% of total images (986 images) - Used for final model evaluation and performance assessment
+\end{itemize}
+
+This distribution ensures adequate training data while maintaining sufficient validation and testing samples for robust performance evaluation.
+
+\subsubsection{Data Quality Assurance}
+
+Comprehensive data cleaning procedures were implemented to ensure dataset integrity:
+
+\begin{itemize}
+    \item \textbf{Duplicate Detection and Removal:} Systematic identification and elimination of duplicate images to prevent data leakage and overfitting
+    \item \textbf{Error Correction:} Identification and correction of annotation errors and inconsistencies in damage labeling
+    \item \textbf{Quality Control:} Manual review and validation of image quality standards and annotation accuracy
+\end{itemize}
+
+\subsubsection{Image Preprocessing Operations}
+
+The following preprocessing operations were applied to standardize the dataset:
+
+\begin{itemize}
+    \item \textbf{Auto-Orient:} Applied automatic image orientation correction to ensure consistent image positioning
+    \item \textbf{Resize:} Standardized image dimensions using stretch to 640x640 pixels to match YOLO input requirements while maintaining processing efficiency
+    \item \textbf{Auto-Adjust Contrast:} Implemented histogram equalization for enhanced contrast and improved feature visibility across varying lighting conditions
+\end{itemize}
+
+\subsubsection{Data Augmentation Strategy}
+
+After careful analysis of the dataset quality and diversity, it was determined that additional data augmentation was not necessary. The original dataset's comprehensive coverage of damage scenarios, lighting conditions, and vehicle orientations provided sufficient variability for robust model training without requiring artificial augmentation techniques.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{upload/data_preprocessing_pipeline.png}
+    \caption{Data Preprocessing Pipeline Overview}
+    \label{fig:preprocessing_pipeline}
+\end{figure}
+
+\section{Model Architecture and Development}
+
+\subsection{YOLO Framework Selection}
+
+The selection of YOLO (You Only Look Once) as the primary detection framework was based on several technical and practical considerations. During the development process, extensive experimentation was conducted with multiple YOLO versions to identify the optimal architecture for vehicle damage detection:
+
+\subsubsection{YOLO Version Comparison and Selection}
+
+Comprehensive testing was performed across multiple YOLO architectures:
+
+\begin{itemize}
+    \item \textbf{YOLOv5:} Initial experiments with various YOLOv5 variants to establish baseline performance
+    \item \textbf{YOLOv8:} Evaluation of the latest architectural improvements and performance enhancements
+    \item \textbf{YOLOv11:} Testing of the most recent YOLO developments for cutting-edge performance
+\end{itemize}
+
+After comprehensive evaluation across different metrics including accuracy, inference speed, and model size, \textbf{YOLOv8s (small)} emerged as the optimal choice for this project, delivering the best balance of detection accuracy and processing efficiency suitable for mobile application integration.
+
+
+
+
+\section{Training Process and Optimization}
+
+\subsection{Development Environment Configuration}
+
+The training environment was carefully configured using two primary platforms to optimize performance and resource utilization:
+
+\subsubsection{Training Platforms}
+
+\begin{itemize}
+    \item \textbf{Google Colab:} Utilized for its simplicity and user-friendly interface, providing GPU-accelerated training environment with Tesla T4 support
+    \item \textbf{Kaggle:} Leveraged for its generous resource allocation, offering 30 hours of GPU Turbo T4 training time, which was crucial for the extensive training requirements of this large dataset
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{upload/google_colab.png}
+        \caption{Google Colab Training Environment}
+        \label{fig:colab_training}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{upload/kaggle.png}
+        \caption{Kaggle GPU Training Environment}
+        \label{fig:kaggle_training}
+    \end{minipage}
+\end{figure}
+
+\subsubsection{Software Stack}
+\begin{itemize}
+    \item \textbf{Python 3.8+:} Primary programming language with comprehensive library support
+    \item \textbf{PyTorch/TensorFlow:} Deep learning frameworks for model implementation
+    \item \textbf{OpenCV:} Computer vision library for image processing and augmentation
+    \item \textbf{Roboflow:} Dataset management and preprocessing utilities
+\end{itemize}
+
+\subsection{Training Strategy and Hyperparameter Optimization}
+
+Due to the large dataset size and limited free computing resources, a staged training strategy was implemented to ensure efficient resource utilization while achieving optimal model performance.
+
+\subsubsection{Staged Training Approach}
+
+To manage the extensive training requirements with limited free resources, the training process was divided into three distinct phases, totaling approximately 300 epochs:
+
+\begin{itemize}
+    \item \textbf{Phase 1:} Initial training phase focusing on basic feature learning
+    \item \textbf{Phase 2:} Intermediate training with fine-tuning of learned features
+    \item \textbf{Phase 3:} Final optimization phase for maximum performance
+\end{itemize}
+
+This staged approach prevented training interruptions due to resource limitations while ensuring comprehensive model development.
+
+\subsubsection{Training Configuration}
+
+The model training was implemented using the following configuration:
+
+\begin{lstlisting}[language=Python, caption=YOLO Training Configuration]
+model = YOLO(weights_path)
+model.train( 
+    data=dataset_yaml_path,
+    epochs=100,
+    imgsz=640,
+    batch=16,
+    project="training_results",
+    name="stage2", 
+    resume=False,
+    save_period=25  # Save weights every 25 epochs
+)
+\end{lstlisting}
+
+\subsubsection{Hyperparameter Configuration}
+The training process utilized the following key hyperparameters:
+\begin{itemize}
+    \item \textbf{Epochs:} 100 per training stage (300 total across all phases)
+    \item \textbf{Image Size:} 640x640 pixels for optimal detection accuracy
+    \item \textbf{Batch Size:} 16 images per batch, optimized for available GPU memory
+    \item \textbf{Save Period:} Model weights saved every 25 epochs for progress monitoring
+    \item \textbf{Resume Training:} False for each new stage to ensure clean initialization
+\end{itemize}
+
+
+
+\section{Model Performance Evaluation }
+
+\subsection{Quantitative Performance Analysis}
+
+The trained model underwent comprehensive evaluation to assess its performance across various metrics and scenarios. The final model achieved excellent performance across all evaluation metrics:
+
+\subsubsection{Overall Detection Performance}
+
+The model demonstrated outstanding performance on the test dataset containing 1,998 images with 3,710 damage instances:
+
+\begin{itemize}
+    \item \textbf{Precision:} Achieved 92.9\% precision in damage detection, indicating high accuracy in positive predictions
+    \item \textbf{Recall:} Demonstrated 95.0\% recall rate, showing excellent capability to detect actual damage instances
+    \item \textbf{Mean Average Precision (mAP@0.5):} Achieved 97.4\% accuracy at IoU threshold of 0.5
+    \item \textbf{Mean Average Precision (mAP@0.5:0.95):} Demonstrated 88.8\% performance across multiple IoU thresholds (0.5 to 0.95), indicating robust localization accuracy
+\end{itemize}
+
+These metrics demonstrate that the model successfully balances precision and recall while maintaining high accuracy across different intersection-over-union thresholds, making it highly suitable for real-world insurance claim processing applications.
+
+\subsubsection{Confusion Matrix Analysis}
+
+The confusion matrix provides detailed insights into the model's classification performance across different damage categories:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{upload/confusion_matrix[1].png}
+    \caption{Confusion Matrix for Damage Detection Model}
+    \label{fig:confusion_matrix}
+\end{figure}
+
+\subsubsection{Training Progress Analysis}
+
+The training progress across the staged training approach showed consistent improvement in all key metrics:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{upload/results[1].png}
+    \caption{Training Results: Loss Functions and Performance Metrics Evolution}
+    \label{fig:training_results}
+\end{figure}
+
+The training curves demonstrate:
+\begin{itemize}
+    \item Consistent decrease in training and validation losses across all components (box loss, classification loss, and DFL loss)
+    \item Steady improvement in precision and recall metrics throughout the training process
+    \item Convergence of mAP50 and mAP50-95 metrics to high-performance levels
+    \item Stable training without signs of overfitting, as evidenced by similar trends in training and validation metrics
+\end{itemize}
+
+\subsubsection{Category-Specific Performance}
+Detailed analysis of performance across different damage types revealed:
+\begin{itemize}
+    \item Superior performance in detecting major structural damage
+    \item High accuracy in scratch and dent identification
+    \item Consistent performance across various vehicle types and colors
+    \item Robust detection under different lighting conditions
+\end{itemize}
+
+\section{Model Testing and Validation}
+
+\subsection{Testing with Dataset Images}
+
+The model was thoroughly tested using images from the reserved test set to validate its performance on unseen data. The following examples demonstrate the model's accuracy in detecting and localizing vehicle damage:
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{upload/test_input_image1.png}
+        \caption{Original Test Image from Dataset}
+        \label{fig:test_input1}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{upload/test_output_image1.png}
+        \caption{Model Detection Results on Test Image}
+        \label{fig:test_output1}
+    \end{minipage}
+\end{figure}
+
+The test results demonstrate precise damage localization with high confidence scores, accurately identifying damage boundaries and classification.
+
+\subsection{Testing with External Images}
+
+To evaluate the model's generalization capability, additional testing was conducted using external images sourced from the internet, representing real-world scenarios not present in the training dataset:
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{upload/in23.jpg}
+        \caption{External Test Image from Internet}
+        \label{fig:external_input1}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{upload/in2.jpg}
+        \caption{Model Detection Results on External Image}
+        \label{fig:external_output1}
+    \end{minipage}
+\end{figure}
+
+The external testing results confirm the model's robustness and ability to generalize to new, unseen vehicle damage scenarios, maintaining high detection accuracy across different image sources, lighting conditions, and vehicle types.
+
+
+\section{API Development and System Integration}
+
+\subsection{FastAPI Implementation}
+
+The YOLOv8 car damage detection model was successfully integrated into a production-ready API system using the FastAPI framework, providing a robust and scalable solution for real-time damage assessment.
+
+\subsubsection{API Architecture Design}
+
+The API follows a modular architecture with clear separation of concerns:
+
+\begin{itemize}
+    \item \textbf{Main Application (main.py):} Central FastAPI application with endpoint definitions
+    \item \textbf{Configuration Management (config.py):} Centralized settings and environment variables
+    \item \textbf{Data Models (models.py):} Pydantic models for request/response validation
+    \item \textbf{Utility Functions (utils.py):} Image processing and model inference utilities
+\end{itemize}
+
+
+
+\subsubsection{Core API Endpoints}
+
+The implemented API provides the following endpoints:
+
+\begin{itemize}
+    \item \textbf{Health Check (/health):} System status verification endpoint
+    \item \textbf{Damage Detection (/detect-damage):} Main inference endpoint accepting image uploads
+    \item \textbf{API Documentation (/docs):} Interactive Swagger UI for testing and documentation
+    \item \textbf{OpenAPI Schema (/openapi.json):} Machine-readable API specification
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{upload/api_interface.png}
+    \caption{FastAPI Interactive Interface (Swagger UI)}
+    \label{fig:api_interface}
+\end{figure}
+
+\subsubsection{Request/Response Format}
+
+The damage detection endpoint accepts multipart/form-data image uploads and returns structured JSON responses including:
+
+\begin{itemize}
+    \item \textbf{Request ID:} Unique identifier for tracking and debugging
+    \item \textbf{Image Information:} Dimensions, format, and metadata
+    \item \textbf{Detection Results:} Bounding boxes, confidence scores, and class labels
+    \item \textbf{Annotated Image URL:} Link to processed image with detection overlays
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{upload/api_detection_result.png}
+    \caption{API Detection Response with Damage Analysis Results}
+    \label{fig:api_detection_result}
+\end{figure}
+
+
+
+\subsubsection{Performance Optimization}
+
+Several optimization strategies were implemented to ensure optimal performance:
+
+\begin{itemize}
+    \item \textbf{Model Loading:} Singleton pattern for model initialization to avoid redundant loading
+    \item \textbf{Image Processing:} Efficient OpenCV operations with memory optimization
+    \item \textbf{Async Operations:} Non-blocking file I/O and model inference
+    \item \textbf{Input Validation:} File size limits (10MB) and format restrictions for security
+\end{itemize}
+
+
+
+
+
+\subsection{Docker Deployment}
+
+The system was containerized using Docker technology to ensure consistent deployment across different environments and facilitate production deployment.
+
+\subsubsection{Docker Implementation}
+
+The containerization process involved the following key steps:
+
+\begin{itemize}
+    \item \textbf{Dockerfile Creation:} Python 3.9-slim base image with optimized dependencies installation
+    \item \textbf{Model Integration:} Embedding the trained YOLO model within the container
+    \item \textbf{Port Configuration:} FastAPI service exposed on port 8000 for external access
+    \item \textbf{Environment Setup:} Production-ready configuration with proper error handling
+\end{itemize}
+
+\subsubsection{Deployment Process}
+
+The deployment package includes:
+
+\begin{itemize}
+    \item Complete Docker configuration files
+    \item Production deployment scripts
+    \item Environment configuration templates
+    \item Documentation for DevOps team handoff
+\end{itemize}
+
+% Figure suggestion: Add deployment package structure here
+% \begin{figure}[h]
+% \centering
+% \includegraphics[width=0.8\textwidth]{deployment_package.png}
+% \caption{Production Deployment Package Structure}
+% \label{fig:deployment_package}
+% \end{figure}
+
+
+
+
+
+\subsection{Mobile Application Integration}
+
+Seamless integration with the SmartClaim mobile application was achieved through:
+
+\subsubsection{Integration Architecture}
+\begin{itemize}
+    \item \textbf{HTTP-based Communication:} Standard Fast API communication protocol
+    \item \textbf{Image Upload Handling:} Efficient image transmission and processing
+    \item \textbf{Real-time Response:} Immediate damage analysis results delivery
+    \item \textbf{Error Management:} Comprehensive error handling and user feedback
+\end{itemize}
+
+\subsubsection{User Experience Optimization}
+\begin{itemize}
+    \item Progressive image analysis with loading indicators
+    \item Damage visualization overlay on submitted images
+    \item Confidence score presentation for transparency
+    \item Detailed damage location descriptions
+\end{itemize}
+
+
+
+\section*{Conclusion}
+
+This chapter presented the successful implementation of the Damage Location Detection Model for SmartClaim, using computer vision to automate vehicle damage assessment. The solution provides accurate, fast damage detection integrated into the mobile application, demonstrating AI's viability in insurance technology. The next chapter covers mobile development implementation.
+
+
+
+% Chapter 5: Mobile Development Implementation
+\chapter{Mobile Development Implementation}
+
+\section{Introduction}
+
+This chapter presents the implementation of the SmartClaim mobile application using Flutter framework. The mobile development component serves as the primary user interface for the SmartClaim platform, enabling policyholders to submit claims, capture vehicle damage photos, and track their claim status in real-time. The chapter covers the design process, development implementation, backend integration, and key features that provide a seamless user experience for insurance claim management.
+
+\section{Project Overview and Development Environment}
+
+\subsection{Mobile Development Context}
+
+The SmartClaim mobile application represents the front-end component of the intelligent insurance claim management platform. Built using Flutter's cross-platform framework, the application provides a unified solution for both iOS and Android platforms, ensuring consistent user experience across different mobile devices. The application integrates seamlessly with the AI-powered damage detection system described in the previous chapter, creating a complete end-to-end solution for automated insurance claim processing.
+
+\subsection{Development Environment Setup}
+
+The mobile development environment was configured using industry-standard tools and frameworks:
+
+\begin{itemize}
+    \item \textbf{Flutter SDK:} Cross-platform development framework for iOS and Android
+    \item \textbf{Dart Programming Language:} Primary language for application logic implementation
+    \item \textbf{VS Code:} Primary integrated development environment with Flutter extensions
+    \item \textbf{Android Studio:} Secondary IDE for Android-specific testing and debugging
+    \item \textbf{Git/GitHub:} Version control and collaborative development platform
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Mobile/feee.jpg}
+    \caption{Mobile Development Environment Setup}
+    \label{fig:mobile_dev_env}
+\end{figure}
+
+\section{UI/UX Design Implementation}
+
+\subsection{Design System and Figma Prototyping}
+
+The mobile application design was developed using Figma as the primary design tool, ensuring a systematic approach to user interface development and maintaining design consistency throughout the application.
+
+\subsubsection{Design Process Workflow}
+
+The design implementation followed a structured workflow:
+
+\begin{itemize}
+    \item \textbf{User Research and Requirements Analysis:} Understanding policyholder needs and insurance claim workflows
+    \item \textbf{Wireframing and User Flow Design:} Creating low-fidelity wireframes and defining user journey maps
+    \item \textbf{High-Fidelity Mockups:} Developing detailed visual designs with branding and styling
+    \item \textbf{Interactive Prototyping:} Creating clickable prototypes for user testing and validation
+    \item \textbf{Design System Documentation:} Establishing reusable components and design guidelines
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\textwidth]{Mobile/image_2025-08-22_171156782.png}
+    \caption{Figma Design Process and Workflow}
+    \label{fig:figma_design}
+\end{figure}
+
+
+
+
+
+\section{Flutter Development Implementation}
+
+\subsection{Application Architecture and State Management}
+
+\subsubsection{Project Structure Organization}
+
+The Flutter application follows a clean architecture pattern with clear separation of concerns. The actual project structure in VS Code is organized as follows:
+
+\begin{lstlisting}[language=bash, caption=SmartClaim Flutter                     # Main application code
+│   ├── main.dart           # Application entry point
+│   ├── app_router.dart     # Navigation and routing
+│   ├── bloc/              # State management (BLoC pattern)
+│   ├── models/            # Data models and entities
+│   ├── Report/            # Documentation
+│   ├── screens/           # UI screens and pages
+│   ├── services/          # API and external services
+│   ├── utils/             # Utility functions
+│   └── widgets/           # Reusable UI components
+           # Project documentation
+\end{lstlisting}
+
+\subsubsection{State Management Implementation}
+
+The application utilizes the BLoC (Business Logic Components) pattern for state management, providing:
+
+\begin{itemize}
+    \item \textbf{Separation of Business Logic:} Clear distinction between UI and business logic
+    \item \textbf{Reactive Programming:} Stream-based state updates for responsive user interface
+    \item \textbf{Testability:} Easy unit testing of business logic components
+    \item \textbf{Scalability:} Maintainable architecture for large-scale application development
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Mobile/Blocs.jpg}
+    \caption{BLoC State Management Architecture}
+    \label{fig:bloc_architecture}
+\end{figure}
+
+\section{Core Features Implementation}
+
+\subsection{Start New Claim}
+
+The claim initiation feature represents the core functionality of the SmartClaim mobile application, enabling users to quickly and efficiently report insurance incidents with comprehensive documentation.
+
+\subsubsection{Feature Overview}
+
+Users can report their accidents in minutes through an intuitive, step-by-step process that guides them through all necessary information collection:
+
+\begin{itemize}
+    \item \textbf{Quick Incident Reporting:} Streamlined form with essential fields for rapid claim submission
+    \item \textbf{Photo Documentation:} Integrated camera functionality for capturing multiple damage angles
+    \item \textbf{Location Services:} Automatic GPS location capture with manual override capability
+    \item \textbf{Guided Data Collection:} Smart form that adapts based on incident type and severity
+    \item \textbf{Document Attachment:} Support for police reports, insurance documents, and witness statements
+   
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Mobile/n1.jpg}
+        \caption{Incident Details Form}
+        \label{fig:start_claim1}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Mobile/n2.jpg}
+        \caption{Indication for damage area}
+        \label{fig:start_claim2}
+    \end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Mobile/n3.jpg}
+        \caption{Upload Damage Picture}
+        \label{fig:start_claim3}
+    \end{minipage}
+    \hfill
+    
+\end{figure}
+
+\subsection{Track Claims}
+
+The claim tracking system provides comprehensive visibility into claim processing status, enabling users to monitor their claims throughout the entire lifecycle.
+
+\subsubsection{Feature Overview}
+
+Users can easily track all their ongoing claims with real-time status updates and detailed progress information:
+
+\begin{itemize}
+    \item \textbf{Visual Progress Timeline:} Interactive timeline showing each stage of claim processing
+    \item \textbf{Real-time Status Updates:} Live notifications when claim status changes
+    \item \textbf{Document Request Alerts:} Immediate notification when additional documents are needed
+   
+    \item \textbf{Estimated Processing Time:} Predictive timeline based on claim complexity
+    \item \textbf{Multi-Claim Dashboard:} Overview of all active and historical claims
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Mobile/t1.jpg}
+        \caption{Claims Reviewed}
+        \label{fig:track_claims1}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Mobile/t2.jpg}
+        \caption{Claim Compensated}
+        \label{fig:track_claims2}
+    \end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Mobile/t3.jpg}
+        \caption{Expertise in Progress}
+        \label{fig:track_claims3}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Mobile/t4.jpg}
+        \caption{Claim Refused}
+        \label{fig:track_claims4}
+    \end{minipage}
+\end{figure}
+
+\subsection{Smart Assessment}
+
+The Smart Assessment feature leverages the AI damage detection model developed in Chapter 4 to provide immediate, accurate damage estimates through automated photo analysis.
+
+\subsubsection{Feature Overview}
+
+This innovative feature uses advanced computer vision to analyze vehicle damage photos and provide instant estimates:
+
+\begin{itemize}
+    \item \textbf{AI-Powered Analysis:} Integration with YOLO damage detection model for accurate assessment
+    \item \textbf{Instant Cost Estimation:} Real-time damage cost calculation based on AI analysis
+    \item \textbf{Damage Visualization:} Interactive overlay showing detected damage areas with confidence scores
+    \item \textbf{Multiple Angle Analysis:} Comprehensive assessment using multiple photo angles
+    \item \textbf{Severity Classification:} Automatic categorization of damage severity levels
+
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Mobile/s1.png}
+        \caption{Choose Claim for Smart Assessment}
+        \label{fig:smart_assessment1}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Mobile/s2.png}
+        \caption{AI Damage Detection Progress}
+        \label{fig:smart_assessment2}
+    \end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Mobile/s3.png}
+        \caption{AI Damage Pattern Matching Progress}
+        \label{fig:smart_assessment3}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Mobile/s4.png}
+        \caption{Smart Assessment Cost Report}
+        \label{fig:smart_assessment4}
+    \end{minipage}
+\end{figure}
+
+\subsection{Real-Time Chat}
+
+The integrated communication system enables direct, real-time messaging between users and claim handlers, providing immediate support and clarification throughout the claim process.
+
+\subsubsection{Feature Overview}
+
+Users can communicate directly with claim professionals through an integrated chat system:
+
+\begin{itemize}
+    \item \textbf{Instant Messaging:} Real-time chat with claim handlers and support staff
+    \item \textbf{File Sharing:} Ability to share photos, documents, and voice messages
+    \item \textbf{Status Integration:} Chat messages linked to specific claim stages and updates
+    \item \textbf{Push Notifications:} Immediate alerts for new messages and responses
+    \item \textbf{Message History:} Complete conversation history for future reference
+    \item \textbf{Multimedia Support:} Support for images, voice notes, and document attachments
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Mobile/c1.jpg}
+        \caption{Chat Conversation Interface}
+        \label{fig:chat_conversation1}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Mobile/c2.jpg}
+        \caption{Conversation History and Real-Time Status Indicators}
+        \label{fig:chat_conversation2}
+    \end{minipage}
+\end{figure}
+
+\section{Backend Integration and API Communication}
+
+
+
+\subsection{AI Model Integration}
+
+\subsubsection{Damage Detection API Integration}
+
+The mobile application integrates seamlessly with the AI damage detection model developed in Chapter 4:
+
+\begin{itemize}
+    \item \textbf{Image Upload to AI Service:} Direct integration with FastAPI damage detection endpoint
+    \item \textbf{Real-time Processing:} Live feedback during image analysis
+    \item \textbf{Result Visualization:} Display of detected damage areas with confidence scores
+    \item \textbf{Damage Report Generation:} Automatic report creation based on AI analysis
+\end{itemize}
+
+
+
+
+\section*{Conclusion}
+
+This chapter presented the comprehensive implementation of the SmartClaim mobile application, covering UI/UX design with Figma, Flutter development using modern architecture patterns, and seamless backend integration. The mobile solution provides an intuitive interface for insurance claim management, integrating AI-powered damage detection to deliver a complete end-to-end user experience. The application demonstrates the successful combination of design excellence, technical implementation, and innovative AI integration in creating a modern insurance technology solution.
+
+\end{chapter}
+
+\chapter*{General Conclusion}
+
+This 2-month engineering internship at ADDINN Tunisia has been a comprehensive and enriching experience that successfully combined mobile development and data engineering to create the SmartClaim platform. The project represents a significant achievement in both technical implementation and professional development.
+
+\textbf{Technical Achievements:} The SmartClaim project successfully delivered a complete AI-powered insurance claim management solution, including a cross-platform Flutter mobile application and an advanced YOLO-based damage detection system achieving 92.9\% precision and 95.0\% recall. The integration of mobile frontend with AI backend services through FastAPI demonstrates successful system architecture and deployment using Docker containerization.
+
+\textbf{Professional Development:} Throughout this internship, I gained valuable experience in modern software development practices, including Flutter development, computer vision implementation, API development, and agile project management. Working with experienced professionals provided insights into industry best practices and collaborative development methodologies.
+
+\textbf{Impact and Value:} The SmartClaim platform demonstrates the potential for innovative technology solutions to transform traditional insurance processes. By combining mobile technology with artificial intelligence, the project creates a foundation for future digital transformation initiatives in the insurance sector, offering improved user experiences and operational efficiency.
+
+\textbf{Future Potential:} The scalable architecture and AI capabilities established in this project provide opportunities for expansion into broader insurance services, international markets, and enterprise solutions. The technical foundation supports continued innovation and market growth.
+
+This internship has been instrumental in developing both technical expertise and professional competencies, providing a solid foundation for continued growth in the technology sector while contributing meaningfully to ADDINN's digital transformation initiatives.
+
+% Clear any remaining floats and start a new page
+\clearpage
+\newpage
+
+% Include the last page from imm.pdf
+\includepdf[pages=-,fitpaper=true]{imm.pdf}
+
+\end{document}

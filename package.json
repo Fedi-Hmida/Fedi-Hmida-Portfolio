@@ -1,5 +1,43 @@
 {
+  "name": "fedi-hmida-portfolio",
+  "version": "2.0.0",
+  "description": "Professional portfolio with advanced analytics tracking",
+  "main": "index.html",
+  "scripts": {
+    "dev": "netlify dev",
+    "build": "echo 'Building portfolio...' && npm run optimize",
+    "optimize": "echo 'Optimizing assets...'",
+    "deploy": "netlify deploy --prod",
+    "test": "echo 'Running tests...'",
+    "analytics-test": "node test/analytics-test.js"
+  },
   "dependencies": {
     "gsap": "^3.13.0"
+  },
+  "devDependencies": {
+    "@supabase/supabase-js": "^2.38.0",
+    "netlify-cli": "^17.0.0",
+    "node-fetch": "^3.3.2"
+  },
+  "keywords": [
+    "portfolio", 
+    "freelance", 
+    "web-development", 
+    "analytics", 
+    "privacy-first",
+    "flutter",
+    "symfony",
+    "machine-learning"
+  ],
+  "author": {
+    "name": "Fedi Hmida",
+    "email": "your.email@gmail.com",
+    "url": "https://your-domain.com"
+  },
+  "license": "MIT",
+  "homepage": "https://your-domain.netlify.app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FediHmida/Fedi-_Hmida_Portfolio"
   }
 }

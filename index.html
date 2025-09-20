@@ -33,8 +33,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
-
-
+    <!-- Plausible Analytics - Privacy-first tracking -->
+    <script defer data-domain="your-domain.com" src="https://plausible.io/js/script.outbound-links.tagged-events.js"></script>
+    <script>
+        window.plausible = window.plausible || function() { 
+            (window.plausible.q = window.plausible.q || []).push(arguments) 
+        }
+    </script>
 
 </head>
 
@@ -73,13 +78,13 @@
                                 <a href="about.html">About</a>
                             </li>
                             <li>
-                                <a href="Portfolio.html">Portfolio</a>
+                                <a href="Portfolio/Portfolio.html">Portfolio</a>
                             </li>
                             <li>
                                 <a href="resume.html">Resume</a>
                             </li>
                             <li>
-                                <a href="newsList.html">News</a>
+                                <a href="news/newsList.html">News</a>
                             </li>
                             <li>
                                 <a href="contact.html">Contact</a>
@@ -98,13 +103,13 @@
                             <a href="about.html" class="relative group text-[16px] lg:text-[14px] py-[35px] xl:py-[30px] px-[20px] xl:px-[6px] text-white block capitalize font-base-font font-medium transition-all hover:text-[#fe3e57]">About</a>
                         </li>
                         <li class="relative inline-block group">
-                            <a href="Portfolio.html" class="relative group text-[16px] lg:text-[14px] py-[35px] xl:py-[30px] px-[20px] xl:px-[6px] text-white block capitalize font-base-font font-medium transition-all hover:text-[#fe3e57]">Portfolio</a>
+                            <a href="Portfolio/Portfolio.html" class="relative group text-[16px] lg:text-[14px] py-[35px] xl:py-[30px] px-[20px] xl:px-[6px] text-white block capitalize font-base-font font-medium transition-all hover:text-[#fe3e57]">Portfolio</a>
                         </li>
                         <li class="relative inline-block group">
                             <a href="resume.html" class="relative group text-[16px] lg:text-[14px] py-[35px] xl:py-[30px] px-[20px] xl:px-[6px] text-white block capitalize font-base-font font-medium transition-all hover:text-[#fe3e57]">Resume</a>
                         </li>
                         <li class="relative inline-block group">
-                            <a href="newsList.html" class="relative group text-[16px] lg:text-[14px] py-[35px] xl:py-[30px] px-[20px] xl:px-[6px] text-white block capitalize font-base-font font-medium transition-all hover:text-[#fe3e57]">News</a>
+                            <a href="news/newsList.html" class="relative group text-[16px] lg:text-[14px] py-[35px] xl:py-[30px] px-[20px] xl:px-[6px] text-white block capitalize font-base-font font-medium transition-all hover:text-[#fe3e57]">News</a>
                         </li>
                         <li class="relative inline-block">
                             <a href="contact.html" class="relative group text-[16px] lg:text-[14px] py-[35px] xl:py-[30px] px-[20px] xl:px-[6px] text-white block capitalize font-base-font font-medium transition-all hover:text-[#fe3e57]">Contact</a>
@@ -327,28 +332,28 @@ impactful, solution-oriented software.
                                 </div>
                             </div>
 
-                            <!-- Symfony -->
+                            <!-- YOLO -->
                             <div class="col-span-4 md:col-span-6 sm:col-span-6">
                                 <div class="mb-[40px] relative group hover:scale-105 transition-transform duration-300">
                                     <div class="bg-[#1a1a5c] p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
                                         <div class="flex items-center justify-center mb-4">
-                                            <i class="fab fa-symfony text-[#fe3e57] text-5xl"></i>
+                                            <i class="fas fa-brain text-[#fe3e57] text-5xl"></i>
                                         </div>
-                                        <h3 class="text-[25px] text-[#fff] text-center font-semibold mb-2">Symfony</h3>
-                                        <p class="text-[#c7c6c6] text-center">PHP framework for web applications</p>
+                                        <h3 class="text-[25px] text-[#fff] text-center font-semibold mb-2">YOLO</h3>
+                                        <p class="text-[#c7c6c6] text-center">v5/v8/v11 explored; v8s selected</p>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- JavaFX -->
+                            <!-- TensorFlow -->
                             <div class="col-span-4 md:col-span-6 sm:col-span-6">
                                 <div class="mb-[40px] relative group hover:scale-105 transition-transform duration-300">
                                     <div class="bg-[#1a1a5c] p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
                                         <div class="flex items-center justify-center mb-4">
-                                            <i class="fab fa-java text-[#ff8c2f] text-5xl"></i>
+                                            <i class="fas fa-cubes text-[#ff8c2f] text-5xl"></i>
                                         </div>
-                                        <h3 class="text-[25px] text-[#fff] text-center font-semibold mb-2">JavaFX</h3>
-                                        <p class="text-[#c7c6c6] text-center">Desktop application development</p>
+                                        <h3 class="text-[25px] text-[#fff] text-center font-semibold mb-2">TensorFlow</h3>
+                                        <p class="text-[#c7c6c6] text-center">Deep learning model development</p>
                                     </div>
                                 </div>
                             </div>
@@ -379,28 +384,54 @@ impactful, solution-oriented software.
                                 </div>
                             </div>
 
-                            <!-- MySQL -->
+                            <!-- PyTorch -->
                             <div class="col-span-4 md:col-span-6 sm:col-span-6">
                                 <div class="mb-[40px] relative group hover:scale-105 transition-transform duration-300">
                                     <div class="bg-[#1a1a5c] p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
                                         <div class="flex items-center justify-center mb-4">
-                                            <i class="fas fa-database text-[#f1f965] text-5xl"></i>
+                                            <i class="fas fa-fire text-[#f1f965] text-5xl"></i>
                                         </div>
-                                        <h3 class="text-[25px] text-[#fff] text-center font-semibold mb-2">MySQL</h3>
-                                        <p class="text-[#c7c6c6] text-center">Database management</p>
+                                        <h3 class="text-[25px] text-[#fff] text-center font-semibold mb-2">PyTorch</h3>
+                                        <p class="text-[#c7c6c6] text-center">Model training and experimentation</p>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- HTML/CSS/JS -->
+                            <!-- OpenCV -->
                             <div class="col-span-4 md:col-span-6 sm:col-span-6">
                                 <div class="mb-[40px] relative group hover:scale-105 transition-transform duration-300">
                                     <div class="bg-[#1a1a5c] p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
                                         <div class="flex items-center justify-center mb-4">
-                                            <i class="fas fa-code text-[#39c4ff] text-5xl"></i>
+                                            <i class="fas fa-eye text-[#39c4ff] text-5xl"></i>
                                         </div>
-                                        <h3 class="text-[25px] text-[#fff] text-center font-semibold mb-2">HTML/CSS/JS</h3>
-                                        <p class="text-[#c7c6c6] text-center">Frontend web development</p>
+                                        <h3 class="text-[25px] text-[#fff] text-center font-semibold mb-2">OpenCV</h3>
+                                        <p class="text-[#c7c6c6] text-center">Computer vision preprocessing</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- FastAPI -->
+                            <div class="col-span-4 md:col-span-6 sm:col-span-6">
+                                <div class="mb-[40px] relative group hover:scale-105 transition-transform duration-300">
+                                    <div class="bg-[#1a1a5c] p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
+                                        <div class="flex items-center justify-center mb-4">
+                                            <i class="fas fa-plug text-[#54faae] text-5xl"></i>
+                                        </div>
+                                        <h3 class="text-[25px] text-[#fff] text-center font-semibold mb-2">FastAPI</h3>
+                                        <p class="text-[#c7c6c6] text-center">REST APIs for model inference</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Docker -->
+                            <div class="col-span-4 md:col-span-6 sm:col-span-6">
+                                <div class="mb-[40px] relative group hover:scale-105 transition-transform duration-300">
+                                    <div class="bg-[#1a1a5c] p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
+                                        <div class="flex items-center justify-center mb-4">
+                                            <i class="fab fa-docker text-[#3c7dd9] text-5xl"></i>
+                                        </div>
+                                        <h3 class="text-[25px] text-[#fff] text-center font-semibold mb-2">Docker</h3>
+                                        <p class="text-[#c7c6c6] text-center">Containerized deployment</p>
                                     </div>
                                 </div>
                             </div>
@@ -421,7 +452,7 @@ impactful, solution-oriented software.
                                                 Mobile <br> App
                                             </h2>
                                             <p class="text-[#fff] text-[15px] leading-[30px]">
-                                                Cross-platform mobile apps using Flutter.
+                                                Cross-platform mobile apps using Flutter, BLoC architecture, and Docker containerization.
                                             </p>
                                         </div>
                                     </div>
@@ -452,10 +483,11 @@ impactful, solution-oriented software.
                                         <i class="text-white text-[60px] fas fa-brain mr-8 sm:mr-0 sm:mb-8 hover:rotate-12 transition-transform duration-300"></i>
                                         <div class="max-w-[300px] lg:max-w-[200px] md:max-w-[500px] sm:max-w-full">
                                             <h2 class="text-[#fff] text-[40px] mb-[20px] leading-[55px] font-bold">
-                                                ML <br> Prototyping
+                                                AI/ML<br> Engineering
                                             </h2>
                                             <p class="text-[#fff] text-[15px] leading-[30px]">
-                                                Using KNN, Linear Regression, Decision Trees, and K-Means.
+                                                YOLO computer vision, damage detection models, TensorFlow models, FastAPI deployment, Docker containerization, KNN, Linear Regression, 
+                                                Decision Trees, K-Means, and production-ready solutions.
                                             </p>
                                         </div>
                                     </div>
@@ -569,7 +601,7 @@ impactful, solution-oriented software.
                                 <div class="portfolio-item-content p-[16px] absolute left-0 bottom-[10px]">
                                     <h2 class="text-[25px] font-bold text-[#fff] sm:text-[16px]">SolarFlow App</h2>
                                     <span class="text-[18px] text-[#fff] block mb-[10px] font-light">Flutter Mobile App . IoT . Energy </span>
-                                    <a class="protfolio-btn text-[15px] py-[4px] px-[10px]" href="project-single.html">View Work</a>
+                                    <a class="protfolio-btn text-[15px] py-[4px] px-[10px]" href="Portfolio/SolarFlow.html">View Work</a>
                                 </div>
                             </div>
 
@@ -579,7 +611,7 @@ impactful, solution-oriented software.
                                 <div class="p-[16px] absolute left-0 bottom-[10px]">
                                     <h2 class="text-[25px] font-bold text-[#fff] sm:text-[16px]">Pro-Link</h2>
                                     <span class="text-[18px] text-[#fff] block mb-[10px] font-light">Flutter Mobile App</span>
-                                    <a class="protfolio-btn text-[15px] py-[4px] px-[10px]" href="Pro-Link.html">View Work</a>
+                                    <a class="protfolio-btn text-[15px] py-[4px] px-[10px]" href="Portfolio/Pro-Link.html">View Work</a>
                                 </div>
                             </div>
                         </div>
@@ -592,7 +624,7 @@ impactful, solution-oriented software.
                                 <div class="portfolio-item-content p-[16px] absolute left-0 bottom-[10px]">
                                     <h2 class="text-[25px] font-bold text-[#fff] sm:text-[16px]">Onboardify</h2>
                                     <span class="text-[18px] text-[#fff] block mb-[10px] font-light">JavaFX & Symfony · HR Tech · Gamified Onboarding</span>
-                                    <a class="protfolio-btn text-[15px] py-[4px] px-[10px]" href="Onboardify.html">View Work</a>
+                                    <a class="protfolio-btn text-[15px] py-[4px] px-[10px]" href="Portfolio/Onboardify.html">View Work</a>
                                 </div>
                             </div>
                         </div>
@@ -600,7 +632,7 @@ impactful, solution-oriented software.
 
                     <!-- See More -->
                     <div class="text-right mt-[-20px] sm:text-center sm:mt-[10px]">
-                        <a class="text-[25px] text-[#fff] font-bold sm:text-[14px]" href="portfolio-grid.html">See More Work...</a>
+                        <a class="text-[25px] text-[#fff] font-bold sm:text-[14px]" href="Portfolio/Portfolio.html">See More Work...</a>
                     </div>
                 </div>
             </div>
@@ -625,6 +657,40 @@ impactful, solution-oriented software.
                 <div class="grid grid-cols-12 gap-8 lg:gap-3">
                     <div class="col-span-4 md:col-span-6 sm:col-span-12 md:mb-8">
                         <div class="relative overflow-hidden">
+                            <img class="rounded-[5px] w-full" src="assets/images/news6/me 2.jpg" alt="">
+                        </div>
+                        <div class="pt-[30px]">
+                            <ul class="flex">
+                                <li class="text-[#c7c6c6]"><span class="text-[#3c7dd9] block pr-[5px]">By Admin</span>
+                                </li>
+                                <li class="text-[#c7c6c6]">. 17 August 2025</li>
+                            </ul>
+                            <h2 class="font-bold text-[24px] text-[#fff] leading-[40px] group mt-[20px] mb-[10px]">
+                                <a href="news/new6.html"
+                                    class="text-[#fff] group-hover:text-[#fa5d72] transition ease-in-out duration-300">🏆 Honored to Participate & Win Best Poster Award at IEEE IES SYP Congress</a>
+                            </h2>
+                            <a href="news/new6.html" class="text-[#fa5d72] font-normal text-[15px]">Read More...</a>
+                        </div>
+                    </div>
+                    <div class="col-span-4 md:col-span-6 sm:col-span-12 md:mb-8">
+                        <div class="relative overflow-hidden">
+                            <img class="rounded-[5px] w-full" src="assets/images/addinn/ADDINN.png" alt="">
+                        </div>
+                        <div class="pt-[30px]">
+                            <ul class="flex">
+                                <li class="text-[#c7c6c6]"><span class="text-[#3c7dd9] block pr-[5px]">By Admin</span>
+                                </li>
+                                <li class="text-[#c7c6c6]">. July 3, 2025</li>
+                            </ul>
+                            <h2 class="font-bold text-[24px] text-[#fff] leading-[40px] group mt-[20px] mb-[10px]">
+                                <a href="news/new5.html"
+                                    class="text-[#fff] group-hover:text-[#fa5d72] transition ease-in-out duration-300">I'm excited to share that I've started a 2-month internship at ADDINN Group 🚀</a>
+                            </h2>
+                            <a href="news/new5.html" class="text-[#fa5d72] font-normal text-[15px]">Read More...</a>
+                        </div>
+                    </div>
+                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
+                        <div class="relative overflow-hidden">
                             <img class="rounded-[5px] w-full" src="assets/images/logo3.png" alt="">
                         </div>
                         <div class="pt-[30px]">
@@ -634,51 +700,17 @@ impactful, solution-oriented software.
                                 <li class="text-[#c7c6c6]">. Mai 26, 2025</li>
                             </ul>
                             <h2 class="font-bold text-[24px] text-[#fff] leading-[40px] group mt-[20px] mb-[10px]">
-                                <a href="new1.html"
-                                    class="text-[#fff] group-hover:text-[#fa5d72] transition ease-in-out duration-300">We're proud to unveil Onboardify, a hybrid onboarding solution </a>
+                                <a href="news/new1.html"
+                                    class="text-[#fff] group-hover:text-[#fa5d72] transition ease-in-out duration-300">We're proud to unveil Onboardify, a hybrid onboarding solution</a>
                             </h2>
-                            <a href="new1.html" class="text-[#fa5d72] font-normal text-[15px]">Read More...</a>
-                        </div>
-                    </div>
-                    <div class="col-span-4 md:col-span-6 sm:col-span-12 md:mb-8">
-                        <div class="relative overflow-hidden">
-                            <img class="rounded-[5px] w-full" src="assets/images/certif.png" alt="">
-                        </div>
-                        <div class="pt-[30px]">
-                            <ul class="flex">
-                                <li class="text-[#c7c6c6]"><span class="text-[#3c7dd9] block pr-[5px]">By Admin</span>
-                                </li>
-                                <li class="text-[#c7c6c6]">. Nov 24, 2020</li>
-                            </ul>
-                            <h2 class="font-bold text-[24px] text-[#fff] leading-[40px] group mt-[20px] mb-[10px]">
-                                <a href="new2.html"
-                                    class="text-[#fff] group-hover:text-[#fa5d72] transition ease-in-out duration-300">🎉 Proud to have participated in IEEEXtreme 18.0!</a>
-                            </h2>
-                            <a href="new2.html" class="text-[#fa5d72] font-normal text-[15px]">Read More...</a>
-                        </div>
-                    </div>
-                    <div class="col-span-4 md:col-span-6 sm:col-span-12">
-                        <div class="relative overflow-hidden">
-                            <img class="rounded-[5px] w-full" src="assets/images/Fedi.jpg" alt="">
-                        </div>
-                        <div class="pt-[30px]">
-                            <ul class="flex">
-                                <li class="text-[#c7c6c6]"><span class="text-[#3c7dd9] block pr-[5px]">By Admin</span>
-                                </li>
-                                <li class="text-[#c7c6c6]">. Nov 24, 2020</li>
-                            </ul>
-                            <h2 class="font-bold text-[24px] text-[#fff] leading-[40px] group mt-[20px] mb-[10px]">
-                                <a href="new3.html"
-                                    class="text-[#fff] group-hover:text-[#fa5d72] transition ease-in-out duration-300">IEEE TSYP Congress Experience</a>
-                            </h2>
-                            <a href="new3.html" class="text-[#fa5d72] font-normal text-[15px]">Read More...</a>
+                            <a href="news/new1.html" class="text-[#fa5d72] font-normal text-[15px]">Read More...</a>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- See More News -->
             <div class="text-right mt-[-20px] sm:text-center sm:mt-[10px]">
-                <a class="text-[25px] text-[#fff] font-bold sm:text-[14px]" href="newsList.html">See More News...</a>
+                <a class="text-[25px] text-[#fff] font-bold sm:text-[14px]" href="news/newsList.html">See More News...</a>
             </div>
         </section>
 
@@ -701,13 +733,13 @@ impactful, solution-oriented software.
                                             href="about.html">About</a></li>
                                     <li class="inline-block"><a
                                             class="text-[#fff] px-[30px] sm:px-[10px] py-[10px] text-[15px] font-normal hover:text-[#fe3e57] transition-all"
-                                            href="Portfolio.html">Portfolio</a></li>
+                                            href="Portfolio/Portfolio.html">Portfolio</a></li>
                                     <li class="inline-block"><a
                                             class="text-[#fff] px-[30px] sm:px-[10px] py-[10px] text-[15px] font-normal hover:text-[#fe3e57] transition-all"
                                             href="resume.html">Resume</a></li>
                                     <li class="inline-block"><a
                                             class="text-[#fff] px-[30px] sm:px-[10px] py-[10px] text-[15px] font-normal hover:text-[#fe3e57] transition-all"
-                                            href="newsList.html">News</a></li>
+                                            href="news/newsList.html">News</a></li>
                                     
                                 </ul>
                             </div>
@@ -781,6 +813,8 @@ impactful, solution-oriented software.
     <script src="assets/js/script.js"></script>
     <!-- Animations script -->
     <script src="assets/js/animations.js"></script>
+    <!-- Advanced Analytics & Tracking -->
+    <script src="assets/js/analytics.js"></script>
 </body>
 
 
