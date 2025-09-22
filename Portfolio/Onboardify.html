@@ -538,5 +538,40 @@
             observer.observe(el);
         });
     </script>
+    <script>
+        (function () {
+            var videos = document.querySelectorAll('.feature-video');
+            if (!videos || !videos.length) return;
+
+            function enterFullscreen(el) {
+                if (document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement || document.mozFullScreenElement) {
+                    return;
+                }
+                var request = el.requestFullscreen || el.webkitRequestFullscreen || el.msRequestFullscreen || el.mozRequestFullScreen;
+                if (typeof request === 'function') {
+                    try { request.call(el); } catch (e) { /* ignore */ }
+                }
+            }
+
+            videos.forEach(function (video) {
+                video.addEventListener('play', function () { enterFullscreen(video); }, { passive: true });
+                video.addEventListener('click', function () { enterFullscreen(video); }, { passive: true });
+            });
+
+            function handleFullscreenChange() {
+                var activeFs = document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement || document.mozFullScreenElement;
+                if (!activeFs) {
+                    videos.forEach(function (v) {
+                        if (!v.paused) {
+                            try { v.pause(); } catch (e) { /* ignore */ }
+                        }
+                    });
+                }
+            }
+
+            ['fullscreenchange', 'webkitfullscreenchange', 'msfullscreenchange', 'mozfullscreenchange']
+                .forEach(function (evt) { document.addEventListener(evt, handleFullscreenChange, { passive: true }); });
+        })();
+    </script>
 </body>
 </html> 

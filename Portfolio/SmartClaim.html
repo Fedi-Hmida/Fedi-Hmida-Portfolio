@@ -125,7 +125,7 @@
                             <h3 class="text-[24px] text-[#fff] font-semibold mb-[20px]">Mobile App Workflow (User)</h3>
                             <div class="mobile-video-container mb-[20px]">
                                 <video class="w-full rounded-[10px] feature-video" controls>
-                                    <source src="" type="video/mp4">
+                                    <source src="../assets/videos/Smart_claim/Demo_Mobile.mp4" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
                             </div>
@@ -134,7 +134,7 @@
                             <h3 class="text-[24px] text-[#fff] font-semibold mb-[20px]">Damage Detection (AI)</h3>
                             <div class="mobile-video-container mb-[20px]">
                                 <video class="w-full rounded-[10px] feature-video" controls>
-                                    <source src="" type="video/mp4">
+                                    <source src="../assets/videos/Smart_claim/Data%20Demo.mp4" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
                             </div>
@@ -193,6 +193,41 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 800, easing: 'ease-in-out', once: true });
+    </script>
+    <script>
+        (function () {
+            var videos = document.querySelectorAll('.feature-video');
+            if (!videos || !videos.length) return;
+
+            function enterFullscreen(el) {
+                if (document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement || document.mozFullScreenElement) {
+                    return;
+                }
+                var request = el.requestFullscreen || el.webkitRequestFullscreen || el.msRequestFullscreen || el.mozRequestFullScreen;
+                if (typeof request === 'function') {
+                    try { request.call(el); } catch (e) { /* ignore */ }
+                }
+            }
+
+            videos.forEach(function (video) {
+                video.addEventListener('play', function () { enterFullscreen(video); }, { passive: true });
+                video.addEventListener('click', function () { enterFullscreen(video); }, { passive: true });
+            });
+
+            function handleFullscreenChange() {
+                var activeFs = document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement || document.mozFullScreenElement;
+                if (!activeFs) {
+                    videos.forEach(function (v) {
+                        if (!v.paused) {
+                            try { v.pause(); } catch (e) { /* ignore */ }
+                        }
+                    });
+                }
+            }
+
+            ['fullscreenchange', 'webkitfullscreenchange', 'msfullscreenchange', 'mozfullscreenchange']
+                .forEach(function (evt) { document.addEventListener(evt, handleFullscreenChange, { passive: true }); });
+        })();
     </script>
 </body>
 </html>

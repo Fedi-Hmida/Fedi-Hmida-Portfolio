@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="wpOceans">
+    <meta name="description" content="Data Science Excellence Recognition - Fedi Hmida received a professional recommendation letter from Dr. Nivine ATTOUE, Data Science expert at ADDINN Group, highlighting his AI and machine learning contributions.">
+    <link rel="shortcut icon" type="image/png" href="../assets/images/flogo.png">
+    <title>Data Science Excellence Recognition 📊 - Fedi Portfolio</title>
+    <link href="../assets/css/themify-icons.css" rel="stylesheet">
+    <link href="../assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../assets/css/flaticon.css" rel="stylesheet">
+    <link href="../assets/css/magnific-popup.css" rel="stylesheet">
+    <link href="../assets/css/animate.css" rel="stylesheet">
+    <link href="../assets/css/owl.carousel.css" rel="stylesheet">
+    <link href="../assets/css/owl.theme.css" rel="stylesheet">
+    <link href="../assets/css/slick.css" rel="stylesheet">
+    <link href="../assets/css/slick-theme.css" rel="stylesheet">
+    <link href="../assets/css/swiper.min.css" rel="stylesheet">
+    <link href="../assets/css/owl.transitions.css" rel="stylesheet">
+    <link href="../assets/css/jquery.fancybox.css" rel="stylesheet">
+    <link href="../assets/css/odometer-theme-default.css" rel="stylesheet">
+    <link href="../assets/css/global.css" rel="stylesheet">
+    <link href="../assets/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1a237e;
+            --secondary-color: #283593;
+            --accent-color: #05608a;
+            --accent-hover: #81d4fa;
+            --text-primary: #ffffff;
+            --text-secondary: #e3f2fd;
+            --glass-bg: rgba(26, 35, 126, 0.9);
+            --glass-border: rgba(79, 195, 247, 0.2);
+            --glass-shadow: 0 8px 32px 0 rgba(26, 35, 126, 0.4);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            box-shadow: var(--glass-shadow);
+            transition: var(--transition);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px 0 rgba(6, 5, 40, 0.7);
+            border-color: var(--accent-color);
+        }
+
+        .gradient-border {
+            position: relative;
+            border-radius: 24px;
+            padding: 1px;
+            background: linear-gradient(45deg, var(--accent-color), var(--accent-hover));
+            animation: borderRotate 4s linear infinite;
+        }
+
+        @keyframes borderRotate {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            padding: 24px 0;
+        }
+
+        .interactive-card {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .interactive-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .interactive-card:hover::before { opacity: 1; }
+
+        .section-transition { opacity: 0; transform: translateY(30px); transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+        .section-transition.visible { opacity: 1; transform: translateY(0); }
+
+        .section-heading { 
+            background: linear-gradient(45deg, #e74c3c, #c0392b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block; 
+            font-weight: 700; 
+        }
+        
+        .highlight-box {
+            background: rgba(26, 35, 126, 0.7);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 24px 0;
+        }
+        
+        .supervisor-info {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: rgba(7, 6, 64, 0.6);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 24px 0;
+        }
+        
+        .supervisor-info i {
+            font-size: 2rem;
+            color: var(--accent-color);
+        }
+        
+        .supervisor-details h4 {
+            color: var(--text-primary);
+            font-size: 1.2rem;
+            margin-bottom: 4px;
+        }
+        
+        .supervisor-details p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 2px;
+        }
+        
+        .linkedin-link {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .linkedin-link:hover {
+            color: var(--accent-hover);
+            text-decoration: underline;
+        }
+
+        /* Feature List */
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+            padding: 16px;
+            background: rgba(26, 35, 126, 0.7);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            transition: var(--transition);
+        }
+
+        .feature-list li:hover {
+            transform: translateX(10px);
+            background: rgba(79, 195, 247, 0.2);
+            border-color: var(--accent-color);
+        }
+
+        .feature-list li i {
+            margin-right: 12px;
+            color: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        .feature-list li:hover i {
+            transform: scale(1.1);
+            color: var(--accent-hover);
+        }
+
+        p { color: var(--text-secondary); line-height: 1.7; }
+        
+        .article-body p { 
+            color: #e3f2fd; 
+            font-size: 1.1rem; 
+            margin-bottom: 24px; 
+            max-width: 900px; 
+        }
+        
+        .article-body strong { 
+            color: #05608a; 
+            font-weight: 600; 
+        }
+
+        .article-header {
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 24px;
+            margin-bottom: 32px;
+        }
+
+        .article-meta {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .meta-item i {
+            color: var(--accent-color);
+        }
+
+        .navigation-links {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 48px;
+            padding-top: 24px;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .nav-btn:hover {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .social-share {
+            display: flex;
+            gap: 12px;
+            margin-top: 32px;
+        }
+
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .share-btn:hover {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <!-- Header Section -->
+        <section class="glass-card" style="position: relative; margin: 20px; padding: 20px;">
+            <div class="wraper">
+                <div class="flex items-center justify-between">
+                    <div class="w-[150px] md:w-[200px] sm:w-[150px] col:w-[120px]">
+                        <a class="flex items-center md:justify-center text-white" href="../index.html">
+                            <img class="mr-[10px] w-[120px] h-[120px]" src="../assets/images/flogo.png" alt="Fedi Hmida Logo">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Article Content Section -->
+        <section style="padding-top: 180px; padding-bottom: 100px;">
+            <div class="wraper">
+                <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 32px; align-items: start;">
+                    <!-- Main Article Content -->
+                    <article class="section-transition">
+                        <div class="glass-card gradient-border" style="padding: 32px; margin-bottom: 32px;">
+                            <!-- Article Header -->
+                            <header class="article-header">
+                                <h1 style="font-size: 3rem; font-weight: 800; margin-bottom: 16px; line-height: 1.2; letter-spacing: -0.5px;" class="section-heading">
+                                    Data Science Excellence Recognition 📊
+                                </h1>
+                                
+                                <div class="article-meta">
+                                    <div class="meta-item">
+                                        <i class="fas fa-user"></i>
+                                        <span>By Fedi Hmida</span>
+                                    </div>
+                                    <div class="meta-item">
+                                        <i class="far fa-calendar-alt"></i>
+                                        <span>19-09-2025</span>
+                                    </div>
+                                    <div class="meta-item">
+                                        <i class="fas fa-clock"></i>
+                                        <span>4 min read</span>
+                                    </div>
+                                </div>
+                            </header>
+
+                            <!-- Featured Image -->
+                            <figure class="project-grid" style="margin: 32px 0;">
+                                <div class="glass-card interactive-card" style="padding: 0; overflow: hidden;">
+                                    <img src="../assets/images/new9/nivine.png" alt="Data Science Recommendation Letter - ADDINN Group" style="width: 100%; height: auto; object-fit: cover;">
+                                    <figcaption style="padding: 16px; color: var(--text-secondary); font-size: 0.9rem; text-align: center;">
+                                        Professional recommendation from Dr. Nivine ATTOUE - ADDINN Group
+                                    </figcaption>
+                                </div>
+                            </figure>
+
+                            <!-- Article Body -->
+                            <div class="article-body">
+                                <p style="font-size: 1.1rem; margin-bottom: 24px; max-width: 900px;">
+                                    I'm excited to share that I have received a professional recommendation letter from my Data Science supervisor during my internship at ADDINN Group! 🎉
+                                </p>
+                                
+                                <div class="highlight-box">
+                                    <h3 style="color: var(--text-primary); font-size: 1.3rem; margin-bottom: 16px;">
+                                        <i class="fas fa-star" style="color: var(--accent-color); margin-right: 8px;"></i>
+                                        Why This Matters
+                                    </h3>
+                                    <p style="font-size: 1rem; margin-bottom: 16px;">
+                                        A recommendation letter from a senior Data Science professional validates the quality of work, technical skills, and professional growth demonstrated during an internship. It serves as a powerful testament to one's capabilities in AI and machine learning.
+                                    </p>
+                                </div>
+
+                                <p style="font-size: 1.1rem; margin-bottom: 24px; max-width: 900px;">
+                                    This recommendation letter comes from <strong>Dr. Nivine ATTOUE</strong>, who served as my Data Science supervisor during my internship. Her endorsement reflects the professional relationships I built and the technical contributions I made during my time at ADDINN Group.
+                                </p>
+
+                                <!-- Supervisor Information -->
+                                <div class="supervisor-info">
+                                    <i class="fas fa-user-tie"></i>
+                                    <div class="supervisor-details">
+                                        <h4>Dr. Nivine ATTOUE</h4>
+                                        <p>Docteur Data Science – ADDINN GROUP</p>
+                                        <p>Data Science Supervisor</p>
+                                    </div>
+                                </div>
+
+                                <p style="font-size: 1.1rem; margin-bottom: 24px; max-width: 900px;">
+                                    Dr. ATTOUE commended my seriousness, motivation, rapid learning ability, scientific rigor, autonomy, and initiative. She also noted my excellent team spirit and good integration within the group, which led to concrete and useful results for the SmartClaim project.
+                                </p>
+
+                                <div style="background: rgba(12, 11, 72, 0.6); padding: 24px; border-radius: 12px; border: 1px solid var(--glass-border); margin: 32px 0;">
+                                    <h3 style="color: var(--accent-color); font-size: 1.3rem; margin-bottom: 16px; display: flex; align-items: center;">
+                                        <i class="fas fa-download" style="margin-right: 12px;"></i>
+                                        Download Recommendation Letter
+                                    </h3>
+                                    <p style="margin-bottom: 20px; color: var(--text-secondary);">
+                                        You can download the full recommendation letter from Dr. Nivine ATTOUE to read her detailed assessment of my work and contributions.
+                                    </p>
+                                    <div class="text-center">
+                                        <a href="../assets/cv/Recommendation_FediHmida.pdf" class="theme-btn bg-[#05608a] hover:bg-[#81d4fa] download-btn glow" download>
+                                            <i class="fas fa-download mr-2 floating"></i> Download PDF
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </article>
+
+                    <!-- Sidebar -->
+                    <aside class="section-transition">
+                        <div class="glass-card" style="padding: 32px; position: sticky; top: 32px;">
+                            <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 24px;" class="section-heading">
+                                <i class="fa-solid fa-circle-info" style="margin-right: 12px;"></i>Article Details
+                            </h3>
+                            <div>
+                                <li style="display: flex; align-items: center; margin-bottom: 12px;">
+                                    <i class="fa-solid fa-user-tie" style="margin-right: 12px; color: var(--accent-color);"></i>
+                                    <span>Supervisor: Dr. Nivine ATTOUE</span>
+                                </li>
+                                <li style="display: flex; align-items: center; margin-bottom: 12px;">
+                                    <i class="fa-solid fa-graduation-cap" style="margin-right: 12px; color: var(--accent-color);"></i>
+                                    <span>Title: Docteur Data Science</span>
+                                </li>
+                                <li style="display: flex; align-items: center; margin-bottom: 12px;">
+                                    <i class="fa-solid fa-building" style="margin-right: 12px; color: var(--accent-color);"></i>
+                                    <span>Company: ADDINN Group</span>
+                                </li>
+                                <li style="display: flex; align-items: center; margin-bottom: 12px;">
+                                    <i class="fa-solid fa-tag" style="margin-right: 12px; color: var(--accent-color);"></i>
+                                    <span>Category: Professional Recognition</span>
+                                </li>
+                                <li style="display: flex; align-items: center; margin-bottom: 12px;">
+                                    <i class="fa-brands fa-linkedin" style="margin-right: 12px; color: var(--accent-color);"></i>
+                                    <a href="https://www.linkedin.com/in/nivine-attoue" target="_blank" rel="noopener" class="linkedin-link">LinkedIn Profile</a>
+                                </li>
+                                <li style="display: flex; align-items: center; margin-bottom: 12px;">
+                                    <i class="fa-solid fa-file-pdf" style="margin-right: 12px; color: var(--accent-color);"></i>
+                                    <a href="../assets/cv/Recommendation_FediHmida.pdf" class="linkedin-link" download>PDF Download</a>
+                                </li>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-[#121151]">
+            <div class="wraper">
+                <div class="py-[50px]">
+                    <div class="grid grid-cols-12 gap-8 lg:gap-3">
+                        <div class="col-span-2 md:col-span-4 sm:col-span-12">
+                            <div class="mt-[20px] sm:mt-[0px]">
+                                <img class="sm:mx-auto" src="../assets/images/flogo.png" alt="Fedi Hmida Logo">
+                            </div>
+                        </div>
+                        <div class="col-span-6 md:col-span-8 sm:col-span-12">
+                            <div class="mt-[35px] text-center">
+                                <ul class="mb-[10px]">
+                                    <li class="inline-block"><a class="text-[#fff] px-[30px] sm:px-[10px] py-[10px] text-[15px] font-normal hover:text-[#81d4fa] transition-all" href="../index.html">Home</a></li>
+                                    <li class="inline-block"><a class="text-[#fff] px-[30px] sm:px-[10px] py-[10px] text-[15px] font-normal hover:text-[#81d4fa] transition-all" href="../about.html">About</a></li>
+                                    <li class="inline-block"><a class="text-[#fff] px-[30px] sm:px-[10px] py-[10px] text-[15px] font-normal hover:text-[#81d4fa] transition-all" href="../Portfolio/Portfolio.html">Portfolio</a></li>
+                                    <li class="inline-block"><a class="text-[#fff] px-[30px] sm:px-[10px] py-[10px] text-[15px] font-normal hover:text-[#81d4fa] transition-all" href="../resume.html">Resume</a></li>
+                                    <li class="inline-block"><a class="text-[#fff] px-[30px] sm:px-[10px] py-[10px] text-[15px] font-normal hover:text-[#81d4fa] transition-all" href="../contact.html">Contact</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-span-4 md:col-span-12 sm:col-span-12">
+                            <div class="text-right md:text-center md:mt-[30px]">
+                                <ul class="flex items-end md:items-center md:w-full md:justify-center">
+                                    <li class="mr-[30px]">
+                                        <a href="https://www.facebook.com/fadi.hmidahmida" target="_blank" rel="noopener" class="block w-[80px] h-[80px] leading-[85px] sm:w-[60px] sm:h-[60px] sm:leading-[65px] border border-[#3b5998] text-center rounded-[50%] social-icon">
+                                            <i class="fab fa-facebook-f text-[#3b5998] text-[30px] sm:text-[20px]"></i>
+                                        </a>
+                                    </li>
+                                    <li class="mr-[30px]">
+                                        <a href="https://www.linkedin.com/in/fedi-hmida" target="_blank" rel="noopener" class="block w-[80px] h-[80px] leading-[85px] sm:w-[60px] sm:h-[60px] sm:leading-[65px] border border-[#0077b5] text-center rounded-[50%] social-icon">
+                                            <i class="fab fa-linkedin-in text-[#0077b5] text-[30px] sm:text-[20px]"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.instagram.com/fedi.hmida/" target="_blank" rel="noopener" class="block w-[80px] h-[80px] leading-[85px] sm:w-[60px] sm:h-[60px] sm:leading-[65px] border border-[#e1306c] text-center rounded-[50%] social-icon">
+                                            <i class="fab fa-instagram text-[#e1306c] text-[30px] sm:text-[20px]"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="py-[30px] bg-[#0d0c4c] text-center">
+                <span class="text-[#fff]">© 2025 Fedi Hmida . All rights reserved</span>
+            </div>
+        </footer>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/modernizr.custom.js"></script>
+    <script src="../assets/js/jquery.dlmenu.js"></script>
+    <script src="../assets/js/jquery-plugin-collection.js"></script>
+    <script src="../assets/js/tw-elements.umd.min.js"></script>
+    <script src="../assets/js/moving-animation.js"></script>
+    <script src="../assets/js/script.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            mirror: true
+        });
+
+        // Interactive card effect
+        document.querySelectorAll('.interactive-card').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = ((e.clientX - rect.left) / rect.width) * 100;
+                const y = ((e.clientY - rect.top) / rect.height) * 100;
+                card.style.setProperty('--mouse-x', `${x}%`);
+                card.style.setProperty('--mouse-y', `${y}%`);
+            });
+        });
+
+        // Section transitions
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section-transition').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Social share functionality
+        document.querySelectorAll('.share-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const url = encodeURIComponent(window.location.href);
+                const title = encodeURIComponent(document.title);
+                
+                if (this.title.includes('Facebook')) {
+                    window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank');
+                } else if (this.title.includes('Twitter')) {
+                    window.open(`https://twitter.com/intent/tweet?url=${url}&text=${title}`, '_blank');
+                } else if (this.title.includes('LinkedIn')) {
+                    window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank');
+                } else if (this.title.includes('Email')) {
+                    window.location.href = `mailto:?subject=${title}&body=${url}`;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
