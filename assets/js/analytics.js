@@ -211,8 +211,14 @@ class PortfolioAnalytics {
 
     // Send to custom analytics endpoint
     async sendToCustomAPI(eventName, properties) {
+        // Only attempt to send if we're on a deployed site (not localhost)
+        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+            console.debug('Analytics: Skipping custom API on localhost');
+            return;
+        }
+        
         try {
-            await fetch('/.netlify/functions/analytics', {
+            const response = await fetch('/.netlify/functions/analytics', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -224,8 +230,12 @@ class PortfolioAnalytics {
                     referrer: document.referrer
                 })
             });
+            
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}`);
+            }
         } catch (error) {
-            console.debug('Custom analytics not available:', error);
+            console.debug('Custom analytics not available:', error.message);
         }
     }
 

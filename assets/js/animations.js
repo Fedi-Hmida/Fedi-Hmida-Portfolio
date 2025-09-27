@@ -1,13 +1,14 @@
 // Enhanced Particles.js configuration
-particlesJS('particles-js', {
-    particles: {
-        number: {
-            value: 100,
-            density: {
-                enable: true,
-                value_area: 800
-            }
-        },
+if (typeof particlesJS !== 'undefined') {
+    particlesJS('particles-js', {
+        particles: {
+            number: {
+                value: 100,
+                density: {
+                    enable: true,
+                    value_area: 800
+                }
+            },
         color: {
             value: ['#fe3e57', '#ff8c2f', '#54faae', '#39c4ff']
         },
@@ -85,67 +86,103 @@ particlesJS('particles-js', {
     },
     retina_detect: true
 });
+} else {
+    console.warn('particlesJS not loaded - particles animation disabled');
+}
 
 // Enhanced Typed.js configuration
-new Typed('#typing-text', {
-    strings: ['Software Engineering Student'],
-    typeSpeed: 50,
-    backSpeed: 30,
-    backDelay: 2000,
-    loop: true,
-    showCursor: true,
-    cursorChar: '|',
-    autoInsertCss: true
-});
+if (typeof Typed !== 'undefined') {
+    new Typed('#typing-text', {
+        strings: ['Software Engineering Student'],
+        typeSpeed: 50,
+        backSpeed: 30,
+        backDelay: 2000,
+        loop: true,
+        showCursor: true,
+        cursorChar: '|',
+        autoInsertCss: true
+    });
+} else {
+    console.warn('Typed.js not loaded - typing animation disabled');
+}
 
 // Initialize GSAP with enhanced configurations
-gsap.registerPlugin(ScrollTrigger);
+if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+    gsap.registerPlugin(ScrollTrigger);
 
-// Sequential heading animations
-gsap.utils.toArray('h2').forEach((heading, i) => {
-    gsap.from(heading, {
-        scrollTrigger: {
-            trigger: heading,
-            start: 'top 80%',
-            toggleActions: 'play none none reverse'
-        },
-        y: 50,
-        opacity: 0,
-        duration: 0.45,
-        delay: i * 0.02,
-        ease: 'power3.out'
+    // Sequential heading animations
+    gsap.utils.toArray('h2').forEach((heading, i) => {
+        gsap.from(heading, {
+            scrollTrigger: {
+                trigger: heading,
+                start: 'top 80%',
+                toggleActions: 'play none none reverse'
+            },
+            y: 50,
+            opacity: 0,
+            duration: 0.45,
+            delay: i * 0.02,
+            ease: 'power3.out'
+        });
     });
+
+    // Enhanced skill item animations
+    gsap.utils.toArray('.skill-item').forEach((skill, i) => {
+        gsap.from(skill, {
+            scrollTrigger: {
+                trigger: skill,
+                start: 'top 80%'
+            },
+            x: -50,
+            opacity: 0,
+            duration: 0.8,
+            delay: i * 0.1,
+            ease: 'power2.out'
+        });
+    });
+
+    // Enhanced portfolio item animations
+    gsap.utils.toArray('.portfolio-item').forEach((item, i) => {
+        gsap.from(item, {
+            scrollTrigger: {
+                trigger: item,
+                start: 'top 80%'
+            },
+            y: 100,
+            opacity: 0,
+            duration: 1,
+            delay: i * 0.2,
+            ease: 'power3.out'
+        });
+    });
+
+// Enhanced progress bar animation with intersection observer
+const progressBars = document.querySelectorAll('.progress-bar');
+const animationObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const progress = entry.target.getAttribute('data-progress');
+            if (typeof gsap !== 'undefined') {
+                gsap.to(entry.target, {
+                    width: progress + '%',
+                    duration: 1.5,
+                    ease: 'power2.out'
+                });
+            } else {
+                // Fallback animation without GSAP
+                entry.target.style.width = progress + '%';
+            }
+        }
+    });
+}, { 
+    threshold: 0.5,
+    rootMargin: '0px'
 });
 
-// Enhanced skill item animations
-gsap.utils.toArray('.skill-item').forEach((skill, i) => {
-    gsap.from(skill, {
-        scrollTrigger: {
-            trigger: skill,
-            start: 'top 80%'
-        },
-        x: -50,
-        opacity: 0,
-        duration: 0.8,
-        delay: i * 0.1,
-        ease: 'power2.out'
-    });
-});
-
-// Enhanced portfolio item animations
-gsap.utils.toArray('.portfolio-item').forEach((item, i) => {
-    gsap.from(item, {
-        scrollTrigger: {
-            trigger: item,
-            start: 'top 80%'
-        },
-        y: 100,
-        opacity: 0,
-        duration: 1,
-        delay: i * 0.2,
-        ease: 'power3.out'
-    });
-});
+progressBars.forEach(bar => animationObserver.observe(bar));
+} else {
+    console.warn('GSAP or ScrollTrigger not loaded - advanced animations disabled');
+}
 
 // Add enhanced animations to elements
 document.querySelectorAll('.fas, .fab').forEach(icon => {
@@ -182,7 +219,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 // Enhanced progress bar animation with intersection observer
 const progressBars = document.querySelectorAll('.progress-bar');
-const observer = new IntersectionObserver((entries) => {
+const animationObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             const progress = entry.target.getAttribute('data-progress');
@@ -198,7 +235,7 @@ const observer = new IntersectionObserver((entries) => {
     rootMargin: '0px'
 });
 
-progressBars.forEach(bar => observer.observe(bar));
+progressBars.forEach(bar => animationObserver.observe(bar));
 
 // Add fade-up animation to elements
 const fadeElements = document.querySelectorAll('.fade-up');

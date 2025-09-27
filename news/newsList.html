@@ -466,8 +466,12 @@
     <script src="../assets/js/tw-elements.umd.min.js"></script>
     <script src="../assets/js/moving-animation.js"></script>
     <script src="../assets/js/script.js"></script>
-    <script src="../assets/js/animations.js"></script>
+    <!-- Animation Libraries -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="../assets/js/animations.js"></script>
     <script>
         // Initialize particles.js
         particlesJS('particles-js', {
@@ -505,8 +509,8 @@
             retina_detect: true
         });
 
-        // Enhanced Intersection Observer
-        const observer = new IntersectionObserver((entries) => {
+        // Enhanced Intersection Observer for News Cards
+        const newsObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
@@ -522,7 +526,7 @@
 
         // Observe all news cards
         document.querySelectorAll('.news-card').forEach(card => {
-            observer.observe(card);
+            newsObserver.observe(card);
         });
 
         // Add hover effect to news cards
