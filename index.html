@@ -595,59 +595,82 @@
                 <h2 class="text-[70px] inline-block md:text-[45px] sm:text-[30px] mb-[40px] sm:mb-[20px] text-[#fff] font-bold base-font text-left">
                     Portfolio
                 </h2>
-                <div>
-                    <div class="grid grid-cols-12">
+                <div class="portfolio-grid-container">
+                    <div class="grid grid-cols-12 gap-4 lg:gap-3 md:gap-2">
                         <!-- Left column -->
-                        <div class="col-span-6 md:col-span-6 sm:col-span-12 p-[1px]">
+                        <div class="col-span-6 md:col-span-6 sm:col-span-12 flex flex-col gap-4">
                             <!-- SolarFlow App  -->
-                            
-                            <div class="relative mb-[60px] md:mb-[40px] sm:mb-[30px] portfolio-item-align">
-                                <img class="portfolio-img-fixed" src="assets/images/logo_15553.png" alt="SolarFlow App">
-                                <div class="portfolio-item-content p-[16px] absolute left-0 bottom-[10px]">
-                                    <h2 class="text-[25px] font-bold text-[#fff] sm:text-[16px]">SolarFlow App</h2>
-                                    <span class="text-[18px] text-[#fff] block mb-[10px] font-light">Flutter Mobile App . IoT . Energy </span>
-                                    <a class="protfolio-btn text-[15px] py-[4px] px-[10px]" href="Portfolio/SolarFlow.html">View Work</a>
+                            <div class="portfolio-card-wrapper">
+                                <div class="portfolio-card">
+                                    <div class="portfolio-image-container">
+                                        <img src="assets/images/logo_15553.png" alt="SolarFlow App" class="portfolio-image">
+                                    </div>
+                                    <div class="portfolio-overlay">
+                                        <div class="portfolio-content">
+                                            <h2 class="text-[25px] md:text-[20px] sm:text-[18px] font-bold text-[#fff] mb-2">SolarFlow App</h2>
+                                            <span class="text-[16px] md:text-[14px] sm:text-[12px] text-[#fff] block mb-4 font-light opacity-90">Flutter Mobile App · IoT · Energy</span>
+                                            <a class="protfolio-btn text-[15px] sm:text-[13px] py-[8px] px-[20px] inline-block" href="Portfolio/SolarFlow.html">View Work</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
                             <!-- Pro-Link Project -->
-                            <div class="relative mb-[1px]">
-                                <img class="portfolio-img-fixed" src="assets/images/FlutterFlow2.png" alt="Pro-Link Project">
-                                <div class="p-[16px] absolute left-0 bottom-[10px]">
-                                    <h2 class="text-[25px] font-bold text-[#fff] sm:text-[16px]">Pro-Link</h2>
-                                    <span class="text-[18px] text-[#fff] block mb-[10px] font-light">Flutter Mobile App</span>
-                                    <a class="protfolio-btn text-[15px] py-[4px] px-[10px]" href="Portfolio/Pro-Link.html">View Work</a>
+                            <div class="portfolio-card-wrapper">
+                                <div class="portfolio-card">
+                                    <div class="portfolio-image-container">
+                                        <img src="assets/images/FlutterFlow2.png" alt="Pro-Link Project" class="portfolio-image">
+                                    </div>
+                                    <div class="portfolio-overlay">
+                                        <div class="portfolio-content">
+                                            <h2 class="text-[25px] md:text-[20px] sm:text-[18px] font-bold text-[#fff] mb-2">Pro-Link</h2>
+                                            <span class="text-[16px] md:text-[14px] sm:text-[12px] text-[#fff] block mb-4 font-light opacity-90">Flutter Mobile App</span>
+                                            <a class="protfolio-btn text-[15px] sm:text-[13px] py-[8px] px-[20px] inline-block" href="Portfolio/Pro-Link.html">View Work</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Right column -->
-                        <div class="col-span-6 md:col-span-6 sm:col-span-12 p-[1px]">
+                        <div class="col-span-6 md:col-span-6 sm:col-span-12 flex flex-col gap-4">
                             <!-- Onboardify Project -->
-                            <div class="relative mb-[80px] md:mb-[60px] sm:mb-[40px] portfolio-item-align">
-                                <img class="portfolio-img-fixed" src="assets/images/logo31.png" alt="Onboardify Project">
-                                <div class="portfolio-item-content p-[16px] absolute left-0 bottom-[10px]">
-                                    <h2 class="text-[25px] font-bold text-[#fff] sm:text-[16px]">Onboardify</h2>
-                                    <span class="text-[18px] text-[#fff] block mb-[10px] font-light">JavaFX & Symfony · HR Tech · Gamified Onboarding</span>
-                                    <a class="protfolio-btn text-[15px] py-[4px] px-[10px]" href="Portfolio/Onboardify.html">View Work</a>
+                            <div class="portfolio-card-wrapper">
+                                <div class="portfolio-card">
+                                    <div class="portfolio-image-container">
+                                        <img src="assets/images/logo31.png" alt="Onboardify Project" class="portfolio-image">
+                                    </div>
+                                    <div class="portfolio-overlay">
+                                        <div class="portfolio-content">
+                                            <h2 class="text-[25px] md:text-[20px] sm:text-[18px] font-bold text-[#fff] mb-2">Onboardify</h2>
+                                            <span class="text-[16px] md:text-[14px] sm:text-[12px] text-[#fff] block mb-4 font-light opacity-90">JavaFX & Symfony · HR Tech · Gamified Onboarding</span>
+                                            <a class="protfolio-btn text-[15px] sm:text-[13px] py-[8px] px-[20px] inline-block" href="Portfolio/Onboardify.html">View Work</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
                             <!-- SmartClaim Project -->
-                            <div class="relative mb-[1px] portfolio-item-align">
-                                <img class="portfolio-img-fixed" src="assets/images/Portfolio/New Logo SmartClaim2.png" alt="SmartClaim Project">
-                                <div class="portfolio-item-content p-[16px] absolute left-0 bottom-[10px]">
-                                    <h2 class="text-[25px] font-bold text-[#fff] sm:text-[16px]">SmartClaim</h2>
-                                    <span class="text-[18px] text-[#fff] block mb-[10px] font-light">Flutter · AI · YOLO · Insurance Claims</span>
-                                    <a class="protfolio-btn text-[15px] py-[4px] px-[10px]" href="Portfolio/SmartClaim.html">View Work</a>
+                            <div class="portfolio-card-wrapper">
+                                <div class="portfolio-card">
+                                    <div class="portfolio-image-container">
+                                        <img src="assets/images/Portfolio/New Logo SmartClaim2.png" alt="SmartClaim Project" class="portfolio-image">
+                                    </div>
+                                    <div class="portfolio-overlay">
+                                        <div class="portfolio-content">
+                                            <h2 class="text-[25px] md:text-[20px] sm:text-[18px] font-bold text-[#fff] mb-2">SmartClaim</h2>
+                                            <span class="text-[16px] md:text-[14px] sm:text-[12px] text-[#fff] block mb-4 font-light opacity-90">Flutter · AI · YOLO · Insurance Claims</span>
+                                            <a class="protfolio-btn text-[15px] sm:text-[13px] py-[8px] px-[20px] inline-block" href="Portfolio/SmartClaim.html">View Work</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- See More -->
-                    <div class="text-right mt-[-20px] sm:text-center sm:mt-[10px]">
-                        <a class="text-[25px] text-[#fff] font-bold sm:text-[14px]" href="Portfolio/Portfolio.html">See More Work...</a>
+                    <div class="text-right mt-[40px] sm:text-center sm:mt-[30px]">
+                        <a class="text-[25px] text-[#fff] font-bold sm:text-[18px] hover:text-[#fe3e57] transition-colors duration-300" href="Portfolio/Portfolio.html">See More Work...</a>
                     </div>
                 </div>
             </div>

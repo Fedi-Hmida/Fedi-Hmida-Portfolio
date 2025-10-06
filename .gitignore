@@ -1,2 +1,37 @@
 node_modules/
 .env
+
+# Sensitive configuration files
+config.php
+
+# Environment variables
+.env.local
+.env.production
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+tmp/
+temp/
+
+# Backup files
+*.bak
+*.backup
+
+# API keys and secrets (additional protection)
+*api_key*
+*secret*
+*private*

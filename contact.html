@@ -201,45 +201,333 @@
             }
         }
 
-        /* Contact Form Animations */
-        .contact-form input,
-        .contact-form textarea {
-            transition: all 0.3s ease;
+        /* ========== MODERN CONTACT FORM STYLES ========== */
+        
+        /* Animated Background Blobs */
+        @keyframes blob {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(20px, -50px) scale(1.1); }
+            50% { transform: translate(-20px, 20px) scale(0.9); }
+            75% { transform: translate(50px, 50px) scale(1.05); }
+        }
+        
+        .animate-blob {
+            animation: blob 20s infinite cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .animation-delay-2000 {
+            animation-delay: 2s;
+        }
+        
+        .animation-delay-4000 {
+            animation-delay: 4s;
         }
 
-        .contact-form input:focus,
-        .contact-form textarea:focus {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(254, 62, 87, 0.2);
+        /* Float Animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
         }
 
-        .submit-btn {
+        /* Modern Card */
+        .modern-contact-card {
             position: relative;
-            overflow: hidden;
-            transition: all 0.4s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
-
-        .submit-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(254, 62, 87, 0.3);
-        }
-
-        .submit-btn::after {
+        
+        .modern-contact-card::before {
             content: '';
             position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: width 0.6s ease, height 0.6s ease;
+            inset: -2px;
+            background: linear-gradient(45deg, #fe3e57, transparent, #fe3e57);
+            border-radius: 1.5rem;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: -1;
+        }
+        
+        .modern-contact-card:hover::before {
+            opacity: 0.3;
+            animation: gradient-rotate 3s linear infinite;
+        }
+        
+        @keyframes gradient-rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
-        .submit-btn:hover::after {
-            width: 300px;
-            height: 300px;
+        /* Form Groups */
+        .form-group {
+            animation: fadeInUp 0.6s ease-out backwards;
+        }
+        
+        .form-group:nth-child(1) { animation-delay: 0.1s; }
+        .form-group:nth-child(2) { animation-delay: 0.2s; }
+        .form-group:nth-child(3) { animation-delay: 0.3s; }
+        .form-group:nth-child(4) { animation-delay: 0.4s; }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Input Wrapper */
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        
+        .input-icon {
+            position: absolute;
+            left: 1rem;
+            color: #fe3e57;
+            font-size: 1.1rem;
+            z-index: 10;
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+        
+        .textarea-icon {
+            top: 1rem;
+            left: 1rem;
+            position: absolute;
+        }
+
+        /* Modern Input Styles */
+        .modern-input {
+            background: rgba(7, 6, 64, 0.6);
+            border: 2px solid rgba(254, 62, 87, 0.2);
+            border-radius: 1rem;
+            padding: 1rem 1rem 1rem 3rem;
+            color: #ffffff;
+            font-size: 1rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            outline: none;
+        }
+        
+        .modern-input::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.95rem;
+        }
+        
+        .modern-input:hover {
+            border-color: rgba(254, 62, 87, 0.4);
+            background: rgba(7, 6, 64, 0.8);
+        }
+        
+        .modern-input:focus {
+            border-color: #fe3e57;
+            background: rgba(7, 6, 64, 0.9);
+            box-shadow: 0 0 0 4px rgba(254, 62, 87, 0.1),
+                        0 8px 16px rgba(254, 62, 87, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .modern-input:focus + .input-icon {
+            color: #ff6b81;
+            transform: scale(1.1);
+        }
+        
+        .modern-textarea {
+            padding-left: 3rem;
+            line-height: 1.6;
+            min-height: 150px;
+        }
+
+        /* Validation States */
+        .modern-input.is-valid {
+            border-color: #10b981 !important;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
+        }
+        
+        .modern-input.is-invalid {
+            border-color: #ef4444 !important;
+            box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15);
+        }
+
+        /* Modern Submit Button */
+        .modern-submit-btn {
+            position: relative;
+            background: linear-gradient(135deg, #fe3e57 0%, #ff6b81 100%);
+            color: #ffffff;
+            padding: 1.25rem 2rem;
+            border-radius: 1rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border: none;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 30px rgba(254, 62, 87, 0.3);
+        }
+        
+        .modern-submit-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, #ff6b81 0%, #ff8fa3 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .modern-submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(254, 62, 87, 0.4);
+        }
+        
+        .modern-submit-btn:hover::before {
+            opacity: 1;
+        }
+        
+        .modern-submit-btn:active {
+            transform: translateY(-1px);
+        }
+        
+        .modern-submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        /* Loader Spinner */
+        .loader-spinner {
+            width: 24px;
+            height: 24px;
+            border: 3px solid rgba(254, 62, 87, 0.2);
+            border-top-color: #fe3e57;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Modern Alerts */
+        .modern-alert {
+            padding: 1.25rem;
+            border-radius: 1rem;
+            animation: slideDown 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+            border: 2px solid;
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .success-alert {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(5, 150, 105, 0.15));
+            border-color: #10b981;
+            color: #6ee7b7;
+        }
+        
+        .error-alert {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(220, 38, 38, 0.15));
+            border-color: #ef4444;
+            color: #fca5a5;
+        }
+
+        /* Contact Links */
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: rgba(254, 62, 87, 0.1);
+            border: 1px solid rgba(254, 62, 87, 0.3);
+            border-radius: 0.75rem;
+            color: #fe3e57;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .contact-link:hover {
+            background: rgba(254, 62, 87, 0.2);
+            border-color: #fe3e57;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(254, 62, 87, 0.3);
+        }
+        
+        .contact-link i {
+            font-size: 1.2rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .modern-contact-card {
+                padding: 2rem 1.5rem !important;
+            }
+            
+            .modern-input {
+                padding: 0.875rem 0.875rem 0.875rem 2.5rem;
+                font-size: 0.95rem;
+            }
+            
+            .input-icon {
+                left: 0.875rem;
+                font-size: 1rem;
+            }
+            
+            .modern-submit-btn {
+                padding: 1rem 1.5rem;
+                font-size: 1rem;
+            }
+            
+            .contact-link {
+                padding: 0.625rem 1.25rem;
+                font-size: 0.85rem;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .modern-contact-card {
+                padding: 1.5rem 1rem !important;
+            }
+            
+            section h2 {
+                font-size: 2rem !important;
+            }
+        }
+
+        /* Accessibility Focus Styles */
+        .modern-input:focus-visible,
+        .modern-submit-btn:focus-visible,
+        .contact-link:focus-visible {
+            outline: 3px solid #fe3e57;
+            outline-offset: 3px;
+        }
+
+        /* Shake Animation for Invalid Forms */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
+        }
+
+        /* Smooth Transitions */
+        .modern-alert {
+            transition: opacity 0.3s ease;
         }
 
         /* Contact Cards Animation */
@@ -401,6 +689,182 @@
         /* Valid & invalid */
         .is-valid{border-color:#10B981 !important;}
         .is-invalid{border-color:#ef4444 !important;}
+
+        /* ===  AI CHAT STYLES  =================================== */
+        /* Chat Toggle Animation */
+        #chat-toggle {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        #chat-toggle::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.2),
+                transparent
+            );
+            transition: 0.5s;
+        }
+        
+        #chat-toggle:hover::before {
+            left: 100%;
+        }
+
+        /* Chat Container Animations */
+        #chat-container.show {
+            display: block !important;
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        #chat-arrow.rotated {
+            transform: rotate(180deg);
+        }
+
+        /* Chat Messages Styles */
+        .chat-message {
+            animation: slideInUp 0.3s ease-out;
+        }
+
+        .chat-message.user {
+            justify-content: flex-end;
+        }
+
+        .chat-message.ai {
+            justify-content: flex-start;
+        }
+
+        .message-bubble {
+            max-width: 80%;
+            word-wrap: break-word;
+            position: relative;
+        }
+
+        .message-bubble.user {
+            background: linear-gradient(135deg, #fe3e57, #ff6b81);
+            color: white;
+        }
+
+        .message-bubble.ai {
+            background: #0c0b44;
+            border: 1px solid #464646;
+            color: #e2e8f0;
+        }
+
+        /* Typing Indicator */
+        .typing-indicator {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .typing-dots {
+            display: flex;
+            gap: 4px;
+        }
+
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #fe3e57;
+            animation: typing-bounce 1.4s infinite ease-in-out;
+        }
+
+        .typing-dot:nth-child(1) {
+            animation-delay: -0.32s;
+        }
+
+        .typing-dot:nth-child(2) {
+            animation-delay: -0.16s;
+        }
+
+        @keyframes typing-bounce {
+            0%, 80%, 100% {
+                transform: scale(0);
+            }
+            40% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Quick Prompts Animation */
+        .prompt-btn {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .prompt-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(254, 62, 87, 0.3);
+        }
+
+        /* Scroll Styles */
+        #chat-messages::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        #chat-messages::-webkit-scrollbar-track {
+            background: #070640;
+            border-radius: 3px;
+        }
+
+        #chat-messages::-webkit-scrollbar-thumb {
+            background: #fe3e57;
+            border-radius: 3px;
+        }
+
+        #chat-messages::-webkit-scrollbar-thumb:hover {
+            background: #ff6b81;
+        }
+
+        /* Responsive Chat */
+        @media (max-width: 768px) {
+            #chat-container {
+                margin: 0 1rem;
+            }
+            
+            .message-bubble {
+                max-width: 90%;
+            }
+            
+            #quick-prompts .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Chat Input Focus Effect */
+        #chat-input:focus {
+            box-shadow: 0 0 0 3px rgba(254, 62, 87, 0.3);
+        }
+
+        /* Error State */
+        .chat-error {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: white;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            margin: 0.5rem 0;
+            text-align: center;
+            animation: shake 0.5s ease-in-out;
+        }
     </style>
 </head>
 
@@ -478,62 +942,185 @@
                 </div>
             </section>
 
-            <!-- Contact Form Section (Classic Upgraded) -->
-            <section class="pt-[60px] pb-[30px] bg-[#070640]">
-                <div class="wraper">
-                    <div class="max-w-2xl mx-auto bg-[#0c0b44] border-[1.5px] border-[#464646] rounded-[18px] p-[48px] shadow-[0_12px_36px_0_rgba(50,50,50,0.16)] contact-form-container fade-in glass-card">
-                        <h2 class="text-center text-[48px] md:text-[36px] sm:text-[28px] text-white font-bold mb-[10px] gradient-text flex items-center justify-center gap-2">
-                            <i class="fas fa-paper-plane text-[#fe3e57]"></i> Send Me a Message
-                        </h2>
-                        <p class="helper-text text-center mb-[28px] flex items-center justify-center gap-2">
-                            <i class="fas fa-comment-dots text-[#fe3e57]"></i>
-                             Drop me a message and I'll respond within 24 hours.
-                        </p>
-                        <form id="contact-form" class="contact-form grid grid-cols-2 gap-6 md:grid-cols-1">
-                            <!-- First Name -->
-                            <div class="icon-input center-placeholder col-span-1" data-placeholder="First Name">
-                                <i class="fas fa-user input-icon"></i>
-                                <input type="text" id="name" name="user_name" placeholder=" " required aria-label="First Name" class="p-3 rounded-xl w-full bg-[#070640] border border-[#464646] text-white focus:outline-none focus:border-[#fe3e57] shadow" />
-                            </div>
-                            <!-- Last Name -->
-                            <div class="icon-input center-placeholder col-span-1" data-placeholder="Last Name">
-                                <i class="fas fa-user input-icon"></i>
-                                <input type="text" id="name2" name="user_lastname" placeholder=" " required aria-label="Last Name" class="p-3 rounded-xl w-full bg-[#070640] border border-[#464646] text-white focus:outline-none focus:border-[#fe3e57] shadow" />
-                            </div>
-                            <!-- Email -->
-                            <div class="icon-input center-placeholder col-span-2" data-placeholder="Your Email">
-                                <i class="fas fa-envelope input-icon"></i>
-                                <input type="email" id="email" name="user_email" placeholder=" " required aria-label="Email" class="p-3 rounded-xl w-full bg-[#070640] border border-[#464646] text-white focus:outline-none focus:border-[#fe3e57] shadow" />
-                            </div>
-                            <!-- Subject -->
-                            <div class="icon-input center-placeholder col-span-2" data-placeholder="Subject">
-                                <i class="fas fa-pen input-icon"></i>
-                                <input type="text" id="subject" name="subject" placeholder=" " required aria-label="Subject" class="p-3 rounded-xl w-full bg-[#070640] border border-[#464646] text-white focus:outline-none focus:border-[#fe3e57] shadow" />
-                            </div>
-                            <!-- Message -->
-                            <div class="icon-input message-box col-span-2" data-placeholder="Your Message">
-                                <i class="fas fa-comment input-icon"></i>
-                                <textarea id="message" name="message" rows="5" placeholder=" " required aria-label="Message" class="p-3 rounded-xl w-full bg-[#070640] border border-[#464646] text-white focus:outline-none focus:border-[#fe3e57] resize-none shadow" maxlength="500"></textarea>
-                                <div class="flex justify-end text-xs text-gray-400 mt-1"><span id="char-count">0</span>/500</div>
-                            </div>
-                            <!-- Submit Button & Loader -->
-                            <div class="flex items-center justify-center space-x-4 mt-2 col-span-2">
-                                <button type="submit" class="submit-btn bg-[#fe3e57] text-white px-10 py-3 rounded-xl font-bold shadow-lg hover:bg-[#ff6b81] transition-all duration-300 relative flex items-center gap-2">
-                                    <span>Send Message</span>
-                                    <i class="fas fa-arrow-right"></i>
-                                </button>
-                                <div id="loader" class="hidden">
-                                    <svg class="animate-spin h-7 w-7 text-[#fe3e57]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path></svg>
+            <!-- Contact Form Section - Modern Redesign -->
+            <section class="min-h-screen flex items-center justify-center py-[80px] px-4 bg-[#070640] relative overflow-hidden">
+
+                <div class="wraper relative z-10">
+                    <div class="max-w-3xl mx-auto">
+                        <!-- Modern Card Container -->
+                        <div class="modern-contact-card bg-gradient-to-br from-[#0f0f58]/80 to-[#1a1a6e]/80 backdrop-blur-2xl border border-[#fe3e57]/20 rounded-3xl p-12 md:p-8 sm:p-6 shadow-2xl shadow-[#fe3e57]/10">
+                            
+                            <!-- Header Section -->
+                            <div class="text-center mb-12">
+                                <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-[#fe3e57] to-[#ff6b81] rounded-2xl shadow-lg shadow-[#fe3e57]/50 mb-6 animate-float">
+                                    <i class="fas fa-paper-plane text-white text-3xl"></i>
                                 </div>
+                                <h2 class="text-5xl md:text-4xl sm:text-3xl font-bold text-white mb-4 tracking-tight">
+                                    Let's <span class="text-gradient bg-gradient-to-r from-[#fe3e57] to-[#ff6b81] bg-clip-text text-transparent">Connect</span>
+                                </h2>
+                                <p class="text-gray-300 text-lg md:text-base max-w-md mx-auto">
+                                    Have a project in mind? Drop me a message and I'll get back to you within 24 hours.
+                                </p>
                             </div>
-                            <!-- Success / Error Messages -->
-                            <div id="contact-success" class="success-toast hidden col-span-2 text-center font-semibold mt-2 py-3 px-4 rounded-lg fade-in-up flex items-center justify-center gap-2">
-                                <i class="fas fa-check-circle mr-2"></i>Your message has been sent successfully!
-                            </div>
-                            <div id="contact-error" class="hidden col-span-2 bg-red-500/20 text-red-400 text-center font-semibold mt-2 py-2 rounded-lg fade-in-up">
-                                <i class="fas fa-times-circle mr-2"></i>Oops! Something went wrong. Please try again.
-                            </div>
-                        </form>
+
+                            <!-- Contact Form -->
+                            <form id="contact-form" class="space-y-6">
+                                <!-- Name Row -->
+                                <div class="grid grid-cols-2 gap-6 md:grid-cols-1">
+                                    <!-- First Name -->
+                                    <div class="form-group">
+                                        <label for="name" class="block text-sm font-medium text-gray-300 mb-2">
+                                            First Name <span class="text-[#fe3e57]">*</span>
+                                        </label>
+                                        <div class="input-wrapper">
+                                            <span class="input-icon">
+                                                <i class="fas fa-user"></i>
+                                            </span>
+                                            <input 
+                                                type="text" 
+                                                id="name" 
+                                                name="user_name" 
+                                                placeholder="John"
+                                                required 
+                                                class="modern-input w-full"
+                                            />
+                                        </div>
+                                    </div>
+
+                                    <!-- Last Name -->
+                                    <div class="form-group">
+                                        <label for="name2" class="block text-sm font-medium text-gray-300 mb-2">
+                                            Last Name <span class="text-[#fe3e57]">*</span>
+                                        </label>
+                                        <div class="input-wrapper">
+                                            <span class="input-icon">
+                                                <i class="fas fa-user"></i>
+                                            </span>
+                                            <input 
+                                                type="text" 
+                                                id="name2" 
+                                                name="user_lastname" 
+                                                placeholder="Doe"
+                                                required 
+                                                class="modern-input w-full"
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Email -->
+                                <div class="form-group">
+                                    <label for="email" class="block text-sm font-medium text-gray-300 mb-2">
+                                        Email Address <span class="text-[#fe3e57]">*</span>
+                                    </label>
+                                    <div class="input-wrapper">
+                                        <span class="input-icon">
+                                            <i class="fas fa-envelope"></i>
+                                        </span>
+                                        <input 
+                                            type="email" 
+                                            id="email" 
+                                            name="user_email" 
+                                            placeholder="john.doe@example.com"
+                                            required 
+                                            class="modern-input w-full"
+                                        />
+                                    </div>
+                                </div>
+
+                                <!-- Subject -->
+                                <div class="form-group">
+                                    <label for="subject" class="block text-sm font-medium text-gray-300 mb-2">
+                                        Subject <span class="text-[#fe3e57]">*</span>
+                                    </label>
+                                    <div class="input-wrapper">
+                                        <span class="input-icon">
+                                            <i class="fas fa-tag"></i>
+                                        </span>
+                                        <input 
+                                            type="text" 
+                                            id="subject" 
+                                            name="subject" 
+                                            placeholder="Project Inquiry"
+                                            required 
+                                            class="modern-input w-full"
+                                        />
+                                    </div>
+                                </div>
+
+                                <!-- Message -->
+                                <div class="form-group">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <label for="message" class="block text-sm font-medium text-gray-300">
+                                            Your Message <span class="text-[#fe3e57]">*</span>
+                                        </label>
+                                        <span class="text-xs text-gray-400">
+                                            <span id="char-count">0</span>/500
+                                        </span>
+                                    </div>
+                                    <div class="input-wrapper">
+                                        <span class="input-icon textarea-icon">
+                                            <i class="fas fa-comment-dots"></i>
+                                        </span>
+                                        <textarea 
+                                            id="message" 
+                                            name="message" 
+                                            rows="6"
+                                            placeholder="Tell me about your project..."
+                                            required 
+                                            maxlength="500"
+                                            class="modern-input modern-textarea w-full resize-none"
+                                        ></textarea>
+                                    </div>
+                                </div>
+
+                                <!-- Submit Button -->
+                                <div class="pt-4">
+                                    <button 
+                                        type="submit" 
+                                        class="modern-submit-btn w-full group"
+                                        id="submit-btn"
+                                    >
+                                        <span class="relative z-10 flex items-center justify-center gap-3">
+                                            <span class="font-semibold text-lg">Send Message</span>
+                                            <i class="fas fa-paper-plane transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300"></i>
+                                        </span>
+                                    </button>
+                                    
+                                    <!-- Loader -->
+                                    <div id="loader" class="hidden flex items-center justify-center mt-4">
+                                        <div class="loader-spinner"></div>
+                                        <span class="ml-3 text-[#fe3e57] font-medium">Sending...</span>
+                                    </div>
+                                </div>
+
+                                <!-- Success Message -->
+                                <div id="contact-success" class="hidden modern-alert success-alert">
+                                    <div class="flex items-center gap-3">
+                                        <i class="fas fa-check-circle text-2xl"></i>
+                                        <div>
+                                            <p class="font-semibold">Message Sent Successfully!</p>
+                                            <p class="text-sm opacity-90 mt-1">Thank you for reaching out. I'll get back to you soon.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Error Message -->
+                                <div id="contact-error" class="hidden modern-alert error-alert">
+                                    <div class="flex items-center gap-3">
+                                        <i class="fas fa-exclamation-circle text-2xl"></i>
+                                        <div>
+                                            <p class="font-semibold">Oops! Something went wrong</p>
+                                            <p class="text-sm opacity-90 mt-1">Please try again or contact me directly.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+
+                            <!-- Additional Contact Info -->
+                         
+
+                        </div>
                     </div>
                 </div>
             </section>
@@ -829,103 +1416,189 @@
             console.warn('Particles.js library not loaded. Particle effects will be disabled.');
         }
 
-        // === CUSTOM INTERACTIVITY ===
-        // Ripple effect on button
-        document.querySelectorAll('.submit-btn').forEach(btn=>{
-            btn.addEventListener('click',e=>{
-                const circle=document.createElement('span');
-                const diameter=Math.max(btn.clientWidth,btn.clientHeight);
-                const rect=btn.getBoundingClientRect();
-                circle.style.width=circle.style.height=`${diameter}px`;
-                circle.style.left=`${e.clientX-rect.left-diameter/2}px`;
-                circle.style.top=`${e.clientY-rect.top-diameter/2}px`;
-                circle.classList.add('ripple');
-                btn.appendChild(circle);
-                setTimeout(()=>circle.remove(),600);
+        // === MODERN FORM INTERACTIVITY ===
+        
+        // Real-time validation for modern form
+        document.addEventListener('DOMContentLoaded', () => {
+            const fields = [
+                { el: document.getElementById('name'), type: 'text' },
+                { el: document.getElementById('name2'), type: 'text' },
+                { el: document.getElementById('email'), type: 'email' },
+                { el: document.getElementById('subject'), type: 'text' }
+            ];
+            
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            
+            fields.forEach(field => {
+                if (!field.el) return;
+                
+                field.el.addEventListener('input', () => {
+                    const value = field.el.value.trim();
+                    let isValid = false;
+                    
+                    if (field.type === 'email') {
+                        isValid = emailRegex.test(value);
+                    } else {
+                        isValid = value.length >= 2;
+                    }
+                    
+                    if (value.length > 0) {
+                        field.el.classList.toggle('is-valid', isValid);
+                        field.el.classList.toggle('is-invalid', !isValid);
+                    } else {
+                        field.el.classList.remove('is-valid', 'is-invalid');
+                    }
+                });
+                
+                // Remove validation classes on focus
+                field.el.addEventListener('focus', () => {
+                    field.el.classList.remove('is-invalid');
+                });
             });
-        });
 
-        // Real-time validation
-        const fields=[
-            {el:document.getElementById('name')},
-            {el:document.getElementById('name2')},
-            {el:document.getElementById('email'),email:true},
-            {el:document.getElementById('subject')}
-        ];
-        const emailRegex=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        fields.forEach(f=>{
-            f.el.addEventListener('input',()=>{
-                const valid=f.email?emailRegex.test(f.el.value.trim()):f.el.value.trim().length>0;
-                f.el.classList.toggle('is-valid',valid);
-                f.el.classList.toggle('is-invalid',!valid);
-            });
+            // Character counter for message
+            const msgEl = document.getElementById('message');
+            const countEl = document.getElementById('char-count');
+            
+            if (msgEl && countEl) {
+                msgEl.addEventListener('input', () => {
+                    countEl.textContent = msgEl.value.length;
+                    
+                    // Add validation for message
+                    if (msgEl.value.trim().length > 10) {
+                        msgEl.classList.add('is-valid');
+                        msgEl.classList.remove('is-invalid');
+                    } else if (msgEl.value.length > 0) {
+                        msgEl.classList.add('is-invalid');
+                        msgEl.classList.remove('is-valid');
+                    } else {
+                        msgEl.classList.remove('is-valid', 'is-invalid');
+                    }
+                });
+                
+                msgEl.dispatchEvent(new Event('input'));
+            }
         });
-
-        // Character counter for message
-        const msgEl=document.getElementById('message');
-        const countEl=document.getElementById('char-count');
-        msgEl.addEventListener('input',()=>{countEl.textContent=msgEl.value.length;});
-        msgEl.dispatchEvent(new Event('input'));
 
         // Initialize EmailJS with your public key
         (function() {
             emailjs.init("ESWgVD0kwkkAhjOri"); // Using your EmailJS public key
         })();
 
-        // Form handling
+        // Modern Form Submission Handler
         document.getElementById('contact-form').addEventListener('submit', function(e) {
             e.preventDefault();
-            // Show loading state
-            const submitBtn = this.querySelector('.submit-btn');
+            
+            const submitBtn = document.getElementById('submit-btn');
             const loader = document.getElementById('loader');
-            submitBtn.style.display = 'none';
-            loader.style.display = 'block';
-            // Hide any previous messages
-            document.getElementById('contact-error').classList.add('hidden');
-            document.getElementById('contact-success').classList.add('hidden');
-            // Get form data
-            const formData = {
-                user_name: document.getElementById('name').value,
-                user_lastname: document.getElementById('name2').value,
-                user_email: document.getElementById('email').value,
-                subject: document.getElementById('subject').value,
-                message: document.getElementById('message').value,
-                to_email: 'fedihmida370@gmail.com' // Ensure the email is sent to you
-            };
-            // quick validation check before send
-            if(fields.some(f=>f.el.classList.contains('is-invalid')||f.el.value.trim()==='')|| msgEl.value.trim()===''){
-                const contactForm = document.getElementById('contact-form');
-                contactForm.classList.add('shake');
-                setTimeout(()=>contactForm.classList.remove('shake'),400);
-                submitBtn.style.display='block';loader.style.display='none';
+            const successMsg = document.getElementById('contact-success');
+            const errorMsg = document.getElementById('contact-error');
+            
+            // Get form fields
+            const nameField = document.getElementById('name');
+            const name2Field = document.getElementById('name2');
+            const emailField = document.getElementById('email');
+            const subjectField = document.getElementById('subject');
+            const messageField = document.getElementById('message');
+            
+            // Validate all fields
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            let isValid = true;
+            
+            if (nameField.value.trim().length < 2) {
+                nameField.classList.add('is-invalid');
+                isValid = false;
+            }
+            if (name2Field.value.trim().length < 2) {
+                name2Field.classList.add('is-invalid');
+                isValid = false;
+            }
+            if (!emailRegex.test(emailField.value.trim())) {
+                emailField.classList.add('is-invalid');
+                isValid = false;
+            }
+            if (subjectField.value.trim().length < 2) {
+                subjectField.classList.add('is-invalid');
+                isValid = false;
+            }
+            if (messageField.value.trim().length < 10) {
+                messageField.classList.add('is-invalid');
+                isValid = false;
+            }
+            
+            if (!isValid) {
+                // Shake animation
+                this.style.animation = 'shake 0.5s';
+                setTimeout(() => this.style.animation = '', 500);
                 return;
             }
-
+            
+            // Show loading state
+            submitBtn.disabled = true;
+            submitBtn.style.opacity = '0.6';
+            loader.classList.remove('hidden');
+            loader.style.display = 'flex';
+            successMsg.classList.add('hidden');
+            errorMsg.classList.add('hidden');
+            
+            // Prepare form data
+            const formData = {
+                user_name: nameField.value.trim(),
+                user_lastname: name2Field.value.trim(),
+                user_email: emailField.value.trim(),
+                subject: subjectField.value.trim(),
+                message: messageField.value.trim(),
+                to_email: 'fedihmida370@gmail.com'
+            };
+            
+            // Send email using EmailJS
             emailjs.send('service_xmrsvzj', 'fedifedi1230', formData)
-                .then(function() {
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    
                     // Show success message
-                    const msg = document.getElementById('contact-success');
-                    msg.classList.remove('hidden');
-                    msg.classList.add('fade-in-up');
+                    successMsg.classList.remove('hidden');
+                    successMsg.style.display = 'block';
+                    
+                    // Reset form
+                    document.getElementById('contact-form').reset();
+                    document.getElementById('char-count').textContent = '0';
+                    
+                    // Remove validation classes
+                    [nameField, name2Field, emailField, subjectField, messageField].forEach(field => {
+                        field.classList.remove('is-valid', 'is-invalid');
+                    });
+                    
+                    // Hide success message after 5 seconds
                     setTimeout(() => {
-                        msg.classList.remove('fade-in-up');
-                        msg.classList.add('hidden');
-                        document.getElementById('contact-form').reset();
-                    }, 3500);
+                        successMsg.style.opacity = '0';
+                        setTimeout(() => {
+                            successMsg.classList.add('hidden');
+                            successMsg.style.opacity = '1';
+                        }, 300);
+                    }, 5000);
+                    
                 }, function(error) {
-                    // Show error message
-                    const msg = document.getElementById('contact-error');
-                    msg.classList.remove('hidden');
-                    msg.classList.add('fade-in-up');
-                    setTimeout(() => {
-                        msg.classList.remove('fade-in-up');
-                        msg.classList.add('hidden');
-                    }, 3500);
                     console.error('EmailJS error:', error);
+                    
+                    // Show error message
+                    errorMsg.classList.remove('hidden');
+                    errorMsg.style.display = 'block';
+                    
+                    // Hide error message after 5 seconds
+                    setTimeout(() => {
+                        errorMsg.style.opacity = '0';
+                        setTimeout(() => {
+                            errorMsg.classList.add('hidden');
+                            errorMsg.style.opacity = '1';
+                        }, 300);
+                    }, 5000);
                 })
                 .finally(() => {
                     // Reset button state
-                    submitBtn.style.display = 'block';
+                    submitBtn.disabled = false;
+                    submitBtn.style.opacity = '1';
+                    loader.classList.add('hidden');
                     loader.style.display = 'none';
                 });
         });
@@ -964,6 +1637,358 @@
         }, observerOptions);
 
         document.querySelectorAll('.shine-effect').forEach((el) => observer.observe(el));
+
+        // ===  AI CHAT FUNCTIONALITY  ===
+        class AIChat {
+            constructor() {
+                this.apiKey = ''; // You'll need to set this securely
+                this.messages = [];
+                this.isTyping = false;
+                this.portfolioContext = `
+                    You are Fedi Hmida's AI assistant. Here's information about Fedi:
+                    
+                    PERSONAL INFO:
+                    - Name: Fedi Hmida
+                    - Location: Tunis, Tunisia
+                    - Email: fedi.hmida@ieee.org
+                    - Phone: +216 93 722 130
+                    - LinkedIn: https://www.linkedin.com/in/fedi-hmida
+                    - GitHub: https://github.com/fedi-hmida
+                    
+                    SKILLS & TECHNOLOGIES:
+                    - UI/UX Design (Figma, Adobe XD, Sketch)
+                    - Frontend Development (React, Vue.js, HTML/CSS, JavaScript)
+                    - Mobile Development (Flutter, React Native)
+                    - Backend Development (Node.js, Python, PHP)
+                    - Database Management (MySQL, MongoDB, Firebase)
+                    - Design Tools (Photoshop, Illustrator, After Effects)
+                    
+                    SERVICES:
+                    - Website Design & Development
+                    - Mobile App Development
+                    - UI/UX Design
+                    - Brand Identity Design
+                    - Digital Marketing Solutions
+                    
+                    PROJECTS:
+                    - Portfolio includes various web applications, mobile apps, and design projects
+                    - Specializes in creating modern, responsive, and user-friendly interfaces
+                    - Experience with e-commerce platforms, business websites, and mobile applications
+                    
+                    Please answer questions about Fedi's portfolio, skills, projects, and availability. 
+                    Be helpful, professional, and encourage visitors to contact him for projects.
+                    If asked about specific project details not mentioned here, suggest contacting Fedi directly.
+                    Keep responses concise but informative.
+                `;
+                
+                this.init();
+            }
+
+            init() {
+                this.bindEvents();
+                this.showQuickPrompts();
+            }
+
+            bindEvents() {
+                // Chat toggle
+                document.getElementById('chat-toggle').addEventListener('click', () => {
+                    this.toggleChat();
+                });
+
+                // Chat close
+                document.getElementById('chat-close').addEventListener('click', () => {
+                    this.closeChat();
+                });
+
+                // New chat conversation
+                document.getElementById('new-chat').addEventListener('click', () => {
+                    this.startNewConversation();
+                });
+
+                // Chat form
+                document.getElementById('chat-form').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    this.sendMessage();
+                });
+
+                // Quick prompts
+                document.querySelectorAll('.prompt-btn').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const question = btn.textContent.replace(/^\s*.*?\s/, '').trim();
+                        document.getElementById('chat-input').value = question;
+                        this.sendMessage();
+                        this.hideQuickPrompts();
+                    });
+                });
+
+                // Enter key in chat input
+                document.getElementById('chat-input').addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter' && !e.shiftKey) {
+                        e.preventDefault();
+                        this.sendMessage();
+                    }
+                });
+
+                // Character counter
+                document.getElementById('chat-input').addEventListener('input', (e) => {
+                    document.getElementById('chat-char-count').textContent = `${e.target.value.length}/500`;
+                });
+            }
+
+            toggleChat() {
+                const container = document.getElementById('chat-container');
+                const arrow = document.getElementById('chat-arrow');
+                
+                if (container.classList.contains('show')) {
+                    this.closeChat();
+                } else {
+                    this.openChat();
+                }
+            }
+
+            openChat() {
+                const container = document.getElementById('chat-container');
+                const arrow = document.getElementById('chat-arrow');
+                
+                container.classList.remove('hidden');
+                setTimeout(() => {
+                    container.classList.add('show');
+                    arrow.classList.add('rotated');
+                }, 10);
+            }
+
+            closeChat() {
+                const container = document.getElementById('chat-container');
+                const arrow = document.getElementById('chat-arrow');
+                
+                container.classList.remove('show');
+                arrow.classList.remove('rotated');
+                setTimeout(() => {
+                    container.classList.add('hidden');
+                }, 500);
+            }
+
+            startNewConversation() {
+                // Clear chat messages but keep the welcome message
+                const messagesContainer = document.getElementById('chat-messages');
+                messagesContainer.innerHTML = `
+                    <div class="flex items-start gap-3 animate-fade-in-up">
+                        <div class="w-8 h-8 bg-[#fe3e57] rounded-full flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-robot text-white text-sm"></i>
+                        </div>
+                        <div class="bg-[#0c0b44] border border-[#464646] rounded-lg p-3 max-w-xs">
+                            <p class="text-gray-300 text-sm">
+                                Hi! I'm Fedi's AI assistant. I can help you learn about his skills, projects, and experience. What would you like to know?
+                            </p>
+                        </div>
+                    </div>
+                `;
+                
+                // Clear input field
+                document.getElementById('chat-input').value = '';
+                document.getElementById('chat-char-count').textContent = '0/500';
+                
+                // Show quick prompts again
+                this.showQuickPrompts();
+                
+                // Scroll to top
+                messagesContainer.scrollTop = 0;
+            }
+
+            showQuickPrompts() {
+                document.getElementById('quick-prompts').style.display = 'block';
+            }
+
+            hideQuickPrompts() {
+                document.getElementById('quick-prompts').style.display = 'none';
+            }
+
+            async sendMessage() {
+                const input = document.getElementById('chat-input');
+                const message = input.value.trim();
+                
+                if (!message || this.isTyping) return;
+
+                // Add user message
+                this.addMessage(message, 'user');
+                input.value = '';
+                document.getElementById('chat-char-count').textContent = '0/500';
+
+                // Show typing indicator
+                this.showTyping();
+
+                try {
+                    // For demo purposes, I'll create a simple response system
+                    // In production, you would call your AI API here
+                    const response = await this.getAIResponse(message);
+                    this.hideTyping();
+                    this.addMessage(response, 'ai');
+                } catch (error) {
+                    this.hideTyping();
+                    this.addMessage('Sorry, I encountered an error. Please try again or contact Fedi directly.', 'ai', true);
+                }
+            }
+
+            async getAIResponse(message) {
+                try {
+                    const response = await fetch('ai-chat.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            message: message
+                        })
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+
+                    const data = await response.json();
+                    
+                    if (data.error) {
+                        throw new Error(data.error);
+                    }
+
+                    return data.response;
+                } catch (error) {
+                    console.error('AI API Error:', error);
+                    // Fallback to demo responses if API fails
+                    return this.generateResponse(message.toLowerCase());
+                }
+            }
+
+            generateResponse(message) {
+                // Enhanced detailed fallback responses with specific portfolio knowledge
+                if (message.includes('skill') || message.includes('technology') || message.includes('tech')) {
+                    return "🚀 Fedi is a full-stack powerhouse with 3+ years of experience! **Frontend**: React.js, Vue.js, TypeScript, Tailwind CSS. **Mobile**: Flutter, React Native, FlutterFlow. **Backend**: Node.js, Python, PHP with MySQL/MongoDB. **Design**: Figma, Adobe Creative Suite, advanced UI/UX. **Cloud**: AWS, Netlify, Docker. He's constantly learning cutting-edge technologies to deliver modern solutions!";
+                }
+                
+                if (message.includes('project') || message.includes('portfolio') || message.includes('work')) {
+                    return "💼 Fedi's portfolio showcases impressive projects: **SmartClaim** - AI-powered insurance platform (Flutter + AI), **SolarFlow** - IoT energy management app, **Onboardify** - employee onboarding platform (JavaFX + Symfony), **Pro-Link** - professional networking platform. Each demonstrates modern design, complex functionality, and real-world impact. Check his portfolio section for detailed case studies!";
+                }
+                
+                if (message.includes('smartclaim') || message.includes('insurance')) {
+                    return "🔥 **SmartClaim** is Fedi's flagship AI project! Developed during his internship at ADDINN Tunisia, it's an intelligent multichannel insurance claim management platform. Features: Flutter mobile app, AI damage detection, automated claim analysis, real-time communication between policyholders and managers. A perfect blend of mobile development and artificial intelligence!";
+                }
+                
+                if (message.includes('solarflow') || message.includes('energy') || message.includes('iot')) {
+                    return "⚡ **SolarFlow** showcases Fedi's IoT expertise! It's a cross-platform Flutter app for monitoring solar-powered devices in real-time. Features: energy production tracking, device control, usage optimization, seamless iOS/Android experience. Perfect example of combining mobile development with IoT integration for renewable energy solutions!";
+                }
+                
+                if (message.includes('onboardify') || message.includes('employee') || message.includes('hr')) {
+                    return "🎯 **Onboardify** demonstrates Fedi's full-stack capabilities! A smart employee onboarding platform with dual architecture: JavaFX desktop app + Symfony web application. Features: interactive modules, resource management, HR dashboards, employee well-being support. Shows his ability to create comprehensive enterprise solutions!";
+                }
+                
+                if (message.includes('contact') || message.includes('hire') || message.includes('work with') || message.includes('email')) {
+                    return "📞 Ready to work with Fedi? Contact him at **fedi.hmida@ieee.org** or **+216 93 722 130**. He's also active on LinkedIn (linkedin.com/in/fedi-hmida) and GitHub (github.com/fedi-hmida). Fedi offers free consultations and responds within 24 hours. Let's discuss your project!";
+                }
+                
+                if (message.includes('background') || message.includes('experience') || message.includes('education')) {
+                    return "🎓 Fedi is a Computer Science graduate and IEEE member with extensive real-world experience. **Internships**: ADDINN Tunisia (SmartClaim AI platform), IoT energy sector (SolarFlow). **Expertise**: 3+ years in full-stack development, UI/UX design, and client management. Based in Tunisia with international client experience across MENA and Europe!";
+                }
+                
+                if (message.includes('service') || message.includes('offer') || message.includes('do') || message.includes('help')) {
+                    return "✨ **Fedi's Services**: Custom Website Development ($800-$5K), Mobile App Development ($1.5K-$8K), UI/UX Design ($300-$2K), E-commerce Solutions ($1.2K-$6K), Brand Identity ($200-$1K), Digital Marketing. **Specialties**: React/Vue.js websites, Flutter mobile apps, AI integration, IoT solutions. What's your project vision?";
+                }
+                
+                if (message.includes('hello') || message.includes('hi') || message.includes('hey') || message.includes('greet')) {
+                    return "👋 Hello! I'm Fedi's AI assistant, powered by advanced Grok technology and loaded with detailed knowledge about his portfolio! Fedi is a full-stack developer specializing in React, Flutter, AI integration, and stunning UI/UX design. I can tell you about his projects like SmartClaim, SolarFlow, pricing, or anything else. What interests you most?";
+                }
+                
+                if (message.includes('price') || message.includes('cost') || message.includes('rate') || message.includes('budget')) {
+                    return "💰 **Fedi's Pricing**: Websites ($800-$5K), Mobile Apps ($1.5K-$8K), UI/UX Design ($300-$2K), E-commerce ($1.2K-$6K). **Quick Projects**: Landing pages (3-7 days), Apps (2-6 weeks). **Ongoing**: Maintenance ($100-300/month), Marketing ($300-800/month). Prices vary by complexity - contact fedi.hmida@ieee.org for personalized quotes!";
+                }
+                
+                if (message.includes('mobile') || message.includes('app') || message.includes('flutter')) {
+                    return "📱 Mobile development is Fedi's specialty! He creates stunning cross-platform apps using **Flutter** and **React Native**. Recent work: SmartClaim (AI insurance app), SolarFlow (IoT energy app). Features: real-time data, payment integration, cloud sync, beautiful UI/UX. **Pricing**: $1,500-$8,000 for full iOS + Android apps. Ready to build your app idea?";
+                }
+                
+                if (message.includes('web') || message.includes('website') || message.includes('react')) {
+                    return "🌐 Fedi builds exceptional websites using **React.js**, **Vue.js**, and modern frameworks! Features: responsive design, advanced animations, SEO optimization, e-commerce integration, CMS solutions. **Examples**: Business websites, portfolios, e-commerce platforms, web applications. **Pricing**: $800-$5,000. **Timeline**: 1-4 weeks. Ready to create your digital presence?";
+                }
+                
+                if (message.includes('design') || message.includes('ui') || message.includes('ux') || message.includes('figma')) {
+                    return "🎨 Fedi's design expertise shines through **Figma**, **Adobe Creative Suite**, and user-centered design principles! Services: UI/UX design, prototyping, brand identity, design systems, accessibility compliance. **Portfolio**: Modern, clean aesthetics with perfect user experience. **Pricing**: $300-$2,000. See his design work in SmartClaim and SolarFlow!";
+                }
+                
+                if (message.includes('ai') || message.includes('artificial') || message.includes('machine learning')) {
+                    return "🤖 Fedi integrates AI brilliantly! **SmartClaim** features AI-powered damage detection for insurance claims. He combines traditional development with cutting-edge AI APIs, machine learning integration, and intelligent automation. Perfect for businesses wanting to leverage AI for competitive advantage. This very chat is powered by his AI integration skills!";
+                }
+                
+                // Default response with specific portfolio knowledge
+                return "🤖 Great question! I have comprehensive knowledge about Fedi's impressive portfolio including **SmartClaim** (AI insurance platform), **SolarFlow** (IoT energy app), **Onboardify** (HR platform), and his expertise in React, Flutter, UI/UX design, and AI integration. For specific details about any project or service, contact **fedi.hmida@ieee.org**. What aspect of his work interests you most?";
+            }
+
+            addMessage(content, type, isError = false) {
+                const messagesContainer = document.getElementById('chat-messages');
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `chat-message flex items-start gap-3 ${type} animate-fade-in-up`;
+                
+                if (type === 'user') {
+                    messageDiv.innerHTML = `
+                        <div class="message-bubble user bg-gradient-to-r from-[#fe3e57] to-[#ff6b81] text-white p-3 rounded-lg max-w-xs ml-auto">
+                            ${content}
+                        </div>
+                        <div class="w-8 h-8 bg-[#fe3e57] rounded-full flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-user text-white text-sm"></i>
+                        </div>
+                    `;
+                } else {
+                    const bgClass = isError ? 'bg-red-500/20 border-red-500/50 text-red-300' : 'bg-[#0c0b44] border-[#464646] text-gray-300';
+                    messageDiv.innerHTML = `
+                        <div class="w-8 h-8 bg-[#fe3e57] rounded-full flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-robot text-white text-sm"></i>
+                        </div>
+                        <div class="message-bubble ai ${bgClass} border rounded-lg p-3 max-w-xs">
+                            ${content}
+                        </div>
+                    `;
+                }
+                
+                messagesContainer.appendChild(messageDiv);
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }
+
+            showTyping() {
+                if (this.isTyping) return;
+                this.isTyping = true;
+                
+                const messagesContainer = document.getElementById('chat-messages');
+                const typingDiv = document.createElement('div');
+                typingDiv.id = 'typing-indicator';
+                typingDiv.className = 'chat-message flex items-start gap-3 ai';
+                typingDiv.innerHTML = `
+                    <div class="w-8 h-8 bg-[#fe3e57] rounded-full flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-robot text-white text-sm"></i>
+                    </div>
+                    <div class="bg-[#0c0b44] border border-[#464646] rounded-lg p-3">
+                        <div class="typing-dots">
+                            <div class="typing-dot"></div>
+                            <div class="typing-dot"></div>
+                            <div class="typing-dot"></div>
+                        </div>
+                    </div>
+                `;
+                
+                messagesContainer.appendChild(typingDiv);
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }
+
+            hideTyping() {
+                this.isTyping = false;
+                const typingIndicator = document.getElementById('typing-indicator');
+                if (typingIndicator) {
+                    typingIndicator.remove();
+                }
+            }
+        }
+
+        // Initialize AI Chat
+        document.addEventListener('DOMContentLoaded', () => {
+            new AIChat();
+        });
     </script>
 </body>
 
